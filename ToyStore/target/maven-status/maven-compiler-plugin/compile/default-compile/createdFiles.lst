@@ -1,0 +1,8 @@
+com\senac\main\Main.class
+com\senac\produtos\PainelProdutos.class
+com\senac\clientes\PainelCliente.class
+com\senac\main\Main$1.class
+com\senac\principal\PainelPrincipal.class
+com\senac\relatorios\PainelRelatorios.class
+com\senac\menu\Menu.class
+com\senac\vendas\PainelVendas.class
