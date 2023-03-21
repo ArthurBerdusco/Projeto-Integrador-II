@@ -1,0 +1,6 @@
+tamanho tela pc [1540, 810]
+painelNav[1340,810]
+painelMenu [200,810]
+
+
+tela cliente [1290, 750]

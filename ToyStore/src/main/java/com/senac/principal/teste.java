@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.senac.clientes;
+package com.senac.principal;
 
 /**
  *
  * @author jsilva91
  */
-public class PainelCliente extends javax.swing.JPanel {
+public class teste extends javax.swing.JPanel {
 
     /**
-     * Creates new form PainelCliente
+     * Creates new form teste
      */
-    public PainelCliente() {
+    public teste() {
         initComponents();
     }
 
