@@ -1,12 +1,29 @@
 package com.senac.cliente;
 
 public class Cliente {
+    
     //Identificacao
     private String nome;
     private String cpf;
     private String dataNasc;
     private String sexo;
     private String estadoCivil;
+
+    public Cliente() {
+    }
+
+    public Cliente(String nome, String cpf, String dataNasc, String sexo, String estadoCivil, String email, String rua, String numero, String completo, String telefone) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNasc = dataNasc;
+        this.sexo = sexo;
+        this.estadoCivil = estadoCivil;
+        this.email = email;
+        this.rua = rua;
+        this.numero = numero;
+        this.completo = completo;
+        this.telefone = telefone;
+    }
     private String email;
     
     //Endereço

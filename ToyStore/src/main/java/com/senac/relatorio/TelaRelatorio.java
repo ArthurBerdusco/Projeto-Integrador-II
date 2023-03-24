@@ -191,15 +191,15 @@ public class TelaRelatorio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Default.setVisible(true);
-        Cadastro.setVisible(false);
-        Editar.setVisible(false);
+//        Default.setVisible(true);
+//        Cadastro.setVisible(false);
+//        Editar.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Default.setVisible(false);
-        Cadastro.setVisible(false);
-        Editar.setVisible(true);
+//        Default.setVisible(false);
+//        Cadastro.setVisible(false);
+//        Editar.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
