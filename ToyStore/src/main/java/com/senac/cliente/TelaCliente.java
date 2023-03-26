@@ -5,24 +5,41 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import static javax.swing.SwingConstants.CENTER;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
 public class TelaCliente extends javax.swing.JPanel {
-    
-    ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+    private ArrayList<Cliente> listaClientes = new ArrayList<>();
+
+    private boolean editarCliente = false; //Atributo auxiliar para definir se é edição ou cadastro
+    private int auxiliarEditCliente; //Atributo auxiliar para verificar qual indice da lista será editado
 
     public TelaCliente() {
         initComponents();
         Default.setVisible(true);
         Cadastro.setVisible(false);
         Editar.setVisible(false);
+
+        //Adicionando 4 clientes
+        Cliente cliente1 = new Cliente("Arthur Silva", "428.193.198-82", "06/06/2000", "Masculino", "Solteiro", "arthur@gmail.com", "Rua Adelaide Braga", "81", "Bloco 4 - Ap 302", "(11)93204-5718");
+        Cliente cliente2 = new Cliente("Carlos Alberto", "236.972.285-65", "25/02/1978", "Masculino", "Casado", "Carlos@hotmail.com", "Avenida Berrini", "3008", "Condominio Plaza - AP701", "(11)92797-1628");
+        Cliente cliente3 = new Cliente("Arlindo Souza", "596.987.962-19", "30/09/1943", "Masculino", "Viúvo", "souza.arlindo@gmail.com", "Rua Santa Rita", "30", "", "(11)97547-8570");
+        Cliente cliente4 = new Cliente("Vanessa Batista", "192.973.481-22", "02/04/1997", "Feminino", "Casada", "vanessa.bat@outlook.com", "Rua Ferreira de Araujo", "10", "", "(11)93744-0968");
+        listaClientes.add(cliente1);
+        listaClientes.add(cliente2);
+        listaClientes.add(cliente3);
+        listaClientes.add(cliente4);
+        inserirClienteTabela(listaClientes);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,15 +52,18 @@ public class TelaCliente extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
         btnProcurar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cboFiltroConsulta = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtBuscarPor = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Default = new javax.swing.JPanel();
         imgCliente = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         Cadastro = new javax.swing.JPanel();
         PainelIdentificacao = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -104,26 +124,44 @@ public class TelaCliente extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblCliente.setDoubleBuffered(true);
         tblCliente.setRowHeight(30);
+        tblCliente.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tblCliente.getTableHeader().setReorderingAllowed(false);
         tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblClienteMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblCliente);
+        tblCliente.setShowGrid(false);
+        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblCliente.getColumnModel().getColumn(2).setPreferredWidth(0);
+        tblCliente.getColumnModel().getColumn(3).setPreferredWidth(0);
 
         btnProcurar.setBackground(new java.awt.Color(255, 231, 94));
         btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lupa.png"))); // NOI18N
+        btnProcurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcurarActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Cidade", "Sexo", "Idade", " " }));
+        cboFiltroConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF", "Cidade", "Sexo", "Idade", " " }));
 
         jLabel2.setText("Filtrar por:");
 
         jLabel3.setText("Buscar: ");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 204, 51));
+        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
         jLabel5.setText("Limpar");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelClientesLayout = new javax.swing.GroupLayout(PainelClientes);
         PainelClientes.setLayout(PainelClientesLayout);
@@ -138,8 +176,8 @@ public class TelaCliente extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBuscarPor)
+                            .addComponent(cboFiltroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
@@ -155,11 +193,11 @@ public class TelaCliente extends javax.swing.JPanel {
                         .addGap(25, 25, 25)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel2)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboFiltroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PainelClientesLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jLabel5)
@@ -180,21 +218,42 @@ public class TelaCliente extends javax.swing.JPanel {
 
         imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgCliente.jpg"))); // NOI18N
 
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setText("GERENCIE SEUS CLIENTES AO LADO");
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel18.setText("Selecione para editar ou");
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel19.setText("adicione um novo");
+
         javax.swing.GroupLayout DefaultLayout = new javax.swing.GroupLayout(Default);
         Default.setLayout(DefaultLayout);
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DefaultLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(imgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(93, 93, 93)
+                .addGroup(DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel17)
+                    .addComponent(imgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 663, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(DefaultLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(imgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DefaultLayout.createSequentialGroup()
+                .addContainerGap(103, Short.MAX_VALUE)
+                .addComponent(imgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel19)
+                .addGap(37, 37, 37))
         );
 
         Cadastro.setBackground(new java.awt.Color(255, 255, 255));
@@ -574,7 +633,7 @@ public class TelaCliente extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroLayout.createSequentialGroup()
                 .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(CadastroLayout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(PainelIdentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(PainelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -630,8 +689,8 @@ public class TelaCliente extends javax.swing.JPanel {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 845, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
                 .addComponent(Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Default, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -695,8 +754,8 @@ public class TelaCliente extends javax.swing.JPanel {
                         .addGap(187, 187, 187)
                         .addComponent(pnlNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PainelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 837, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -730,88 +789,346 @@ public class TelaCliente extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+    //CRIAR CLIENTE
 
+    public void cadastrarNovoCliente(ArrayList<Cliente> clientes) {
+        try {
+            requestFocusInWindow();
+            Thread.sleep(50);
+            Validador validador = new Validador();
+
+            //Validar campos de identificação
+            validador.validarNome(txtNome);
+            validador.validarCpf(txtCpf);
+            validador.validarDataNasc(txtDataNasc);
+            validador.validarGroupRadio(rdgSexo);
+            validador.validarString(txtCivil);
+            validador.validarEmail(txtEmail);
+            //Validar campos de endereço
+            validador.validarString(txtRua);
+            validador.validarString(txtNumero);
+            validador.validarTelefone(txtTelefone);
+
+            if (validador.mensagemErro.size() > 0) {
+                throw new Exception(validador.mensagemErro.get(0));
+            } else if (validador.mensagemErro.size() >= 1) {
+                throw new Exception("Preencha todos os campos.");
+            }
+
+            if (validador.mensagemErro.size() == 0) {
+
+                String sexo = "";
+
+                if (rbtMasc.isSelected()) {
+                    sexo = "Masculino";
+                } else if (rbtFem.isSelected()) {
+                    sexo = "Feminino";
+                }
+
+                Cliente novoCliente = new Cliente(
+                        txtNome.getText(),
+                        txtCpf.getText(),
+                        txtDataNasc.getText(),
+                        sexo,
+                        txtCivil.getText(),
+                        txtEmail.getText(),
+                        txtRua.getText(),
+                        txtNumero.getText(),
+                        txtComplemento.getText(),
+                        txtTelefone.getText()
+                );
+
+                listaClientes.add(novoCliente);
+
+                DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+                tabelaCliente.addRow(new Object[]{
+                    novoCliente.getCpf(),
+                    novoCliente.getNome(),
+                    new ImageIcon("/edit.png"),
+                    new ImageIcon("/delete.png"),
+                    novoCliente.getDataNasc(),
+                    novoCliente.getSexo(),
+                    novoCliente.getEstadoCivil(),
+                    novoCliente.getEmail(),
+                    novoCliente.getEndereco(),
+                    novoCliente.getNumero(),
+                    novoCliente.getCompleto(),
+                    novoCliente.getTelefone()
+                });
+                tblCliente.getColumnModel().getColumn(2).setCellRenderer(new ImageRender());
+                tblCliente.getColumnModel().getColumn(3).setCellRenderer(new ImageRender());
+
+                limparFormularioCadastro();
+                Cadastro.setVisible(false);
+                Default.setVisible(true);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+    }
+
+    //LER CLIENTE
+    public void procurarClienteTabela(ArrayList<Cliente> clientes, ArrayList indiceProcurado) {
+
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+
+        for (int i = 0; i < indiceProcurado.size(); i++) {
+            tabelaCliente.addRow(new Object[]{
+                listaClientes.get((int) indiceProcurado.get(i)).getCpf(),
+                listaClientes.get((int) indiceProcurado.get(i)).getNome(),
+                new ImageIcon("/edit.png"),
+                new ImageIcon("/delete.png"),
+                listaClientes.get((int) indiceProcurado.get(i)).getDataNasc(),
+                listaClientes.get((int) indiceProcurado.get(i)).getSexo(),
+                listaClientes.get((int) indiceProcurado.get(i)).getEstadoCivil(),
+                listaClientes.get((int) indiceProcurado.get(i)).getEmail(),
+                listaClientes.get((int) indiceProcurado.get(i)).getEndereco(),
+                listaClientes.get((int) indiceProcurado.get(i)).getNumero(),
+                listaClientes.get((int) indiceProcurado.get(i)).getCompleto(),
+                listaClientes.get((int) indiceProcurado.get(i)).getTelefone()
+            });
+            tblCliente.getColumnModel().getColumn(2).setCellRenderer(new ImageRender());
+            tblCliente.getColumnModel().getColumn(3).setCellRenderer(new ImageRender());
+        }
+    }
+
+    public void buscarComFiltro() {
+        String buscarPor = txtBuscarPor.getText();
+
+        ArrayList clientesEncontrados = new ArrayList();
+
+        DefaultTableModel tabelaFiltrada = (DefaultTableModel) tblCliente.getModel();
+        tabelaFiltrada.setRowCount(0);
+
+        if ((cboFiltroConsulta.getSelectedItem().toString() == "Nome") && (!buscarPor.trim().isEmpty())) {
+            tabelaFiltrada.setRowCount(0);
+            for (int i = 0; i < listaClientes.size(); i++) {
+
+                if (listaClientes.get(i).getNome().indexOf(buscarPor) != -1) {
+                    clientesEncontrados.add(i);
+                }
+            }
+            procurarClienteTabela(listaClientes, clientesEncontrados);
+        }
+
+        if ((cboFiltroConsulta.getSelectedItem().toString() == "CPF") && (!buscarPor.trim().isEmpty())) {
+            tabelaFiltrada.setRowCount(0);
+            for (int i = 0; i < listaClientes.size(); i++) {
+
+                if (listaClientes.get(i).getCpf().replace(".", "").replace("-", "").indexOf(buscarPor.replace(".", "").replace("-", "")) != -1) {
+                    clientesEncontrados.add(i);
+                }
+            }
+            procurarClienteTabela(listaClientes, clientesEncontrados);
+        }
+    }
+
+    public void lerFormularioCliente(Point linhaTblClicada) {
+        int linhaClicada = tblCliente.rowAtPoint(linhaTblClicada);
+        editarCliente = true;
+        Default.setVisible(false);
+        Cadastro.setVisible(true);
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+
+        for (int i = 0; i < listaClientes.size(); i++) {
+
+            if (tblCliente.getValueAt(linhaClicada, 0) == listaClientes.get(i).getCpf()) {
+                String cpf = listaClientes.get(i).getCpf();
+                txtNome.setText(listaClientes.get(i).getNome().toString());
+                txtCpf.setText(listaClientes.get(i).getCpf());
+                txtDataNasc.setText(listaClientes.get(i).getDataNasc());
+                if (listaClientes.get(i).getSexo() == "Masculino") {
+                    rbtMasc.setSelected(true);
+                } else if (listaClientes.get(i).getSexo() == "Feminino") {
+                    rbtFem.setSelected(true);
+                }
+                txtCivil.setText(listaClientes.get(i).getEstadoCivil());
+                txtEmail.setText(listaClientes.get(i).getEmail());
+                txtRua.setText(listaClientes.get(i).getEndereco());
+                txtNumero.setText(listaClientes.get(i).getNumero());
+                txtComplemento.setText(listaClientes.get(i).getCompleto());
+                txtTelefone.setText(listaClientes.get(i).getTelefone());
+
+                int posicao = listaClientes.indexOf(listaClientes.stream()
+                        .filter(p -> p.getCpf().equals(cpf))
+                        .findFirst()
+                        .orElse(null));
+                this.auxiliarEditCliente = posicao;
+            }
+        }
+    }
+
+    //EDITAR CLIENTE
+    public void editarCadastroCliente(ArrayList<Cliente> clientes, int indiceCliente) {
+        Cliente editCliente = clientes.get(indiceCliente);
+
+        String sexo = "";
+
+        if (rbtMasc.isSelected()) {
+            sexo = "Masculino";
+        } else if (rbtFem.isSelected()) {
+            sexo = "Feminino";
+        }
+
+        editCliente.setNome(txtNome.getText());
+        editCliente.setCpf(txtCpf.getText());
+        editCliente.setDataNasc(txtDataNasc.getText());
+        editCliente.setSexo(sexo);
+        editCliente.setEstadoCivil(txtCivil.getText());
+        editCliente.setEmail(txtEmail.getText());
+        editCliente.setRua(txtRua.getText());
+        editCliente.setNumero(txtNumero.getText());
+        editCliente.setCompleto(txtComplemento.getText());
+        editCliente.setTelefone(txtTelefone.getText());
+
+        clientes.set(indiceCliente, editCliente);
+        resetTabelaCliente();
+    }
+
+    //DELETAR CLIENTE
+    public void deletarCliente(ArrayList<Cliente> clientes, int indiceCliente) {
+        int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + clientes.get(auxiliarEditCliente).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
+
+        if (confirmDelete == 0) {
+            clientes.remove(indiceCliente);
+            resetTabelaCliente();
+        }
+    }
+
+    //REALIZA A LEITURA INICIAL DA BASE DE CLIENTES
+    public void inserirClienteTabela(ArrayList<Cliente> clientes) {
+
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+
+        for (int i = 0; i < clientes.size(); i++) {
+            tabelaCliente.addRow(new Object[]{
+                listaClientes.get(i).getCpf(),
+                listaClientes.get(i).getNome(),
+                new ImageIcon("/edit.png"),
+                new ImageIcon("/delete.png"),
+                listaClientes.get(i).getDataNasc(),
+                listaClientes.get(i).getSexo(),
+                listaClientes.get(i).getEstadoCivil(),
+                listaClientes.get(i).getEmail(),
+                listaClientes.get(i).getEndereco(),
+                listaClientes.get(i).getNumero(),
+                listaClientes.get(i).getCompleto(),
+                listaClientes.get(i).getTelefone()
+            });
+            tblCliente.getColumnModel().getColumn(2).setCellRenderer(new ImageRender());
+            tblCliente.getColumnModel().getColumn(3).setCellRenderer(new ImageRender());
+        }
+    }
+
+    //REALIZA A LIMPEZA DO FORMULÁRIO QUANDO FOR O CADASTRADO OU EDIÇÃO DO CLIENTE FOR FINALIZADO
     public void limparFormularioCadastro() {
         txtNome.setText("");
-        txtCpf.setText("");
-        txtDataNasc.setText("");
+        txtCpf.setValue(null);
+        txtDataNasc.setValue(null);
         rdgSexo.clearSelection();
         txtCivil.setText("");
         txtEmail.setText("");
         txtRua.setText("");
         txtNumero.setText("");
         txtComplemento.setText("");
-        txtTelefone.setText("");
+        txtTelefone.setValue(null);
         Cadastro.setVisible(false);
         Default.setVisible(true);
     }
 
-    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+    //REALIZA O RESET DA TABELA APÓS LIMPAR FILTRO OU FINALIZAR EDIÇÃO DE CADASTRO
+    public void resetTabelaCliente() {
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        tabelaCliente.setRowCount(0);
+        inserirClienteTabela(listaClientes);
+    }
+
+    //CLASSE PARA REENDERIZAR OS ICONES DA TABELA (EDIÇÃO E EXCLUÇÃO) 
+    private class ImageRender extends DefaultTableCellRenderer {
+
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            String photoNome = value.toString();
+            JLabel lblImgCelula = new JLabel();
+            lblImgCelula.setIcon(new javax.swing.ImageIcon(getClass().getResource(value.toString())));
+            if (hasFocus) {
+                Color corPersonalizada = new Color(125, 147, 200);
+                lblImgCelula.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            } else {
+                lblImgCelula.setBorder(null);
+            }
+            lblImgCelula.setHorizontalAlignment(CENTER);
+
+            return lblImgCelula;
+        }
+
+    }
+
+    private void focarCampoTexto(JComponent campo) {
+        Color corPersonalizada = new Color(23, 102, 212);
+        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+    }
+
+    private void desfocarCampoTexto(JComponent campo) {
         Color corPersonalizada = new Color(189, 202, 219);
-        txtNome.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+    }
+
+    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+        desfocarCampoTexto(txtNome);
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtRua.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtRua);
     }//GEN-LAST:event_txtRuaFocusGained
 
     private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtRua.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtRua);
     }//GEN-LAST:event_txtRuaFocusLost
 
     private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtEmail.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtEmail);
     }//GEN-LAST:event_txtEmailFocusGained
 
     private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtEmail.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtEmail);
     }//GEN-LAST:event_txtEmailFocusLost
 
     private void txtCivilFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCivilFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtCivil.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtCivil);
     }//GEN-LAST:event_txtCivilFocusGained
 
     private void txtCivilFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCivilFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtCivil.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtCivil);
     }//GEN-LAST:event_txtCivilFocusLost
 
     private void txtTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtTelefone.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtTelefone);
     }//GEN-LAST:event_txtTelefoneFocusGained
 
     private void txtTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtTelefone.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtTelefone);
     }//GEN-LAST:event_txtTelefoneFocusLost
 
     private void txtDataNascFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataNascFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtDataNasc.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtDataNasc);
     }//GEN-LAST:event_txtDataNascFocusGained
 
     private void txtDataNascFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataNascFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtDataNasc.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtDataNasc);
     }//GEN-LAST:event_txtDataNascFocusLost
 
     private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtCpf.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtCpf);
     }//GEN-LAST:event_txtCpfFocusGained
 
     private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtCpf.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtCpf);
     }//GEN-LAST:event_txtCpfFocusLost
 
     private void pnlNovoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoClienteMouseClicked
+        limparFormularioCadastro();
+        this.editarCliente = false;
         Default.setVisible(false);
         Cadastro.setVisible(true);
         Editar.setVisible(false);
@@ -857,7 +1174,7 @@ public class TelaCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_pnlNovoClienteMouseExited
 
     private void lblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseClicked
-        int escolhaCancelar = JOptionPane.showConfirmDialog(this, "Deseja canselar o cadastro?", "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
+        int escolhaCancelar = JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro?", "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
         if (escolhaCancelar == 0) {
             limparFormularioCadastro();
         }
@@ -877,155 +1194,57 @@ public class TelaCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_lblCancelarMouseExited
 
     private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtNumero.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtNumero);
     }//GEN-LAST:event_txtNumeroFocusGained
 
     private void txtNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtNumero.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtNumero);
     }//GEN-LAST:event_txtNumeroFocusLost
 
     private void txtComplementoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtComplemento.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtComplemento);
     }//GEN-LAST:event_txtComplementoFocusGained
 
     private void txtComplementoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusLost
-        Color corPersonalizada = new Color(189, 202, 219);
-        txtComplemento.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        desfocarCampoTexto(txtComplemento);
     }//GEN-LAST:event_txtComplementoFocusLost
 
     private void pnlSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseClicked
-        //Pegar os campos: 
-
-        try {
-            requestFocusInWindow();
-            Thread.sleep(50);
-            Validador validador = new Validador();
-
-            //Validar campos de identificação
-            validador.validarNome(txtNome);
-            validador.validarCpf(txtCpf);
-            validador.validarDataNasc(txtDataNasc);
-            validador.validarGroupRadio(rdgSexo);
-            validador.validarString(txtCivil);
-            validador.validarEmail(txtEmail);
-            //Validar campos de endereço
-            validador.validarString(txtRua);
-            validador.validarString(txtNumero);
-            validador.validarString(txtComplemento);
-            validador.validarTelefone(txtTelefone);
-
-            if (validador.mensagemErro.size() > 0) {
-                throw new Exception(validador.mensagemErro.get(0));
-            } else if (validador.mensagemErro.size() >= 1) {
-                throw new Exception("Preencha todos os campos.");
-            } else if (validador.mensagemErro.size() == 0) {
-                System.out.println("");
-            }
-
-            if (validador.mensagemErro.size() == 0) {
-                
-//                String nome = ;
-//                String cpf = ;
-//                String dataNasc = ();
-//                String sexo = ;
-//                String civil = ;
-//                String email = ;
-//                String rua = ;
-//                String numero = ;
-//                String completo = ;
-//                String telefone = ;
-                
-                Cliente novoCliente = new Cliente(
-                        txtNome.getText(),
-                        txtCpf.getText(),
-                        txtDataNasc.getText(),
-                        rdgSexo.getSelection().toString(),
-                        txtCivil.getText(),
-                        txtEmail.getText(),
-                        txtRua.getText(),
-                        txtNumero.getText(),
-                        txtComplemento.getText(),
-                        txtTelefone.getText()
-                );
-                
-                listaClientes.add(novoCliente);
-                
-                DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
-                tabelaCliente.addRow(new Object[]{
-                    novoCliente.getCpf(),
-                    novoCliente.getNome(),
-                    new ImageIcon("/edit.png"),
-                    new ImageIcon("/delete.png"),
-                    novoCliente.getDataNasc(),
-                    novoCliente.getSexo(),
-                    novoCliente.getEstadoCivil(),
-                    novoCliente.getEmail(),
-                    novoCliente.getRua(),
-                    novoCliente.getNumero(),
-                    novoCliente.getCompleto(),
-                    novoCliente.getTelefone()
-                    
-                });
-                tblCliente.getColumnModel().getColumn(2).setCellRenderer(new ImageRender());
-                tblCliente.getColumnModel().getColumn(3).setCellRenderer(new ImageRender());
-
-                limparFormularioCadastro();
-                Cadastro.setVisible(false);
-                Default.setVisible(true);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+        if (editarCliente == false) {
+            cadastrarNovoCliente(listaClientes);
+        } else if (editarCliente == true) {
+            editarCadastroCliente(listaClientes, this.auxiliarEditCliente);
+            Cadastro.setVisible(false);
+            Default.setVisible(true);
         }
+        editarCliente = false;
     }//GEN-LAST:event_pnlSalvarMouseClicked
 
-    private class ImageRender extends DefaultTableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            String photoNome = value.toString();
-            JLabel teste = new JLabel();
-            System.out.println(value.toString());
-            teste.setIcon(new javax.swing.ImageIcon(getClass().getResource(value.toString())));
-
-            teste.setHorizontalAlignment(CENTER);
-
-            return teste;
-        }
-
-    }
-
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
-        if (evt.getClickCount() == 2) {
-            Default.setVisible(false);
-            Cadastro.setVisible(true);
-            Point point = evt.getPoint();
-            int indiceLinha = tblCliente.rowAtPoint(point);
-            DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
-            
-            
-            
-            txtNome.setText(listaClientes.get(indiceLinha).getNome().toString());
-            txtCpf.setText(listaClientes.get(indiceLinha).getCpf());
-            txtDataNasc.setText(listaClientes.get(indiceLinha).getDataNasc());
-            //rdgSexo.getSelection().toString(),
-            txtCivil.setText(listaClientes.get(indiceLinha).getEstadoCivil());
-            txtEmail.setText(listaClientes.get(indiceLinha).getEmail());
-            txtRua.setText(listaClientes.get(indiceLinha).getRua());
-            txtNumero.setText(listaClientes.get(indiceLinha).getNumero());
-            txtComplemento.setText(listaClientes.get(indiceLinha).getCompleto());
-            txtTelefone.setText(listaClientes.get(indiceLinha).getTelefone());
-            
+        //CLICAR 2X NA LINHA DE ALGUM CLIENTE IRÁ ABRIR O FORMULARIO DO CLIENTE COM TODOS OS DADOS
+        Point point = evt.getPoint();
+        if (evt.getClickCount() == 2 || (tblCliente.getSelectedColumn() == 2)) {
+            lerFormularioCliente(point);
+        } else if (tblCliente.getSelectedColumn() == 3) {
+            deletarCliente(listaClientes, this.auxiliarEditCliente);
         }
+
+
     }//GEN-LAST:event_tblClienteMouseClicked
 
     private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        Color corPersonalizada = new Color(23, 102, 212);
-        txtNome.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        focarCampoTexto(txtNome);
     }//GEN-LAST:event_txtNomeFocusGained
+
+    private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
+        buscarComFiltro();
+
+
+    }//GEN-LAST:event_btnProcurarActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        resetTabelaCliente();
+    }//GEN-LAST:event_jLabel5MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1036,8 +1255,8 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelIdentificacao;
     private javax.swing.JButton btnProcurar;
+    private javax.swing.JComboBox<String> cboFiltroConsulta;
     private javax.swing.JLabel imgCliente;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1046,6 +1265,9 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1057,7 +1279,6 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbNovoCLiente;
     private javax.swing.JLabel lblCancelar;
     private javax.swing.JLabel lblSalvar;
@@ -1068,6 +1289,7 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JRadioButton rbtMasc;
     private javax.swing.ButtonGroup rdgSexo;
     private javax.swing.JTable tblCliente;
+    private javax.swing.JTextField txtBuscarPor;
     private javax.swing.JTextField txtCivil;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtCpf;

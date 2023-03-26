@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class Validador {
@@ -132,4 +131,5 @@ public class Validador {
         }
 
     }
+    
 }
