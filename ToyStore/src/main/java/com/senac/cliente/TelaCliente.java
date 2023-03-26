@@ -5,8 +5,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -56,7 +54,7 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtBuscarPor = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblLimparFiltro = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Default = new javax.swing.JPanel();
@@ -154,12 +152,24 @@ public class TelaCliente extends javax.swing.JPanel {
 
         jLabel3.setText("Buscar: ");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel5.setText("Limpar");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtBuscarPor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscarPorKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarPorKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtBuscarPorKeyTyped(evt);
+            }
+        });
+
+        lblLimparFiltro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblLimparFiltro.setForeground(new java.awt.Color(255, 51, 0));
+        lblLimparFiltro.setText("Limpar");
+        lblLimparFiltro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                lblLimparFiltroMouseClicked(evt);
             }
         });
 
@@ -181,7 +191,7 @@ public class TelaCliente extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblLimparFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -200,13 +210,15 @@ public class TelaCliente extends javax.swing.JPanel {
                             .addComponent(txtBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(PainelClientesLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel5)
+                        .addComponent(lblLimparFiltro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
         );
+
+        lblLimparFiltro.setVisible(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("CLIENTES");
@@ -621,8 +633,8 @@ public class TelaCliente extends javax.swing.JPanel {
         );
         pnlSalvarLayout.setVerticalGroup(
             pnlSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSalvarLayout.createSequentialGroup()
-                .addComponent(lblSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(pnlSalvarLayout.createSequentialGroup()
+                .addComponent(lblSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -755,7 +767,7 @@ public class TelaCliente extends javax.swing.JPanel {
                         .addComponent(pnlNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PainelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 861, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -795,28 +807,8 @@ public class TelaCliente extends javax.swing.JPanel {
         try {
             requestFocusInWindow();
             Thread.sleep(50);
-            Validador validador = new Validador();
 
-            //Validar campos de identificação
-            validador.validarNome(txtNome);
-            validador.validarCpf(txtCpf);
-            validador.validarDataNasc(txtDataNasc);
-            validador.validarGroupRadio(rdgSexo);
-            validador.validarString(txtCivil);
-            validador.validarEmail(txtEmail);
-            //Validar campos de endereço
-            validador.validarString(txtRua);
-            validador.validarString(txtNumero);
-            validador.validarTelefone(txtTelefone);
-
-            if (validador.mensagemErro.size() > 0) {
-                throw new Exception(validador.mensagemErro.get(0));
-            } else if (validador.mensagemErro.size() >= 1) {
-                throw new Exception("Preencha todos os campos.");
-            }
-
-            if (validador.mensagemErro.size() == 0) {
-
+            if (validarCampos() == true) {
                 String sexo = "";
 
                 if (rbtMasc.isSelected()) {
@@ -904,7 +896,7 @@ public class TelaCliente extends javax.swing.JPanel {
             tabelaFiltrada.setRowCount(0);
             for (int i = 0; i < listaClientes.size(); i++) {
 
-                if (listaClientes.get(i).getNome().indexOf(buscarPor) != -1) {
+                if (listaClientes.get(i).getNome().toLowerCase().indexOf(buscarPor.toLowerCase()) != -1) {
                     clientesEncontrados.add(i);
                 }
             }
@@ -980,19 +972,26 @@ public class TelaCliente extends javax.swing.JPanel {
         editCliente.setNumero(txtNumero.getText());
         editCliente.setCompleto(txtComplemento.getText());
         editCliente.setTelefone(txtTelefone.getText());
-
         clientes.set(indiceCliente, editCliente);
         resetTabelaCliente();
+
     }
 
     //DELETAR CLIENTE
-    public void deletarCliente(ArrayList<Cliente> clientes, int indiceCliente) {
-        int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + clientes.get(auxiliarEditCliente).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
+    public void deletarCliente(Point linha) {
+        int linhaClicada = tblCliente.rowAtPoint(linha);
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
 
-        if (confirmDelete == 0) {
-            clientes.remove(indiceCliente);
-            resetTabelaCliente();
+        for (int i = 0; i < listaClientes.size(); i++) {
+            if (tabelaCliente.getValueAt(linhaClicada, 1) == listaClientes.get(i).getNome()) {
+                int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + listaClientes.get(i).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
+                if (confirmDelete == 0) {
+                    listaClientes.remove(i);
+                    resetTabelaCliente();
+                }
+            }
         }
+
     }
 
     //REALIZA A LEITURA INICIAL DA BASE DE CLIENTES
@@ -1020,6 +1019,40 @@ public class TelaCliente extends javax.swing.JPanel {
         }
     }
 
+    public boolean validarCampos() {
+        try {
+            Validador validador = new Validador();
+
+            //Validar campos de identificação
+            validador.validarNome(txtNome);
+            validador.validarCpf(txtCpf);
+            validador.validarDataNasc(txtDataNasc);
+            validador.validarGroupRadio(rdgSexo);
+            validador.validarString(txtCivil);
+            validador.validarEmail(txtEmail);
+            //Validar campos de endereço
+            validador.validarString(txtRua);
+            validador.validarString(txtNumero);
+            validador.validarTelefone(txtTelefone);
+
+            if (validador.mensagemErro.size() >= 2) {
+                throw new Exception("Preencha todos os campos.");
+
+            } else if (validador.mensagemErro.size() == 1) {
+                throw new Exception(validador.mensagemErro.get(0));
+            }
+
+            if (validador.mensagemErro.size() == 0) {
+                return true;
+            }
+            return false;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            return false;
+        }
+    }
+
     //REALIZA A LIMPEZA DO FORMULÁRIO QUANDO FOR O CADASTRADO OU EDIÇÃO DO CLIENTE FOR FINALIZADO
     public void limparFormularioCadastro() {
         txtNome.setText("");
@@ -1034,6 +1067,19 @@ public class TelaCliente extends javax.swing.JPanel {
         txtTelefone.setValue(null);
         Cadastro.setVisible(false);
         Default.setVisible(true);
+    }
+
+    public void resetBordasFormulario() {
+        desfocarCampoTexto(txtNome);
+        desfocarCampoTexto(txtCpf);
+        desfocarCampoTexto(txtDataNasc);
+        desfocarCampoTexto(txtCivil);
+        desfocarCampoTexto(txtEmail);
+        desfocarCampoTexto(txtRua);
+        desfocarCampoTexto(txtNumero);
+        desfocarCampoTexto(txtComplemento);
+        desfocarCampoTexto(txtTelefone);
+
     }
 
     //REALIZA O RESET DA TABELA APÓS LIMPAR FILTRO OU FINALIZAR EDIÇÃO DE CADASTRO
@@ -1128,6 +1174,7 @@ public class TelaCliente extends javax.swing.JPanel {
 
     private void pnlNovoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoClienteMouseClicked
         limparFormularioCadastro();
+        resetBordasFormulario();
         this.editarCliente = false;
         Default.setVisible(false);
         Cadastro.setVisible(true);
@@ -1212,21 +1259,23 @@ public class TelaCliente extends javax.swing.JPanel {
     private void pnlSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseClicked
         if (editarCliente == false) {
             cadastrarNovoCliente(listaClientes);
-        } else if (editarCliente == true) {
+        } else if (editarCliente == true && (validarCampos() == true)) {
             editarCadastroCliente(listaClientes, this.auxiliarEditCliente);
             Cadastro.setVisible(false);
             Default.setVisible(true);
+            editarCliente = false;
         }
-        editarCliente = false;
     }//GEN-LAST:event_pnlSalvarMouseClicked
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
         //CLICAR 2X NA LINHA DE ALGUM CLIENTE IRÁ ABRIR O FORMULARIO DO CLIENTE COM TODOS OS DADOS
         Point point = evt.getPoint();
+        this.auxiliarEditCliente = tblCliente.rowAtPoint(point);
         if (evt.getClickCount() == 2 || (tblCliente.getSelectedColumn() == 2)) {
+            resetBordasFormulario();
             lerFormularioCliente(point);
         } else if (tblCliente.getSelectedColumn() == 3) {
-            deletarCliente(listaClientes, this.auxiliarEditCliente);
+            deletarCliente(point);
         }
 
 
@@ -1238,13 +1287,33 @@ public class TelaCliente extends javax.swing.JPanel {
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
         buscarComFiltro();
+        lblLimparFiltro.setVisible(true);
 
 
     }//GEN-LAST:event_btnProcurarActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void lblLimparFiltroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLimparFiltroMouseClicked
         resetTabelaCliente();
-    }//GEN-LAST:event_jLabel5MouseClicked
+        lblLimparFiltro.setVisible(false);
+    }//GEN-LAST:event_lblLimparFiltroMouseClicked
+
+    private void txtBuscarPorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyTyped
+
+    }//GEN-LAST:event_txtBuscarPorKeyTyped
+
+    private void txtBuscarPorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyPressed
+        buscarComFiltro();
+        if (txtBuscarPor.getText().trim().isEmpty()) {
+            resetTabelaCliente();
+        }
+    }//GEN-LAST:event_txtBuscarPorKeyPressed
+
+    private void txtBuscarPorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyReleased
+        buscarComFiltro();
+        if (txtBuscarPor.getText().trim().isEmpty()) {
+            resetTabelaCliente();
+        }
+    }//GEN-LAST:event_txtBuscarPorKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1271,7 +1340,6 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1281,6 +1349,7 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbNovoCLiente;
     private javax.swing.JLabel lblCancelar;
+    private javax.swing.JLabel lblLimparFiltro;
     private javax.swing.JLabel lblSalvar;
     private javax.swing.JPanel pnlCancelar;
     private javax.swing.JPanel pnlNovoCliente;
