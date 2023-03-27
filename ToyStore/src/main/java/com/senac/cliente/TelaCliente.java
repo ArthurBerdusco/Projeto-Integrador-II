@@ -962,9 +962,12 @@ public class TelaCliente extends javax.swing.JPanel {
 
         for (int i = 0; i < listaClientes.size(); i++) {
             if (tabelaCliente.getValueAt(linhaClicada, 1) == listaClientes.get(i).getNome()) {
+                lerFormularioCliente(linha);
                 int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + listaClientes.get(i).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
                 if (confirmDelete == 0) {
                     listaClientes.remove(i);
+                    Cadastro.setVisible(false);
+                    Default.setVisible(true);
                     resetTabelaCliente();
                 }
             }

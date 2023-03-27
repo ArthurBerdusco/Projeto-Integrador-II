@@ -2,6 +2,7 @@ package com.senac.principal;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -19,6 +20,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        teste = new javax.swing.ButtonGroup();
         AbasPainel = new javax.swing.JTabbedPane();
         Venda = new javax.swing.JPanel();
         Produto = new javax.swing.JPanel();
@@ -30,6 +32,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnProduto = new javax.swing.JLabel();
         btnCliente = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton2 = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -154,6 +158,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 60));
 
+        jToggleButton1.setBackground(new java.awt.Color(102, 102, 255));
+        teste.add(jToggleButton1);
+        jToggleButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton1.setSelected(true);
+        jToggleButton1.setText("Venda");
+        jToggleButton1.setOpaque(true);
+        jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 180, 50));
+
+        jToggleButton2.setBackground(new java.awt.Color(102, 102, 255));
+        teste.add(jToggleButton2);
+        jToggleButton2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jToggleButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jToggleButton2.setText("Cliente");
+        jToggleButton2.setOpaque(true);
+        jPanel1.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 490, 180, 50));
+
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
@@ -181,8 +202,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void focarVenda(){
+
+    public void focarVenda() {
         Color azulMarinho = new Color(26, 187, 156);
         btnVenda.setBackground(azulMarinho);
         btnVenda.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
@@ -272,6 +293,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
     private com.senac.cliente.TelaCliente telaCliente1;
+    private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
 }
