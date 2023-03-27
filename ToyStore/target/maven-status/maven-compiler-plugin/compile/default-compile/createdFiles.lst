@@ -3,6 +3,7 @@ com\senac\cliente\TelaCliente$7.class
 com\senac\cliente\TelaCliente$11.class
 com\senac\cliente\TelaCliente$21.class
 com\senac\cliente\TelaCliente$2.class
+com\senac\menu\Menu$2.class
 com\senac\principal\TelaPrincipal$1.class
 com\senac\cliente\TelaCliente$13.class
 com\senac\relatorio\TelaRelatorio$4.class
@@ -18,9 +19,12 @@ com\senac\cliente\Cliente.class
 com\senac\cliente\TelaCliente$ImageRender.class
 com\senac\relatorio\TelaRelatorio$3.class
 com\senac\cliente\TelaCliente$8.class
+com\senac\menu\Menu.class
 com\senac\cliente\TelaCliente$17.class
+com\senac\cliente\TelaCliente$22.class
 com\senac\cliente\TelaCliente.class
 com\senac\cliente\TelaCliente$3.class
+com\senac\menu\Menu$1.class
 com\senac\principal\TelaPrincipal.class
 com\senac\cliente\TelaCliente$15.class
 com\senac\cliente\TelaCliente$4.class
