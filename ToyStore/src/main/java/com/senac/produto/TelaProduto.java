@@ -40,7 +40,7 @@ public class TelaProduto extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtProcurar = new javax.swing.JTextField();
         PnlAddProdutos = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         PnlAddCategoria = new javax.swing.JPanel();
@@ -130,7 +130,7 @@ public class TelaProduto extends javax.swing.JPanel {
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Produrar:");
+        jLabel1.setText("Procurar:");
 
         javax.swing.GroupLayout PnlTodosProdutosLayout = new javax.swing.GroupLayout(PnlTodosProdutos);
         PnlTodosProdutos.setLayout(PnlTodosProdutosLayout);
@@ -142,7 +142,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(64, 64, 64)
                 .addGroup(PnlTodosProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PnlTodosProdutosLayout.setVerticalGroup(
@@ -151,7 +151,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -245,11 +245,11 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField txtProcurar;
     // End of variables declaration//GEN-END:variables
 
 }
