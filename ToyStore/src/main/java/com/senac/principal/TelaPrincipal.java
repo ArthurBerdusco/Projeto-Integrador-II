@@ -1,11 +1,14 @@
 package com.senac.principal;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JButton;
 
 public class TelaPrincipal extends javax.swing.JFrame {
 
@@ -13,6 +16,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
+        Produto.setVisible(false);
+//        Venda.setVisible(false);
+        Cliente.setVisible(false);
 
     }
 
@@ -21,89 +27,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         teste = new javax.swing.ButtonGroup();
-        AbasPainel = new javax.swing.JTabbedPane();
-        Venda = new javax.swing.JPanel();
-        Produto = new javax.swing.JPanel();
-        telaProduto2 = new com.senac.produto.TelaProduto();
-        Cliente = new javax.swing.JPanel();
-        telaCliente1 = new com.senac.cliente.TelaCliente();
-        Relatorio = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        PaineisAjustaveis = new javax.swing.JSplitPane();
+        PainelMenu = new javax.swing.JPanel();
         btnVenda = new javax.swing.JLabel();
         btnProduto = new javax.swing.JLabel();
         btnCliente = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JLabel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        Cliente = new com.senac.cliente.TelaCliente();
+        Produto = new com.senac.produto.TelaProduto();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        AbasPainel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        AbasPainel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        PaineisAjustaveis.setDividerSize(0);
 
-        javax.swing.GroupLayout VendaLayout = new javax.swing.GroupLayout(Venda);
-        Venda.setLayout(VendaLayout);
-        VendaLayout.setHorizontalGroup(
-            VendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1316, Short.MAX_VALUE)
-        );
-        VendaLayout.setVerticalGroup(
-            VendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-
-        AbasPainel.addTab("Venda", Venda);
-
-        javax.swing.GroupLayout ProdutoLayout = new javax.swing.GroupLayout(Produto);
-        Produto.setLayout(ProdutoLayout);
-        ProdutoLayout.setHorizontalGroup(
-            ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProdutoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(telaProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        ProdutoLayout.setVerticalGroup(
-            ProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProdutoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(telaProduto2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        AbasPainel.addTab("Produto", Produto);
-
-        javax.swing.GroupLayout ClienteLayout = new javax.swing.GroupLayout(Cliente);
-        Cliente.setLayout(ClienteLayout);
-        ClienteLayout.setHorizontalGroup(
-            ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(telaCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, 1310, Short.MAX_VALUE))
-        );
-        ClienteLayout.setVerticalGroup(
-            ClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(telaCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        AbasPainel.addTab("Cliente", Cliente);
-
-        javax.swing.GroupLayout RelatorioLayout = new javax.swing.GroupLayout(Relatorio);
-        Relatorio.setLayout(RelatorioLayout);
-        RelatorioLayout.setHorizontalGroup(
-            RelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1316, Short.MAX_VALUE)
-        );
-        RelatorioLayout.setVerticalGroup(
-            RelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 758, Short.MAX_VALUE)
-        );
-
-        AbasPainel.addTab("Relatório", Relatorio);
-
-        jPanel1.setBackground(java.awt.Color.darkGray);
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setPreferredSize(new java.awt.Dimension(200, 803));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        PainelMenu.setBackground(java.awt.Color.darkGray);
+        PainelMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelMenu.setPreferredSize(new java.awt.Dimension(70, 803));
+        PainelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnVenda.setBackground(new java.awt.Color(64, 64, 64));
         btnVenda.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -113,39 +57,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVenda.setName("Venda"); // NOI18N
         btnVenda.setOpaque(true);
         btnVenda.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVendaMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnVendaMousePressed(evt);
             }
         });
-        jPanel1.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, 60));
+        PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, 60));
 
         btnProduto.setBackground(new java.awt.Color(64, 64, 64));
         btnProduto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         btnProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnProduto.setText("Produto");
+        btnProduto.setText("Produtos");
         btnProduto.setName("Produto"); // NOI18N
         btnProduto.setOpaque(true);
         btnProduto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProdutoMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnProdutoMousePressed(evt);
             }
         });
-        jPanel1.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 200, 60));
+        PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 190, 60));
 
         btnCliente.setBackground(new java.awt.Color(64, 64, 64));
         btnCliente.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         btnCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnCliente.setText("Cliente");
+        btnCliente.setText("Clientes");
         btnCliente.setName("Cliente"); // NOI18N
         btnCliente.setOpaque(true);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnClienteMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnClienteMousePressed(evt);
             }
         });
-        jPanel1.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 200, 60));
+        PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 60));
 
         btnRelatorio.setBackground(new java.awt.Color(64, 64, 64));
         btnRelatorio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -155,11 +99,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnRelatorio.setName("Relatorio"); // NOI18N
         btnRelatorio.setOpaque(true);
         btnRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRelatorioMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnRelatorioMousePressed(evt);
             }
         });
-        jPanel1.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 60));
+        PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 190, 60));
+
+        PaineisAjustaveis.setLeftComponent(PainelMenu);
+
+        jLayeredPane1.setLayer(Cliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(Produto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Produto, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
+        );
+
+        PaineisAjustaveis.setRightComponent(jLayeredPane1);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -174,45 +141,46 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AbasPainel, javax.swing.GroupLayout.PREFERRED_SIZE, 1320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.PREFERRED_SIZE, 2534, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(AbasPainel)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
     public void focarVenda() {
         Color azulMarinho = new Color(26, 187, 156);
         btnVenda.setBackground(azulMarinho);
         btnVenda.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
     }
-    private void btnVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseClicked
+    private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
         focarBotaoMenu(btnVenda);
-        AbasPainel.setSelectedIndex(0);
-    }//GEN-LAST:event_btnVendaMouseClicked
 
-    private void btnProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMouseClicked
+    }//GEN-LAST:event_btnVendaMousePressed
+
+    private void btnProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMousePressed
         focarBotaoMenu(btnProduto);
-        AbasPainel.setSelectedIndex(1);
-    }//GEN-LAST:event_btnProdutoMouseClicked
+        Produto.setVisible(true);
+//        Venda.setVisible(false);
+        Cliente.setVisible(false);
+    }//GEN-LAST:event_btnProdutoMousePressed
 
-    private void btnClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseClicked
+    private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
         focarBotaoMenu(btnCliente);
-        AbasPainel.setSelectedIndex(2);
-    }//GEN-LAST:event_btnClienteMouseClicked
+                Produto.setVisible(false);
+//        Venda.setVisible(false);
+        Cliente.setVisible(true);
 
-    private void btnRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMouseClicked
+    }//GEN-LAST:event_btnClienteMousePressed
+
+    private void btnRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMousePressed
         focarBotaoMenu(btnRelatorio);
-        AbasPainel.setSelectedIndex(3);
-    }//GEN-LAST:event_btnRelatorioMouseClicked
+
+    }//GEN-LAST:event_btnRelatorioMousePressed
 
     protected void focarBotaoMenu(JLabel btn) {
         Color azulMarinho = new Color(26, 187, 156);
@@ -266,21 +234,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane AbasPainel;
-    private javax.swing.JPanel Cliente;
-    private javax.swing.JPanel Produto;
-    private javax.swing.JPanel Relatorio;
-    private javax.swing.JPanel Venda;
+    private com.senac.cliente.TelaCliente Cliente;
+    private javax.swing.JSplitPane PaineisAjustaveis;
+    private javax.swing.JPanel PainelMenu;
+    private com.senac.produto.TelaProduto Produto;
     private javax.swing.JLabel btnCliente;
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
     private javax.swing.JLabel btnVenda;
+    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private com.senac.cliente.TelaCliente telaCliente1;
-    private com.senac.produto.TelaProduto telaProduto2;
     private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
 }
