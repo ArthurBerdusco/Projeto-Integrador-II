@@ -201,7 +201,7 @@ public class TelaCliente extends javax.swing.JPanel {
         Default.setBackground(new java.awt.Color(255, 255, 255));
         Default.setPreferredSize(new java.awt.Dimension(862, 710));
 
-        imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgCliente.jpg"))); // NOI18N
+        imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cliente.jpg"))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setText("GERENCIE SEUS CLIENTES AO LADO");
