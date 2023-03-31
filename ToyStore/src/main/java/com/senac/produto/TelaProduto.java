@@ -46,9 +46,9 @@ public class TelaProduto extends javax.swing.JPanel {
 
         rdgSexo = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        PainelClientes = new javax.swing.JPanel();
+        PainelProduto = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblProduto = new javax.swing.JTable();
         cboFiltroConsulta = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -56,7 +56,7 @@ public class TelaProduto extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Default = new javax.swing.JPanel();
-        imgCliente = new javax.swing.JLabel();
+        imgProduto = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
@@ -90,8 +90,8 @@ public class TelaProduto extends javax.swing.JPanel {
         lblCancelar = new javax.swing.JLabel();
         pnlSalvar = new javax.swing.JPanel();
         lblSalvar = new javax.swing.JLabel();
-        pnlNovoCliente = new javax.swing.JPanel();
-        lbNovoCLiente = new javax.swing.JLabel();
+        pnlNovoProduto = new javax.swing.JPanel();
+        lbNovoProduto = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1350, 742));
 
@@ -99,11 +99,11 @@ public class TelaProduto extends javax.swing.JPanel {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setPreferredSize(new java.awt.Dimension(1316, 742));
 
-        PainelClientes.setBackground(new java.awt.Color(255, 255, 255));
-        PainelClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelProduto.setBackground(new java.awt.Color(255, 255, 255));
+        PainelProduto.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        tblCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        tblProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -119,21 +119,21 @@ public class TelaProduto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblCliente.setDoubleBuffered(true);
-        tblCliente.setRowHeight(30);
-        tblCliente.setSelectionBackground(new java.awt.Color(255, 255, 255));
-        tblCliente.getTableHeader().setReorderingAllowed(false);
-        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblProduto.setDoubleBuffered(true);
+        tblProduto.setRowHeight(30);
+        tblProduto.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tblProduto.getTableHeader().setReorderingAllowed(false);
+        tblProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClienteMouseClicked(evt);
+                tblProdutoMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tblCliente);
-        tblCliente.setShowGrid(false);
-        tblCliente.getColumnModel().getColumn(0).setPreferredWidth(60);
-        tblCliente.getColumnModel().getColumn(1).setPreferredWidth(100);
-        tblCliente.getColumnModel().getColumn(4).setPreferredWidth(0);
-        tblCliente.getColumnModel().getColumn(5).setPreferredWidth(0);
+        jScrollPane2.setViewportView(tblProduto);
+        tblProduto.setShowGrid(false);
+        tblProduto.getColumnModel().getColumn(0).setPreferredWidth(60);
+        tblProduto.getColumnModel().getColumn(1).setPreferredWidth(100);
+        tblProduto.getColumnModel().getColumn(4).setPreferredWidth(0);
+        tblProduto.getColumnModel().getColumn(5).setPreferredWidth(0);
 
         cboFiltroConsulta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboFiltroConsulta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "CPF" }));
@@ -159,34 +159,34 @@ public class TelaProduto extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout PainelClientesLayout = new javax.swing.GroupLayout(PainelClientes);
-        PainelClientes.setLayout(PainelClientesLayout);
-        PainelClientesLayout.setHorizontalGroup(
-            PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelClientesLayout.createSequentialGroup()
+        javax.swing.GroupLayout PainelProdutoLayout = new javax.swing.GroupLayout(PainelProduto);
+        PainelProduto.setLayout(PainelProdutoLayout);
+        PainelProdutoLayout.setHorizontalGroup(
+            PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelProdutoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(PainelClientesLayout.createSequentialGroup()
+            .addGroup(PainelProdutoLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(cboFiltroConsulta, 0, 325, Short.MAX_VALUE)
                     .addComponent(txtBuscarPor))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        PainelClientesLayout.setVerticalGroup(
-            PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelClientesLayout.createSequentialGroup()
+        PainelProdutoLayout.setVerticalGroup(
+            PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelProdutoLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
                     .addComponent(cboFiltroConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
-                .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addGroup(PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(txtBuscarPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(33, 33, 33)
@@ -202,7 +202,7 @@ public class TelaProduto extends javax.swing.JPanel {
         Default.setBackground(new java.awt.Color(255, 255, 255));
         Default.setPreferredSize(new java.awt.Dimension(862, 710));
 
-        imgCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto2.jpg"))); // NOI18N
+        imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto2.jpg"))); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setText("GERENCIE SEUS PRODUTOS AO LADO");
@@ -227,14 +227,14 @@ public class TelaProduto extends javax.swing.JPanel {
                             .addComponent(jLabel17)
                             .addComponent(jLabel18)
                             .addComponent(jLabel19)))
-                    .addComponent(imgCliente))
+                    .addComponent(imgProduto))
                 .addContainerGap())
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DefaultLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imgCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imgProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -662,40 +662,40 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        pnlNovoCliente.setBackground(new java.awt.Color(52, 134, 242));
-        pnlNovoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlNovoCliente.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        pnlNovoProduto.setBackground(new java.awt.Color(52, 134, 242));
+        pnlNovoProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlNovoProduto.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                pnlNovoClienteMouseMoved(evt);
+                pnlNovoProdutoMouseMoved(evt);
             }
         });
-        pnlNovoCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlNovoProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlNovoClienteMouseClicked(evt);
+                pnlNovoProdutoMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlNovoClienteMouseExited(evt);
+                pnlNovoProdutoMouseExited(evt);
             }
         });
 
-        lbNovoCLiente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lbNovoCLiente.setForeground(new java.awt.Color(255, 255, 255));
-        lbNovoCLiente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbNovoCLiente.setText("Adicionar Produto");
-        lbNovoCLiente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
-        lbNovoCLiente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbNovoProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbNovoProduto.setForeground(new java.awt.Color(255, 255, 255));
+        lbNovoProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbNovoProduto.setText("Adicionar Produto");
+        lbNovoProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
+        lbNovoProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout pnlNovoClienteLayout = new javax.swing.GroupLayout(pnlNovoCliente);
-        pnlNovoCliente.setLayout(pnlNovoClienteLayout);
-        pnlNovoClienteLayout.setHorizontalGroup(
-            pnlNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNovoClienteLayout.createSequentialGroup()
-                .addComponent(lbNovoCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout pnlNovoProdutoLayout = new javax.swing.GroupLayout(pnlNovoProduto);
+        pnlNovoProduto.setLayout(pnlNovoProdutoLayout);
+        pnlNovoProdutoLayout.setHorizontalGroup(
+            pnlNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNovoProdutoLayout.createSequentialGroup()
+                .addComponent(lbNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        pnlNovoClienteLayout.setVerticalGroup(
-            pnlNovoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbNovoCLiente, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+        pnlNovoProdutoLayout.setVerticalGroup(
+            pnlNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lbNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -708,8 +708,8 @@ public class TelaProduto extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlNovoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PainelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pnlNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PainelProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -719,10 +719,10 @@ public class TelaProduto extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlNovoCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlNovoProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PainelClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(PainelProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLayeredPane1)
         );
 
@@ -768,7 +768,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
                 listaClientes.add(novoCliente);
 
-                DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+                DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
                 tabelaCliente.addRow(new Object[]{
                     novoCliente.getCpf(),
                     novoCliente.getNome(),
@@ -783,8 +783,8 @@ public class TelaProduto extends javax.swing.JPanel {
                     novoCliente.getCompleto(),
                     novoCliente.getTelefone()
                 });
-                tblCliente.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-                tblCliente.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
+                tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
+                tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
 
                 limparFormularioCadastro();
                 Cadastro.setVisible(false);
@@ -798,7 +798,7 @@ public class TelaProduto extends javax.swing.JPanel {
     //LER CLIENTE
     public void procurarClienteTabela(ArrayList<Cliente> clientes, ArrayList indiceProcurado) {
 
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
         for (int i = 0; i < indiceProcurado.size(); i++) {
             tabelaCliente.addRow(new Object[]{
@@ -815,8 +815,8 @@ public class TelaProduto extends javax.swing.JPanel {
                 listaClientes.get((int) indiceProcurado.get(i)).getCompleto(),
                 listaClientes.get((int) indiceProcurado.get(i)).getTelefone()
             });
-            tblCliente.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-            tblCliente.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
+            tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
+            tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
         }
     }
 
@@ -825,7 +825,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
         ArrayList clientesEncontrados = new ArrayList();
 
-        DefaultTableModel tabelaFiltrada = (DefaultTableModel) tblCliente.getModel();
+        DefaultTableModel tabelaFiltrada = (DefaultTableModel) tblProduto.getModel();
         tabelaFiltrada.setRowCount(0);
 
         if ((cboFiltroConsulta.getSelectedItem().toString() == "Nome") && (!buscarPor.trim().isEmpty())) {
@@ -852,15 +852,15 @@ public class TelaProduto extends javax.swing.JPanel {
     }
 
     public void lerFormularioCliente(Point linhaTblClicada) {
-        int linhaClicada = tblCliente.rowAtPoint(linhaTblClicada);
+        int linhaClicada = tblProduto.rowAtPoint(linhaTblClicada);
         editarCliente = true;
         Default.setVisible(false);
         Cadastro.setVisible(true);
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
         for (int i = 0; i < listaClientes.size(); i++) {
 
-            if (tblCliente.getValueAt(linhaClicada, 0) == listaClientes.get(i).getCpf()) {
+            if (tblProduto.getValueAt(linhaClicada, 0) == listaClientes.get(i).getCpf()) {
                 String cpf = listaClientes.get(i).getCpf();
                 txtNome.setText(listaClientes.get(i).getNome().toString());
                 txtCpf.setText(listaClientes.get(i).getCpf());
@@ -915,8 +915,8 @@ public class TelaProduto extends javax.swing.JPanel {
 
     //DELETAR CLIENTE
     public void deletarCliente(Point linha) {
-        int linhaClicada = tblCliente.rowAtPoint(linha);
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        int linhaClicada = tblProduto.rowAtPoint(linha);
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
         for (int i = 0; i < listaClientes.size(); i++) {
             if (tabelaCliente.getValueAt(linhaClicada, 1) == listaClientes.get(i).getNome()) {
@@ -936,7 +936,7 @@ public class TelaProduto extends javax.swing.JPanel {
     //REALIZA A LEITURA INICIAL DA BASE DE CLIENTES
     public void inserirClienteTabela(ArrayList<Cliente> clientes) {
 
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
         for (int i = 0; i < clientes.size(); i++) {
             tabelaCliente.addRow(new Object[]{
@@ -953,8 +953,8 @@ public class TelaProduto extends javax.swing.JPanel {
                 listaClientes.get(i).getCompleto(),
                 listaClientes.get(i).getTelefone()
             });
-            tblCliente.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-            tblCliente.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
+            tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
+            tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
         }
     }
 
@@ -1023,7 +1023,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
     //REALIZA O RESET DA TABELA APÓS LIMPAR FILTRO OU FINALIZAR EDIÇÃO DE CADASTRO
     public void resetTabelaCliente() {
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
         tabelaCliente.setRowCount(0);
         inserirClienteTabela(listaClientes);
     }
@@ -1107,13 +1107,13 @@ public class TelaProduto extends javax.swing.JPanel {
         desfocarCampoTexto(txtCpf);
     }//GEN-LAST:event_txtCpfFocusLost
 
-    private void pnlNovoClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoClienteMouseClicked
+    private void pnlNovoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseClicked
         limparFormularioCadastro();
         resetBordasFormulario();
         this.editarCliente = false;
         Default.setVisible(false);
         Cadastro.setVisible(true);
-    }//GEN-LAST:event_pnlNovoClienteMouseClicked
+    }//GEN-LAST:event_pnlNovoProdutoMouseClicked
 
     private void pnlCancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCancelarMouseMoved
         Color corPersonalizada = new Color(56, 134, 242);
@@ -1141,18 +1141,18 @@ public class TelaProduto extends javax.swing.JPanel {
         lblSalvar.setForeground(Color.white);
     }//GEN-LAST:event_pnlSalvarMouseMoved
 
-    private void pnlNovoClienteMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoClienteMouseMoved
+    private void pnlNovoProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseMoved
         Color corPersonalizada = new Color(255, 255, 255);
         Color corLabel = new Color(56, 134, 242);
-        pnlNovoCliente.setBackground(corPersonalizada);
-        lbNovoCLiente.setForeground(corLabel);
-    }//GEN-LAST:event_pnlNovoClienteMouseMoved
+        pnlNovoProduto.setBackground(corPersonalizada);
+        lbNovoProduto.setForeground(corLabel);
+    }//GEN-LAST:event_pnlNovoProdutoMouseMoved
 
-    private void pnlNovoClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoClienteMouseExited
+    private void pnlNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseExited
         Color corPersonalizada = new Color(56, 134, 242);
-        pnlNovoCliente.setBackground(corPersonalizada);
-        lbNovoCLiente.setForeground(Color.white);
-    }//GEN-LAST:event_pnlNovoClienteMouseExited
+        pnlNovoProduto.setBackground(corPersonalizada);
+        lbNovoProduto.setForeground(Color.white);
+    }//GEN-LAST:event_pnlNovoProdutoMouseExited
 
     private void lblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseClicked
         int escolhaCancelar = JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro?", "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
@@ -1201,19 +1201,19 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_pnlSalvarMouseClicked
 
-    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+    private void tblProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoMouseClicked
         //CLICAR 2X NA LINHA DE ALGUM CLIENTE IRÁ ABRIR O FORMULARIO DO CLIENTE COM TODOS OS DADOS
         Point point = evt.getPoint();
-        this.auxiliarEditCliente = tblCliente.rowAtPoint(point);
-        if (evt.getClickCount() == 2 || (tblCliente.getSelectedColumn() == 4)) {
+        this.auxiliarEditCliente = tblProduto.rowAtPoint(point);
+        if (evt.getClickCount() == 2 || (tblProduto.getSelectedColumn() == 4)) {
             resetBordasFormulario();
             lerFormularioCliente(point);
-        } else if (tblCliente.getSelectedColumn() == 5) {
+        } else if (tblProduto.getSelectedColumn() == 5) {
             deletarCliente(point);
         }
 
 
-    }//GEN-LAST:event_tblClienteMouseClicked
+    }//GEN-LAST:event_tblProdutoMouseClicked
 
     private void txtBuscarPorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyTyped
 
@@ -1245,11 +1245,11 @@ public class TelaProduto extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cadastro;
     private javax.swing.JPanel Default;
-    private javax.swing.JPanel PainelClientes;
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelIdentificacao;
+    private javax.swing.JPanel PainelProduto;
     private javax.swing.JComboBox<String> cboFiltroConsulta;
-    private javax.swing.JLabel imgCliente;
+    private javax.swing.JLabel imgProduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1271,16 +1271,16 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbNovoCLiente;
+    private javax.swing.JLabel lbNovoProduto;
     private javax.swing.JLabel lblCancelar;
     private javax.swing.JLabel lblSalvar;
     private javax.swing.JPanel pnlCancelar;
-    private javax.swing.JPanel pnlNovoCliente;
+    private javax.swing.JPanel pnlNovoProduto;
     private javax.swing.JPanel pnlSalvar;
     private javax.swing.JRadioButton rbtFem;
     private javax.swing.JRadioButton rbtMasc;
     private javax.swing.ButtonGroup rdgSexo;
-    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txtBuscarPor;
     private javax.swing.JTextField txtCivil;
     private javax.swing.JTextField txtComplemento;

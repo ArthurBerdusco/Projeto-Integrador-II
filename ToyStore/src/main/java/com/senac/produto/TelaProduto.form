@@ -59,9 +59,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="pnlNovoCliente" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlNovoProduto" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="PainelClientes" max="32767" attributes="0"/>
+                      <Component id="PainelProduto" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLayeredPane1" min="-2" pref="521" max="-2" attributes="0"/>
@@ -74,18 +74,18 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlNovoCliente" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlNovoProduto" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="PainelClientes" max="32767" attributes="0"/>
+                  <Component id="PainelProduto" max="32767" attributes="0"/>
               </Group>
               <Component id="jLayeredPane1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="PainelClientes">
+        <Container class="javax.swing.JPanel" name="PainelProduto">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -148,7 +148,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblCliente">
+                <Component class="javax.swing.JTable" name="tblProduto">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="14" style="0"/>
@@ -174,10 +174,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblClienteMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblProdutoMouseClicked"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblCliente.setShowGrid(false);&#xa;tblCliente.getColumnModel().getColumn(0).setPreferredWidth(60);&#xa;tblCliente.getColumnModel().getColumn(1).setPreferredWidth(100);&#xa;tblCliente.getColumnModel().getColumn(4).setPreferredWidth(0);&#xa;tblCliente.getColumnModel().getColumn(5).setPreferredWidth(0);"/>
+                    <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tblProduto.setShowGrid(false);&#xa;tblProduto.getColumnModel().getColumn(0).setPreferredWidth(60);&#xa;tblProduto.getColumnModel().getColumn(1).setPreferredWidth(100);&#xa;tblProduto.getColumnModel().getColumn(4).setPreferredWidth(0);&#xa;tblProduto.getColumnModel().getColumn(5).setPreferredWidth(0);"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -294,7 +294,7 @@
                                       <Component id="jLabel19" alignment="2" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="imgCliente" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="imgProduto" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -304,7 +304,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="imgCliente" min="-2" pref="466" max="-2" attributes="0"/>
+                          <Component id="imgProduto" min="-2" pref="466" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -317,7 +317,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="imgCliente">
+                <Component class="javax.swing.JLabel" name="imgProduto">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/produto2.jpg"/>
@@ -985,7 +985,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="pnlNovoCliente">
+        <Container class="javax.swing.JPanel" name="pnlNovoProduto">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f2" green="86" red="34" type="rgb"/>
@@ -995,28 +995,28 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoClienteMouseMoved"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoClienteMouseClicked"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoClienteMouseExited"/>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoProdutoMouseMoved"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoProdutoMouseClicked"/>
+            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlNovoProdutoMouseExited"/>
           </Events>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lbNovoCLiente" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Component id="lbNovoProduto" min="-2" pref="120" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbNovoCLiente" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="lbNovoProduto" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbNovoCLiente">
+            <Component class="javax.swing.JLabel" name="lbNovoProduto">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
