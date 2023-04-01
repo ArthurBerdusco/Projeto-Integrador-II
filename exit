@@ -1,0 +1,224 @@
+[33mcommit bb97f1bb5972cd2c40fb78c4744908e14c6d7b82[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 2fee4b4 2792606
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sat Apr 1 00:46:31 2023 -0300
+
+    atualizacao projeto
+
+[33mcommit 27926060c83eeb1b8209954f603a3494e76a7875[m[33m ([m[1;31morigin/Cliente[m[33m)[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sat Apr 1 00:43:38 2023 -0300
+
+    Atualizacao projeto
+
+[33mcommit 1d67c5fa099e3937e279d7c32cd819835dd8d8f8[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sat Apr 1 00:32:01 2023 -0300
+
+    atualizado tela produto
+
+[33mcommit fb712c99af72a654827066a4b110c43a6dc14273[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 23:21:07 2023 -0300
+
+    atualizacao bugs
+
+[33mcommit 90f0373e9526348175e8bd80d47359ed14f01e31[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 23:10:13 2023 -0300
+
+    Atualizacao cliente e produto
+
+[33mcommit 2fee4b42cba898f2cbf2dc81ec601d76015d4c0e[m
+Merge: 5c27ece 461e00c
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 21:50:40 2023 -0300
+
+    Merge branch 'Cliente'
+
+[33mcommit 461e00c2a150ed87cd8ce0adb83f85b9acaccc2e[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 21:03:15 2023 -0300
+
+    Adicionado tela inicial venda
+
+[33mcommit 5c27ece52ca747c65ece5c9b68dbc676a17e1811[m
+Merge: 924e392 6a0621d
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 20:56:14 2023 -0300
+
+    Merge pull request #4 from ArthurBerdusco/Cliente
+    
+    Foi inserido novas aplicacoes
+
+[33mcommit 6a0621dcfb8b4ec734c8e4756d9cc62e670f9ea6[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 30 20:51:28 2023 -0300
+
+    Foi inserido novas aplicacoes
+
+[33mcommit 924e39290027e02d24fddedec28717e8c0bea623[m
+Merge: d4282f1 38cb421
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 28 22:09:07 2023 -0300
+
+    Merge pull request #3 from ArthurBerdusco/Relatorio
+    
+    Inserido pasta de relatorio
+
+[33mcommit 38cb421f132f590cfbbbedf0007eb2daa57d002b[m[33m ([m[1;31morigin/Relatorio[m[33m)[m
+Author: Kayke <kaykesprfc@gmail.com>
+Date:   Tue Mar 28 21:54:01 2023 -0300
+
+    Inserido pasta de relatorio
+
+[33mcommit d4282f11dd5ad437cf0881cafe04f2ab8d3dac94[m
+Merge: 23acc5c b7315cf
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 28 20:52:49 2023 -0300
+
+    Merge pull request #2 from ArthurBerdusco/Produto
+    
+    Atualizacao do projeto produto
+
+[33mcommit b7315cf5881d2bb418a993fbb1b7026714641c27[m[33m ([m[1;31morigin/Produto[m[33m)[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 28 20:50:01 2023 -0300
+
+    Atualizacao do projeto produto
+
+[33mcommit 23acc5cea8016774fc823eb87864a906e59c3d63[m[33m ([m[1;31morigin/Venda[m[33m, [m[1;31morigin/Login[m[33m)[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Mon Mar 27 17:25:46 2023 -0300
+
+    Atualizacao projeto
+
+[33mcommit bca7c200d1c50c67df3b3a4fbf272a3e1720823e[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Mon Mar 27 16:46:25 2023 -0300
+
+    Atualizacao projeto
+
+[33mcommit a50b73dbdd6bc0ccc22327494fdbd1c8dc61bd5f[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Mar 26 23:59:10 2023 -0300
+
+    atualizacao do projeto
+
+[33mcommit 2ddcd928a1a0b2e71092ffc9201ea18e6e2b5923[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Mar 26 18:58:03 2023 -0300
+
+    atualizacao do projeto
+
+[33mcommit 9223e42a59bdaf8a98bde62e2e5fa91c32d43a53[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Mar 26 15:05:36 2023 -0300
+
+    atualizacao do projeto
+
+[33mcommit d27a421f3b8eb904d337d92671b310ce0f8e24a5[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Fri Mar 24 01:46:31 2023 -0300
+
+    corrigido bugs no sistema, implementado novas funcoes
+
+[33mcommit c45c95367291ca22e00168645e9913a704d33d90[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Thu Mar 23 00:46:15 2023 -0300
+
+    Adicionado efeito aos botoes, configurado logica de preenchumento da tabela cliente, continuacao do projeto
+
+[33mcommit 38db0f56ca95129f57d3e5ac3e66871c29207445[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Wed Mar 22 18:16:01 2023 -0300
+
+    Commit atualização projeto
+
+[33mcommit b92c2168f38738423b34971564bec0e5461a4b81[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 21 18:52:23 2023 -0300
+
+    atualizado funcoes
+
+[33mcommit f542eddfbca7a2b471718a4c0bb1ec728f5033c7[m
+Merge: 6cd0cfb 9a95edf
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 21 18:44:12 2023 -0300
+
+    Merge pull request #1 from ArthurBerdusco/arthur
+    
+    Arthur
+
+[33mcommit 9a95edf3e7a2a81baedefad984e187ef62b73e2f[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 21 18:08:41 2023 -0300
+
+    correcao de repositorio
+
+[33mcommit 2191678350cbc85a39ae8cae5c9ea65c6b0588b7[m
+Merge: 113a32d 6cd0cfb
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 21 18:07:25 2023 -0300
+
+    correcao de repositorio
+
+[33mcommit 113a32deeeebc9d4e2167a88250d69fb4b632e9b[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Tue Mar 21 18:00:55 2023 -0300
+
+    atualizacao projeto
+
+[33mcommit 6cd0cfb7c7f428999907853753a13a6b822acea9[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Mar 19 21:52:50 2023 -0300
+
+    att arquivo configtela
+
+[33mcommit 6adf7ecf5b5ddebf37ccec9fe76b9c7aa20e2558[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Mar 19 21:46:14 2023 -0300
+
+    projeto integrador o inicio
+
+[33mcommit 6c3f260f94d4d4562af254a665b58c2bcd2a5171[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 19:01:16 2023 -0300
+
+    atualizacao de menu
+
+[33mcommit 8bb5cf4c762fae9a4721fbec4d37c04b22fee04c[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 13:33:53 2023 -0300
+
+    Att tamanho main
+
+[33mcommit 02d67b26813465c6cb240b890790b79b475a7fb3[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 13:23:51 2023 -0300
+
+    adicionando paineis projeto
+
+[33mcommit b58dd66b0be64ccacc4690394eb815a5a89edd9a[m
+Author: ArthurBerdusco <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 13:17:44 2023 -0300
+
+    Att hello world
+
+[33mcommit 25491c5dcc59fa205ead2a27b709fc5db5a1c989[m
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 13:12:56 2023 -0300
+
+    att pasta
+
+[33mcommit 4a232b41fbcc47ddf9c1cdc379fea4232f8c91c6[m
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 12:37:35 2023 -0300
+
+    Add projeto
+
+[33mcommit afa654503589eee83161086250d8530ac2df347e[m
+Author: Arthur <107810609+ArthurBerdusco@users.noreply.github.com>
+Date:   Sun Feb 12 12:33:45 2023 -0300
+
+    Initial commit
