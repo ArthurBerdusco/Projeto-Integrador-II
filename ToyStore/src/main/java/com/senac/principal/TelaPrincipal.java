@@ -16,10 +16,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
-        Produto.setVisible(false);
-//        Venda.setVisible(false);
-        Cliente.setVisible(false);
 
+//        Venda.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,7 +33,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnRelatorio = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Cliente = new com.senac.cliente.TelaCliente();
-        Produto = new com.senac.produto.TelaProduto();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -108,24 +105,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
         jLayeredPane1.setLayer(Cliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(Produto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 768, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Cliente, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(Produto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(Cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 150, Short.MAX_VALUE))
         );
 
         PaineisAjustaveis.setRightComponent(jLayeredPane1);
@@ -142,9 +135,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.PREFERRED_SIZE, 2534, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 2308, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,27 +152,27 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
     private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
         focarBotaoMenu(btnVenda);
-
+        Cliente.setVisible(false);
     }//GEN-LAST:event_btnVendaMousePressed
 
     private void btnProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMousePressed
         focarBotaoMenu(btnProduto);
-        Produto.setVisible(true);
-//        Venda.setVisible(false);
         Cliente.setVisible(false);
+//        Venda.setVisible(false);
+
     }//GEN-LAST:event_btnProdutoMousePressed
 
     private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
         focarBotaoMenu(btnCliente);
-                Produto.setVisible(false);
-//        Venda.setVisible(false);
         Cliente.setVisible(true);
+//        Venda.setVisible(false);
+
 
     }//GEN-LAST:event_btnClienteMousePressed
 
     private void btnRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMousePressed
         focarBotaoMenu(btnRelatorio);
-
+        Cliente.setVisible(false);
     }//GEN-LAST:event_btnRelatorioMousePressed
 
     protected void focarBotaoMenu(JLabel btn) {
@@ -239,7 +230,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.senac.cliente.TelaCliente Cliente;
     private javax.swing.JSplitPane PaineisAjustaveis;
     private javax.swing.JPanel PainelMenu;
-    private com.senac.produto.TelaProduto Produto;
     private javax.swing.JLabel btnCliente;
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
