@@ -17,8 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class TelaProduto extends javax.swing.JPanel {
-
-    private ArrayList<Cliente> listaClientes = new ArrayList<>();
+    private ArrayList<Cliente> listaProdutos = new ArrayList<>();
 
     private boolean editarCliente = false; //Atributo auxiliar para definir se é edição ou cadastro
     private int auxiliarEditCliente; //Atributo auxiliar para verificar qual indice da lista será editado
@@ -33,11 +32,11 @@ public class TelaProduto extends javax.swing.JPanel {
         Cliente cliente2 = new Cliente("Carlos Alberto", "236.972.285-65", "25/02/1978", "Masculino", "Casado", "Carlos@hotmail.com", "Avenida Berrini", "3008", "Condominio Plaza - AP701", "(11)92797-1628");
         Cliente cliente3 = new Cliente("Arlindo Souza", "596.987.962-19", "30/09/1943", "Masculino", "Viúvo", "souza.arlindo@gmail.com", "Rua Santa Rita", "30", "", "(11)97547-8570");
         Cliente cliente4 = new Cliente("Vanessa Batista", "192.973.481-22", "02/04/1997", "Feminino", "Casada", "vanessa.bat@outlook.com", "Rua Ferreira de Araujo", "10", "", "(11)93744-0968");
-        listaClientes.add(cliente1);
-        listaClientes.add(cliente2);
-        listaClientes.add(cliente3);
-        listaClientes.add(cliente4);
-        inserirClienteTabela(listaClientes);
+        listaProdutos.add(cliente1);
+        listaProdutos.add(cliente2);
+        listaProdutos.add(cliente3);
+        listaProdutos.add(cliente4);
+        inserirClienteTabela(listaProdutos);
     }
 
     @SuppressWarnings("unchecked")
@@ -63,19 +62,15 @@ public class TelaProduto extends javax.swing.JPanel {
         Cadastro = new javax.swing.JPanel();
         PainelIdentificacao = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        txtDataNasc = new javax.swing.JFormattedTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtCpf = new javax.swing.JFormattedTextField();
-        txtEmail = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        rbtMasc = new javax.swing.JRadioButton();
-        rbtFem = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtCivil = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtNome1 = new javax.swing.JTextField();
+        txtNome2 = new javax.swing.JTextField();
+        txtNome3 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         PainelEndereco = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
@@ -165,7 +160,7 @@ public class TelaProduto extends javax.swing.JPanel {
             PainelProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelProdutoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 757, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 791, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(PainelProdutoLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
@@ -251,88 +246,13 @@ public class TelaProduto extends javax.swing.JPanel {
         PainelIdentificacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("NOME COMPLETO");
-
-        txtDataNasc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
-        try {
-            txtDataNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtDataNasc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtDataNasc.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDataNascFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDataNascFocusLost(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setText("E-MAIL");
-
-        txtCpf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
-        try {
-            txtCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        txtCpf.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCpfFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCpfFocusLost(evt);
-            }
-        });
-
-        txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
-        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtEmailFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtEmailFocusLost(evt);
-            }
-        });
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setText("SEXO");
-
-        rbtMasc.setBackground(new java.awt.Color(255, 255, 255));
-        rdgSexo.add(rbtMasc);
-        rbtMasc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rbtMasc.setText("MASCULINO");
-
-        rbtFem.setBackground(new java.awt.Color(255, 255, 255));
-        rdgSexo.add(rbtFem);
-        rbtFem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        rbtFem.setText("FEMININO");
+        jLabel4.setText("ID");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("CPF");
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel14.setText("ESTADO CÍVIL");
-
-        txtCivil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txtCivil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
-        txtCivil.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCivilFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCivilFocusLost(evt);
-            }
-        });
+        jLabel9.setText("NOME");
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel15.setText("NASCIMENTO");
-
-        jLabel16.setText("dd/mm/aa");
+        jLabel15.setText("DESCRIÇÃO");
 
         txtNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -344,72 +264,98 @@ public class TelaProduto extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("CÓDIGO DE BARRAS");
+
+        txtNome1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNome1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNome1FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNome1FocusLost(evt);
+            }
+        });
+
+        txtNome2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNome2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNome2FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNome2FocusLost(evt);
+            }
+        });
+
+        txtNome3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtNome3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNome3FocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNome3FocusLost(evt);
+            }
+        });
+
+        jLabel16.setOpaque(true);
+
+        jButton1.setText("+");
+
         javax.swing.GroupLayout PainelIdentificacaoLayout = new javax.swing.GroupLayout(PainelIdentificacao);
         PainelIdentificacao.setLayout(PainelIdentificacaoLayout);
         PainelIdentificacaoLayout.setHorizontalGroup(
             PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                            .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13)
-                                .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                                    .addComponent(rbtMasc)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rbtFem)))
-                            .addGap(37, 37, 37)
-                            .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel14)
-                                .addComponent(txtCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(jLabel12)
-                        .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(119, 119, 119)
-                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtEmail))
-                    .addComponent(jLabel4)
-                    .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                            .addComponent(jLabel9)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel15)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel16))
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
+                        .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome2)
+                            .addComponent(txtNome3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
+                        .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel9)
+                                .addComponent(txtNome1, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addComponent(txtNome))
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(30, 30, 30))))
         );
         PainelIdentificacaoLayout.setVerticalGroup(
             PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelIdentificacaoLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9))
+                    .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtFem)
-                    .addComponent(rbtMasc)
-                    .addComponent(txtCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(381, 381, 381))
+                .addComponent(jLabel15)
+                .addGap(5, 5, 5)
+                .addComponent(txtNome2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         PainelEndereco.setBackground(new java.awt.Color(255, 255, 255));
@@ -495,7 +441,7 @@ public class TelaProduto extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelEnderecoLayout.setVerticalGroup(
             PainelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -612,32 +558,39 @@ public class TelaProduto extends javax.swing.JPanel {
         CadastroLayout.setHorizontalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastroLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CadastroLayout.createSequentialGroup()
+                        .addGap(270, 270, 270)
                         .addComponent(pnlCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(pnlSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel8)
-                        .addComponent(PainelIdentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PainelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(265, Short.MAX_VALUE))
+                        .addComponent(pnlSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 22, Short.MAX_VALUE))
+                    .addGroup(CadastroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PainelEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(CadastroLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(CadastroLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(PainelIdentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         CadastroLayout.setVerticalGroup(
             CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastroLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(PainelIdentificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PainelIdentificacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(PainelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(pnlCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jLayeredPane1.setLayer(Default, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -648,7 +601,7 @@ public class TelaProduto extends javax.swing.JPanel {
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addComponent(Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Default, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -739,61 +692,7 @@ public class TelaProduto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     //CRIAR CLIENTE
 
-    public void cadastrarNovoCliente(ArrayList<Cliente> clientes) {
-        try {
-            requestFocusInWindow();
-            Thread.sleep(50);
 
-            if (validarCampos() == true) {
-                String sexo = "";
-
-                if (rbtMasc.isSelected()) {
-                    sexo = "Masculino";
-                } else if (rbtFem.isSelected()) {
-                    sexo = "Feminino";
-                }
-
-                Cliente novoCliente = new Cliente(
-                        txtNome.getText(),
-                        txtCpf.getText(),
-                        txtDataNasc.getText(),
-                        sexo,
-                        txtCivil.getText(),
-                        txtEmail.getText(),
-                        txtRua.getText(),
-                        txtNumero.getText(),
-                        txtComplemento.getText(),
-                        txtTelefone.getText()
-                );
-
-                listaClientes.add(novoCliente);
-
-                DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-                tabelaCliente.addRow(new Object[]{
-                    novoCliente.getCpf(),
-                    novoCliente.getNome(),
-                    novoCliente.getDataNasc(),
-                    novoCliente.getSexo(),
-                    new ImageIcon("/edit.png"),
-                    new ImageIcon("/delete.png"),
-                    novoCliente.getEstadoCivil(),
-                    novoCliente.getEmail(),
-                    novoCliente.getEndereco(),
-                    novoCliente.getNumero(),
-                    novoCliente.getCompleto(),
-                    novoCliente.getTelefone()
-                });
-                tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-                tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
-
-                limparFormularioCadastro();
-                Cadastro.setVisible(false);
-                Default.setVisible(true);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-    }
 
     //LER CLIENTE
     public void procurarClienteTabela(ArrayList<Cliente> clientes, ArrayList indiceProcurado) {
@@ -802,18 +701,18 @@ public class TelaProduto extends javax.swing.JPanel {
 
         for (int i = 0; i < indiceProcurado.size(); i++) {
             tabelaCliente.addRow(new Object[]{
-                listaClientes.get((int) indiceProcurado.get(i)).getCpf(),
-                listaClientes.get((int) indiceProcurado.get(i)).getNome(),
-                listaClientes.get((int) indiceProcurado.get(i)).getDataNasc(),
-                listaClientes.get((int) indiceProcurado.get(i)).getSexo(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getCpf(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getNome(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getDataNasc(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getSexo(),
                 new ImageIcon("/edit.png"),
                 new ImageIcon("/delete.png"),
-                listaClientes.get((int) indiceProcurado.get(i)).getEstadoCivil(),
-                listaClientes.get((int) indiceProcurado.get(i)).getEmail(),
-                listaClientes.get((int) indiceProcurado.get(i)).getEndereco(),
-                listaClientes.get((int) indiceProcurado.get(i)).getNumero(),
-                listaClientes.get((int) indiceProcurado.get(i)).getCompleto(),
-                listaClientes.get((int) indiceProcurado.get(i)).getTelefone()
+                listaProdutos.get((int) indiceProcurado.get(i)).getEstadoCivil(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getEmail(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getEndereco(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getNumero(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getCompleto(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getTelefone()
             });
             tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
             tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
@@ -830,24 +729,24 @@ public class TelaProduto extends javax.swing.JPanel {
 
         if ((cboFiltroConsulta.getSelectedItem().toString() == "Nome") && (!buscarPor.trim().isEmpty())) {
             tabelaFiltrada.setRowCount(0);
-            for (int i = 0; i < listaClientes.size(); i++) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
 
-                if (listaClientes.get(i).getNome().toLowerCase().indexOf(buscarPor.toLowerCase()) != -1) {
+                if (listaProdutos.get(i).getNome().toLowerCase().indexOf(buscarPor.toLowerCase()) != -1) {
                     clientesEncontrados.add(i);
                 }
             }
-            procurarClienteTabela(listaClientes, clientesEncontrados);
+            procurarClienteTabela(listaProdutos, clientesEncontrados);
         }
 
         if ((cboFiltroConsulta.getSelectedItem().toString() == "CPF") && (!buscarPor.trim().isEmpty())) {
             tabelaFiltrada.setRowCount(0);
-            for (int i = 0; i < listaClientes.size(); i++) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
 
-                if (listaClientes.get(i).getCpf().replace(".", "").replace("-", "").indexOf(buscarPor.replace(".", "").replace("-", "")) != -1) {
+                if (listaProdutos.get(i).getCpf().replace(".", "").replace("-", "").indexOf(buscarPor.replace(".", "").replace("-", "")) != -1) {
                     clientesEncontrados.add(i);
                 }
             }
-            procurarClienteTabela(listaClientes, clientesEncontrados);
+            procurarClienteTabela(listaProdutos, clientesEncontrados);
         }
     }
 
@@ -858,26 +757,24 @@ public class TelaProduto extends javax.swing.JPanel {
         Cadastro.setVisible(true);
         DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
-        for (int i = 0; i < listaClientes.size(); i++) {
+        for (int i = 0; i < listaProdutos.size(); i++) {
 
-            if (tblProduto.getValueAt(linhaClicada, 0) == listaClientes.get(i).getCpf()) {
-                String cpf = listaClientes.get(i).getCpf();
-                txtNome.setText(listaClientes.get(i).getNome().toString());
-                txtCpf.setText(listaClientes.get(i).getCpf());
-                txtDataNasc.setText(listaClientes.get(i).getDataNasc());
-                if (listaClientes.get(i).getSexo() == "Masculino") {
-                    rbtMasc.setSelected(true);
-                } else if (listaClientes.get(i).getSexo() == "Feminino") {
-                    rbtFem.setSelected(true);
+            if (tblProduto.getValueAt(linhaClicada, 0) == listaProdutos.get(i).getCpf()) {
+                String cpf = listaProdutos.get(i).getCpf();
+                txtNome.setText(listaProdutos.get(i).getNome().toString());
+                
+                if (listaProdutos.get(i).getSexo() == "Masculino") {
+                    
+                } else if (listaProdutos.get(i).getSexo() == "Feminino") {
+                    
                 }
-                txtCivil.setText(listaClientes.get(i).getEstadoCivil());
-                txtEmail.setText(listaClientes.get(i).getEmail());
-                txtRua.setText(listaClientes.get(i).getEndereco());
-                txtNumero.setText(listaClientes.get(i).getNumero());
-                txtComplemento.setText(listaClientes.get(i).getCompleto());
-                txtTelefone.setText(listaClientes.get(i).getTelefone());
+                
+                txtRua.setText(listaProdutos.get(i).getEndereco());
+                txtNumero.setText(listaProdutos.get(i).getNumero());
+                txtComplemento.setText(listaProdutos.get(i).getCompleto());
+                txtTelefone.setText(listaProdutos.get(i).getTelefone());
 
-                int posicao = listaClientes.indexOf(listaClientes.stream()
+                int posicao = listaProdutos.indexOf(listaProdutos.stream()
                         .filter(p -> p.getCpf().equals(cpf))
                         .findFirst()
                         .orElse(null));
@@ -889,28 +786,15 @@ public class TelaProduto extends javax.swing.JPanel {
     //EDITAR CLIENTE
     public void editarCadastroCliente(ArrayList<Cliente> clientes, int indiceCliente) {
         Cliente editCliente = clientes.get(indiceCliente);
-
         String sexo = "";
-
-        if (rbtMasc.isSelected()) {
-            sexo = "Masculino";
-        } else if (rbtFem.isSelected()) {
-            sexo = "Feminino";
-        }
-
         editCliente.setNome(txtNome.getText());
-        editCliente.setCpf(txtCpf.getText());
-        editCliente.setDataNasc(txtDataNasc.getText());
         editCliente.setSexo(sexo);
-        editCliente.setEstadoCivil(txtCivil.getText());
-        editCliente.setEmail(txtEmail.getText());
         editCliente.setRua(txtRua.getText());
         editCliente.setNumero(txtNumero.getText());
         editCliente.setCompleto(txtComplemento.getText());
         editCliente.setTelefone(txtTelefone.getText());
         clientes.set(indiceCliente, editCliente);
         resetTabelaCliente();
-
     }
 
     //DELETAR CLIENTE
@@ -918,12 +802,12 @@ public class TelaProduto extends javax.swing.JPanel {
         int linhaClicada = tblProduto.rowAtPoint(linha);
         DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
 
-        for (int i = 0; i < listaClientes.size(); i++) {
-            if (tabelaCliente.getValueAt(linhaClicada, 1) == listaClientes.get(i).getNome()) {
+        for (int i = 0; i < listaProdutos.size(); i++) {
+            if (tabelaCliente.getValueAt(linhaClicada, 1) == listaProdutos.get(i).getNome()) {
                 lerFormularioCliente(linha);
-                int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + listaClientes.get(i).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
+                int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + listaProdutos.get(i).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
                 if (confirmDelete == 0) {
-                    listaClientes.remove(i);
+                    listaProdutos.remove(i);
                     Cadastro.setVisible(false);
                     Default.setVisible(true);
                     resetTabelaCliente();
@@ -940,18 +824,18 @@ public class TelaProduto extends javax.swing.JPanel {
 
         for (int i = 0; i < clientes.size(); i++) {
             tabelaCliente.addRow(new Object[]{
-                listaClientes.get(i).getCpf(),
-                listaClientes.get(i).getNome(),
-                listaClientes.get(i).getDataNasc(),
-                listaClientes.get(i).getSexo(),
+                listaProdutos.get(i).getCpf(),
+                listaProdutos.get(i).getNome(),
+                listaProdutos.get(i).getDataNasc(),
+                listaProdutos.get(i).getSexo(),
                 new ImageIcon("/edit.png"),
                 new ImageIcon("/delete.png"),
-                listaClientes.get(i).getEstadoCivil(),
-                listaClientes.get(i).getEmail(),
-                listaClientes.get(i).getEndereco(),
-                listaClientes.get(i).getNumero(),
-                listaClientes.get(i).getCompleto(),
-                listaClientes.get(i).getTelefone()
+                listaProdutos.get(i).getEstadoCivil(),
+                listaProdutos.get(i).getEmail(),
+                listaProdutos.get(i).getEndereco(),
+                listaProdutos.get(i).getNumero(),
+                listaProdutos.get(i).getCompleto(),
+                listaProdutos.get(i).getTelefone()
             });
             tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
             tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
@@ -964,11 +848,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
             //Validar campos de identificação
             validador.validarNome(txtNome);
-            validador.validarCpf(txtCpf);
-            validador.validarDataNasc(txtDataNasc);
             validador.validarGroupRadio(rdgSexo);
-            validador.validarString(txtCivil);
-            validador.validarEmail(txtEmail);
             //Validar campos de endereço
             validador.validarString(txtRua);
             validador.validarString(txtNumero);
@@ -995,11 +875,7 @@ public class TelaProduto extends javax.swing.JPanel {
     //REALIZA A LIMPEZA DO FORMULÁRIO QUANDO FOR O CADASTRADO OU EDIÇÃO DO CLIENTE FOR FINALIZADO
     public void limparFormularioCadastro() {
         txtNome.setText("");
-        txtCpf.setValue(null);
-        txtDataNasc.setValue(null);
         rdgSexo.clearSelection();
-        txtCivil.setText("");
-        txtEmail.setText("");
         txtRua.setText("");
         txtNumero.setText("");
         txtComplemento.setText("");
@@ -1010,10 +886,6 @@ public class TelaProduto extends javax.swing.JPanel {
 
     public void resetBordasFormulario() {
         desfocarCampoTexto(txtNome);
-        desfocarCampoTexto(txtCpf);
-        desfocarCampoTexto(txtDataNasc);
-        desfocarCampoTexto(txtCivil);
-        desfocarCampoTexto(txtEmail);
         desfocarCampoTexto(txtRua);
         desfocarCampoTexto(txtNumero);
         desfocarCampoTexto(txtComplemento);
@@ -1025,7 +897,7 @@ public class TelaProduto extends javax.swing.JPanel {
     public void resetTabelaCliente() {
         DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
         tabelaCliente.setRowCount(0);
-        inserirClienteTabela(listaClientes);
+        inserirClienteTabela(listaProdutos);
     }
 
     //CLASSE PARA REENDERIZAR OS ICONES DA TABELA (EDIÇÃO E EXCLUÇÃO) 
@@ -1067,22 +939,6 @@ public class TelaProduto extends javax.swing.JPanel {
         desfocarCampoTexto(txtRua);
     }//GEN-LAST:event_txtRuaFocusLost
 
-    private void txtEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusGained
-        focarCampoTexto(txtEmail);
-    }//GEN-LAST:event_txtEmailFocusGained
-
-    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
-        desfocarCampoTexto(txtEmail);
-    }//GEN-LAST:event_txtEmailFocusLost
-
-    private void txtCivilFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCivilFocusGained
-        focarCampoTexto(txtCivil);
-    }//GEN-LAST:event_txtCivilFocusGained
-
-    private void txtCivilFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCivilFocusLost
-        desfocarCampoTexto(txtCivil);
-    }//GEN-LAST:event_txtCivilFocusLost
-
     private void txtTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusGained
         focarCampoTexto(txtTelefone);
     }//GEN-LAST:event_txtTelefoneFocusGained
@@ -1090,22 +946,6 @@ public class TelaProduto extends javax.swing.JPanel {
     private void txtTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusLost
         desfocarCampoTexto(txtTelefone);
     }//GEN-LAST:event_txtTelefoneFocusLost
-
-    private void txtDataNascFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataNascFocusGained
-        focarCampoTexto(txtDataNasc);
-    }//GEN-LAST:event_txtDataNascFocusGained
-
-    private void txtDataNascFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataNascFocusLost
-        desfocarCampoTexto(txtDataNasc);
-    }//GEN-LAST:event_txtDataNascFocusLost
-
-    private void txtCpfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusGained
-        focarCampoTexto(txtCpf);
-    }//GEN-LAST:event_txtCpfFocusGained
-
-    private void txtCpfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCpfFocusLost
-        desfocarCampoTexto(txtCpf);
-    }//GEN-LAST:event_txtCpfFocusLost
 
     private void pnlNovoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseClicked
         limparFormularioCadastro();
@@ -1192,9 +1032,8 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void pnlSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseClicked
         if (editarCliente == false) {
-            cadastrarNovoCliente(listaClientes);
         } else if (editarCliente == true && (validarCampos() == true)) {
-            editarCadastroCliente(listaClientes, this.auxiliarEditCliente);
+            editarCadastroCliente(listaProdutos, this.auxiliarEditCliente);
             Cadastro.setVisible(false);
             Default.setVisible(true);
             editarCliente = false;
@@ -1241,6 +1080,30 @@ public class TelaProduto extends javax.swing.JPanel {
         desfocarCampoTexto(txtNome);
     }//GEN-LAST:event_txtNomeFocusLost
 
+    private void txtNome1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome1FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome1FocusGained
+
+    private void txtNome1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome1FocusLost
+
+    private void txtNome2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome2FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome2FocusGained
+
+    private void txtNome2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome2FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome2FocusLost
+
+    private void txtNome3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome3FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome3FocusGained
+
+    private void txtNome3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome3FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNome3FocusLost
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cadastro;
@@ -1250,12 +1113,10 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JPanel PainelProduto;
     private javax.swing.JComboBox<String> cboFiltroConsulta;
     private javax.swing.JLabel imgProduto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -1264,6 +1125,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -1277,17 +1139,14 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JPanel pnlCancelar;
     private javax.swing.JPanel pnlNovoProduto;
     private javax.swing.JPanel pnlSalvar;
-    private javax.swing.JRadioButton rbtFem;
-    private javax.swing.JRadioButton rbtMasc;
     private javax.swing.ButtonGroup rdgSexo;
     private javax.swing.JTable tblProduto;
     private javax.swing.JTextField txtBuscarPor;
-    private javax.swing.JTextField txtCivil;
     private javax.swing.JTextField txtComplemento;
-    private javax.swing.JFormattedTextField txtCpf;
-    private javax.swing.JFormattedTextField txtDataNasc;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNome1;
+    private javax.swing.JTextField txtNome2;
+    private javax.swing.JTextField txtNome3;
     private javax.swing.JTextField txtNumero;
     private javax.swing.JTextField txtRua;
     private javax.swing.JFormattedTextField txtTelefone;
