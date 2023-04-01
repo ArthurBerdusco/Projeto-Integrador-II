@@ -1,5 +1,5 @@
 package com.senac.produto;
-
+//inserido comentario
 import com.senac.cliente.*;
 import com.senac.utils.Validador;
 import java.awt.Color;
@@ -17,26 +17,16 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
 public class TelaProduto extends javax.swing.JPanel {
-    private ArrayList<Cliente> listaProdutos = new ArrayList<>();
+    private ArrayList<Produto> listaProdutos = new ArrayList<>();
 
-    private boolean editarCliente = false; //Atributo auxiliar para definir se é edição ou cadastro
-    private int auxiliarEditCliente; //Atributo auxiliar para verificar qual indice da lista será editado
+    private boolean editarProduto = false; //Atributo auxiliar para definir se é edição ou cadastro
+    private int auxiliarEditProduto; //Atributo auxiliar para verificar qual indice da lista será editado
 
     public TelaProduto() {
         initComponents();
         Default.setVisible(true);
         Cadastro.setVisible(false);
 
-        //Adicionando 4 clientes
-        Cliente cliente1 = new Cliente("Arthur Silva", "428.193.198-82", "06/06/2000", "Masculino", "Solteiro", "arthur@gmail.com", "Rua Adelaide Braga", "81", "Bloco 4 - Ap 302", "(11)93204-5718");
-        Cliente cliente2 = new Cliente("Carlos Alberto", "236.972.285-65", "25/02/1978", "Masculino", "Casado", "Carlos@hotmail.com", "Avenida Berrini", "3008", "Condominio Plaza - AP701", "(11)92797-1628");
-        Cliente cliente3 = new Cliente("Arlindo Souza", "596.987.962-19", "30/09/1943", "Masculino", "Viúvo", "souza.arlindo@gmail.com", "Rua Santa Rita", "30", "", "(11)97547-8570");
-        Cliente cliente4 = new Cliente("Vanessa Batista", "192.973.481-22", "02/04/1997", "Feminino", "Casada", "vanessa.bat@outlook.com", "Rua Ferreira de Araujo", "10", "", "(11)93744-0968");
-        listaProdutos.add(cliente1);
-        listaProdutos.add(cliente2);
-        listaProdutos.add(cliente3);
-        listaProdutos.add(cliente4);
-        inserirClienteTabela(listaProdutos);
     }
 
     @SuppressWarnings("unchecked")
@@ -690,367 +680,85 @@ public class TelaProduto extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-    //CRIAR CLIENTE
 
-
-
-    //LER CLIENTE
-    public void procurarClienteTabela(ArrayList<Cliente> clientes, ArrayList indiceProcurado) {
-
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-
-        for (int i = 0; i < indiceProcurado.size(); i++) {
-            tabelaCliente.addRow(new Object[]{
-                listaProdutos.get((int) indiceProcurado.get(i)).getCpf(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getNome(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getDataNasc(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getSexo(),
-                new ImageIcon("/edit.png"),
-                new ImageIcon("/delete.png"),
-                listaProdutos.get((int) indiceProcurado.get(i)).getEstadoCivil(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getEmail(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getEndereco(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getNumero(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getCompleto(),
-                listaProdutos.get((int) indiceProcurado.get(i)).getTelefone()
-            });
-            tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-            tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
-        }
-    }
-
-    public void buscarComFiltro() {
-        String buscarPor = txtBuscarPor.getText();
-
-        ArrayList clientesEncontrados = new ArrayList();
-
-        DefaultTableModel tabelaFiltrada = (DefaultTableModel) tblProduto.getModel();
-        tabelaFiltrada.setRowCount(0);
-
-        if ((cboFiltroConsulta.getSelectedItem().toString() == "Nome") && (!buscarPor.trim().isEmpty())) {
-            tabelaFiltrada.setRowCount(0);
-            for (int i = 0; i < listaProdutos.size(); i++) {
-
-                if (listaProdutos.get(i).getNome().toLowerCase().indexOf(buscarPor.toLowerCase()) != -1) {
-                    clientesEncontrados.add(i);
-                }
-            }
-            procurarClienteTabela(listaProdutos, clientesEncontrados);
-        }
-
-        if ((cboFiltroConsulta.getSelectedItem().toString() == "CPF") && (!buscarPor.trim().isEmpty())) {
-            tabelaFiltrada.setRowCount(0);
-            for (int i = 0; i < listaProdutos.size(); i++) {
-
-                if (listaProdutos.get(i).getCpf().replace(".", "").replace("-", "").indexOf(buscarPor.replace(".", "").replace("-", "")) != -1) {
-                    clientesEncontrados.add(i);
-                }
-            }
-            procurarClienteTabela(listaProdutos, clientesEncontrados);
-        }
-    }
-
-    public void lerFormularioCliente(Point linhaTblClicada) {
-        int linhaClicada = tblProduto.rowAtPoint(linhaTblClicada);
-        editarCliente = true;
-        Default.setVisible(false);
-        Cadastro.setVisible(true);
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-
-        for (int i = 0; i < listaProdutos.size(); i++) {
-
-            if (tblProduto.getValueAt(linhaClicada, 0) == listaProdutos.get(i).getCpf()) {
-                String cpf = listaProdutos.get(i).getCpf();
-                txtNome.setText(listaProdutos.get(i).getNome().toString());
-                
-                if (listaProdutos.get(i).getSexo() == "Masculino") {
-                    
-                } else if (listaProdutos.get(i).getSexo() == "Feminino") {
-                    
-                }
-                
-                txtRua.setText(listaProdutos.get(i).getEndereco());
-                txtNumero.setText(listaProdutos.get(i).getNumero());
-                txtComplemento.setText(listaProdutos.get(i).getCompleto());
-                txtTelefone.setText(listaProdutos.get(i).getTelefone());
-
-                int posicao = listaProdutos.indexOf(listaProdutos.stream()
-                        .filter(p -> p.getCpf().equals(cpf))
-                        .findFirst()
-                        .orElse(null));
-                this.auxiliarEditCliente = posicao;
-            }
-        }
-    }
-
-    //EDITAR CLIENTE
-    public void editarCadastroCliente(ArrayList<Cliente> clientes, int indiceCliente) {
-        Cliente editCliente = clientes.get(indiceCliente);
-        String sexo = "";
-        editCliente.setNome(txtNome.getText());
-        editCliente.setSexo(sexo);
-        editCliente.setRua(txtRua.getText());
-        editCliente.setNumero(txtNumero.getText());
-        editCliente.setCompleto(txtComplemento.getText());
-        editCliente.setTelefone(txtTelefone.getText());
-        clientes.set(indiceCliente, editCliente);
-        resetTabelaCliente();
-    }
-
-    //DELETAR CLIENTE
-    public void deletarCliente(Point linha) {
-        int linhaClicada = tblProduto.rowAtPoint(linha);
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-
-        for (int i = 0; i < listaProdutos.size(); i++) {
-            if (tabelaCliente.getValueAt(linhaClicada, 1) == listaProdutos.get(i).getNome()) {
-                lerFormularioCliente(linha);
-                int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + listaProdutos.get(i).getNome() + "?", "Deletar cliente", JOptionPane.YES_NO_OPTION);
-                if (confirmDelete == 0) {
-                    listaProdutos.remove(i);
-                    Cadastro.setVisible(false);
-                    Default.setVisible(true);
-                    resetTabelaCliente();
-                }
-            }
-        }
-
-    }
-
-    //REALIZA A LEITURA INICIAL DA BASE DE CLIENTES
-    public void inserirClienteTabela(ArrayList<Cliente> clientes) {
-
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-
-        for (int i = 0; i < clientes.size(); i++) {
-            tabelaCliente.addRow(new Object[]{
-                listaProdutos.get(i).getCpf(),
-                listaProdutos.get(i).getNome(),
-                listaProdutos.get(i).getDataNasc(),
-                listaProdutos.get(i).getSexo(),
-                new ImageIcon("/edit.png"),
-                new ImageIcon("/delete.png"),
-                listaProdutos.get(i).getEstadoCivil(),
-                listaProdutos.get(i).getEmail(),
-                listaProdutos.get(i).getEndereco(),
-                listaProdutos.get(i).getNumero(),
-                listaProdutos.get(i).getCompleto(),
-                listaProdutos.get(i).getTelefone()
-            });
-            tblProduto.getColumnModel().getColumn(4).setCellRenderer(new ImageRender());
-            tblProduto.getColumnModel().getColumn(5).setCellRenderer(new ImageRender());
-        }
-    }
-
-    public boolean validarCampos() {
-        try {
-            Validador validador = new Validador();
-
-            //Validar campos de identificação
-            validador.validarNome(txtNome);
-            validador.validarGroupRadio(rdgSexo);
-            //Validar campos de endereço
-            validador.validarString(txtRua);
-            validador.validarString(txtNumero);
-            validador.validarTelefone(txtTelefone);
-
-            if (validador.mensagemErro.size() >= 2) {
-                throw new Exception("Preencha todos os campos.");
-
-            } else if (validador.mensagemErro.size() == 1) {
-                throw new Exception(validador.mensagemErro.get(0));
-            }
-
-            if (validador.mensagemErro.size() == 0) {
-                return true;
-            }
-            return false;
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
-            return false;
-        }
-    }
-
-    //REALIZA A LIMPEZA DO FORMULÁRIO QUANDO FOR O CADASTRADO OU EDIÇÃO DO CLIENTE FOR FINALIZADO
-    public void limparFormularioCadastro() {
-        txtNome.setText("");
-        rdgSexo.clearSelection();
-        txtRua.setText("");
-        txtNumero.setText("");
-        txtComplemento.setText("");
-        txtTelefone.setValue(null);
-        Cadastro.setVisible(false);
-        Default.setVisible(true);
-    }
-
-    public void resetBordasFormulario() {
-        desfocarCampoTexto(txtNome);
-        desfocarCampoTexto(txtRua);
-        desfocarCampoTexto(txtNumero);
-        desfocarCampoTexto(txtComplemento);
-        desfocarCampoTexto(txtTelefone);
-
-    }
-
-    //REALIZA O RESET DA TABELA APÓS LIMPAR FILTRO OU FINALIZAR EDIÇÃO DE CADASTRO
-    public void resetTabelaCliente() {
-        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProduto.getModel();
-        tabelaCliente.setRowCount(0);
-        inserirClienteTabela(listaProdutos);
-    }
-
-    //CLASSE PARA REENDERIZAR OS ICONES DA TABELA (EDIÇÃO E EXCLUÇÃO) 
-    private class ImageRender extends DefaultTableCellRenderer {
-
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            String photoNome = value.toString();
-            JLabel lblImgCelula = new JLabel();
-            lblImgCelula.setIcon(new javax.swing.ImageIcon(getClass().getResource(value.toString())));
-            if (hasFocus) {
-                Color corPersonalizada = new Color(125, 147, 200);
-                lblImgCelula.setBorder(BorderFactory.createLineBorder(corPersonalizada));
-            } else {
-                lblImgCelula.setBorder(null);
-            }
-            lblImgCelula.setHorizontalAlignment(CENTER);
-
-            return lblImgCelula;
-        }
-
-    }
-
-    private void focarCampoTexto(JComponent campo) {
-        Color corPersonalizada = new Color(23, 102, 212);
-        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
-    }
-
-    private void desfocarCampoTexto(JComponent campo) {
-        Color corPersonalizada = new Color(189, 202, 219);
-        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
-    }
 
     private void txtRuaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusGained
-        focarCampoTexto(txtRua);
+        
     }//GEN-LAST:event_txtRuaFocusGained
 
     private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
-        desfocarCampoTexto(txtRua);
+        
     }//GEN-LAST:event_txtRuaFocusLost
 
     private void txtTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusGained
-        focarCampoTexto(txtTelefone);
+        
     }//GEN-LAST:event_txtTelefoneFocusGained
 
     private void txtTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefoneFocusLost
-        desfocarCampoTexto(txtTelefone);
+        
     }//GEN-LAST:event_txtTelefoneFocusLost
 
     private void pnlNovoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseClicked
-        limparFormularioCadastro();
-        resetBordasFormulario();
-        this.editarCliente = false;
-        Default.setVisible(false);
-        Cadastro.setVisible(true);
+
     }//GEN-LAST:event_pnlNovoProdutoMouseClicked
 
     private void pnlCancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCancelarMouseMoved
-        Color corPersonalizada = new Color(56, 134, 242);
-        pnlCancelar.setBackground(corPersonalizada);
-        lblCancelar.setForeground(Color.white);
+
     }//GEN-LAST:event_pnlCancelarMouseMoved
 
     private void pnlCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlCancelarMouseExited
-        Color corPersonalizada = new Color(255, 255, 255);
-        Color corLabel = new Color(56, 134, 242);
-        pnlCancelar.setBackground(corPersonalizada);
-        lblCancelar.setForeground(corLabel);
+
     }//GEN-LAST:event_pnlCancelarMouseExited
 
     private void pnlSalvarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseExited
-        Color corPersonalizada = new Color(255, 255, 255);
-        Color corLabel = new Color(56, 134, 242);
-        pnlSalvar.setBackground(corPersonalizada);
-        lblSalvar.setForeground(corLabel);
+
     }//GEN-LAST:event_pnlSalvarMouseExited
 
     private void pnlSalvarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseMoved
-        Color corPersonalizada = new Color(56, 134, 242);
-        pnlSalvar.setBackground(corPersonalizada);
-        lblSalvar.setForeground(Color.white);
+
     }//GEN-LAST:event_pnlSalvarMouseMoved
 
     private void pnlNovoProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseMoved
-        Color corPersonalizada = new Color(255, 255, 255);
-        Color corLabel = new Color(56, 134, 242);
-        pnlNovoProduto.setBackground(corPersonalizada);
-        lbNovoProduto.setForeground(corLabel);
+
     }//GEN-LAST:event_pnlNovoProdutoMouseMoved
 
     private void pnlNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseExited
-        Color corPersonalizada = new Color(56, 134, 242);
-        pnlNovoProduto.setBackground(corPersonalizada);
-        lbNovoProduto.setForeground(Color.white);
+
     }//GEN-LAST:event_pnlNovoProdutoMouseExited
 
     private void lblCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseClicked
-        int escolhaCancelar = JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro?", "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
-        if (escolhaCancelar == 0) {
-            limparFormularioCadastro();
-        }
+
     }//GEN-LAST:event_lblCancelarMouseClicked
 
     private void lblCancelarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseMoved
-        Color corPersonalizada = new Color(56, 134, 242);
-        pnlCancelar.setBackground(corPersonalizada);
-        lblCancelar.setForeground(Color.white);
+
     }//GEN-LAST:event_lblCancelarMouseMoved
 
     private void lblCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelarMouseExited
-        Color corPersonalizada = new Color(255, 255, 255);
-        Color corLabel = new Color(56, 134, 242);
-        pnlCancelar.setBackground(corPersonalizada);
-        lblCancelar.setForeground(corLabel);
+
     }//GEN-LAST:event_lblCancelarMouseExited
 
     private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
-        focarCampoTexto(txtNumero);
+
     }//GEN-LAST:event_txtNumeroFocusGained
 
     private void txtNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusLost
-        desfocarCampoTexto(txtNumero);
+
     }//GEN-LAST:event_txtNumeroFocusLost
 
     private void txtComplementoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusGained
-        focarCampoTexto(txtComplemento);
+
     }//GEN-LAST:event_txtComplementoFocusGained
 
     private void txtComplementoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtComplementoFocusLost
-        desfocarCampoTexto(txtComplemento);
+
     }//GEN-LAST:event_txtComplementoFocusLost
 
     private void pnlSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlSalvarMouseClicked
-        if (editarCliente == false) {
-        } else if (editarCliente == true && (validarCampos() == true)) {
-            editarCadastroCliente(listaProdutos, this.auxiliarEditCliente);
-            Cadastro.setVisible(false);
-            Default.setVisible(true);
-            editarCliente = false;
-        }
+
     }//GEN-LAST:event_pnlSalvarMouseClicked
 
     private void tblProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutoMouseClicked
-        //CLICAR 2X NA LINHA DE ALGUM CLIENTE IRÁ ABRIR O FORMULARIO DO CLIENTE COM TODOS OS DADOS
-        Point point = evt.getPoint();
-        this.auxiliarEditCliente = tblProduto.rowAtPoint(point);
-        if (evt.getClickCount() == 2 || (tblProduto.getSelectedColumn() == 4)) {
-            resetBordasFormulario();
-            lerFormularioCliente(point);
-        } else if (tblProduto.getSelectedColumn() == 5) {
-            deletarCliente(point);
-        }
-
 
     }//GEN-LAST:event_tblProdutoMouseClicked
 
@@ -1059,25 +767,19 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarPorKeyTyped
 
     private void txtBuscarPorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyPressed
-        buscarComFiltro();
-        if (txtBuscarPor.getText().trim().isEmpty()) {
-            resetTabelaCliente();
-        }
+
     }//GEN-LAST:event_txtBuscarPorKeyPressed
 
     private void txtBuscarPorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarPorKeyReleased
-        buscarComFiltro();
-        if (txtBuscarPor.getText().trim().isEmpty()) {
-            resetTabelaCliente();
-        }
+
     }//GEN-LAST:event_txtBuscarPorKeyReleased
 
     private void txtNomeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusGained
-        focarCampoTexto(txtNome);
+
     }//GEN-LAST:event_txtNomeFocusGained
 
     private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
-        desfocarCampoTexto(txtNome);
+
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void txtNome1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNome1FocusGained
