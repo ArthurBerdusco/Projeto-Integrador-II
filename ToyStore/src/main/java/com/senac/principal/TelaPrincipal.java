@@ -147,9 +147,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void focarVenda() {
-        Color azulMarinho = new Color(26, 187, 156);
+        Color azulMarinho = new Color(255,12,120);
         btnVenda.setBackground(azulMarinho);
-        btnVenda.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
+        btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
     }
     private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
         focarBotaoMenu(btnVenda);
@@ -177,13 +177,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRelatorioMousePressed
 
     protected void focarBotaoMenu(JLabel btn) {
-        Color azulMarinho = new Color(26, 187, 156);
+        //Color azulMarinho = new Color(26, 187, 156);
+        Color azulMarinho = new Color(255,12,120);
         if (btn.getName() == "Venda") {
             btnVenda.setBackground(azulMarinho);
             btnProduto.setBackground(Color.DARK_GRAY);
             btnCliente.setBackground(Color.DARK_GRAY);
             btnRelatorio.setBackground(Color.DARK_GRAY);
-            btnVenda.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
+            btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
             btnProduto.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnCliente.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnRelatorio.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -192,7 +193,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnVenda.setBackground(Color.DARK_GRAY);
             btnCliente.setBackground(Color.DARK_GRAY);
             btnRelatorio.setBackground(Color.DARK_GRAY);
-            btnProduto.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
+            btnProduto.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
             btnVenda.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnCliente.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnRelatorio.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -201,7 +202,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnVenda.setBackground(Color.DARK_GRAY);
             btnProduto.setBackground(Color.DARK_GRAY);
             btnRelatorio.setBackground(Color.DARK_GRAY);
-            btnCliente.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
+            btnCliente.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
             btnVenda.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnProduto.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnRelatorio.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
@@ -210,7 +211,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             btnVenda.setBackground(Color.DARK_GRAY);
             btnCliente.setBackground(Color.DARK_GRAY);
             btnProduto.setBackground(Color.DARK_GRAY);
-            btnRelatorio.setBorder(BorderFactory.createMatteBorder(0, 8, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
+            btnRelatorio.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
             btnVenda.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnCliente.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
             btnProduto.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
