@@ -16,6 +16,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
+        Cliente.setVisible(false);
 
 //        Venda.setVisible(false);
     }
