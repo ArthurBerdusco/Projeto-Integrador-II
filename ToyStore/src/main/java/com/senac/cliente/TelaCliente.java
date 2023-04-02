@@ -49,6 +49,7 @@ public class TelaCliente extends javax.swing.JPanel {
     private void initComponents() {
 
         rdgSexo = new javax.swing.ButtonGroup();
+        jLabel1 = new javax.swing.JLabel();
         PainelClientes = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
@@ -57,7 +58,6 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtBuscarPor = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         pnlNovoCliente = new javax.swing.JPanel();
         lbNovoCLiente = new javax.swing.JLabel();
         LayerCliente = new javax.swing.JLayeredPane();
@@ -98,6 +98,9 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1350, 780));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("CLIENTES");
 
         PainelClientes.setBackground(new java.awt.Color(255, 255, 255));
         PainelClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -227,9 +230,6 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addComponent(jScrollPane2)
                 .addContainerGap())
         );
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("CLIENTES");
 
         pnlNovoCliente.setBackground(new java.awt.Color(52, 134, 242));
         pnlNovoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -549,8 +549,8 @@ public class TelaCliente extends javax.swing.JPanel {
         );
 
         jLabel8.setBackground(new java.awt.Color(153, 153, 255));
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel8.setText("Informações do cliente");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel8.setText("INFORMAÇÕES DO CLIENTE");
 
         pnlCancelar.setBackground(new java.awt.Color(255, 255, 255));
         pnlCancelar.setPreferredSize(new java.awt.Dimension(102, 37));
@@ -672,7 +672,7 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addGroup(CadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(pnlCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
         Default.setBackground(new java.awt.Color(255, 255, 255));
@@ -697,28 +697,28 @@ public class TelaCliente extends javax.swing.JPanel {
         DefaultLayout.setHorizontalGroup(
             DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DefaultLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(DefaultLayout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(86, 86, 86)
                 .addGroup(DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel17)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel17))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel19))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         DefaultLayout.setVerticalGroup(
             DefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DefaultLayout.createSequentialGroup()
-                .addContainerGap(103, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel17)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel19)
-                .addGap(37, 37, 37))
+                .addGap(40, 40, 40))
         );
 
         LayerCliente.setLayer(Cadastro, javax.swing.JLayeredPane.DEFAULT_LAYER);
