@@ -57,7 +57,7 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtBuscarPor = new javax.swing.JTextField();
-        jLabel20 = new javax.swing.JLabel();
+        btnExpandCollapse = new javax.swing.JLabel();
         pnlNovoCliente = new javax.swing.JPanel();
         lbNovoCLiente = new javax.swing.JLabel();
         LayerCliente = new javax.swing.JLayeredPane();
@@ -174,19 +174,19 @@ public class TelaCliente extends javax.swing.JPanel {
             }
         });
 
-        jLabel20.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png"))); // NOI18N
-        jLabel20.setOpaque(true);
-        jLabel20.setPreferredSize(new java.awt.Dimension(16, 16));
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExpandCollapse.setBackground(new java.awt.Color(255, 255, 255));
+        btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png"))); // NOI18N
+        btnExpandCollapse.setOpaque(true);
+        btnExpandCollapse.setPreferredSize(new java.awt.Dimension(16, 16));
+        btnExpandCollapse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel20MouseEntered(evt);
+                btnExpandCollapseMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel20MouseExited(evt);
+                btnExpandCollapseMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel20MousePressed(evt);
+                btnExpandCollapseMousePressed(evt);
             }
         });
 
@@ -198,7 +198,7 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelClientesLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE))
                     .addGroup(PainelClientesLayout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -210,14 +210,14 @@ public class TelaCliente extends javax.swing.JPanel {
                             .addComponent(txtBuscarPor)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelClientesLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExpandCollapse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         PainelClientesLayout.setVerticalGroup(
             PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnExpandCollapse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addGroup(PainelClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
@@ -656,7 +656,7 @@ public class TelaCliente extends javax.swing.JPanel {
                         .addComponent(pnlCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(pnlSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 22, Short.MAX_VALUE)))
+                        .addGap(0, 28, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         CadastroLayout.setVerticalGroup(
@@ -728,7 +728,7 @@ public class TelaCliente extends javax.swing.JPanel {
         LayerCliente.setLayout(LayerClienteLayout);
         LayerClienteLayout.setHorizontalGroup(
             LayerClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(Cadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
             .addGroup(LayerClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(Default, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1270,28 +1270,28 @@ public class TelaCliente extends javax.swing.JPanel {
 
     private void PainelClientesComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelClientesComponentResized
         if (PainelClientes.getWidth() < 900) {
-            jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png")));
+            btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png")));
         } else {
-            jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/collapse.png")));
+            btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/collapse.png")));
         }
     }//GEN-LAST:event_PainelClientesComponentResized
 
-    private void jLabel20MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseEntered
-        jLabel20.setBackground(Color.LIGHT_GRAY);
-    }//GEN-LAST:event_jLabel20MouseEntered
+    private void btnExpandCollapseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMouseEntered
+        btnExpandCollapse.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnExpandCollapseMouseEntered
 
-    private void jLabel20MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseExited
-        jLabel20.setBackground(Color.white);
-    }//GEN-LAST:event_jLabel20MouseExited
+    private void btnExpandCollapseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMouseExited
+        btnExpandCollapse.setBackground(Color.white);
+    }//GEN-LAST:event_btnExpandCollapseMouseExited
 
-    private void jLabel20MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MousePressed
+    private void btnExpandCollapseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMousePressed
         if (PainelClientes.getWidth() < 900) {
             LayerCliente.setVisible(false);
 
         } else {
             LayerCliente.setVisible(true);
         }
-    }//GEN-LAST:event_jLabel20MousePressed
+    }//GEN-LAST:event_btnExpandCollapseMousePressed
 
     private void tblClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMousePressed
         //CLICAR 2X NA LINHA DE ALGUM CLIENTE IRÁ ABRIR O FORMULARIO DO CLIENTE COM TODOS OS DADOS
@@ -1312,6 +1312,7 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JPanel PainelClientes;
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelIdentificacao;
+    private javax.swing.JLabel btnExpandCollapse;
     private javax.swing.JComboBox<String> cboFiltroConsulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1325,7 +1326,6 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

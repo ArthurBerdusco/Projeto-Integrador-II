@@ -32,7 +32,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnProduto = new javax.swing.JLabel();
         btnCliente = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JLabel();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        LayerPaineis = new javax.swing.JLayeredPane();
         pnlCliente = new com.senac.cliente.TelaCliente();
         pnlProduto = new com.senac.produto.TelaProduto();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -106,29 +106,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
-        jLayeredPane1.setLayer(pnlCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(pnlProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LayerPaineis.setLayer(pnlCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LayerPaineis.setLayer(pnlProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
-        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
-        jLayeredPane1.setLayout(jLayeredPane1Layout);
-        jLayeredPane1Layout.setHorizontalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+        javax.swing.GroupLayout LayerPaineisLayout = new javax.swing.GroupLayout(LayerPaineis);
+        LayerPaineis.setLayout(LayerPaineisLayout);
+        LayerPaineisLayout.setHorizontalGroup(
+            LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LayerPaineisLayout.createSequentialGroup()
                 .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jLayeredPane1Layout.setVerticalGroup(
-            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        LayerPaineisLayout.setVerticalGroup(
+            LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LayerPaineisLayout.createSequentialGroup()
+                .addGroup(LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 150, Short.MAX_VALUE))
         );
 
-        PaineisAjustaveis.setRightComponent(jLayeredPane1);
+        PaineisAjustaveis.setRightComponent(LayerPaineis);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -237,13 +237,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLayeredPane LayerPaineis;
     private javax.swing.JSplitPane PaineisAjustaveis;
     private javax.swing.JPanel PainelMenu;
     private javax.swing.JLabel btnCliente;
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
     private javax.swing.JLabel btnVenda;
-    private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

@@ -15,13 +15,14 @@ public class TelaProduto extends javax.swing.JPanel {
     private void initComponents() {
 
         lblProdutos = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        PainelProdutos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProdutos = new javax.swing.JTable();
         lblFiltrar = new javax.swing.JLabel();
         lblBuscar = new javax.swing.JLabel();
         txtBusca = new javax.swing.JTextField();
         cboFiltro = new javax.swing.JComboBox<>();
+        btnExpandCollapse = new javax.swing.JLabel();
         LayerProduto = new javax.swing.JLayeredPane();
         pnlCadastroProduto = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -31,7 +32,7 @@ public class TelaProduto extends javax.swing.JPanel {
         lblDescPnl = new javax.swing.JLabel();
         lblDescEdit = new javax.swing.JLabel();
         lblDescAdd = new javax.swing.JLabel();
-        pnlNovoProduto = new javax.swing.JPanel();
+        btnNovoProduto = new javax.swing.JPanel();
         lblNovoProduto = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1350, 780));
@@ -39,11 +40,11 @@ public class TelaProduto extends javax.swing.JPanel {
         lblProdutos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblProdutos.setText("PRODUTOS");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setPreferredSize(new java.awt.Dimension(784, 713));
+        PainelProdutos.setBackground(new java.awt.Color(255, 255, 255));
+        PainelProdutos.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelProdutos.setPreferredSize(new java.awt.Dimension(784, 713));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -54,7 +55,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProdutos);
 
         lblFiltrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblFiltrar.setText("FILTRAR POR:");
@@ -67,34 +68,57 @@ public class TelaProduto extends javax.swing.JPanel {
         cboFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+        btnExpandCollapse.setBackground(new java.awt.Color(255, 255, 255));
+        btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png"))); // NOI18N
+        btnExpandCollapse.setOpaque(true);
+        btnExpandCollapse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExpandCollapseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExpandCollapseMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnExpandCollapseMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PainelProdutosLayout = new javax.swing.GroupLayout(PainelProdutos);
+        PainelProdutos.setLayout(PainelProdutosLayout);
+        PainelProdutosLayout.setHorizontalGroup(
+            PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelProdutosLayout.createSequentialGroup()
+                .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelProdutosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE))
+                    .addGroup(PainelProdutosLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtBusca)
+                            .addComponent(cboFiltro, 0, 298, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExpandCollapse)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtBusca)
-                    .addComponent(cboFiltro, 0, 298, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
+        PainelProdutosLayout.setVerticalGroup(
+            PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelProdutosLayout.createSequentialGroup()
+                .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelProdutosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(PainelProdutosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnExpandCollapse)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
@@ -190,29 +214,29 @@ public class TelaProduto extends javax.swing.JPanel {
             LayerProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LayerProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlDefault, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlDefault, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
         );
         LayerProdutoLayout.setVerticalGroup(
             LayerProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pnlCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(LayerProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlDefault, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(pnlDefault, javax.swing.GroupLayout.DEFAULT_SIZE, 752, Short.MAX_VALUE))
         );
 
-        pnlNovoProduto.setBackground(new java.awt.Color(52, 134, 242));
-        pnlNovoProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlNovoProduto.setPreferredSize(new java.awt.Dimension(120, 37));
-        pnlNovoProduto.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnNovoProduto.setBackground(new java.awt.Color(52, 134, 242));
+        btnNovoProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNovoProduto.setPreferredSize(new java.awt.Dimension(120, 37));
+        btnNovoProduto.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                pnlNovoProdutoMouseMoved(evt);
+                btnNovoProdutoMouseMoved(evt);
             }
         });
-        pnlNovoProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnNovoProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlNovoProdutoMouseClicked(evt);
+                btnNovoProdutoMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlNovoProdutoMouseExited(evt);
+                btnNovoProdutoMouseExited(evt);
             }
         });
 
@@ -223,17 +247,17 @@ public class TelaProduto extends javax.swing.JPanel {
         lblNovoProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
         lblNovoProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout pnlNovoProdutoLayout = new javax.swing.GroupLayout(pnlNovoProduto);
-        pnlNovoProduto.setLayout(pnlNovoProdutoLayout);
-        pnlNovoProdutoLayout.setHorizontalGroup(
-            pnlNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlNovoProdutoLayout.createSequentialGroup()
+        javax.swing.GroupLayout btnNovoProdutoLayout = new javax.swing.GroupLayout(btnNovoProduto);
+        btnNovoProduto.setLayout(btnNovoProdutoLayout);
+        btnNovoProdutoLayout.setHorizontalGroup(
+            btnNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnNovoProdutoLayout.createSequentialGroup()
                 .addComponent(lblNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        pnlNovoProdutoLayout.setVerticalGroup(
-            pnlNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlNovoProdutoLayout.createSequentialGroup()
+        btnNovoProdutoLayout.setVerticalGroup(
+            btnNovoProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnNovoProdutoLayout.createSequentialGroup()
                 .addComponent(lblNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -244,12 +268,12 @@ public class TelaProduto extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblProdutos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PainelProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -258,15 +282,15 @@ public class TelaProduto extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(lblProdutos)
-                            .addComponent(pnlNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnNovoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addComponent(PainelProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,34 +299,53 @@ public class TelaProduto extends javax.swing.JPanel {
         pnlDefault.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void pnlNovoProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseMoved
+    private void btnNovoProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseMoved
         Color corPersonalizada = new Color(255, 255, 255);
         Color corLabel = new Color(56, 134, 242);
-        pnlNovoProduto.setBackground(corPersonalizada);
+        btnNovoProduto.setBackground(corPersonalizada);
         lblNovoProduto.setForeground(corLabel);
-    }//GEN-LAST:event_pnlNovoProdutoMouseMoved
+    }//GEN-LAST:event_btnNovoProdutoMouseMoved
 
-    private void pnlNovoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseClicked
+    private void btnNovoProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseClicked
+        LayerProduto.setVisible(true);
         pnlCadastroProduto.setVisible(true);
         pnlDefault.setVisible(false);
-    }//GEN-LAST:event_pnlNovoProdutoMouseClicked
+    }//GEN-LAST:event_btnNovoProdutoMouseClicked
 
-    private void pnlNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlNovoProdutoMouseExited
+    private void btnNovoProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNovoProdutoMouseExited
         Color corPersonalizada = new Color(56, 134, 242);
-        pnlNovoProduto.setBackground(corPersonalizada);
+        btnNovoProduto.setBackground(corPersonalizada);
         lblNovoProduto.setForeground(Color.white);
-    }//GEN-LAST:event_pnlNovoProdutoMouseExited
+    }//GEN-LAST:event_btnNovoProdutoMouseExited
+
+    private void btnExpandCollapseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMouseEntered
+        btnExpandCollapse.setBackground(Color.LIGHT_GRAY);
+    }//GEN-LAST:event_btnExpandCollapseMouseEntered
+
+    private void btnExpandCollapseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMouseExited
+        btnExpandCollapse.setBackground(Color.white);
+    }//GEN-LAST:event_btnExpandCollapseMouseExited
+
+    private void btnExpandCollapseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMousePressed
+        if (PainelProdutos.getWidth() < 900) {
+            LayerProduto.setVisible(false);
+
+        } else {
+            LayerProduto.setVisible(true);
+        }
+    }//GEN-LAST:event_btnExpandCollapseMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane LayerProduto;
+    private javax.swing.JPanel PainelProdutos;
+    private javax.swing.JLabel btnExpandCollapse;
+    private javax.swing.JPanel btnNovoProduto;
     private javax.swing.JComboBox<String> cboFiltro;
     private javax.swing.JLabel imgProduto;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblDescAdd;
     private javax.swing.JLabel lblDescEdit;
@@ -312,7 +355,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JLabel lblProdutos;
     private javax.swing.JPanel pnlCadastroProduto;
     private javax.swing.JPanel pnlDefault;
-    private javax.swing.JPanel pnlNovoProduto;
+    private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtBusca;
     // End of variables declaration//GEN-END:variables
 }
