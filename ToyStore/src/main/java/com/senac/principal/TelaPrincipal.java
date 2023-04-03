@@ -16,7 +16,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
-        pnlCliente.setVisible(false);
+        trocarPainel("pnlVenda");
 
 //        Venda.setVisible(false);
     }
@@ -40,7 +40,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1540, 810));
 
         PaineisAjustaveis.setDividerSize(0);
 
@@ -153,28 +152,42 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void trocarPainel(String selecionarPainel) {
+        if (selecionarPainel == "pnlVenda") {
+            pnlCliente.setVisible(false);
+            pnlProduto.setVisible(false);
+        } else if (selecionarPainel == "pnlProdutos") {
+            pnlCliente.setVisible(false);
+            pnlProduto.setVisible(true);
+        } else if (selecionarPainel == "pnlClientes") {
+            pnlCliente.setVisible(true);
+            pnlProduto.setVisible(false);
+        } else if (selecionarPainel == "pnlRelatorio") {
+            pnlCliente.setVisible(false);
+            pnlProduto.setVisible(false);
+        }
+    }
+
     public void focarVenda() {
-        Color azulMarinho = new Color(255,12,120);
+        Color azulMarinho = new Color(255, 12, 120);
         btnVenda.setBackground(azulMarinho);
         btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
     }
     private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
         focarBotaoMenu(btnVenda);
-        pnlCliente.setVisible(false);
+        trocarPainel("pnlVenda");
     }//GEN-LAST:event_btnVendaMousePressed
 
     private void btnProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMousePressed
         focarBotaoMenu(btnProduto);
-        pnlCliente.setVisible(false);
-        pnlProduto.setVisible(true);
+        trocarPainel("pnlProdutos");
 //        Venda.setVisible(false);
 
     }//GEN-LAST:event_btnProdutoMousePressed
 
     private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
         focarBotaoMenu(btnCliente);
-        pnlProduto.setVisible(false);
-        pnlCliente.setVisible(true);
+        trocarPainel("pnlClientes");
 //        Venda.setVisible(false);
 
 
@@ -182,12 +195,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMousePressed
         focarBotaoMenu(btnRelatorio);
-        pnlCliente.setVisible(false);
+        trocarPainel("pnlRelatorio");
     }//GEN-LAST:event_btnRelatorioMousePressed
 
     protected void focarBotaoMenu(JLabel btn) {
         //Color azulMarinho = new Color(26, 187, 156);
-        Color azulMarinho = new Color(255,12,120);
+        Color azulMarinho = new Color(255, 12, 120);
         if (btn.getName() == "Venda") {
             btnVenda.setBackground(azulMarinho);
             btnProduto.setBackground(Color.DARK_GRAY);
