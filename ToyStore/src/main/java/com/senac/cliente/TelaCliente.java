@@ -989,7 +989,7 @@ public class TelaCliente extends javax.swing.JPanel {
             tblCliente.getColumnModel().getColumn(6).setCellRenderer(new ImageRender());
             tblCliente.getColumnModel().getColumn(7).setCellRenderer(new ImageRender());
         }
-        System.out.println(PainelClientes.getSize().getWidth());
+
     }
 
     public boolean validarCampos() {
@@ -1263,7 +1263,7 @@ public class TelaCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNomeFocusLost
 
     private void PainelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PainelClientesMouseClicked
-        System.out.println(PainelClientes.getSize().getWidth());
+
     }//GEN-LAST:event_PainelClientesMouseClicked
 
     private void PainelClientesComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PainelClientesComponentResized

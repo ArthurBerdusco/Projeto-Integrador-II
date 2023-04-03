@@ -526,7 +526,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGroup(tabFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabFornecedoresLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 777, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
                     .addGroup(tabFornecedoresLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(tabFornecedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,6 +589,7 @@ public class TelaProduto extends javax.swing.JPanel {
             }
         });
 
+        pnlIdentAdd.setBackground(new java.awt.Color(255, 255, 255));
         pnlIdentAdd.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -703,6 +704,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(7, Short.MAX_VALUE))
         );
 
+        pnlValores.setBackground(new java.awt.Color(255, 255, 255));
         pnlValores.setBorder(javax.swing.BorderFactory.createTitledBorder("Valores"));
 
         lblValorCusto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -758,6 +760,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
+        pnlArmazem.setBackground(new java.awt.Color(255, 255, 255));
         pnlArmazem.setBorder(javax.swing.BorderFactory.createTitledBorder("Armazenamento"));
 
         txtCorredor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -866,7 +869,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addComponent(pnlArmazem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCancelar)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         pnlDefault.setBackground(new java.awt.Color(255, 255, 255));
@@ -900,7 +903,7 @@ public class TelaProduto extends javax.swing.JPanel {
         pnlDefaultLayout.setVerticalGroup(
             pnlDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDefaultLayout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(imgProduto)
                 .addGap(18, 18, 18)
                 .addComponent(lblDescPnl)
@@ -928,6 +931,7 @@ public class TelaProduto extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1021,6 +1025,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Fornecedor"));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1051,6 +1056,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Armazenamento"));
 
         lblPratileira1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1154,8 +1160,10 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(145, Short.MAX_VALUE))
         );
 
+        pnlCadastroForn.setBackground(new java.awt.Color(255, 255, 255));
         pnlCadastroForn.setPreferredSize(new java.awt.Dimension(526, 764));
 
+        pnlIdentForn.setBackground(new java.awt.Color(255, 255, 255));
         pnlIdentForn.setBorder(javax.swing.BorderFactory.createTitledBorder("Identificação"));
 
         lblIDForn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1261,6 +1269,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pnlFornecedor2.setBackground(new java.awt.Color(255, 255, 255));
         pnlFornecedor2.setBorder(javax.swing.BorderFactory.createTitledBorder("Produtos do fornecedor"));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -1329,6 +1338,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista de produtos do fornecedor"));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -1399,7 +1409,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGroup(pnlCadastroFornLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton13)
                     .addComponent(jButton12))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         LayerProduto.setLayer(pnlAdicionarProd, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -1441,7 +1451,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(tabPainel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LayerProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 530, Short.MAX_VALUE)
+                .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
@@ -1449,7 +1459,7 @@ public class TelaProduto extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LayerProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(tabPainel))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -1576,11 +1586,11 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void btnExpandCollapse2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapse2MouseEntered
-        btnExpandCollapse.setBackground(Color.LIGHT_GRAY);
+        btnExpandCollapse2.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_btnExpandCollapse2MouseEntered
 
     private void btnExpandCollapse2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapse2MouseExited
-        btnExpandCollapse.setBackground(Color.white);
+        btnExpandCollapse2.setBackground(Color.white);
     }//GEN-LAST:event_btnExpandCollapse2MouseExited
 
     private void btnExpandCollapse2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapse2MousePressed
