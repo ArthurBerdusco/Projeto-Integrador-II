@@ -12,14 +12,14 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, String dataNasc, String sexo, String estadoCivil, String email, String endereco, String numero, String completo, String telefone) {
+    public Cliente(String nome, String cpf, String dataNasc, String sexo, String estadoCivil, String email, String rua, String numero, String completo, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
         this.sexo = sexo;
         this.estadoCivil = estadoCivil;
         this.email = email;
-        this.endereco = endereco;
+        this.rua = rua;
         this.numero = numero;
         this.completo = completo;
         this.telefone = telefone;
@@ -27,7 +27,7 @@ public class Cliente {
     private String email;
     
     //Endereço
-    private String endereco;
+    private String rua;
     private String numero;
     private String completo;
     private String telefone;
@@ -80,12 +80,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getRua() {
+        return rua;
     }
 
     public void setRua(String rua) {
-        this.endereco = rua;
+        this.rua = rua;
     }
 
     public String getNumero() {
