@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 public class Validador {
 
@@ -43,6 +45,8 @@ public class Validador {
                 Color corPersonalizada = new Color(255, 0, 0);
                 txt.setBorder(BorderFactory.createLineBorder(corPersonalizada));
                 throw new IllegalArgumentException();
+            } else {
+                txt.setBorder(new LineBorder(Color.lightGray));
             }
 
         } catch (NumberFormatException ex) {
@@ -131,5 +135,4 @@ public class Validador {
         }
 
     }
-    
 }
