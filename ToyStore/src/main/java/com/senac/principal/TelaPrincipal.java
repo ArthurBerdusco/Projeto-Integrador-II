@@ -17,8 +17,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
         trocarPainel("pnlVenda");
-
-//        Venda.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +33,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         LayerPaineis = new javax.swing.JLayeredPane();
         pnlCliente = new com.senac.cliente.TelaCliente();
         pnlProduto = new com.senac.produto.TelaProduto();
+        pnlRelatorio = new com.senac.relatorio.TelaRelatorio();
+        pnlVenda = new com.senac.venda.TelaVenda();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -106,15 +106,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
+        LayerPaineis.setPreferredSize(new java.awt.Dimension(1350, 780));
+
         LayerPaineis.setLayer(pnlCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
         LayerPaineis.setLayer(pnlProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LayerPaineis.setLayer(pnlRelatorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        LayerPaineis.setLayer(pnlVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout LayerPaineisLayout = new javax.swing.GroupLayout(LayerPaineis);
         LayerPaineis.setLayout(LayerPaineisLayout);
         LayerPaineisLayout.setHorizontalGroup(
             LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerPaineisLayout.createSequentialGroup()
-                .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 1356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -124,8 +132,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(LayerPaineisLayout.createSequentialGroup()
                 .addGroup(LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 150, Short.MAX_VALUE))
+                    .addComponent(pnlProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         PaineisAjustaveis.setRightComponent(LayerPaineis);
@@ -142,11 +152,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.PREFERRED_SIZE, 2308, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 5608, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
 
         pack();
@@ -154,22 +164,32 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void trocarPainel(String selecionarPainel) {
         if (selecionarPainel == "pnlVenda") {
+            
+            pnlVenda.setVisible(true);
             pnlCliente.setVisible(false);
             pnlProduto.setVisible(false);
+            pnlRelatorio.setVisible(false);
         } else if (selecionarPainel == "pnlProdutos") {
-            pnlCliente.setVisible(false);
             pnlProduto.setVisible(true);
+            pnlCliente.setVisible(false);
+            pnlVenda.setVisible(false);
+            pnlRelatorio.setVisible(false);
         } else if (selecionarPainel == "pnlClientes") {
             pnlCliente.setVisible(true);
             pnlProduto.setVisible(false);
+            pnlVenda.setVisible(false);
+            pnlRelatorio.setVisible(false);
         } else if (selecionarPainel == "pnlRelatorio") {
+            pnlRelatorio.setVisible(true);
             pnlCliente.setVisible(false);
             pnlProduto.setVisible(false);
+            //telaVenda1.setVisible(false);
         }
     }
 
     public void focarVenda() {
-        Color azulMarinho = new Color(255, 12, 120);
+        //Color vermelhoRosado = new Color(255, 12, 120);
+        Color azulMarinho = new Color(56, 134, 242);
         btnVenda.setBackground(azulMarinho);
         btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
     }
@@ -199,8 +219,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRelatorioMousePressed
 
     protected void focarBotaoMenu(JLabel btn) {
-        //Color azulMarinho = new Color(26, 187, 156);
-        Color azulMarinho = new Color(255, 12, 120);
+        //Color vermelhoRosado = new Color(255, 12, 120);
+        Color azulMarinho = new Color(56, 134, 242);
         if (btn.getName() == "Venda") {
             btnVenda.setBackground(azulMarinho);
             btnProduto.setBackground(Color.DARK_GRAY);
@@ -263,6 +283,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private com.senac.cliente.TelaCliente pnlCliente;
     private com.senac.produto.TelaProduto pnlProduto;
+    private com.senac.relatorio.TelaRelatorio pnlRelatorio;
+    private com.senac.venda.TelaVenda pnlVenda;
     private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
 }

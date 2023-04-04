@@ -1,6 +1,6 @@
 package com.senac.relatorio;
-public class Relatorio1 extends javax.swing.JPanel {
-    public Relatorio1() {
+public class TelaRelatorio extends javax.swing.JPanel {
+    public TelaRelatorio() {
         initComponents();
     }
     @SuppressWarnings("unchecked")
@@ -21,7 +21,7 @@ public class Relatorio1 extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(1316, 742));
+        setPreferredSize(new java.awt.Dimension(1350, 780));
 
         PainelFiltro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -41,7 +41,7 @@ public class Relatorio1 extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("Tipo de filtro:");
+        jLabel1.setText("TIPO FILTRO:");
 
         PainelBusca.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -51,7 +51,7 @@ public class Relatorio1 extends javax.swing.JPanel {
         PainelDia.setLayout(PainelDiaLayout);
         PainelDiaLayout.setHorizontalGroup(
             PainelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1106, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         PainelDiaLayout.setVerticalGroup(
             PainelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,7 +194,7 @@ public class Relatorio1 extends javax.swing.JPanel {
         );
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
