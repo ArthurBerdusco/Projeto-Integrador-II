@@ -10,28 +10,31 @@ import javax.swing.JTextField;
 public class Validador {
 
     public ArrayList<String> mensagemErro = new ArrayList<>();
-    
+
+    public void pintarBordaVermelho(JTextField campo) {
+        campo.setBorder(BorderFactory.createLineBorder(Color.red));
+    }
+
     public void validarNome(JTextField nome) {
         try {
             if (nome.getText().trim().isEmpty()) {
                 throw new Exception("Nome inválido");
             }
-            
+
             String[] partesNome = nome.getText().split(" ");
-            
+
             if (partesNome.length < 2) {
                 throw new Exception("Por favor digite o nome completo");
             }
-            
+
             for (String parte : partesNome) {
                 if (!parte.matches("[a-zA-Z]+")) {
                     throw new Exception("Por favor digite apenas letras no nome");
                 }
             }
-            
+
         } catch (Exception e) {
-            Color corPersonalizada = new Color(255, 0, 0);
-            nome.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            pintarBordaVermelho(nome);
             mensagemErro.add(e.getMessage());
         }
 
@@ -40,8 +43,7 @@ public class Validador {
     public void validarString(JTextField txt) {
         try {
             if (txt.getText().trim().isEmpty()) {
-                Color corPersonalizada = new Color(255, 0, 0);
-                txt.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+                pintarBordaVermelho(txt);
                 throw new IllegalArgumentException();
             }
 
@@ -54,15 +56,14 @@ public class Validador {
         }
     }
 
-    public void validarCpf(JFormattedTextField txt) {
+    public void validarCpf(JFormattedTextField cpf) {
         try {
-            if (txt.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
+            if (cpf.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
                 throw new Exception("Preencha o campo CPF!");
             }
 
         } catch (Exception e) {
-            Color corPersonalizada = new Color(255, 0, 0);
-            txt.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            pintarBordaVermelho(cpf);
             this.mensagemErro.add(e.getMessage());
         }
     }
@@ -100,8 +101,7 @@ public class Validador {
                 throw new Exception("Confira o ano de nascimento!");
             }
         } catch (Exception e) {
-            Color corPersonalizada = new Color(255, 0, 0);
-            dataFld.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            pintarBordaVermelho(dataFld);
             this.mensagemErro.add(e.getMessage());
         }
 
@@ -113,8 +113,7 @@ public class Validador {
                 throw new Exception("Preencha o campo telefone!");
             }
         } catch (Exception e) {
-            Color corPersonalizada = new Color(255, 0, 0);
-            telefone.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            pintarBordaVermelho(telefone);
             this.mensagemErro.add(e.getMessage());
         }
     }
@@ -125,11 +124,40 @@ public class Validador {
                 throw new Exception("Email inválido!");
             }
         } catch (Exception e) {
-            Color corPersonalizada = new Color(255, 0, 0);
-            email.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+            pintarBordaVermelho(email);
             mensagemErro.add(e.getMessage());
         }
-
     }
-    
+
+    public void validarID(JTextField id) {
+        try {
+            if (id.getText().trim().isEmpty()) {
+                throw new Exception("Id não pode ser nulo, tente novamente.");
+            }
+        } catch (Exception e) {
+            pintarBordaVermelho(id);
+            mensagemErro.add(e.getMessage());
+        }
+    }
+
+    public void validarDinheiro(JFormattedTextField dinheiro) {
+        try {
+
+            if ((Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", "")) <= 0) || (dinheiro.getText().trim().isEmpty())) {
+
+                throw new Exception("Valor de custo inválido");
+            }
+            Integer.parseInt(dinheiro.getText());
+        } catch (NumberFormatException e) {
+            int num = Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", ""));
+            System.out.println(num + " kkkkkkkk");
+            pintarBordaVermelho(dinheiro);
+            mensagemErro.add("Digite apenas números no valor de custo");
+        } catch (Exception e) {
+            System.out.println("esntrei aquikk");
+            pintarBordaVermelho(dinheiro);
+            mensagemErro.add(e.getMessage());
+        }
+    }
+
 }
