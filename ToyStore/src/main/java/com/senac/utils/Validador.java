@@ -41,7 +41,9 @@ public class Validador {
                 }
             }
 
+
             pintarBordaCinza(nome);
+
         } catch (Exception e) {
             pintarBordaVermelho(nome);
             mensagemErro.add(e.getMessage());
@@ -147,6 +149,7 @@ public class Validador {
             }
             pintarBordaCinza(id);
         } catch (Exception e) {
+
             pintarBordaVermelho(id);
             mensagemErro.add(e.getMessage());
         }
@@ -211,6 +214,43 @@ public class Validador {
      } catch (Exception e) {
             JOptionPane.showMessageDialog(senha, e.getMessage());
         }
+
+            pintarBordaVermelho(email);
+            mensagemErro.add(e.getMessage());
+        }
+    }
+
+    public void validarID(JTextField id) {
+        try {
+            if (id.getText().trim().isEmpty()) {
+                throw new Exception("Id não pode ser nulo, tente novamente.");
+            }
+        } catch (Exception e) {
+            pintarBordaVermelho(id);
+            mensagemErro.add(e.getMessage());
+        }
+    }
+
+    public void validarDinheiro(JFormattedTextField dinheiro) {
+        try {
+
+            if ((Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", "")) <= 0) || (dinheiro.getText().trim().isEmpty())) {
+
+                throw new Exception("Valor de custo inválido");
+            }
+            Integer.parseInt(dinheiro.getText());
+        } catch (NumberFormatException e) {
+            int num = Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", ""));
+            System.out.println(num + " kkkkkkkk");
+            pintarBordaVermelho(dinheiro);
+            mensagemErro.add("Digite apenas números no valor de custo");
+        } catch (Exception e) {
+            System.out.println("esntrei aquikk");
+            pintarBordaVermelho(dinheiro);
+            mensagemErro.add(e.getMessage());
+        }
+    }
+
 }
 } 
 
