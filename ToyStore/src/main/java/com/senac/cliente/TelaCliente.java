@@ -453,6 +453,11 @@ public class TelaCliente extends javax.swing.JPanel {
                 txtRuaFocusLost(evt);
             }
         });
+        txtRua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRuaActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("NÚMERO");
@@ -1302,6 +1307,10 @@ public class TelaCliente extends javax.swing.JPanel {
             deletarCliente(point);
         }
     }//GEN-LAST:event_tblClienteMousePressed
+
+    private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRuaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cadastro;
