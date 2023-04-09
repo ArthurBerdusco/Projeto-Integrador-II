@@ -885,7 +885,7 @@ public class TelaCliente extends javax.swing.JPanel {
 
     public void lerFormularioCliente(Point linhaTblClicada) {
         int linhaClicada = tblCliente.rowAtPoint(linhaTblClicada);
-        editarCliente = true;
+        this.editarCliente = true;
         //Default.setVisible(false);
         LayerCliente.setVisible(true);
         Cadastro.setVisible(true);
@@ -1052,7 +1052,6 @@ public class TelaCliente extends javax.swing.JPanel {
         desfocarCampoTexto(txtNumero);
         desfocarCampoTexto(txtComplemento);
         desfocarCampoTexto(txtTelefone);
-
     }
 
     //REALIZA O RESET DA TABELA APÓS LIMPAR FILTRO OU FINALIZAR EDIÇÃO DE CADASTRO
@@ -1232,7 +1231,7 @@ public class TelaCliente extends javax.swing.JPanel {
             editarCadastroCliente(listaClientes, this.auxiliarEditCliente);
             Cadastro.setVisible(false);
             //Default.setVisible(true);
-            editarCliente = false;
+            this.editarCliente = false;
         }
     }//GEN-LAST:event_pnlSalvarMouseClicked
 

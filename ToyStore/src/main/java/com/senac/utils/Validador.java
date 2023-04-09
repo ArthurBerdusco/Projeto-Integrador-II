@@ -152,15 +152,10 @@ public class Validador {
 
     public void validarDinheiro(JTextField dinheiro) {
         try {
-            if ((Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", "")) <= 0) || (dinheiro.getText().trim().isEmpty())) {
-                throw new Exception("Valor de custo inválido");
+            if (dinheiro.getText().replace(".", "").replace("R$", "").replace(",", "").trim().isEmpty()) {
+                throw new Exception("Valor do produto inválido");
             }
             pintarBordaCinza(dinheiro);
-        } catch (NumberFormatException e) {
-            
-            
-            pintarBordaVermelho(dinheiro);
-            mensagemErro.add("Digite apenas números no valor de custo");
         } catch (Exception e) {
             pintarBordaVermelho(dinheiro);
             mensagemErro.add(e.getMessage());
@@ -180,7 +175,7 @@ public class Validador {
         }
     }
 
-    public void validarDescricaoProduto(JTextField descProd) {
+    public void validarDescProd(JTextField descProd) {
         try {
             if (descProd.getText().trim().isEmpty()) {
                 throw new NullPointerException("Preencha o campo descrição do produto");

@@ -4,7 +4,7 @@ public class Produto {
 
     private String descricao;
     private String cod_barras;
-    private String localFoto;
+    private String localFoto = "/produto/t1.png";
     private String valorVenda;
     private String valorCusto;
     private String margemLucro;
