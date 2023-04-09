@@ -28,7 +28,12 @@ public class Produto {
         this.quantidade = quantidade;
     }
 
-
+    public float valorTotalVenda(){
+        int qntProd = Integer.parseInt(this.getQuantidade());
+        double valorVendaProd = Double.parseDouble(this.getValorVenda().replace("R", "").replace("$", "").replace(".", "").replace(",", "."));
+        float valorTotal = qntProd * (float)valorVendaProd;
+        return valorTotal;
+    }
 
     public String getCod_barras() {
         return cod_barras;

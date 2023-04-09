@@ -29,6 +29,7 @@ com\senac\cliente\TelaCliente.class
 com\senac\cliente\TelaCliente$4.class
 com\senac\cadastro\TelaCadastro$3.class
 com\senac\login\Login$7.class
+com\senac\produto\TelaProduto$14.class
 com\senac\cadastro\Cadastro.class
 com\senac\venda\TelaVenda.class
 com\senac\cliente\TelaCliente$10.class

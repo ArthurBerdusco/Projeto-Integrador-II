@@ -2,9 +2,13 @@ package com.senac.produto;
 
 import com.senac.utils.Validador;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,6 +67,8 @@ public class TelaProduto extends javax.swing.JPanel {
         txtBusca = new javax.swing.JTextField();
         cboFiltro = new javax.swing.JComboBox<>();
         btnExpandCollapse = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtValorProdVenda = new javax.swing.JTextField();
         LayerProduto = new javax.swing.JLayeredPane();
         pnlAdicionarProd = new javax.swing.JPanel();
         lblInfoProduto = new javax.swing.JLabel();
@@ -169,6 +175,15 @@ public class TelaProduto extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("VALOR TOTAL DE PRODUTOS A VENDA:");
+
+        txtValorProdVenda.setEditable(false);
+        txtValorProdVenda.setBackground(new java.awt.Color(0, 0, 0));
+        txtValorProdVenda.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        txtValorProdVenda.setForeground(new java.awt.Color(255, 255, 255));
+        txtValorProdVenda.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
         javax.swing.GroupLayout pnlProdutosLayout = new javax.swing.GroupLayout(pnlProdutos);
         pnlProdutos.setLayout(pnlProdutosLayout);
         pnlProdutosLayout.setHorizontalGroup(
@@ -190,7 +205,12 @@ public class TelaProduto extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlProdutosLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExpandCollapse)))
+                        .addComponent(btnExpandCollapse))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutosLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtValorProdVenda))))
                 .addContainerGap())
         );
         pnlProdutosLayout.setVerticalGroup(
@@ -198,7 +218,7 @@ public class TelaProduto extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnExpandCollapse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -207,7 +227,11 @@ public class TelaProduto extends javax.swing.JPanel {
                     .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtValorProdVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -216,6 +240,11 @@ public class TelaProduto extends javax.swing.JPanel {
 
         pnlAdicionarProd.setBackground(new java.awt.Color(255, 255, 255));
         pnlAdicionarProd.setPreferredSize(new java.awt.Dimension(526, 764));
+        pnlAdicionarProd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlAdicionarProdMouseClicked(evt);
+            }
+        });
 
         lblInfoProduto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblInfoProduto.setText("INFORMAÇÕES DO BRINQUEDO");
@@ -683,10 +712,14 @@ public class TelaProduto extends javax.swing.JPanel {
     }
 
     public void inserirProdutosTabela() {
+        float valor = 0;
         DefaultTableModel dtmProduto = (DefaultTableModel) tblProdutos.getModel();
         for (Produto produto : listaProdutos) {
             dtmProduto.addRow(camposProdutoTbl(produto));
+            
+            valor += produto.valorTotalVenda();
         }
+        txtValorProdVenda.setText(String.valueOf(valor));
     }
 
     public void lerFormProduto(String codBarras) {
@@ -706,7 +739,7 @@ public class TelaProduto extends javax.swing.JPanel {
                         Image resizedImage = originalImage.getScaledInstance(150, 200, Image.SCALE_FAST);
                         ImageIcon icon = new ImageIcon(resizedImage);
                         imgProduto.setIcon(icon);
-                    }else{
+                    } else {
                         imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png")));
                     }
                 } catch (Exception e) {
@@ -724,8 +757,10 @@ public class TelaProduto extends javax.swing.JPanel {
                 cboProdCorredor.setSelectedItem(listaProdutos.get(i).getCorredor());
                 cboProdPratileira.setSelectedItem(listaProdutos.get(i).getPratileira());
                 spnQntProd.setValue(Integer.parseInt(listaProdutos.get(i).getQuantidade()));
+                break;
             }
         }
+
     }
 
     public void resetFormulario() {
@@ -893,9 +928,18 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExpandCollapseMouseEntered
 
     private void btnAddProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMousePressed
-        this.resetFormulario();
-        this.auxEditProdut = false;
-        this.trocarPainelForm("pnlAdicionarProd");
+        if (this.auxEditProdut == true) {
+            int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
+            if (escolha == 0) {
+                this.resetFormulario();
+                this.auxEditProdut = false;
+                this.trocarPainelForm("pnlAdicionarProd");
+            }
+        } else {
+            this.resetFormulario();
+            this.auxEditProdut = false;
+            this.trocarPainelForm("pnlAdicionarProd");
+        }
     }//GEN-LAST:event_btnAddProdutoMousePressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -1075,7 +1119,6 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMouseClicked
 
-
     }//GEN-LAST:event_tblProdutosMouseClicked
 
     private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
@@ -1092,6 +1135,10 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblProdutosMousePressed
 
+    private void pnlAdicionarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAdicionarProdMouseClicked
+        System.out.println("kkk");
+    }//GEN-LAST:event_pnlAdicionarProdMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane LayerProduto;
@@ -1106,6 +1153,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JLabel imgDefaultProd;
     private javax.swing.JLabel imgProduto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddImg;
     private javax.swing.JLabel lblAddProduto;
@@ -1139,5 +1187,6 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JTextField txtMargemLucro;
     private javax.swing.JTextField txtProdValorCusto;
     private javax.swing.JTextField txtProdValorVenda;
+    private javax.swing.JTextField txtValorProdVenda;
     // End of variables declaration//GEN-END:variables
 }
