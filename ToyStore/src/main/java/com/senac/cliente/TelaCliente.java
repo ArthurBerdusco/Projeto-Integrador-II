@@ -41,7 +41,7 @@ public class TelaCliente extends javax.swing.JPanel {
         listaClientes.add(cliente2);
         listaClientes.add(cliente3);
         listaClientes.add(cliente4);
-        inserirClienteTabela(listaClientes);
+        inserirClienteTabela();
     }
 
     @SuppressWarnings("unchecked")
@@ -967,11 +967,11 @@ public class TelaCliente extends javax.swing.JPanel {
     }
 
     //REALIZA A LEITURA INICIAL DA BASE DE CLIENTES
-    public void inserirClienteTabela(ArrayList<Cliente> clientes) {
+    public void inserirClienteTabela() {
 
         DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
 
-        for (int i = 0; i < clientes.size(); i++) {
+        for (int i = 0; i < listaClientes.size(); i++) {
             tabelaCliente.addRow(new Object[]{
                 listaClientes.get(i).getCpf(),
                 listaClientes.get(i).getNome(),
@@ -1059,7 +1059,7 @@ public class TelaCliente extends javax.swing.JPanel {
     public void resetTabelaCliente() {
         DefaultTableModel tabelaCliente = (DefaultTableModel) tblCliente.getModel();
         tabelaCliente.setRowCount(0);
-        inserirClienteTabela(listaClientes);
+        inserirClienteTabela();
     }
 
     //CLASSE PARA REENDERIZAR OS ICONES DA TABELA (EDIÇÃO E EXCLUÇÃO) 

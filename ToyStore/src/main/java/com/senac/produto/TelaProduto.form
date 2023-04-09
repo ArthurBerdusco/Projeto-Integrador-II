@@ -137,19 +137,22 @@
             <Component class="javax.swing.JTable" name="tblProdutos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="9" rowCount="0">
-                    <Column editable="false" title="ID" type="java.lang.Object"/>
+                  <Table columnCount="8" rowCount="0">
+                    <Column editable="false" title="DESCRI&#xc7;&#xc3;O" type="java.lang.Object"/>
                     <Column editable="false" title="COD_BARRAS" type="java.lang.Object"/>
-                    <Column editable="false" title="NOME" type="java.lang.Object"/>
-                    <Column editable="false" title="DESCRICAO" type="java.lang.Object"/>
+                    <Column editable="false" title="CATEGORIA" type="java.lang.Object"/>
+                    <Column editable="false" title="VALOR_VENDA" type="java.lang.Object"/>
+                    <Column editable="false" title="%LUCRO" type="java.lang.Object"/>
                     <Column editable="false" title="QNT" type="java.lang.Object"/>
-                    <Column editable="false" title="PRE&#xc7;O_VENDA" type="java.lang.Object"/>
                     <Column editable="false" title="CORREDOR" type="java.lang.Object"/>
-                    <Column editable="false" title="GONDOLA" type="java.lang.Object"/>
                     <Column editable="false" title="PRATILEIRA" type="java.lang.Object"/>
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblProdutosMouseClicked"/>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblProdutosMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -598,6 +601,9 @@
                 <Component class="javax.swing.JTextField" name="txtMargemLucro">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="c0" green="c0" id="lightGray" palette="1" red="c0" type="palette"/>
+                    </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="16" style="1"/>
                     </Property>
@@ -666,24 +672,25 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblCategoria" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="cboProdCategoria" pref="0" max="32767" attributes="0"/>
+                                  <Component id="txtCorredor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboProdCorredor" alignment="1" pref="200" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="cboProdCategoria" pref="0" max="32767" attributes="0"/>
-                                      <Component id="txtCorredor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cboProdCorredor" alignment="1" pref="200" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cboProdPratileira" min="-2" pref="200" max="-2" attributes="0"/>
-                                      <Component id="lblPratileira" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                              <Component id="lblCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cboProdPratileira" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="lblPratileira" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="spnQntProd" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -700,9 +707,18 @@
                               <Component id="cboProdPratileira" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="lblCategoria" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cboProdCategoria" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="spnQntProd" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="cboProdCategoria" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace pref="9" max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -725,9 +741,9 @@
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
                         <StringItem index="0" value="Selecione:"/>
-                        <StringItem index="1" value="1"/>
-                        <StringItem index="2" value="2"/>
-                        <StringItem index="3" value="3"/>
+                        <StringItem index="1" value="A"/>
+                        <StringItem index="2" value="B"/>
+                        <StringItem index="3" value="C"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -748,13 +764,10 @@
                       <Font name="Tahoma" size="14" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
+                      <StringArray count="3">
                         <StringItem index="0" value="Selecione:"/>
-                        <StringItem index="1" value="A"/>
-                        <StringItem index="2" value="B"/>
-                        <StringItem index="3" value="C"/>
-                        <StringItem index="4" value="D"/>
-                        <StringItem index="5" value="E"/>
+                        <StringItem index="1" value="1"/>
+                        <StringItem index="2" value="2"/>
                       </StringArray>
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -798,7 +811,7 @@
                         <StringItem index="3" value="Educacionais"/>
                         <StringItem index="4" value="V&#xe9;iculos"/>
                         <StringItem index="5" value="A&#xe7;&#xe3;o e aventura"/>
-                        <StringItem index="6" value="Esporte e atividade ao ar livre"/>
+                        <StringItem index="6" value="Esporte e atividade ar livre"/>
                         <StringItem index="7" value="Musicais"/>
                         <StringItem index="8" value="Fantasia"/>
                         <StringItem index="9" value="Eletr&#xf4;nicos"/>
@@ -815,6 +828,24 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="spnQntProd">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="24" style="1"/>
+                    </Property>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="QUANTIDADE:"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

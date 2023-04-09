@@ -152,10 +152,7 @@ public class Validador {
 
     public void validarDinheiro(JTextField dinheiro) {
         try {
-            System.out.println(dinheiro.getText());
-
             if ((Integer.parseInt(dinheiro.getText().replace(".", "").replace("R$", "").replace(",", "")) <= 0) || (dinheiro.getText().trim().isEmpty())) {
-
                 throw new Exception("Valor de custo inválido");
             }
             pintarBordaCinza(dinheiro);
@@ -165,7 +162,6 @@ public class Validador {
             pintarBordaVermelho(dinheiro);
             mensagemErro.add("Digite apenas números no valor de custo");
         } catch (Exception e) {
-            System.out.println("esntrei aquikk");
             pintarBordaVermelho(dinheiro);
             mensagemErro.add(e.getMessage());
         }

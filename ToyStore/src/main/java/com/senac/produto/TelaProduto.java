@@ -3,24 +3,33 @@ package com.senac.produto;
 import com.senac.utils.Validador;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
 import java.util.Locale;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaProduto extends javax.swing.JPanel {
+
+    private ArrayList<Produto> listaProdutos = new ArrayList();
 
     public TelaProduto() {
         initComponents();
         trocarPainelForm("pnlDefault");
+        Produto produto1 = new Produto("Bola Oficial Champios League 2023", "937239102930", "/produtos/bolaChampion.png", "R$950", "R$580", "38.95%", "Esporte e atividade ar livre", "A", "1", "10");
+        listaProdutos.add(produto1);
+        inserirProdutosTabela();
     }
 
     @SuppressWarnings("unchecked")
@@ -61,6 +70,8 @@ public class TelaProduto extends javax.swing.JPanel {
         lblPratileira = new javax.swing.JLabel();
         lblCategoria = new javax.swing.JLabel();
         cboProdCategoria = new javax.swing.JComboBox<>();
+        spnQntProd = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
         btnCancelar1 = new javax.swing.JButton();
         pnlDefault = new javax.swing.JPanel();
         imgDefaultProd = new javax.swing.JLabel();
@@ -82,15 +93,23 @@ public class TelaProduto extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "COD_BARRAS", "NOME", "DESCRICAO", "QNT", "PREÇO_VENDA", "CORREDOR", "GONDOLA", "PRATILEIRA"
+                "DESCRIÇÃO", "COD_BARRAS", "CATEGORIA", "VALOR_VENDA", "%LUCRO", "QNT", "CORREDOR", "PRATILEIRA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProdutosMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblProdutosMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblProdutos);
@@ -297,6 +316,7 @@ public class TelaProduto extends javax.swing.JPanel {
         lblMargemLucro.setText("MARGEM LUCRO:");
 
         txtMargemLucro.setEditable(false);
+        txtMargemLucro.setBackground(java.awt.Color.lightGray);
         txtMargemLucro.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtMargemLucro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
 
@@ -370,11 +390,11 @@ public class TelaProduto extends javax.swing.JPanel {
         txtCorredor.setText("CORREDOR:");
 
         cboProdCorredor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboProdCorredor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "1", "2", "3" }));
+        cboProdCorredor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "A", "B", "C" }));
         cboProdCorredor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
 
         cboProdPratileira.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboProdPratileira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "A", "B", "C", "D", "E" }));
+        cboProdPratileira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "1", "2" }));
         cboProdPratileira.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
 
         lblPratileira.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -384,8 +404,14 @@ public class TelaProduto extends javax.swing.JPanel {
         lblCategoria.setText("CATEGORIA:");
 
         cboProdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Véiculos", "Ação e aventura", "Esporte e atividade ao ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
+        cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Véiculos", "Ação e aventura", "Esporte e atividade ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
         cboProdCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+
+        spnQntProd.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        spnQntProd.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("QUANTIDADE:");
 
         javax.swing.GroupLayout pnlArmazemLayout = new javax.swing.GroupLayout(pnlArmazem);
         pnlArmazem.setLayout(pnlArmazemLayout);
@@ -394,19 +420,20 @@ public class TelaProduto extends javax.swing.JPanel {
             .addGroup(pnlArmazemLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlArmazemLayout.createSequentialGroup()
-                        .addComponent(lblCategoria)
-                        .addGap(194, 194, 194))
-                    .addGroup(pnlArmazemLayout.createSequentialGroup()
-                        .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(cboProdCategoria, 0, 0, Short.MAX_VALUE)
-                            .addComponent(txtCorredor, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboProdCorredor, 0, 200, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboProdPratileira, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPratileira))
-                        .addGap(17, 17, 17))))
+                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cboProdCategoria, 0, 0, Short.MAX_VALUE)
+                        .addComponent(txtCorredor, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboProdCorredor, 0, 200, Short.MAX_VALUE))
+                    .addComponent(lblCategoria))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cboProdPratileira, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblPratileira))
+                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(spnQntProd, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(17, 17, 17))
         );
         pnlArmazemLayout.setVerticalGroup(
             pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,9 +446,15 @@ public class TelaProduto extends javax.swing.JPanel {
                     .addComponent(cboProdCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboProdPratileira, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(lblCategoria)
+                .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCategoria)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cboProdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(spnQntProd)
+                    .addGroup(pnlArmazemLayout.createSequentialGroup()
+                        .addComponent(cboProdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -610,15 +643,6 @@ public class TelaProduto extends javax.swing.JPanel {
         LayerProduto.setVisible(true);
         if (pnlSelecionado.equals("pnlAdicionarProd")) {
             pnlAdicionarProd.setVisible(true);
-
-            pnlDefault.setVisible(false);
-        } else if (pnlSelecionado.equals("pnlCadastroProd")) {
-            pnlAdicionarProd.setVisible(false);
-
-            pnlDefault.setVisible(false);
-        } else if (pnlSelecionado.equals("pnlCadastroForn")) {
-            pnlAdicionarProd.setVisible(false);
-
             pnlDefault.setVisible(false);
         } else if (pnlSelecionado.equals("pnlDefault")) {
             pnlAdicionarProd.setVisible(false);
@@ -626,7 +650,97 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }
 
+    public void inserirProdutosTabela() {
+        DefaultTableModel dtmProduto = (DefaultTableModel) tblProdutos.getModel();
+        for (Produto produto : listaProdutos) {
+            dtmProduto.addRow(camposProdutoTbl(produto));
+        }
+    }
+
+    public void lerFormProduto(String codBarras) {
+        for (int i = 0; i < listaProdutos.size(); i++) {
+            if (listaProdutos.get(i).getCod_barras().equals(codBarras)) {
+                txtDescProd.setText(listaProdutos.get(i).getDescricao());
+                txtCodBarras.setText(listaProdutos.get(i).getCod_barras());
+                imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource(listaProdutos.get(i).getLocalFoto())));
+                txtProdValorCusto.setText(listaProdutos.get(i).getValorCusto());
+                txtProdValorVenda.setText(listaProdutos.get(i).getValorVenda());
+                txtMargemLucro.setText(listaProdutos.get(i).getMargemLucro());
+                cboProdCategoria.setSelectedItem(listaProdutos.get(i).getCategoria());
+                cboProdCorredor.setSelectedItem(listaProdutos.get(i).getCorredor());
+                cboProdPratileira.setSelectedItem(listaProdutos.get(i).getPratileira());
+                spnQntProd.setValue(Integer.parseInt(listaProdutos.get(i).getQuantidade()));
+            }
+        }
+    }
+
+    public void resetFormulario() {
+        this.txtDescProd.setText("");
+        this.txtCodBarras.setText("");
+        this.imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png")));
+        this.txtProdValorCusto.setText("");
+        this.txtProdValorVenda.setText("");
+        this.txtMargemLucro.setText("");
+        this.txtMargemLucro.setBackground(Color.LIGHT_GRAY);
+        this.cboProdCategoria.setSelectedIndex(0);
+        this.cboProdPratileira.setSelectedIndex(0);
+        this.cboProdCorredor.setSelectedIndex(0);
+        this.spnQntProd.setValue(0);
+    }
+
+    public String locImgProduto(JLabel img) {
+        Icon icon = img.getIcon();
+        ImageIcon imageIcon = (ImageIcon) icon;
+        String pasta = imageIcon.getDescription();
+        String basePasta = getClass().getResource("/produtos/").getPath(); // caminho base da sua aplicação
+        String localImg = pasta.replace(basePasta, "").replace("file:", "");
+        return "/produtos/" + localImg;
+    }
+
+    public String[] camposProdutoTbl() {
+        String[] campos = new String[8];
+        campos[0] = txtDescProd.getText();
+        campos[1] = txtCodBarras.getText();
+        campos[2] = cboProdCategoria.getSelectedItem().toString();
+        campos[3] = txtProdValorVenda.getText();
+        campos[4] = txtMargemLucro.getText();
+        campos[5] = spnQntProd.getValue().toString();
+        campos[6] = cboProdCorredor.getSelectedItem().toString();
+        campos[7] = cboProdPratileira.getSelectedItem().toString();
+        return campos;
+    }
+
+    public String[] camposProdutoTbl(Produto produto) {
+        String[] campos = new String[8];
+        campos[0] = produto.getDescricao();
+        campos[1] = produto.getCod_barras();
+        campos[2] = produto.getCategoria();
+        campos[3] = produto.getValorVenda();
+        campos[4] = produto.getMargemLucro();
+        campos[5] = produto.getQuantidade();
+        campos[6] = produto.getCorredor();
+        campos[7] = produto.getPratileira();
+        return campos;
+    }
+
+    public void addNovoProdutoEstoq() {
+        Produto produto = new Produto();
+        produto.setDescricao(this.txtDescProd.getText());
+        produto.setCod_barras(this.txtCodBarras.getText());
+        produto.setLocalFoto(locImgProduto(this.imgProduto));
+        produto.setValorCusto(this.txtProdValorCusto.getText());
+        produto.setValorVenda(this.txtProdValorVenda.getText());
+        produto.setMargemLucro(this.txtMargemLucro.getText());
+        produto.setCategoria(this.cboProdCategoria.getSelectedItem().toString());
+        produto.setPratileira(this.cboProdPratileira.getSelectedItem().toString());
+        produto.setCorredor(this.cboProdCorredor.getSelectedItem().toString());
+        produto.setQuantidade(this.spnQntProd.getValue().toString());
+
+        listaProdutos.add(produto);
+    }
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        System.out.println(locImgProduto(imgProduto));
         Validador validador = new Validador();
         validador.validarNome(txtDescProd);
         validador.validarID(txtCodBarras);
@@ -637,6 +751,15 @@ public class TelaProduto extends javax.swing.JPanel {
         validador.validarComboBox(cboProdCorredor);
 
         if (validador.mensagemErro.size() == 0) {
+
+            DefaultTableModel tblProdutos = (DefaultTableModel) this.tblProdutos.getModel();
+            //Adiciona o item na JTable
+            tblProdutos.addRow(this.camposProdutoTbl());
+            //Adiciona um novo produto no estoque (ArrayList<Produto>)
+            addNovoProdutoEstoq();
+            //Reset formulário
+            resetFormulario();
+
             pnlAdicionarProd.setVisible(false);
             pnlDefault.setVisible(true);
         } else if (validador.mensagemErro.size() == 1) {
@@ -679,6 +802,7 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExpandCollapseMouseEntered
 
     private void btnAddProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMousePressed
+        this.resetFormulario();
         trocarPainelForm("pnlAdicionarProd");
     }//GEN-LAST:event_btnAddProdutoMousePressed
 
@@ -713,7 +837,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void txtProdValorVendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorVendaKeyTyped
 
-        if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+"))) {
+        if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
         }
 
@@ -722,15 +846,15 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void txtProdValorCustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorCustoKeyTyped
 
-        if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+"))) {
+        if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
         }
     }//GEN-LAST:event_txtProdValorCustoKeyTyped
 
-    public void calcMargemLucro(JTextField valorCusto, JTextField valorVenda) {
+    public void calcMargemLucro() {
         if (!(txtProdValorCusto.getText().replace("R", "").replace("$", "").replace(",", ".").trim().isEmpty()) && !(txtProdValorVenda.getText().replace("R", "").replace("$", "").replace(",", ".").trim().isEmpty())) {
-            Double vlrVenda = Double.parseDouble(valorVenda.getText().replace("R", "").replace("$", "").replace(".", "").replace(",", "."));
-            Double vlrCusto = Double.parseDouble(valorCusto.getText().replace("R", "").replace("$", "").replace(".", "").replace(",", "."));
+            Double vlrVenda = Double.parseDouble(txtProdValorVenda.getText().replace("R", "").replace("$", "").replace(".", "").replace(",", "."));
+            Double vlrCusto = Double.parseDouble(txtProdValorCusto.getText().replace("R", "").replace("$", "").replace(".", "").replace(",", "."));
 
             float margemLucro = (float) ((vlrVenda - vlrCusto) / vlrVenda) * 100;
 
@@ -766,13 +890,11 @@ public class TelaProduto extends javax.swing.JPanel {
             txtMargemLucro.setText("%--");
             txtMargemLucro.setBackground(Color.LIGHT_GRAY);
         } else {
-            calcMargemLucro(txtProdValorCusto, txtProdValorVenda);
+            calcMargemLucro();
             if (!(txtProdValorVenda.getText().contains("."))) {
                 String valor = df.format(Double.parseDouble(txtProdValorVenda.getText().replace("R", "").replace("$", "").replace(",", ".")));
                 txtProdValorVenda.setText("R$" + valor);
-                calcMargemLucro(txtProdValorCusto, txtProdValorVenda);
             }
-
         }
     }//GEN-LAST:event_txtProdValorVendaFocusLost
 
@@ -789,7 +911,7 @@ public class TelaProduto extends javax.swing.JPanel {
             txtMargemLucro.setText("%--");
             txtMargemLucro.setBackground(Color.LIGHT_GRAY);
         } else {
-            calcMargemLucro(txtProdValorCusto, txtProdValorVenda);
+            calcMargemLucro();
             if (!(txtProdValorCusto.getText().contains("."))) {
 
                 String valor = df.format(Double.parseDouble(txtProdValorCusto.getText().replace("R", "").replace("$", "").replace(",", ".")));
@@ -820,12 +942,29 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_lblRemovImgMouseExited
 
     private void lblRemovImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemovImgMousePressed
-       int escolhaRemovImg = JOptionPane.showConfirmDialog(this, "Deseja remover a imagem?", "Remover imagem", JOptionPane.YES_NO_OPTION);
-       if(escolhaRemovImg == 0){
-           imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png"))); 
-           lblRemovImg.setVisible(false);   
-       }
+        int escolhaRemovImg = JOptionPane.showConfirmDialog(this, "Deseja remover a imagem?", "Remover imagem", JOptionPane.YES_NO_OPTION);
+        if (escolhaRemovImg == 0) {
+            imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png")));
+            lblRemovImg.setVisible(false);
+        }
     }//GEN-LAST:event_lblRemovImgMousePressed
+
+    private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMouseClicked
+
+
+    }//GEN-LAST:event_tblProdutosMouseClicked
+
+    private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
+        if (evt.getClickCount() == 2) {
+            trocarPainelForm("pnlAdicionarProd");
+            Point point = evt.getPoint();
+            int linhaClicada = tblProdutos.rowAtPoint(point);
+            DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
+            String cod_barras = tblProd.getValueAt(linhaClicada, 1).toString();
+            lerFormProduto(cod_barras);
+            calcMargemLucro();
+        }
+    }//GEN-LAST:event_tblProdutosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -840,6 +979,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboProdPratileira;
     private javax.swing.JLabel imgDefaultProd;
     private javax.swing.JLabel imgProduto;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddImg;
     private javax.swing.JLabel lblAddProduto;
@@ -864,6 +1004,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JPanel pnlIdentAdd;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlValores;
+    private javax.swing.JSpinner spnQntProd;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtBusca;
     private javax.swing.JTextField txtCodBarras;
