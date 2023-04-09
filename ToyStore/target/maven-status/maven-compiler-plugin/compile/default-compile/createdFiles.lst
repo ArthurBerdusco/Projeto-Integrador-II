@@ -51,7 +51,6 @@ com\senac\cadastro\TelaCadastro$1.class
 com\senac\cliente\TelaCliente$ImageRender.class
 com\senac\produto\TelaProduto.class
 com\senac\login\Login$9.class
-com\senac\login\TelaLogin.class
 com\senac\login\Usuario.class
 com\senac\cliente\TelaCliente$3.class
 com\senac\principal\TelaPrincipal.class
