@@ -17,6 +17,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
         trocarPainel("pnlVenda");
+        btnVenda.doLayout();
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +31,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnProduto = new javax.swing.JLabel();
         btnCliente = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JLabel();
+        imgLogoToy = new javax.swing.JLabel();
         LayerPaineis = new javax.swing.JLayeredPane();
         pnlCliente = new com.senac.cliente.TelaCliente();
         pnlProduto = new com.senac.produto.TelaProduto();
@@ -56,11 +58,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnVenda.setName("Venda"); // NOI18N
         btnVenda.setOpaque(true);
         btnVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVendaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVendaMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnVendaMousePressed(evt);
             }
         });
-        PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 190, 60));
+        PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 190, 60));
 
         btnProduto.setBackground(new java.awt.Color(64, 64, 64));
         btnProduto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -70,11 +78,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnProduto.setName("Produto"); // NOI18N
         btnProduto.setOpaque(true);
         btnProduto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnProdutoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnProdutoMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnProdutoMousePressed(evt);
             }
         });
-        PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 190, 60));
+        PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 190, 60));
 
         btnCliente.setBackground(new java.awt.Color(64, 64, 64));
         btnCliente.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -84,11 +98,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCliente.setName("Cliente"); // NOI18N
         btnCliente.setOpaque(true);
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnClienteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnClienteMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnClienteMousePressed(evt);
             }
         });
-        PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 60));
+        PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 190, 60));
 
         btnRelatorio.setBackground(new java.awt.Color(64, 64, 64));
         btnRelatorio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
@@ -98,11 +118,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnRelatorio.setName("Relatorio"); // NOI18N
         btnRelatorio.setOpaque(true);
         btnRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRelatorioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRelatorioMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnRelatorioMousePressed(evt);
             }
         });
-        PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 190, 60));
+        PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 190, 60));
+
+        imgLogoToy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N
+        PainelMenu.add(imgLogoToy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 190, 120));
 
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
@@ -164,7 +194,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public void trocarPainel(String selecionarPainel) {
         if (selecionarPainel == "pnlVenda") {
-            
+
             pnlVenda.setVisible(true);
             pnlCliente.setVisible(false);
             pnlProduto.setVisible(false);
@@ -217,6 +247,61 @@ public class TelaPrincipal extends javax.swing.JFrame {
         focarBotaoMenu(btnRelatorio);
         trocarPainel("pnlRelatorio");
     }//GEN-LAST:event_btnRelatorioMousePressed
+
+    private void btnVendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseEntered
+        //btnVenda.setBackground(new Color(135,220,255));
+        if (!(btnVenda.getBackground() != Color.darkGray)) {
+            btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE));
+        }
+
+    }//GEN-LAST:event_btnVendaMouseEntered
+
+    private void btnVendaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseExited
+        //btnVenda.setBackground(Color.darkGray);
+        if (!(btnVenda.getBackground() != Color.darkGray)) {
+            btnVenda.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE));
+        }
+
+    }//GEN-LAST:event_btnVendaMouseExited
+
+    private void btnProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMouseEntered
+        //btnProduto.setBackground(new Color(135,220,255));
+        if (!(btnProduto.getBackground() != Color.darkGray)) {
+            btnProduto.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnProdutoMouseEntered
+
+    private void btnProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMouseExited
+        if (!(btnProduto.getBackground() != Color.darkGray)) {
+            btnProduto.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnProdutoMouseExited
+
+    private void btnClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseEntered
+        //btnCliente.setBackground(new Color(135, 220, 255));
+        if (!(btnCliente.getBackground() != Color.darkGray)) {
+            btnCliente.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnClienteMouseEntered
+
+    private void btnClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMouseExited
+        if (!(btnCliente.getBackground() != Color.darkGray)) {
+            btnCliente.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnClienteMouseExited
+
+    private void btnRelatorioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMouseEntered
+        //btnRelatorio.setBackground(new Color(135, 220, 255));
+        if (!(btnRelatorio.getBackground() != Color.darkGray)) {
+            btnRelatorio.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnRelatorioMouseEntered
+
+    private void btnRelatorioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMouseExited
+        if (!(btnRelatorio.getBackground() != Color.darkGray)) {
+            btnRelatorio.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 0, Color.WHITE));
+        }
+    }//GEN-LAST:event_btnRelatorioMouseExited
 
     protected void focarBotaoMenu(JLabel btn) {
         //Color vermelhoRosado = new Color(255, 12, 120);
@@ -278,6 +363,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
     private javax.swing.JLabel btnVenda;
+    private javax.swing.JLabel imgLogoToy;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

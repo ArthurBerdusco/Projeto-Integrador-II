@@ -2,15 +2,11 @@ package com.senac.produto;
 
 import com.senac.utils.Validador;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.RoundingMode;
 import java.nio.file.Files;
@@ -19,8 +15,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
@@ -38,6 +32,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private boolean auxEditProdut = false;
     private int auxIndiceEditProd;
     private String auxLocalFoto = "/produto/t1.png";
+    private Point pointLinhaClicadaTbl;
 
     public TelaProduto() {
         initComponents();
@@ -59,6 +54,10 @@ public class TelaProduto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popUpMenuTbl = new javax.swing.JPopupMenu();
+        mnuItemEdit = new javax.swing.JMenuItem();
+        separador = new javax.swing.JPopupMenu.Separator();
+        mnuItemExcluir = new javax.swing.JMenuItem();
         pnlProdutos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProdutos = new javax.swing.JTable();
@@ -107,6 +106,23 @@ public class TelaProduto extends javax.swing.JPanel {
         btnAddProduto = new javax.swing.JPanel();
         lblAddProduto = new javax.swing.JLabel();
 
+        mnuItemEdit.setLabel("Editar");
+        mnuItemEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemEditActionPerformed(evt);
+            }
+        });
+        popUpMenuTbl.add(mnuItemEdit);
+        popUpMenuTbl.add(separador);
+
+        mnuItemExcluir.setLabel("Excluir");
+        mnuItemExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuItemExcluirActionPerformed(evt);
+            }
+        });
+        popUpMenuTbl.add(mnuItemExcluir);
+
         setPreferredSize(new java.awt.Dimension(1350, 780));
 
         pnlProdutos.setBackground(new java.awt.Color(255, 255, 255));
@@ -132,9 +148,6 @@ public class TelaProduto extends javax.swing.JPanel {
         });
         tblProdutos.setRowHeight(25);
         tblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblProdutosMouseClicked(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblProdutosMousePressed(evt);
             }
@@ -716,7 +729,7 @@ public class TelaProduto extends javax.swing.JPanel {
         DefaultTableModel dtmProduto = (DefaultTableModel) tblProdutos.getModel();
         for (Produto produto : listaProdutos) {
             dtmProduto.addRow(camposProdutoTbl(produto));
-            
+
             valor += produto.valorTotalVenda();
         }
         txtValorProdVenda.setText(String.valueOf(valor));
@@ -757,6 +770,26 @@ public class TelaProduto extends javax.swing.JPanel {
                 cboProdCorredor.setSelectedItem(listaProdutos.get(i).getCorredor());
                 cboProdPratileira.setSelectedItem(listaProdutos.get(i).getPratileira());
                 spnQntProd.setValue(Integer.parseInt(listaProdutos.get(i).getQuantidade()));
+                break;
+            }
+        }
+
+    }
+
+    public void deletarCliente(Point linha) {
+        int linhaClicada = tblProdutos.rowAtPoint(this.pointLinhaClicadaTbl);
+        DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
+
+        for (Produto produto : listaProdutos) {
+            if (tblProd.getValueAt(linhaClicada, 1).equals(produto.getCod_barras())) {
+                lerFormProduto(produto.getCod_barras());
+                int confirmDelete = JOptionPane.showConfirmDialog(this, "Deseja deletar " + produto.getDescricao() + "?", "Deletar produto", JOptionPane.YES_NO_OPTION);
+                if (confirmDelete == 0) {
+                    listaProdutos.remove(produto);
+                    trocarPainelForm("pnlDefault");
+                    resetTblProduto();
+
+                }
                 break;
             }
         }
@@ -1117,10 +1150,6 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lblRemovImgMousePressed
 
-    private void tblProdutosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMouseClicked
-
-    }//GEN-LAST:event_tblProdutosMouseClicked
-
     private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
         if (evt.getClickCount() == 2) {
             resetFormulario();
@@ -1133,11 +1162,32 @@ public class TelaProduto extends javax.swing.JPanel {
             lerFormProduto(cod_barras);
             calcMargemLucro();
         }
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            popUpMenuTbl.show(evt.getComponent(), evt.getX(), evt.getY());
+            pointLinhaClicadaTbl = evt.getPoint();
+            int linhaClicada = tblProdutos.rowAtPoint(pointLinhaClicadaTbl);
+            tblProdutos.setRowSelectionInterval(linhaClicada, linhaClicada);
+        }
     }//GEN-LAST:event_tblProdutosMousePressed
 
     private void pnlAdicionarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAdicionarProdMouseClicked
-        System.out.println("kkk");
+
     }//GEN-LAST:event_pnlAdicionarProdMouseClicked
+
+    private void mnuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemEditActionPerformed
+        resetFormulario();
+        trocarPainelForm("pnlAdicionarProd");
+        int linhaClicada = tblProdutos.rowAtPoint(this.pointLinhaClicadaTbl);
+        this.auxLocalFoto = listaProdutos.get(linhaClicada).getLocalFoto();
+        DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
+        String cod_barras = tblProd.getValueAt(linhaClicada, 1).toString();
+        lerFormProduto(cod_barras);
+        calcMargemLucro();
+    }//GEN-LAST:event_mnuItemEditActionPerformed
+
+    private void mnuItemExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemExcluirActionPerformed
+        deletarCliente(this.pointLinhaClicadaTbl);
+    }//GEN-LAST:event_mnuItemExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1172,12 +1222,16 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JLabel lblRemovImg;
     private javax.swing.JLabel lblValorCusto;
     private javax.swing.JLabel lblValorVenda;
+    private javax.swing.JMenuItem mnuItemEdit;
+    private javax.swing.JMenuItem mnuItemExcluir;
     private javax.swing.JPanel pnlAdicionarProd;
     private javax.swing.JPanel pnlArmazem;
     private javax.swing.JPanel pnlDefault;
     private javax.swing.JPanel pnlIdentAdd;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlValores;
+    private javax.swing.JPopupMenu popUpMenuTbl;
+    private javax.swing.JPopupMenu.Separator separador;
     private javax.swing.JSpinner spnQntProd;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtBusca;
