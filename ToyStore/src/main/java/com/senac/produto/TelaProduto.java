@@ -17,11 +17,9 @@ import java.util.ArrayList;
 import java.util.Locale;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -47,7 +45,7 @@ public class TelaProduto extends javax.swing.JPanel {
         listaProdutos.add(produto3);
         listaProdutos.add(produto4);
         listaProdutos.add(produto5);
-        inserirProdutosTabela();
+        updateTblProduto();
     }
 
     @SuppressWarnings("unchecked")
@@ -253,11 +251,6 @@ public class TelaProduto extends javax.swing.JPanel {
 
         pnlAdicionarProd.setBackground(new java.awt.Color(255, 255, 255));
         pnlAdicionarProd.setPreferredSize(new java.awt.Dimension(526, 764));
-        pnlAdicionarProd.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlAdicionarProdMouseClicked(evt);
-            }
-        });
 
         lblInfoProduto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblInfoProduto.setText("INFORMAÇÕES DO BRINQUEDO");
@@ -712,7 +705,6 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     public void trocarPainelForm(String pnlSelecionado) {
         LayerProduto.setVisible(true);
         if (pnlSelecionado.equals("pnlAdicionarProd")) {
@@ -724,17 +716,51 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }
 
-    public void inserirProdutosTabela() {
-        float valor = 0;
-        DefaultTableModel dtmProduto = (DefaultTableModel) tblProdutos.getModel();
-        for (Produto produto : listaProdutos) {
-            dtmProduto.addRow(camposProdutoTbl(produto));
+    //CRUD (CREATE / READ / UPDATE / DELETE)
+    //CREATE
+    public void addNovoProdutoEstoq() {
+        Produto produto = new Produto();
+        produto.setDescricao(this.txtDescProd.getText());
+        produto.setCod_barras(this.txtCodBarras.getText());
+        produto.setLocalFoto(this.auxLocalFoto);
+        produto.setValorCusto(this.txtProdValorCusto.getText());
+        produto.setValorVenda(this.txtProdValorVenda.getText());
+        produto.setMargemLucro(this.txtMargemLucro.getText());
+        produto.setCategoria(this.cboProdCategoria.getSelectedItem().toString());
+        produto.setPratileira(this.cboProdPratileira.getSelectedItem().toString());
+        produto.setCorredor(this.cboProdCorredor.getSelectedItem().toString());
+        produto.setQuantidade(this.spnQntProd.getValue().toString());
 
-            valor += produto.valorTotalVenda();
-        }
-        txtValorProdVenda.setText(String.valueOf(valor));
+        listaProdutos.add(0,produto);
     }
 
+    public String[] getCamposFormProd() {
+        String[] campos = new String[8];
+        campos[0] = txtDescProd.getText();
+        campos[1] = txtCodBarras.getText();
+        campos[2] = cboProdCategoria.getSelectedItem().toString();
+        campos[3] = txtProdValorVenda.getText();
+        campos[4] = txtMargemLucro.getText();
+        campos[5] = spnQntProd.getValue().toString();
+        campos[6] = cboProdCorredor.getSelectedItem().toString();
+        campos[7] = cboProdPratileira.getSelectedItem().toString();
+        return campos;
+    }
+
+    public String[] getCamposFormProd(Produto produto) {
+        String[] campos = new String[8];
+        campos[0] = produto.getDescricao();
+        campos[1] = produto.getCod_barras();
+        campos[2] = produto.getCategoria();
+        campos[3] = produto.getValorVenda();
+        campos[4] = produto.getMargemLucro();
+        campos[5] = produto.getQuantidade();
+        campos[6] = produto.getCorredor();
+        campos[7] = produto.getPratileira();
+        return campos;
+    }
+
+    //READ
     public void lerFormProduto(String codBarras) {
         this.auxEditProdut = true;
         for (int i = 0; i < listaProdutos.size(); i++) {
@@ -776,6 +802,34 @@ public class TelaProduto extends javax.swing.JPanel {
 
     }
 
+    //UPDATE
+    public void editProdutoEstoq() {
+        listaProdutos.get(this.auxIndiceEditProd).setDescricao(this.txtDescProd.getText());
+        listaProdutos.get(this.auxIndiceEditProd).setCod_barras(this.txtCodBarras.getText());
+        listaProdutos.get(this.auxIndiceEditProd).setLocalFoto(this.auxLocalFoto);
+        listaProdutos.get(this.auxIndiceEditProd).setValorCusto(this.txtProdValorCusto.getText());
+        listaProdutos.get(this.auxIndiceEditProd).setValorVenda(this.txtProdValorVenda.getText());
+        listaProdutos.get(this.auxIndiceEditProd).setMargemLucro(this.txtMargemLucro.getText());
+        listaProdutos.get(this.auxIndiceEditProd).setCategoria(this.cboProdCategoria.getSelectedItem().toString());
+        listaProdutos.get(this.auxIndiceEditProd).setPratileira(this.cboProdPratileira.getSelectedItem().toString());
+        listaProdutos.get(this.auxIndiceEditProd).setCorredor(this.cboProdCorredor.getSelectedItem().toString());
+        listaProdutos.get(this.auxIndiceEditProd).setQuantidade(this.spnQntProd.getValue().toString());
+    }
+
+    public void updateTblProduto() {
+
+        float valor = 0;
+        DefaultTableModel dtmProduto = (DefaultTableModel) tblProdutos.getModel();
+        dtmProduto.setRowCount(0);
+        for (Produto produto : listaProdutos) {
+            dtmProduto.addRow(getCamposFormProd(produto));
+
+            valor += produto.valorTotalVenda();
+        }
+        txtValorProdVenda.setText(String.valueOf(valor));
+    }
+
+    //DELETE
     public void deletarCliente(Point linha) {
         int linhaClicada = tblProdutos.rowAtPoint(this.pointLinhaClicadaTbl);
         DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
@@ -787,16 +841,15 @@ public class TelaProduto extends javax.swing.JPanel {
                 if (confirmDelete == 0) {
                     listaProdutos.remove(produto);
                     trocarPainelForm("pnlDefault");
-                    resetTblProduto();
-
+                    updateTblProduto();
                 }
                 break;
             }
         }
-
+        this.auxEditProdut = false;
     }
 
-    public void resetFormulario() {
+    public void limparFormulario() {
         this.auxLocalFoto = "/produto/t1.png";
 
         this.txtDescProd.setText("");
@@ -821,76 +874,6 @@ public class TelaProduto extends javax.swing.JPanel {
 
     }
 
-    public void resetTblProduto() {
-        DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
-        tblProd.setRowCount(0);
-        inserirProdutosTabela();
-    }
-
-    public String locImgProduto(JLabel img) {
-        Icon icon = img.getIcon();
-        ImageIcon imageIcon = (ImageIcon) icon;
-
-        String basePasta = getClass().getResource("/produtos/").getPath(); // caminho base da sua aplicação
-        String localImg = basePasta.replace("file:", "");
-        return "/produtos/" + localImg;
-    }
-
-    public String[] camposProdutoTbl() {
-        String[] campos = new String[8];
-        campos[0] = txtDescProd.getText();
-        campos[1] = txtCodBarras.getText();
-        campos[2] = cboProdCategoria.getSelectedItem().toString();
-        campos[3] = txtProdValorVenda.getText();
-        campos[4] = txtMargemLucro.getText();
-        campos[5] = spnQntProd.getValue().toString();
-        campos[6] = cboProdCorredor.getSelectedItem().toString();
-        campos[7] = cboProdPratileira.getSelectedItem().toString();
-        return campos;
-    }
-
-    public String[] camposProdutoTbl(Produto produto) {
-        String[] campos = new String[8];
-        campos[0] = produto.getDescricao();
-        campos[1] = produto.getCod_barras();
-        campos[2] = produto.getCategoria();
-        campos[3] = produto.getValorVenda();
-        campos[4] = produto.getMargemLucro();
-        campos[5] = produto.getQuantidade();
-        campos[6] = produto.getCorredor();
-        campos[7] = produto.getPratileira();
-        return campos;
-    }
-
-    public void addNovoProdutoEstoq() {
-        Produto produto = new Produto();
-        produto.setDescricao(this.txtDescProd.getText());
-        produto.setCod_barras(this.txtCodBarras.getText());
-        produto.setLocalFoto(this.auxLocalFoto);
-        produto.setValorCusto(this.txtProdValorCusto.getText());
-        produto.setValorVenda(this.txtProdValorVenda.getText());
-        produto.setMargemLucro(this.txtMargemLucro.getText());
-        produto.setCategoria(this.cboProdCategoria.getSelectedItem().toString());
-        produto.setPratileira(this.cboProdPratileira.getSelectedItem().toString());
-        produto.setCorredor(this.cboProdCorredor.getSelectedItem().toString());
-        produto.setQuantidade(this.spnQntProd.getValue().toString());
-
-        listaProdutos.add(produto);
-    }
-
-    public void editProdutoEstoq() {
-        listaProdutos.get(this.auxIndiceEditProd).setDescricao(this.txtDescProd.getText());
-        listaProdutos.get(this.auxIndiceEditProd).setCod_barras(this.txtCodBarras.getText());
-        listaProdutos.get(this.auxIndiceEditProd).setLocalFoto(this.auxLocalFoto);
-        listaProdutos.get(this.auxIndiceEditProd).setValorCusto(this.txtProdValorCusto.getText());
-        listaProdutos.get(this.auxIndiceEditProd).setValorVenda(this.txtProdValorVenda.getText());
-        listaProdutos.get(this.auxIndiceEditProd).setMargemLucro(this.txtMargemLucro.getText());
-        listaProdutos.get(this.auxIndiceEditProd).setCategoria(this.cboProdCategoria.getSelectedItem().toString());
-        listaProdutos.get(this.auxIndiceEditProd).setPratileira(this.cboProdPratileira.getSelectedItem().toString());
-        listaProdutos.get(this.auxIndiceEditProd).setCorredor(this.cboProdCorredor.getSelectedItem().toString());
-        listaProdutos.get(this.auxIndiceEditProd).setQuantidade(this.spnQntProd.getValue().toString());
-    }
-
     private void desfocarCampoTexto(JComponent campo) {
         Color corPersonalizada = new Color(140, 140, 140);
         campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
@@ -909,15 +892,15 @@ public class TelaProduto extends javax.swing.JPanel {
             if ((this.auxEditProdut == false) && JOptionPane.showConfirmDialog(this, "Deseja confirmar a entrada no estoque?", "Confirmar entrada no estoque", JOptionPane.YES_NO_OPTION) == 0) {
                 DefaultTableModel tblProdutos = (DefaultTableModel) this.tblProdutos.getModel();
                 //Adiciona o item na JTable
-                tblProdutos.addRow(this.camposProdutoTbl());
+                tblProdutos.addRow(this.getCamposFormProd());
                 //Adiciona um novo produto no estoque (ArrayList<Produto>)
                 addNovoProdutoEstoq();
                 //Reset formulário
-                resetFormulario();
+                limparFormulario();
             } else if ((this.auxEditProdut == true) && JOptionPane.showConfirmDialog(this, "Deseja confirmar alteração do produto?", "Alterar informações do produto", JOptionPane.YES_NO_OPTION) == 0) {
                 editProdutoEstoq();
             }
-            resetTblProduto();
+            updateTblProduto();
             this.auxEditProdut = false;
             pnlAdicionarProd.setVisible(false);
             pnlDefault.setVisible(true);
@@ -964,12 +947,12 @@ public class TelaProduto extends javax.swing.JPanel {
         if (this.auxEditProdut == true) {
             int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
             if (escolha == 0) {
-                this.resetFormulario();
+                this.limparFormulario();
                 this.auxEditProdut = false;
                 this.trocarPainelForm("pnlAdicionarProd");
             }
         } else {
-            this.resetFormulario();
+            this.limparFormulario();
             this.auxEditProdut = false;
             this.trocarPainelForm("pnlAdicionarProd");
         }
@@ -977,25 +960,25 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.trocarPainelForm("pnlDefault");
-        this.resetFormulario();
+        this.limparFormulario();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void lblAddImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddImgMousePressed
-        //PROCURAR IMAGEM
+        //INSTANCIANDO FILE EXPLORER SWING
         JFileChooser procurarArquivoImagem = new JFileChooser();
         //DEFINIR FILTRO SOMENTE PARA ARQUIVOS COM EXTENSAO IMAGEM
         FileNameExtensionFilter fExtImg = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
-        procurarArquivoImagem.addChoosableFileFilter(fExtImg); // Incre
+        procurarArquivoImagem.addChoosableFileFilter(fExtImg);
+        
+        //ABRIR FILE EXPLORER
         int janelaDialog = procurarArquivoImagem.showOpenDialog(this);
+        
         if (janelaDialog == JFileChooser.APPROVE_OPTION) {
             File imagemSelecionada = procurarArquivoImagem.getSelectedFile();
             String pastaImagemSelecionada = imagemSelecionada.getAbsolutePath();
 
             try {
-
-                // Obtém o caminho absoluto da pasta "resources" dentro do projeto
-                ClassLoader classLoader = TelaProduto.class.getClassLoader();
-                InputStream inputStream = classLoader.getResourceAsStream("");
+                //OBTÉM O CAMINHO ABSOLUTO DA PASTA "RESOURCES" DENTRO DO PROJETO
                 String resourcesPath = "";
                 try {
                     resourcesPath = new File(".").getCanonicalPath() + "\\src\\main" + File.separator + "resources";
@@ -1007,8 +990,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 File destinationDir = new File(destinationPath);
 
                 try {
-                    // Copia o arquivo para o diretório de destino
-
+                    //COPIA O ARQUIVO DA PASTA SELECIONADA PARA PASTA RESOURSES DO PROJETO
                     if (Files.exists(Paths.get(destinationPath).resolve(imagemSelecionada.getName()))) {
                         Files.copy(imagemSelecionada.toPath(), Paths.get(destinationPath).resolve(listaProdutos.get(auxIndiceEditProd).getCod_barras() + imagemSelecionada.getName()));
                     } else {
@@ -1019,6 +1001,7 @@ public class TelaProduto extends javax.swing.JPanel {
                     e.printStackTrace();
                 }
 
+                //INSERE A IMAGEM A NO FORMULARIO RENDERIZADA COM TAMANHO 200X 150
                 imagemSelecionada = new File(destinationPath + File.separator + imagemSelecionada.getName());
                 BufferedImage originalImage = ImageIO.read(imagemSelecionada);
                 Image resizedImage = originalImage.getScaledInstance(150, 200, Image.SCALE_FAST);
@@ -1152,7 +1135,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
         if (evt.getClickCount() == 2) {
-            resetFormulario();
+            limparFormulario();
             trocarPainelForm("pnlAdicionarProd");
             Point point = evt.getPoint();
             int linhaClicada = tblProdutos.rowAtPoint(point);
@@ -1170,12 +1153,8 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_tblProdutosMousePressed
 
-    private void pnlAdicionarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlAdicionarProdMouseClicked
-
-    }//GEN-LAST:event_pnlAdicionarProdMouseClicked
-
     private void mnuItemEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuItemEditActionPerformed
-        resetFormulario();
+        limparFormulario();
         trocarPainelForm("pnlAdicionarProd");
         int linhaClicada = tblProdutos.rowAtPoint(this.pointLinhaClicadaTbl);
         this.auxLocalFoto = listaProdutos.get(linhaClicada).getLocalFoto();

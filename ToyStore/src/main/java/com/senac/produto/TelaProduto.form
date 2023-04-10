@@ -323,9 +323,6 @@
               <Dimension value="[526, 764]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pnlAdicionarProdMouseClicked"/>
-          </Events>
 
           <Layout>
             <DimensionLayout dim="0">

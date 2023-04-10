@@ -1,14 +1,17 @@
 com\senac\cliente\TelaCliente$18.class
 com\senac\cliente\TelaCliente$7.class
+com\senac\principal\TelaPrincipal$6.class
 com\senac\login\Login$5.class
 com\senac\produto\TelaProduto$12.class
 com\senac\cliente\TelaCliente$11.class
 com\senac\cliente\TelaCliente$21.class
+com\senac\principal\TelaConfigEstilo$2.class
 com\senac\cadastro\TelaCadastro$2.class
 com\senac\produto\TelaProduto$5.class
 com\senac\produto\TelaProduto$1.class
 com\senac\relatorio\TelaRelatorio$1.class
 com\senac\login\Login$8.class
+com\senac\produto\TelaProduto$15.class
 com\senac\login\Login$1.class
 com\senac\produto\Produto.class
 com\senac\produto\TelaProduto$8.class
@@ -18,6 +21,7 @@ com\senac\cliente\TelaCliente$1.class
 com\senac\login\Login$4.class
 com\senac\produto\TelaProduto$11.class
 com\senac\cliente\Cliente.class
+com\senac\principal\TelaConfigEstilo$3.class
 com\senac\principal\TelaPrincipal$5.class
 com\senac\produto\TelaProduto$9.class
 com\senac\produto\TelaProduto$2.class
@@ -40,6 +44,7 @@ com\senac\principal\TelaPrincipal$1.class
 com\senac\cliente\TelaCliente$23.class
 com\senac\cliente\TelaCliente$13.class
 com\senac\principal\TelaPrincipal$4.class
+com\senac\principal\TelaConfigEstilo$1.class
 com\senac\cliente\TelaCliente$16.class
 com\senac\relatorio\TelaRelatorio.class
 com\senac\produto\TelaProduto$13.class
@@ -53,6 +58,7 @@ com\senac\cadastro\TelaCadastro$1.class
 com\senac\cliente\TelaCliente$ImageRender.class
 com\senac\produto\TelaProduto.class
 com\senac\login\Login$9.class
+com\senac\principal\TelaConfigEstilo.class
 com\senac\login\Usuario.class
 com\senac\cliente\TelaCliente$3.class
 com\senac\principal\TelaPrincipal.class
@@ -67,3 +73,4 @@ com\senac\cliente\TelaCliente$6.class
 com\senac\cliente\TelaCliente$9.class
 com\senac\login\Login$2.class
 com\senac\login\Login.class
+com\senac\principal\IntegradorEstiloSistema.class

@@ -6,11 +6,17 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-public class TelaPrincipal extends javax.swing.JFrame {
+public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstiloSistema {
 
     public TelaPrincipal() {
         initComponents();
@@ -32,6 +38,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnCliente = new javax.swing.JLabel();
         btnRelatorio = new javax.swing.JLabel();
         imgLogoToy = new javax.swing.JLabel();
+        btnConfig = new javax.swing.JButton();
         LayerPaineis = new javax.swing.JLayeredPane();
         pnlCliente = new com.senac.cliente.TelaCliente();
         pnlProduto = new com.senac.produto.TelaProduto();
@@ -51,7 +58,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnVenda.setBackground(new java.awt.Color(64, 64, 64));
-        btnVenda.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        btnVenda.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnVenda.setForeground(new java.awt.Color(255, 255, 255));
         btnVenda.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnVenda.setText("Venda");
@@ -71,7 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 190, 60));
 
         btnProduto.setBackground(new java.awt.Color(64, 64, 64));
-        btnProduto.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        btnProduto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnProduto.setForeground(new java.awt.Color(255, 255, 255));
         btnProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnProduto.setText("Produtos");
@@ -91,7 +98,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 190, 60));
 
         btnCliente.setBackground(new java.awt.Color(64, 64, 64));
-        btnCliente.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        btnCliente.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnCliente.setText("Clientes");
@@ -111,7 +118,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 190, 60));
 
         btnRelatorio.setBackground(new java.awt.Color(64, 64, 64));
-        btnRelatorio.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+        btnRelatorio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnRelatorio.setForeground(new java.awt.Color(255, 255, 255));
         btnRelatorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRelatorio.setText("Relatorio");
@@ -133,6 +140,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
         imgLogoToy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N
         PainelMenu.add(imgLogoToy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 190, 120));
+
+        btnConfig.setBackground(java.awt.Color.darkGray);
+        btnConfig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnConfig.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfig.setText("Configurações");
+        btnConfig.setBorderPainted(false);
+        btnConfig.setFocusPainted(false);
+        btnConfig.setOpaque(true);
+        btnConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigActionPerformed(evt);
+            }
+        });
+        PainelMenu.add(btnConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 740, 190, 40));
 
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
@@ -303,6 +324,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRelatorioMouseExited
 
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
+        TelaConfigEstilo configEstilo = new TelaConfigEstilo();
+        configEstilo.setCallBack(this);// passando uma instância de IntegradorEstiloSistema para o JFrame secundário
+        configEstilo.setVisible(true);
+
+    }//GEN-LAST:event_btnConfigActionPerformed
+
+    @Override
+    public void botaoPrecionado(String retorno) {
+        try {
+            UIManager.setLookAndFeel(retorno);
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Impossivel definir estilo do sistema");
+        }
+        
+    }
+
     protected void focarBotaoMenu(JLabel btn) {
         //Color vermelhoRosado = new Color(255, 12, 120);
         Color azulMarinho = new Color(56, 134, 242);
@@ -349,6 +388,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+//                try {
+//                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+//                } catch (Exception ex) {
+//                    JOptionPane.showMessageDialog(null, "Impossivel definir estilo do sistema");
+//                }
+
                 new TelaPrincipal().setVisible(true);
 
             }
@@ -360,6 +405,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JSplitPane PaineisAjustaveis;
     private javax.swing.JPanel PainelMenu;
     private javax.swing.JLabel btnCliente;
+    private javax.swing.JButton btnConfig;
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
     private javax.swing.JLabel btnVenda;
@@ -373,4 +419,5 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private com.senac.venda.TelaVenda pnlVenda;
     private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
+
 }
