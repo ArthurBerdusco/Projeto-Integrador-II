@@ -75,7 +75,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
                 btnVendaMousePressed(evt);
             }
         });
-        PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 190, 60));
+        PainelMenu.add(btnVenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 190, 60));
 
         btnProduto.setBackground(new java.awt.Color(64, 64, 64));
         btnProduto.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -95,7 +95,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
                 btnProdutoMousePressed(evt);
             }
         });
-        PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 190, 60));
+        PainelMenu.add(btnProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 190, 60));
 
         btnCliente.setBackground(new java.awt.Color(64, 64, 64));
         btnCliente.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -115,7 +115,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
                 btnClienteMousePressed(evt);
             }
         });
-        PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 190, 60));
+        PainelMenu.add(btnCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 190, 60));
 
         btnRelatorio.setBackground(new java.awt.Color(64, 64, 64));
         btnRelatorio.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -135,7 +135,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
                 btnRelatorioMousePressed(evt);
             }
         });
-        PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 190, 60));
+        PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 190, 60));
 
         imgLogoToy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N

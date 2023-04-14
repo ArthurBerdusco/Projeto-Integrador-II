@@ -7,7 +7,6 @@ import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.InputStream;
 import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -37,7 +36,7 @@ public class TelaProduto extends javax.swing.JPanel {
         trocarPainelForm("pnlDefault");
         Produto produto1 = new Produto("Bola Oficial Champios League 2023", "93723910293", "/produtos/bolaChampion.png", "R$450", "R$255", "43.34%", "Esporte e atividade ar livre", "A", "1", "10");
         Produto produto2 = new Produto("Boneco Buzz Lightyear com Som Disney-Pixar", "59136686302", "/produtos/busLight.png", "R$155", "R$93", "40%", "Ação e aventura", "B", "1", "5");
-        Produto produto3 = new Produto("Carrinho HotWheels Camaro", "46792853105", "/produtos/CarrinhoHotWheels.PNG", "R$40", "R$19", "52.5%", "Véiculos", "A", "2", "20");
+        Produto produto3 = new Produto("Carrinho HotWheels Camaro", "46792853105", "/produtos/CarrinhoHotWheels.PNG", "R$40", "R$19", "52.5%", "Veiculos", "A", "2", "20");
         Produto produto4 = new Produto("Brinquedo Spiner", "70897405170", "/produtos/Spiner.png", "R$10", "R$3", "70%", "Esporte e atividade ar livre", "C", "2", "20");
         Produto produto5 = new Produto("Boneco Capitao America", "29395038819", "/produtos/CapitaoAmerica.PNG", "R$135", "R$93", "31.12%", "Ação e aventura", "B", "2", "5");
         listaProdutos.add(produto1);
@@ -161,15 +160,23 @@ public class TelaProduto extends javax.swing.JPanel {
         tblProdutos.getColumnModel().getColumn(7).setPreferredWidth(8);
 
         lblFiltrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblFiltrar.setText("FILTRAR POR:");
+        lblFiltrar.setText("Filtrar por:");
 
         lblBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblBuscar.setText("BUSCAR:");
+        lblBuscar.setText("Buscar:");
 
         txtBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscaKeyReleased(evt);
+            }
+        });
 
         cboFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código de barras" }));
 
         btnExpandCollapse.setBackground(new java.awt.Color(255, 255, 255));
         btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png"))); // NOI18N
@@ -201,44 +208,45 @@ public class TelaProduto extends javax.swing.JPanel {
             pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlProdutosLayout.createSequentialGroup()
                 .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlProdutosLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE))
-                    .addGroup(pnlProdutosLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtBusca)
-                            .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlProdutosLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnExpandCollapse))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutosLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtValorProdVenda))))
+                            .addComponent(txtValorProdVenda)))
+                    .addGroup(pnlProdutosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+                            .addGroup(pnlProdutosLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnExpandCollapse)))))
                 .addContainerGap())
+            .addGroup(pnlProdutosLayout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblBuscar)
+                    .addComponent(lblFiltrar))
+                .addGap(18, 18, 18)
+                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlProdutosLayout.setVerticalGroup(
             pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlProdutosLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnExpandCollapse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFiltrar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBuscar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblFiltrar)
+                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblBuscar)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -470,7 +478,7 @@ public class TelaProduto extends javax.swing.JPanel {
         lblCategoria.setText("CATEGORIA:");
 
         cboProdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Véiculos", "Ação e aventura", "Esporte e atividade ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
+        cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Veiculos", "Ação e aventura", "Esporte e atividade ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
         cboProdCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
         cboProdCategoria.setName("Categoria"); // NOI18N
 
@@ -731,7 +739,7 @@ public class TelaProduto extends javax.swing.JPanel {
         produto.setCorredor(this.cboProdCorredor.getSelectedItem().toString());
         produto.setQuantidade(this.spnQntProd.getValue().toString());
 
-        listaProdutos.add(0,produto);
+        listaProdutos.add(0, produto);
     }
 
     public String[] getCamposFormProd() {
@@ -823,10 +831,16 @@ public class TelaProduto extends javax.swing.JPanel {
         dtmProduto.setRowCount(0);
         for (Produto produto : listaProdutos) {
             dtmProduto.addRow(getCamposFormProd(produto));
-
             valor += produto.valorTotalVenda();
         }
-        txtValorProdVenda.setText(String.valueOf(valor));
+        
+        String padrao = "###,###,###.##";
+        DecimalFormatSymbols dfs = new DecimalFormatSymbols();
+        dfs.setGroupingSeparator('.');
+        dfs.setDecimalSeparator(',');
+        DecimalFormat df = new DecimalFormat(padrao,dfs);
+        String valorFormatBr = df.format(valor);
+        txtValorProdVenda.setText("R$ " + valorFormatBr);
     }
 
     //DELETE
@@ -969,10 +983,10 @@ public class TelaProduto extends javax.swing.JPanel {
         //DEFINIR FILTRO SOMENTE PARA ARQUIVOS COM EXTENSAO IMAGEM
         FileNameExtensionFilter fExtImg = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
         procurarArquivoImagem.addChoosableFileFilter(fExtImg);
-        
+
         //ABRIR FILE EXPLORER
         int janelaDialog = procurarArquivoImagem.showOpenDialog(this);
-        
+
         if (janelaDialog == JFileChooser.APPROVE_OPTION) {
             File imagemSelecionada = procurarArquivoImagem.getSelectedFile();
             String pastaImagemSelecionada = imagemSelecionada.getAbsolutePath();
@@ -1018,16 +1032,12 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_lblAddImgMousePressed
 
     private void txtProdValorVendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorVendaKeyTyped
-
         if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
         }
-
-
     }//GEN-LAST:event_txtProdValorVendaKeyTyped
 
     private void txtProdValorCustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorCustoKeyTyped
-
         if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
         }
@@ -1168,6 +1178,66 @@ public class TelaProduto extends javax.swing.JPanel {
         deletarCliente(this.pointLinhaClicadaTbl);
     }//GEN-LAST:event_mnuItemExcluirActionPerformed
 
+    private void txtBuscaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyReleased
+        buscarComFiltro();
+        if (txtBusca.getText().trim().isEmpty()) {
+            updateTblProduto();
+        }
+    }//GEN-LAST:event_txtBuscaKeyReleased
+
+    private void txtBuscaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscaKeyPressed
+        buscarComFiltro();
+        if (txtBusca.getText().trim().isEmpty()) {
+            updateTblProduto();
+        }
+    }//GEN-LAST:event_txtBuscaKeyPressed
+
+    private void buscarComFiltro() {
+        String buscarPor = txtBusca.getText();
+
+        ArrayList clientesEncontrados = new ArrayList();
+
+        DefaultTableModel tabelaFiltrada = (DefaultTableModel) tblProdutos.getModel();
+        tabelaFiltrada.setRowCount(0);
+
+        if ((cboFiltro.getSelectedItem().toString().equals("Descrição")) && (!buscarPor.trim().isEmpty())) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
+
+                if (listaProdutos.get(i).getDescricao().toLowerCase().indexOf(buscarPor.toLowerCase()) != -1) {
+                    clientesEncontrados.add(i);
+                }
+            }
+            procurarClienteTabela(listaProdutos, clientesEncontrados);
+        }
+
+        if ((cboFiltro.getSelectedItem().toString().equals("Código de barras")) && (!buscarPor.trim().isEmpty())) {
+            for (int i = 0; i < listaProdutos.size(); i++) {
+
+                if (listaProdutos.get(i).getCod_barras().replace(".", "").replace("-", "").indexOf(buscarPor.replace(".", "").replace("-", "")) != -1) {
+                    clientesEncontrados.add(i);
+                }
+            }
+            procurarClienteTabela(listaProdutos, clientesEncontrados);
+        }
+    }
+
+    public void procurarClienteTabela(ArrayList<Produto> clientes, ArrayList indiceProcurado) {
+
+        DefaultTableModel tabelaCliente = (DefaultTableModel) tblProdutos.getModel();
+
+        for (int i = 0; i < indiceProcurado.size(); i++) {
+            tabelaCliente.addRow(new Object[]{
+                listaProdutos.get((int) indiceProcurado.get(i)).getDescricao(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getCod_barras(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getCategoria(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getValorVenda(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getMargemLucro(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getQuantidade(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getCorredor(),
+                listaProdutos.get((int) indiceProcurado.get(i)).getPratileira(),});
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane LayerProduto;
@@ -1222,4 +1292,5 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JTextField txtProdValorVenda;
     private javax.swing.JTextField txtValorProdVenda;
     // End of variables declaration//GEN-END:variables
+
 }
