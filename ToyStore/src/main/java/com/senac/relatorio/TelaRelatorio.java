@@ -1,4 +1,9 @@
 package com.senac.relatorio;
+
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JComponent;
+
 public class TelaRelatorio extends javax.swing.JPanel {
     public TelaRelatorio() {
         initComponents();
@@ -8,173 +13,180 @@ public class TelaRelatorio extends javax.swing.JPanel {
     private void initComponents() {
 
         PainelFiltro = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        PainelBusca = new javax.swing.JLayeredPane();
-        PainelDia = new javax.swing.JPanel();
-        PainelAno = new javax.swing.JPanel();
-        PainelEntreDatas = new javax.swing.JPanel();
-        PainelMes = new javax.swing.JPanel();
+        painelBuscar = new javax.swing.JPanel();
+        btnBuscar = new javax.swing.JLabel();
+        Lupa = new javax.swing.JLabel();
+        DataInicial = new javax.swing.JLabel();
+        DataFinal = new javax.swing.JLabel();
+        txtDataInicial = new javax.swing.JFormattedTextField();
+        txtDataFinal = new javax.swing.JFormattedTextField();
         PainelRelatorio = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaRelatorio = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1350, 780));
 
         PainelFiltro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Finalizar");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("CONSULTA ENTRE DATAS:");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setText("Voltar");
-
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "Mês", "Ano", "Entre Datas" }));
-        jComboBox1.setToolTipText("");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        painelBuscar.setBackground(new java.awt.Color(52, 134, 242));
+        painelBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        painelBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                painelBuscarMouseMoved(evt);
+            }
+        });
+        painelBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                painelBuscarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                painelBuscarMouseExited(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel1.setText("TIPO FILTRO:");
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
+        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        PainelBusca.setBorder(new javax.swing.border.MatteBorder(null));
+        Lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
 
-        PainelDia.setBorder(new javax.swing.border.MatteBorder(null));
-
-        javax.swing.GroupLayout PainelDiaLayout = new javax.swing.GroupLayout(PainelDia);
-        PainelDia.setLayout(PainelDiaLayout);
-        PainelDiaLayout.setHorizontalGroup(
-            PainelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+        javax.swing.GroupLayout painelBuscarLayout = new javax.swing.GroupLayout(painelBuscar);
+        painelBuscar.setLayout(painelBuscarLayout);
+        painelBuscarLayout.setHorizontalGroup(
+            painelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBuscarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBuscar)
+                .addGap(11, 11, 11))
         );
-        PainelDiaLayout.setVerticalGroup(
-            PainelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
-        );
-
-        PainelAno.setBorder(new javax.swing.border.MatteBorder(null));
-
-        javax.swing.GroupLayout PainelAnoLayout = new javax.swing.GroupLayout(PainelAno);
-        PainelAno.setLayout(PainelAnoLayout);
-        PainelAnoLayout.setHorizontalGroup(
-            PainelAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1359, Short.MAX_VALUE)
-        );
-        PainelAnoLayout.setVerticalGroup(
-            PainelAnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 144, Short.MAX_VALUE)
+        painelBuscarLayout.setVerticalGroup(
+            painelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Lupa, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout PainelEntreDatasLayout = new javax.swing.GroupLayout(PainelEntreDatas);
-        PainelEntreDatas.setLayout(PainelEntreDatasLayout);
-        PainelEntreDatasLayout.setHorizontalGroup(
-            PainelEntreDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1219, Short.MAX_VALUE)
-        );
-        PainelEntreDatasLayout.setVerticalGroup(
-            PainelEntreDatasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 134, Short.MAX_VALUE)
-        );
+        DataInicial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DataInicial.setText("DATA INICIAL:");
 
-        PainelMes.setBorder(new javax.swing.border.MatteBorder(null));
+        DataFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DataFinal.setText("DATA FINAL:");
 
-        javax.swing.GroupLayout PainelMesLayout = new javax.swing.GroupLayout(PainelMes);
-        PainelMes.setLayout(PainelMesLayout);
-        PainelMesLayout.setHorizontalGroup(
-            PainelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1365, Short.MAX_VALUE)
-        );
-        PainelMesLayout.setVerticalGroup(
-            PainelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        txtDataInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        try {
+            txtDataInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDataInicial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDataInicial.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDataInicialFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDataInicialFocusLost(evt);
+            }
+        });
 
-        PainelBusca.setLayer(PainelDia, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        PainelBusca.setLayer(PainelAno, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        PainelBusca.setLayer(PainelEntreDatas, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        PainelBusca.setLayer(PainelMes, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout PainelBuscaLayout = new javax.swing.GroupLayout(PainelBusca);
-        PainelBusca.setLayout(PainelBuscaLayout);
-        PainelBuscaLayout.setHorizontalGroup(
-            PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelBuscaLayout.createSequentialGroup()
-                    .addComponent(PainelAno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelBuscaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(PainelEntreDatas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(PainelMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PainelBuscaLayout.setVerticalGroup(
-            PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PainelDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(PainelAno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelBuscaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(PainelEntreDatas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(PainelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(PainelBuscaLayout.createSequentialGroup()
-                    .addGap(1, 1, 1)
-                    .addComponent(PainelMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(1, 1, 1)))
-        );
+        txtDataFinal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        try {
+            txtDataFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtDataFinal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtDataFinal.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDataFinalFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDataFinalFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout PainelFiltroLayout = new javax.swing.GroupLayout(PainelFiltro);
         PainelFiltro.setLayout(PainelFiltroLayout);
         PainelFiltroLayout.setHorizontalGroup(
             PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFiltroLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox1, 0, 0, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PainelBusca)
+                        .addGap(380, 380, 380)
+                        .addComponent(DataInicial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                        .addComponent(painelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelFiltroLayout.createSequentialGroup()
+                        .addGap(541, 541, 541)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelFiltroLayout.setVerticalGroup(
             PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelFiltroLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(PainelFiltroLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addGap(28, 28, 28)
                         .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
-                    .addComponent(PainelBusca))
-                .addContainerGap())
+                            .addComponent(DataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelFiltroLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(painelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75))))
         );
 
         PainelRelatorio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaRelatorio.setAutoCreateRowSorter(true);
+        tabelaRelatorio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tabelaRelatorio.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        tabelaRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -184,34 +196,43 @@ public class TelaRelatorio extends javax.swing.JPanel {
                 "Data", "Produtos", "Valor", "Clientes"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tabelaRelatorio.setShowGrid(true);
+        jScrollPane1.setViewportView(tabelaRelatorio);
 
         javax.swing.GroupLayout PainelRelatorioLayout = new javax.swing.GroupLayout(PainelRelatorio);
         PainelRelatorio.setLayout(PainelRelatorioLayout);
         PainelRelatorioLayout.setHorizontalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1334, Short.MAX_VALUE)
         );
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
         );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setText("RELATÓRIO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PainelRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PainelRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PainelFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(7, 7, 7)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PainelFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,23 +240,56 @@ public class TelaRelatorio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+      private void focarCampoTexto(JComponent campo) {
+        Color corPersonalizada = new Color(23, 102, 212);
+        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+    }
+       private void desfocarCampoTexto(JComponent campo) {
+        Color corPersonalizada = new Color(23, 102, 212);
+        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+    }
+    
+    private void painelBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_painelBuscarMouseMoved
 
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void painelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseClicked
+
+    }//GEN-LAST:event_painelBuscarMouseClicked
+
+    private void painelBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseExited
+
+    }//GEN-LAST:event_painelBuscarMouseExited
+
+    private void txtDataInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataInicialFocusGained
+        focarCampoTexto(txtDataInicial);
+    }//GEN-LAST:event_txtDataInicialFocusGained
+
+    private void txtDataInicialFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataInicialFocusLost
+        desfocarCampoTexto(txtDataInicial);
+    }//GEN-LAST:event_txtDataInicialFocusLost
+
+    private void txtDataFinalFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataFinalFocusGained
+        focarCampoTexto(txtDataFinal);
+    }//GEN-LAST:event_txtDataFinalFocusGained
+
+    private void txtDataFinalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataFinalFocusLost
+        desfocarCampoTexto(txtDataFinal);
+    }//GEN-LAST:event_txtDataFinalFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PainelAno;
-    private javax.swing.JLayeredPane PainelBusca;
-    private javax.swing.JPanel PainelDia;
-    private javax.swing.JPanel PainelEntreDatas;
+    private javax.swing.JLabel DataFinal;
+    private javax.swing.JLabel DataInicial;
+    private javax.swing.JLabel Lupa;
     private javax.swing.JPanel PainelFiltro;
-    private javax.swing.JPanel PainelMes;
     private javax.swing.JPanel PainelRelatorio;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel btnBuscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel painelBuscar;
+    private javax.swing.JTable tabelaRelatorio;
+    private javax.swing.JFormattedTextField txtDataFinal;
+    private javax.swing.JFormattedTextField txtDataInicial;
     // End of variables declaration//GEN-END:variables
 }
