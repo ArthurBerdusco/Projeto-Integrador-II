@@ -2,7 +2,7 @@ package com.senac.main;
 
 import com.senac.principal.TelaPrincipal;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+
 
 public class Main {
 

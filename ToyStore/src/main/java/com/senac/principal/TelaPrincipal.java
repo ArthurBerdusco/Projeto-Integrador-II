@@ -1,20 +1,11 @@
 package com.senac.principal;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstiloSistema {
 
@@ -231,10 +222,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
             pnlVenda.setVisible(false);
             pnlRelatorio.setVisible(false);
         } else if (selecionarPainel == "pnlRelatorio") {
+            pnlVenda.setVisible(false);
             pnlRelatorio.setVisible(true);
             pnlCliente.setVisible(false);
             pnlProduto.setVisible(false);
-            //telaVenda1.setVisible(false);
         }
     }
 
