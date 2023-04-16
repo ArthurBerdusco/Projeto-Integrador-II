@@ -1,7 +1,5 @@
 package com.senac.venda;
 
-import javax.swing.JFrame;
-
 public class TelaVenda extends javax.swing.JPanel {
 
     public TelaVenda() {

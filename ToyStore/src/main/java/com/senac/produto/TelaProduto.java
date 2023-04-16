@@ -102,8 +102,7 @@ public class TelaProduto extends javax.swing.JPanel {
         lblDescEdit = new javax.swing.JLabel();
         lblDescAdd = new javax.swing.JLabel();
         lblPordutos = new javax.swing.JLabel();
-        btnAddProduto = new javax.swing.JPanel();
-        lblAddProduto = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         mnuItemEdit.setLabel("Editar");
         mnuItemEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +167,8 @@ public class TelaProduto extends javax.swing.JPanel {
         lblBuscar.setText("Buscar:");
 
         txtBusca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtBusca.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
+        txtBusca.setPreferredSize(new java.awt.Dimension(400, 26));
         txtBusca.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscaKeyPressed(evt);
@@ -179,6 +180,8 @@ public class TelaProduto extends javax.swing.JPanel {
 
         cboFiltro.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Descrição", "Código de barras" }));
+        cboFiltro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
+        cboFiltro.setPreferredSize(new java.awt.Dimension(400, 28));
 
         btnExpandCollapse.setBackground(new java.awt.Color(255, 255, 255));
         btnExpandCollapse.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maximize.png"))); // NOI18N
@@ -230,8 +233,8 @@ public class TelaProduto extends javax.swing.JPanel {
                     .addComponent(lblFiltrar))
                 .addGap(18, 18, 18)
                 .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlProdutosLayout.setVerticalGroup(
@@ -242,12 +245,12 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGap(10, 10, 10)
                 .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblFiltrar)
-                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(pnlProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblBuscar)
                     .addComponent(txtBusca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
@@ -407,7 +410,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRemovImg)
                     .addComponent(lblAddImg))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlValores.setBackground(new java.awt.Color(255, 255, 255));
@@ -636,10 +639,10 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addComponent(pnlValores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlArmazem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(pnlAdicionarProdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
-                    .addComponent(btnSalvar))
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -674,7 +677,7 @@ public class TelaProduto extends javax.swing.JPanel {
         pnlDefaultLayout.setVerticalGroup(
             pnlDefaultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDefaultLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(imgDefaultProd)
                 .addGap(18, 18, 18)
                 .addComponent(lblDescPnl)
@@ -706,44 +709,12 @@ public class TelaProduto extends javax.swing.JPanel {
         lblPordutos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblPordutos.setText("PRODUTOS");
 
-        btnAddProduto.setBackground(new java.awt.Color(52, 134, 242));
-        btnAddProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAddProduto.setPreferredSize(new java.awt.Dimension(120, 37));
-        btnAddProduto.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnAddProdutoMouseMoved(evt);
+        jButton1.setText("ADICIONAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
-        btnAddProduto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAddProdutoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAddProdutoMousePressed(evt);
-            }
-        });
-
-        lblAddProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblAddProduto.setForeground(new java.awt.Color(255, 255, 255));
-        lblAddProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblAddProduto.setText("ADICIONAR");
-        lblAddProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
-        lblAddProduto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout btnAddProdutoLayout = new javax.swing.GroupLayout(btnAddProduto);
-        btnAddProduto.setLayout(btnAddProdutoLayout);
-        btnAddProdutoLayout.setHorizontalGroup(
-            btnAddProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAddProdutoLayout.createSequentialGroup()
-                .addComponent(lblAddProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        btnAddProdutoLayout.setVerticalGroup(
-            btnAddProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnAddProdutoLayout.createSequentialGroup()
-                .addComponent(lblAddProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -752,11 +723,11 @@ public class TelaProduto extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblPordutos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAddProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1))
+                    .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -768,9 +739,9 @@ public class TelaProduto extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(LayerProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPordutos)
-                            .addComponent(btnAddProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblPordutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -998,19 +969,6 @@ public class TelaProduto extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
-    private void btnAddProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMouseMoved
-        Color corPersonalizada = new Color(255, 255, 255);
-        Color corLabel = new Color(56, 134, 242);
-        btnAddProduto.setBackground(corPersonalizada);
-        lblAddProduto.setForeground(corLabel);
-    }//GEN-LAST:event_btnAddProdutoMouseMoved
-
-    private void btnAddProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMouseExited
-        Color corPersonalizada = new Color(56, 134, 242);
-        btnAddProduto.setBackground(corPersonalizada);
-        lblAddProduto.setForeground(Color.white);
-    }//GEN-LAST:event_btnAddProdutoMouseExited
-
     private void btnExpandCollapseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMousePressed
         if (pnlProdutos.getWidth() < 900) {
             LayerProduto.setVisible(false);
@@ -1027,23 +985,6 @@ public class TelaProduto extends javax.swing.JPanel {
     private void btnExpandCollapseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExpandCollapseMouseEntered
         btnExpandCollapse.setBackground(Color.LIGHT_GRAY);
     }//GEN-LAST:event_btnExpandCollapseMouseEntered
-
-    private void btnAddProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMousePressed
-
-        if (this.auxEditProdut == true) {
-            int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
-            if (escolha == 0) {
-                this.btnCancelarActionPerformed();
-                this.limparFormulario();
-                this.auxEditProdut = false;
-                this.trocarPainelForm("pnlAdicionarProd");
-            }
-        } else {
-            this.limparFormulario();
-            this.auxEditProdut = false;
-            this.trocarPainelForm("pnlAdicionarProd");
-        }
-    }//GEN-LAST:event_btnAddProdutoMousePressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         if (this.auxHouveAlteracaoProd == false) {
@@ -1359,6 +1300,22 @@ public class TelaProduto extends javax.swing.JPanel {
         this.auxHouveAlteracaoProd = true;
     }//GEN-LAST:event_imgProdutoPropertyChange
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (this.auxEditProdut == true) {
+            int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
+            if (escolha == 0) {
+                this.btnCancelarActionPerformed();
+                this.limparFormulario();
+                this.auxEditProdut = false;
+                this.trocarPainelForm("pnlAdicionarProd");
+            }
+        } else {
+            this.limparFormulario();
+            this.auxEditProdut = false;
+            this.trocarPainelForm("pnlAdicionarProd");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void buscarComFiltro() {
         String buscarPor = txtBusca.getText();
 
@@ -1408,7 +1365,6 @@ public class TelaProduto extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLayeredPane LayerProduto;
-    private javax.swing.JPanel btnAddProduto;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel btnExpandCollapse;
     private javax.swing.JButton btnSalvar;
@@ -1418,11 +1374,11 @@ public class TelaProduto extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cboProdPratileira;
     private javax.swing.JLabel imgDefaultProd;
     private javax.swing.JLabel imgProduto;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddImg;
-    private javax.swing.JLabel lblAddProduto;
     private javax.swing.JLabel lblBuscar;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblCodBarras;

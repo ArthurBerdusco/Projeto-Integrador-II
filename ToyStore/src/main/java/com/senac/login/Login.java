@@ -3,12 +3,7 @@ package com.senac.login;
 import com.senac.cadastro.TelaCadastro;
 import com.senac.principal.TelaPrincipal;
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 /**
