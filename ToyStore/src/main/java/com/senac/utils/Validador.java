@@ -6,6 +6,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Validador {
@@ -111,7 +113,6 @@ public class Validador {
             pintarBordaVermelho(dataFld);
             this.mensagemErro.add(e.getMessage());
         }
-
     }
 
     public void validarTelefone(JFormattedTextField telefone) {
@@ -185,6 +186,34 @@ public class Validador {
         } catch (Exception e) {
             pintarBordaVermelho(descProd);
             mensagemErro.add(e.getMessage());
+        }
+    }
+
+    public void validarSenha(JPasswordField senha, JPasswordField cnfSenha) {
+        try {
+            char[] novaSenha = senha.getPassword();
+            String senhaConvertida = String.valueOf(novaSenha);
+
+            char[] novacnfSenha = cnfSenha.getPassword();
+            String novasenhaConvertida = String.valueOf(novacnfSenha);
+
+            if (novaSenha.length == 0 || novacnfSenha.length == 0) {
+                JOptionPane.showMessageDialog(senha, "Digite e confirme a senha");
+                senha.setBorder(BorderFactory.createLineBorder(Color.RED));
+                cnfSenha.setBorder(BorderFactory.createLineBorder(Color.RED));
+                return;
+            }
+
+            if (!String.valueOf(senhaConvertida).equals(String.valueOf(novasenhaConvertida))) {
+                senha.setBorder(BorderFactory.createLineBorder(Color.RED));
+                cnfSenha.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(senha, "As senhas não são iguais");
+            } else {
+                senha.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+                cnfSenha.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(senha, e.getMessage());
         }
     }
 }

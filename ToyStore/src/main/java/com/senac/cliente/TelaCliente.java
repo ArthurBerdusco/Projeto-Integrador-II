@@ -14,7 +14,7 @@ public class TelaCliente extends javax.swing.JPanel {
 
     private ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-    private boolean editarCliente = false; //Atributo auxiliar para definir se é edição ou cadastro
+    private boolean editarCliente = false; //Atributo auxiliar verifica se é edição ou cadastro novo
     private int auxiliarEditCliente; //Atributo auxiliar para verificar qual indice da lista será editado
 
     public TelaCliente() {
@@ -43,7 +43,8 @@ public class TelaCliente extends javax.swing.JPanel {
         mnuItemEdit = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuItemExcluir = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
+        lblClientes = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
         PainelClientes = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
@@ -86,7 +87,6 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         mnuItemEdit.setLabel("Editar");
         mnuItemEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -107,8 +107,16 @@ public class TelaCliente extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1350, 780));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("CLIENTES");
+        lblClientes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblClientes.setText("CLIENTES");
+
+        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAdd.setText("ADICIONAR");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         PainelClientes.setBackground(new java.awt.Color(255, 255, 255));
         PainelClientes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -163,6 +171,14 @@ public class TelaCliente extends javax.swing.JPanel {
 
         txtBuscarPor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtBuscarPor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
+        txtBuscarPor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarPorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtBuscarPorFocusLost(evt);
+            }
+        });
         txtBuscarPor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtBuscarPorKeyPressed(evt);
@@ -326,7 +342,7 @@ public class TelaCliente extends javax.swing.JPanel {
         jLabel15.setText("NASCIMENTO");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("dd/mm/aa");
+        jLabel16.setText("dd/mm/aaaa");
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
@@ -371,7 +387,7 @@ public class TelaCliente extends javax.swing.JPanel {
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel16)
-                                .addGap(0, 94, Short.MAX_VALUE))
+                                .addGap(0, 80, Short.MAX_VALUE))
                             .addComponent(txtDataNasc))))
                 .addContainerGap())
         );
@@ -636,13 +652,6 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addComponent(Default, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("ADICIONAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -651,9 +660,9 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblClientes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addComponent(btnAdd))
                     .addComponent(PainelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LayerCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -666,8 +675,8 @@ public class TelaCliente extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(6, 6, 6)
                         .addComponent(PainelClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(LayerCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1100,14 +1109,14 @@ public class TelaCliente extends javax.swing.JPanel {
         deletarCliente();
     }//GEN-LAST:event_mnuItemExcluirActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         limparFormularioCadastro();
         resetBordasFormulario();
         this.editarCliente = false;
         Default.setVisible(false);
         LayerCliente.setVisible(true);
         Cadastro.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         int escolhaCancelar = JOptionPane.showConfirmDialog(this, "Deseja cancelar o cadastro?", "Cancelar cadastro", JOptionPane.YES_NO_OPTION);
@@ -1126,6 +1135,14 @@ public class TelaCliente extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void txtBuscarPorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarPorFocusGained
+        focarCampoTexto(txtBuscarPor);
+    }//GEN-LAST:event_txtBuscarPorFocusGained
+
+    private void txtBuscarPorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarPorFocusLost
+        desfocarCampoTexto(txtBuscarPor);
+    }//GEN-LAST:event_txtBuscarPorFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cadastro;
     private javax.swing.JPanel Default;
@@ -1133,12 +1150,11 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JPanel PainelClientes;
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelIdentificacao;
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JLabel btnExpandCollapse;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cboFiltroConsulta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1158,6 +1174,7 @@ public class TelaCliente extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel lblBuscar1;
+    private javax.swing.JLabel lblClientes;
     private javax.swing.JLabel lblFiltrarPor;
     private javax.swing.JMenuItem mnuItemEdit;
     private javax.swing.JMenuItem mnuItemExcluir;
