@@ -21,6 +21,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1540, 810]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -42,12 +45,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PaineisAjustaveis" alignment="0" pref="5614" max="32767" attributes="0"/>
+          <Component id="PaineisAjustaveis" alignment="0" pref="1540" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PaineisAjustaveis" alignment="1" pref="780" max="32767" attributes="0"/>
+          <Component id="PaineisAjustaveis" alignment="1" pref="787" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -246,14 +249,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlProduto" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="pnlProduto" pref="1332" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlVenda" max="32767" attributes="0"/>
+                      <Component id="pnlVenda" pref="1316" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlRelatorio" max="32767" attributes="0"/>
+                      <Component id="pnlRelatorio" pref="948" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="pnlCliente" max="32767" attributes="0"/>
+                      <Component id="pnlCliente" pref="1332" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

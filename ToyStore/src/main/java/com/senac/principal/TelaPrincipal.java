@@ -40,6 +40,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1540, 810));
 
         PaineisAjustaveis.setDividerSize(0);
 
@@ -160,13 +161,13 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         LayerPaineisLayout.setHorizontalGroup(
             LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LayerPaineisLayout.createSequentialGroup()
-                .addComponent(pnlProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 1332, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 1332, Short.MAX_VALUE)
                 .addContainerGap())
         );
         LayerPaineisLayout.setVerticalGroup(
@@ -194,11 +195,11 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 5614, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.PREFERRED_SIZE, 1540, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
         );
 
         pack();
