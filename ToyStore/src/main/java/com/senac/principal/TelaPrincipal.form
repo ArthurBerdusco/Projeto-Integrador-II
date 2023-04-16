@@ -42,7 +42,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PaineisAjustaveis" alignment="0" pref="5608" max="32767" attributes="0"/>
+          <Component id="PaineisAjustaveis" alignment="0" pref="5614" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -247,14 +247,14 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="pnlProduto" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlVenda" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlRelatorio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlCliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="pnlProduto" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlVenda" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlRelatorio" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlCliente" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -262,12 +262,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlCliente" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlProduto" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlRelatorio" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlVenda" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlCliente" max="32767" attributes="0"/>
+                          <Component id="pnlProduto" max="32767" attributes="0"/>
+                          <Component id="pnlRelatorio" max="32767" attributes="0"/>
+                          <Component id="pnlVenda" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -17,7 +17,7 @@ public class Validador {
     }
 
     public void pintarBordaCinza(JTextField campo) {
-        Color corpersonalizada = new Color(140, 140, 140);
+        Color corpersonalizada = new Color(190, 204, 200);
         campo.setBorder(BorderFactory.createLineBorder(corpersonalizada));
     }
 

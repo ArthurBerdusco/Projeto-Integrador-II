@@ -27,6 +27,8 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private ArrayList<Produto> listaProdutos = new ArrayList();
     private boolean auxEditProdut = false;
+    private boolean auxHouveAlteracaoProd = false;
+
     private int auxIndiceEditProd;
     private String auxLocalFoto = "/produto/t1.png";
     private Point pointLinhaClicadaTbl;
@@ -143,7 +145,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblProdutos.setRowHeight(25);
+        tblProdutos.setRowHeight(30);
         tblProdutos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 tblProdutosMousePressed(evt);
@@ -281,14 +283,47 @@ public class TelaProduto extends javax.swing.JPanel {
 
         txtCodBarras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCodBarras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtCodBarras.setDisabledTextColor(new java.awt.Color(190, 204, 200));
+        txtCodBarras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodBarrasFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodBarrasFocusLost(evt);
+            }
+        });
+        txtCodBarras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodBarrasKeyTyped(evt);
+            }
+        });
 
         txtDescProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDescProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtDescProd.setDisabledTextColor(new java.awt.Color(190, 204, 200));
+        txtDescProd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescProdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescProdFocusLost(evt);
+            }
+        });
+        txtDescProd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDescProdKeyTyped(evt);
+            }
+        });
 
         imgProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         imgProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png"))); // NOI18N
         imgProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        imgProduto.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                imgProdutoPropertyChange(evt);
+            }
+        });
 
         lblAddImg.setBackground(new java.awt.Color(52, 134, 242));
         lblAddImg.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -391,10 +426,15 @@ public class TelaProduto extends javax.swing.JPanel {
         txtMargemLucro.setBackground(java.awt.Color.lightGray);
         txtMargemLucro.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtMargemLucro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtMargemLucro.setDisabledTextColor(new java.awt.Color(190, 204, 200));
 
         txtProdValorVenda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProdValorVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtProdValorVenda.setDisabledTextColor(new java.awt.Color(190, 204, 200));
         txtProdValorVenda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtProdValorVendaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtProdValorVendaFocusLost(evt);
             }
@@ -407,7 +447,11 @@ public class TelaProduto extends javax.swing.JPanel {
 
         txtProdValorCusto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProdValorCusto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtProdValorCusto.setDisabledTextColor(new java.awt.Color(190, 204, 200));
         txtProdValorCusto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtProdValorCustoFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtProdValorCustoFocusLost(evt);
             }
@@ -463,13 +507,23 @@ public class TelaProduto extends javax.swing.JPanel {
 
         cboProdPratileira.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboProdPratileira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "1", "2" }));
-        cboProdPratileira.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        cboProdPratileira.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
         cboProdPratileira.setName("Pratileira"); // NOI18N
+        cboProdPratileira.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboProdPratileiraItemStateChanged(evt);
+            }
+        });
 
         cboProdCorredor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboProdCorredor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "A", "B", "C" }));
-        cboProdCorredor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        cboProdCorredor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
         cboProdCorredor.setName("Corredor"); // NOI18N
+        cboProdCorredor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboProdCorredorItemStateChanged(evt);
+            }
+        });
 
         lblPratileira.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblPratileira.setText("PRATILEIRA:");
@@ -479,11 +533,22 @@ public class TelaProduto extends javax.swing.JPanel {
 
         cboProdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Veiculos", "Ação e aventura", "Esporte e atividade ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
-        cboProdCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        cboProdCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
         cboProdCategoria.setName("Categoria"); // NOI18N
+        cboProdCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboProdCategoriaItemStateChanged(evt);
+            }
+        });
 
         spnQntProd.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         spnQntProd.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        spnQntProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 204, 200)));
+        spnQntProd.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnQntProdStateChanged(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("QUANTIDADE:");
@@ -804,6 +869,8 @@ public class TelaProduto extends javax.swing.JPanel {
                 cboProdCorredor.setSelectedItem(listaProdutos.get(i).getCorredor());
                 cboProdPratileira.setSelectedItem(listaProdutos.get(i).getPratileira());
                 spnQntProd.setValue(Integer.parseInt(listaProdutos.get(i).getQuantidade()));
+
+                auxHouveAlteracaoProd = false;
                 break;
             }
         }
@@ -833,12 +900,12 @@ public class TelaProduto extends javax.swing.JPanel {
             dtmProduto.addRow(getCamposFormProd(produto));
             valor += produto.valorTotalVenda();
         }
-        
+
         String padrao = "###,###,###.##";
         DecimalFormatSymbols dfs = new DecimalFormatSymbols();
         dfs.setGroupingSeparator('.');
         dfs.setDecimalSeparator(',');
-        DecimalFormat df = new DecimalFormat(padrao,dfs);
+        DecimalFormat df = new DecimalFormat(padrao, dfs);
         String valorFormatBr = df.format(valor);
         txtValorProdVenda.setText("R$ " + valorFormatBr);
     }
@@ -864,7 +931,10 @@ public class TelaProduto extends javax.swing.JPanel {
     }
 
     public void limparFormulario() {
+
+        this.lblRemovImg.setVisible(false);
         this.auxLocalFoto = "/produto/t1.png";
+        this.auxEditProdut = false;
 
         this.txtDescProd.setText("");
         this.txtCodBarras.setText("");
@@ -888,9 +958,14 @@ public class TelaProduto extends javax.swing.JPanel {
 
     }
 
+    private void focarCampoTexto(JComponent campo) {
+        campo.setBorder(BorderFactory.createLineBorder(Color.black));
+        campo.setBackground(new Color(255, 255, 220));
+    }
+
     private void desfocarCampoTexto(JComponent campo) {
-        Color corPersonalizada = new Color(140, 140, 140);
-        campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
+        campo.setBorder(BorderFactory.createLineBorder(new Color(190, 204, 200)));
+        campo.setBackground(Color.WHITE);
     }
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         Validador validador = new Validador();
@@ -911,7 +986,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 addNovoProdutoEstoq();
                 //Reset formulário
                 limparFormulario();
-            } else if ((this.auxEditProdut == true) && JOptionPane.showConfirmDialog(this, "Deseja confirmar alteração do produto?", "Alterar informações do produto", JOptionPane.YES_NO_OPTION) == 0) {
+            } else if ((this.auxEditProdut == true && this.auxHouveAlteracaoProd == true) && JOptionPane.showConfirmDialog(this, "Deseja confirmar alteração do produto?", "Alterar informações do produto", JOptionPane.YES_NO_OPTION) == 0) {
                 editProdutoEstoq();
             }
             updateTblProduto();
@@ -919,12 +994,10 @@ public class TelaProduto extends javax.swing.JPanel {
             pnlAdicionarProd.setVisible(false);
             pnlDefault.setVisible(true);
         } else if (validador.mensagemErro.size() == 1) {
-            JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0), "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0), "Erro ao salvar produto", JOptionPane.WARNING_MESSAGE);
         } else if (validador.mensagemErro.size() > 1) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar produto, prencha os campos corretamente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
         }
-
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAddProdutoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMouseMoved
@@ -958,9 +1031,11 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnExpandCollapseMouseEntered
 
     private void btnAddProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddProdutoMousePressed
+
         if (this.auxEditProdut == true) {
             int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
             if (escolha == 0) {
+                this.btnCancelarActionPerformed();
                 this.limparFormulario();
                 this.auxEditProdut = false;
                 this.trocarPainelForm("pnlAdicionarProd");
@@ -973,9 +1048,26 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddProdutoMousePressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        if (this.auxHouveAlteracaoProd == false) {
+            listaProdutos.get(this.auxIndiceEditProd).setLocalFoto(this.auxLocalFoto);
+            this.trocarPainelForm("pnlDefault");
+            this.limparFormulario();
+        } else {
+            int escolha = JOptionPane.showConfirmDialog(this, "Deseja cancelar a edição do produto?", "Cancelar alterações", JOptionPane.YES_NO_OPTION);
+            if (escolha == 0) {
+                listaProdutos.get(this.auxIndiceEditProd).setLocalFoto(this.auxLocalFoto);
+                this.trocarPainelForm("pnlDefault");
+                this.limparFormulario();
+            }
+        }
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCancelarActionPerformed() {
+        listaProdutos.get(this.auxIndiceEditProd).setLocalFoto(this.auxLocalFoto);
         this.trocarPainelForm("pnlDefault");
         this.limparFormulario();
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    }
 
     private void lblAddImgMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddImgMousePressed
         //INSTANCIANDO FILE EXPLORER SWING
@@ -1010,12 +1102,12 @@ public class TelaProduto extends javax.swing.JPanel {
                     } else {
                         Files.copy(imagemSelecionada.toPath(), Paths.get(destinationPath).resolve(imagemSelecionada.getName()));
                     }
-                    System.out.println("Imagem copiada com sucesso!");
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                //INSERE A IMAGEM A NO FORMULARIO RENDERIZADA COM TAMANHO 200X 150
+                //INSERE A IMAGEM A NO FORMULARIO RENDERIZADA COM TAMANHO 200X150
                 imagemSelecionada = new File(destinationPath + File.separator + imagemSelecionada.getName());
                 BufferedImage originalImage = ImageIO.read(imagemSelecionada);
                 Image resizedImage = originalImage.getScaledInstance(150, 200, Image.SCALE_FAST);
@@ -1034,13 +1126,19 @@ public class TelaProduto extends javax.swing.JPanel {
     private void txtProdValorVendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorVendaKeyTyped
         if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
+        } else {
+            this.auxHouveAlteracaoProd = true;
         }
+
     }//GEN-LAST:event_txtProdValorVendaKeyTyped
 
     private void txtProdValorCustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorCustoKeyTyped
         if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
             evt.consume();
+        } else {
+            this.auxHouveAlteracaoProd = true;
         }
+
     }//GEN-LAST:event_txtProdValorCustoKeyTyped
 
     public void calcMargemLucro() {
@@ -1088,6 +1186,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 txtProdValorVenda.setText("R$" + valor);
             }
         }
+        desfocarCampoTexto(txtProdValorVenda);
     }//GEN-LAST:event_txtProdValorVendaFocusLost
 
     private void txtProdValorCustoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorCustoFocusLost
@@ -1111,6 +1210,7 @@ public class TelaProduto extends javax.swing.JPanel {
             }
 
         }
+        desfocarCampoTexto(txtProdValorCusto);
     }//GEN-LAST:event_txtProdValorCustoFocusLost
 
     private void lblAddImgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddImgMouseEntered
@@ -1137,7 +1237,7 @@ public class TelaProduto extends javax.swing.JPanel {
         int escolhaRemovImg = JOptionPane.showConfirmDialog(this, "Deseja remover a imagem?", "Remover imagem", JOptionPane.YES_NO_OPTION);
         if (escolhaRemovImg == 0) {
             imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png")));
-            this.auxLocalFoto = "/produtos/t1.png";
+            this.auxLocalFoto = listaProdutos.get(this.auxIndiceEditProd).getLocalFoto();
             listaProdutos.get(this.auxIndiceEditProd).setLocalFoto("/produtos/t1.png");
             lblRemovImg.setVisible(false);
         }
@@ -1145,16 +1245,33 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
         if (evt.getClickCount() == 2) {
-            limparFormulario();
-            trocarPainelForm("pnlAdicionarProd");
-            Point point = evt.getPoint();
-            int linhaClicada = tblProdutos.rowAtPoint(point);
-            this.auxLocalFoto = listaProdutos.get(linhaClicada).getLocalFoto();
-            DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
-            String cod_barras = tblProd.getValueAt(linhaClicada, 1).toString();
-            lerFormProduto(cod_barras);
-            calcMargemLucro();
+            if ((auxEditProdut == true) && (auxHouveAlteracaoProd == true)) {
+                if (JOptionPane.showConfirmDialog(this, "Deseja cancelar edição atual?", "Edição em andamento", JOptionPane.YES_NO_OPTION) == 0) {
+                    this.btnCancelarActionPerformed();
+                    limparFormulario();
+                    trocarPainelForm("pnlAdicionarProd");
+                    Point point = evt.getPoint();
+                    int linhaClicada = tblProdutos.rowAtPoint(point);
+                    this.auxLocalFoto = listaProdutos.get(linhaClicada).getLocalFoto();
+                    DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
+                    String cod_barras = tblProd.getValueAt(linhaClicada, 1).toString();
+                    lerFormProduto(cod_barras);
+                    calcMargemLucro();
+                }
+
+            } else {
+                limparFormulario();
+                trocarPainelForm("pnlAdicionarProd");
+                Point point = evt.getPoint();
+                int linhaClicada = tblProdutos.rowAtPoint(point);
+                this.auxLocalFoto = listaProdutos.get(linhaClicada).getLocalFoto();
+                DefaultTableModel tblProd = (DefaultTableModel) tblProdutos.getModel();
+                String cod_barras = tblProd.getValueAt(linhaClicada, 1).toString();
+                lerFormProduto(cod_barras);
+                calcMargemLucro();
+            }
         }
+
         if (evt.getButton() == MouseEvent.BUTTON3) {
             popUpMenuTbl.show(evt.getComponent(), evt.getX(), evt.getY());
             pointLinhaClicadaTbl = evt.getPoint();
@@ -1191,6 +1308,58 @@ public class TelaProduto extends javax.swing.JPanel {
             updateTblProduto();
         }
     }//GEN-LAST:event_txtBuscaKeyPressed
+
+    private void txtDescProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescProdFocusGained
+        focarCampoTexto(txtDescProd);
+    }//GEN-LAST:event_txtDescProdFocusGained
+
+    private void txtDescProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescProdFocusLost
+        desfocarCampoTexto(txtDescProd);
+    }//GEN-LAST:event_txtDescProdFocusLost
+
+    private void txtCodBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusGained
+        focarCampoTexto(txtCodBarras);
+    }//GEN-LAST:event_txtCodBarrasFocusGained
+
+    private void txtCodBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusLost
+        desfocarCampoTexto(txtCodBarras);
+    }//GEN-LAST:event_txtCodBarrasFocusLost
+
+    private void txtProdValorVendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorVendaFocusGained
+        focarCampoTexto(txtProdValorVenda);
+    }//GEN-LAST:event_txtProdValorVendaFocusGained
+
+    private void txtProdValorCustoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorCustoFocusGained
+        focarCampoTexto(txtProdValorCusto);
+    }//GEN-LAST:event_txtProdValorCustoFocusGained
+
+    private void txtDescProdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescProdKeyTyped
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_txtDescProdKeyTyped
+
+    private void txtCodBarrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodBarrasKeyTyped
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_txtCodBarrasKeyTyped
+
+    private void cboProdCorredorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdCorredorItemStateChanged
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_cboProdCorredorItemStateChanged
+
+    private void cboProdPratileiraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdPratileiraItemStateChanged
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_cboProdPratileiraItemStateChanged
+
+    private void cboProdCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboProdCategoriaItemStateChanged
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_cboProdCategoriaItemStateChanged
+
+    private void spnQntProdStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnQntProdStateChanged
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_spnQntProdStateChanged
+
+    private void imgProdutoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_imgProdutoPropertyChange
+        this.auxHouveAlteracaoProd = true;
+    }//GEN-LAST:event_imgProdutoPropertyChange
 
     private void buscarComFiltro() {
         String buscarPor = txtBusca.getText();
