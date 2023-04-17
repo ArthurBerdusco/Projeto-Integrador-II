@@ -1,6 +1,7 @@
 package com.senac.principal;
 
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         focarVenda();
         trocarPainel("pnlVenda");
         btnVenda.doLayout();
+        setIcon();
     }
 
     @SuppressWarnings("unchecked")
@@ -164,7 +166,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, 948, Short.MAX_VALUE)
+                .addComponent(pnlRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 948, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 1332, Short.MAX_VALUE)
                 .addContainerGap())
@@ -198,7 +200,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 787, Short.MAX_VALUE)
         );
 
         pack();
@@ -330,7 +332,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Impossivel definir estilo do sistema");
         }
-        
+
     }
 
     protected void focarBotaoMenu(JLabel btn) {
@@ -376,19 +378,15 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
     }
 
     public static void main(String args[]) {
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                try {
-//                    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-//                } catch (Exception ex) {
-//                    JOptionPane.showMessageDialog(null, "Impossivel definir estilo do sistema");
-//                }
-
                 new TelaPrincipal().setVisible(true);
-
             }
         });
+    }
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ToyStoreLogo.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

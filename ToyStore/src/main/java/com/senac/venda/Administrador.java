@@ -39,11 +39,9 @@ public class Administrador extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Login");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Senha:");
 
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -57,12 +55,10 @@ public class Administrador extends javax.swing.JFrame {
 
         btnCancelarVenda.setBackground(new java.awt.Color(178, 34, 34));
         btnCancelarVenda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnCancelarVenda.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelarVenda.setText("Cancelar Venda");
 
         btnVoltar.setBackground(new java.awt.Color(0, 153, 0));
         btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnVoltar.setForeground(new java.awt.Color(0, 0, 0));
         btnVoltar.setText("Voltar");
         btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

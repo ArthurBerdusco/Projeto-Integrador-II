@@ -1,6 +1,6 @@
 package com.senac.main;
 
-import com.senac.principal.TelaPrincipal;
+import com.senac.login.Login;
 import javax.swing.UIManager;
 
 
@@ -13,9 +13,7 @@ public class Main {
             //"javax.swing.plaf.nimbus.NimbusLookAndFeel":  ~~ NIMBUS
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             UIManager.put("Table.focusCellBackground", UIManager.getColor("Table.background"));
-
-            TelaPrincipal sistema = new TelaPrincipal();
-            sistema.setVisible(true);
+            new Login().setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
