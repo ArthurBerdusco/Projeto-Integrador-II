@@ -20,7 +20,7 @@ public class TelaRelatorio extends javax.swing.JPanel {
         DataFinal = new javax.swing.JLabel();
         txtDataInicial = new javax.swing.JFormattedTextField();
         txtDataFinal = new javax.swing.JFormattedTextField();
-        btnBuscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         PainelRelatorio = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaRelatorio = new javax.swing.JTable();
@@ -71,14 +71,14 @@ public class TelaRelatorio extends javax.swing.JPanel {
             }
         });
 
-        btnBuscar.setBackground(new java.awt.Color(52, 134, 242));
-        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setBackground(new java.awt.Color(56, 134, 242));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        jButton1.setText("BUSCAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -97,25 +97,25 @@ public class TelaRelatorio extends javax.swing.JPanel {
                         .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(btnBuscar))
+                        .addGap(46, 46, 46)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
                         .addGap(541, 541, 541)
                         .addComponent(jLabel1)))
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         PainelFiltroLayout.setVerticalGroup(
             PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFiltroLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(26, 26, 26)
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(86, Short.MAX_VALUE))
         );
 
@@ -171,7 +171,7 @@ public class TelaRelatorio extends javax.swing.JPanel {
         );
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -229,23 +229,23 @@ public class TelaRelatorio extends javax.swing.JPanel {
         desfocarCampoTexto(txtDataFinal);
     }//GEN-LAST:event_txtDataFinalFocusLost
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-           Validador validador = new Validador();
-           validador.validarDataNasc(txtDataInicial);
-           validador.validarDataNasc(txtDataFinal);
-           
-           if(validador.mensagemErro.size()== 0){
-               JOptionPane.showMessageDialog(this, "Relatório indisponivel no momento!");
-           }else {JOptionPane.showMessageDialog(this, "Preencha os campos corretamente!");
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Validador validador = new Validador();
+        validador.validarData(txtDataInicial);
+        validador.validarData(txtDataFinal);
+        if(validador.mensagemErro.size() == 0){
+            JOptionPane.showMessageDialog(this, "Relatório indisponivel no momento");
+        }else{
+            JOptionPane.showMessageDialog(this, "Preencha os campos corretamente");
         }
-    }//GEN-LAST:event_btnBuscarActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DataFinal;
     private javax.swing.JLabel DataInicial;
     private javax.swing.JPanel PainelFiltro;
     private javax.swing.JPanel PainelRelatorio;
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

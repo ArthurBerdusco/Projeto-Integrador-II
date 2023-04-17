@@ -90,6 +90,31 @@ public class Validador {
         }
     }
 
+    public void validarData(JFormattedTextField dataFld) {
+        try {
+            String data = dataFld.getText().replace("/", "");
+            int dia = Integer.parseInt(data.substring(0, 2));
+            int mes = Integer.parseInt(data.substring(2, 4));
+            int ano = Integer.parseInt(data.substring(4, 8));
+
+            if ((dia > 31) || (dia < 1)) {
+                throw new Exception("Confira o dia de nascimento!");
+            }
+
+            if ((mes > 12) || (mes < 1)) {
+                throw new Exception("Confira o mes de nascimento!");
+            }
+
+            if ((ano > 2023) || (ano < 1900)) {
+                throw new Exception("Confira o ano de nascimento!");
+            }
+            pintarBordaCinza(dataFld);
+        } catch (Exception e) {
+            pintarBordaVermelho(dataFld);
+            this.mensagemErro.add(e.getMessage());
+        }
+    }
+
     public void validarDataNasc(JFormattedTextField dataFld) {
         try {
             String data = dataFld.getText().replace("/", "");
