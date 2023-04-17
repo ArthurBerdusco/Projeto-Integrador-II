@@ -1046,7 +1046,7 @@ public class TelaProduto extends javax.swing.JPanel {
         } else if (validador.mensagemErro.size() == 1) {
             JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0), "Erro ao salvar produto", JOptionPane.WARNING_MESSAGE);
         } else if (validador.mensagemErro.size() > 1) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar produto, prencha os campos corretamente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao salvar produto, prencha os campos corretamente", "Erro ao cadastrar", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -1139,7 +1139,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Imagem inválida", "Erro ao adicionar imagem", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Imagem inválida", "Erro ao adicionar imagem", JOptionPane.WARNING_MESSAGE);
             }
         }
     }//GEN-LAST:event_lblAddImgMousePressed
@@ -1355,7 +1355,7 @@ public class TelaProduto extends javax.swing.JPanel {
     }//GEN-LAST:event_imgProdutoPropertyChange
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if (this.auxEditProdut == true) {
+        if ((this.auxEditProdut == true) && (this.auxHouveAlteracaoProd == true)) {
             int escolha = JOptionPane.showConfirmDialog(this, "Você está editando um produto, deseja cancelar a edição e abrir um formulario novo?", "Edição em andamento", JOptionPane.YES_NO_OPTION);
             if (escolha == 0) {
                 this.btnCancelarActionPerformed();
