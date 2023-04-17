@@ -321,7 +321,6 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         TelaConfigEstilo configEstilo = new TelaConfigEstilo();
         configEstilo.setCallBack(this);// passando uma instância de IntegradorEstiloSistema para o JFrame secundário
         configEstilo.setVisible(true);
-
     }//GEN-LAST:event_btnConfigActionPerformed
 
     @Override

@@ -18,6 +18,7 @@ public class TelaConfigEstilo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setResizable(false);
 
         cboEstilo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboEstilo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Windows 10", "Nimbus", "Metal" }));
