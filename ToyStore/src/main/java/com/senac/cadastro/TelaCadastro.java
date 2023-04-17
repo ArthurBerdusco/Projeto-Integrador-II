@@ -7,6 +7,7 @@ package com.senac.cadastro;
 import com.senac.login.Login;
 import com.senac.utils.Validador;
 import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -22,11 +23,10 @@ public class TelaCadastro extends javax.swing.JFrame {
      * Creates new form TelaCadastro
      */
     public TelaCadastro() {
-        
-        
+
         initComponents();
-        
-        
+        setIcon();
+
     }
 
     /**
@@ -71,11 +71,10 @@ public class TelaCadastro extends javax.swing.JFrame {
         campoEnd = new javax.swing.JTextField();
         campoNum = new javax.swing.JTextField();
         campoComp = new javax.swing.JTextField();
-        btnSalvar = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        btnCancelar = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
         campoTelefone = new javax.swing.JFormattedTextField();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
         jImg = new javax.swing.JLabel();
 
         jMenu1.setText("jMenu1");
@@ -97,73 +96,176 @@ public class TelaCadastro extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Identificação", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-        jPanel1.setForeground(new java.awt.Color(52, 134, 242));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel1.setBackground(new java.awt.Color(52, 134, 242));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("NOME COMPLETO");
 
         jLabel2.setBackground(new java.awt.Color(52, 134, 242));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("CPF");
 
         jLabel5.setBackground(new java.awt.Color(52, 134, 242));
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("EMAIL");
 
         jLabel6.setBackground(new java.awt.Color(52, 134, 242));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("SEXO");
 
         jLabel7.setBackground(new java.awt.Color(52, 134, 242));
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("ESTADO CIVIL");
 
+        campoNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoNomeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoNomeMouseExited(evt);
+            }
+        });
         campoNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNomeActionPerformed(evt);
             }
         });
 
+        campoEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoEmailMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoEmailMouseExited(evt);
+            }
+        });
+
         buttonGroup1.add(radioMasc);
-        radioMasc.setForeground(new java.awt.Color(52, 134, 242));
+        radioMasc.setForeground(new java.awt.Color(51, 51, 51));
         radioMasc.setText("Masculino");
+        radioMasc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                radioMascMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                radioMascMouseExited(evt);
+            }
+        });
+        radioMasc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioMascActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radioFem);
-        radioFem.setForeground(new java.awt.Color(52, 134, 242));
+        radioFem.setForeground(new java.awt.Color(51, 51, 51));
         radioFem.setText("Feminino");
+        radioFem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                radioFemMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                radioFemMouseExited(evt);
+            }
+        });
+        radioFem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioFemActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(52, 134, 242));
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("DATA DE NASCIMENTO");
 
+        campoEstado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoEstadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoEstadoMouseExited(evt);
+            }
+        });
         campoEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoEstadoActionPerformed(evt);
             }
         });
 
+        campoCpf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoCpfMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoCpfMouseExited(evt);
+            }
+        });
+
+        campoData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoDataMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoDataMouseExited(evt);
+            }
+        });
+        campoData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoDataActionPerformed(evt);
+            }
+        });
+
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("NOME USUARIO");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("SENHA");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("CONFIRMA SENHA");
+
+        nomeUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nomeUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nomeUsuarioMouseExited(evt);
+            }
+        });
+
+        senha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                senhaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                senhaMouseExited(evt);
+            }
+        });
+
+        cnfSenha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cnfSenhaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cnfSenhaMouseExited(evt);
+            }
+        });
 
         jLabel16.setBackground(new java.awt.Color(0, 0, 0));
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("LOGIN E SENHA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -267,112 +369,91 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 460, 410));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.setName("Endereço"); // NOI18N
 
         jLabel3.setBackground(new java.awt.Color(52, 134, 242));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("ENDEREÇO");
 
         jLabel4.setBackground(new java.awt.Color(52, 134, 242));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("TELEFONE");
 
         jLabel9.setBackground(new java.awt.Color(52, 134, 242));
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setText("COMPLEMENTO");
 
         jLabel10.setBackground(new java.awt.Color(52, 134, 242));
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(52, 134, 242));
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("NUMERO");
 
+        campoEnd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoEndMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoEndMouseExited(evt);
+            }
+        });
         campoEnd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoEndActionPerformed(evt);
             }
         });
 
+        campoNum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoNumMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoNumMouseExited(evt);
+            }
+        });
         campoNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoNumActionPerformed(evt);
             }
         });
 
-        btnSalvar.setBackground(new java.awt.Color(52, 134, 242));
-        btnSalvar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSalvarMouseClicked(evt);
-            }
+        campoComp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSalvarMouseEntered(evt);
+                campoCompMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSalvarMouseExited(evt);
+                campoCompMouseExited(evt);
             }
         });
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("SALVAR");
-
-        javax.swing.GroupLayout btnSalvarLayout = new javax.swing.GroupLayout(btnSalvar);
-        btnSalvar.setLayout(btnSalvarLayout);
-        btnSalvarLayout.setHorizontalGroup(
-            btnSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSalvarLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel11)
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        btnSalvarLayout.setVerticalGroup(
-            btnSalvarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSalvarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        btnCancelar.setBackground(new java.awt.Color(52, 134, 242));
-        btnCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseExited(evt);
-            }
-        });
-
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("CANCELAR");
-
-        javax.swing.GroupLayout btnCancelarLayout = new javax.swing.GroupLayout(btnCancelar);
-        btnCancelar.setLayout(btnCancelarLayout);
-        btnCancelarLayout.setHorizontalGroup(
-            btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCancelarLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel12)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        btnCancelarLayout.setVerticalGroup(
-            btnCancelarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCancelarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel12)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         campoTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,####.####"))));
+        campoTelefone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                campoTelefoneMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                campoTelefoneMouseExited(evt);
+            }
+        });
+
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setText("CANCELAR");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -384,9 +465,6 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
@@ -399,13 +477,16 @@ public class TelaCadastro extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel10)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(campoNum)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(campoNum, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(28, 28, 28))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -425,24 +506,23 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(campoComp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 460, -1));
 
-        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/958361.jpg"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 140));
+
+        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ícone-e-fundo-do-brinquedo-43860074.jpg"))); // NOI18N
         jImg.setPreferredSize(new java.awt.Dimension(500, 300));
-        getContentPane().add(jImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 760));
+        getContentPane().add(jImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 760, 760));
 
         pack();
         setLocationRelativeTo(null);
@@ -453,7 +533,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_campoEndActionPerformed
 
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
-        
+
 
     }//GEN-LAST:event_campoNomeActionPerformed
 
@@ -461,80 +541,186 @@ public class TelaCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_campoEstadoActionPerformed
 
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-    try{
-        Validador validador = new Validador();
-        
-        //Validar campos de identificação
-        validador.validarNome(campoNome);
-        validador.validarCpf(campoCpf);
-        validador.validarDataNasc(campoData);
-        validador.validarGroupRadio(buttonGroup1);
-        validador.validarString(campoEstado); //civil
-        validador.validarEmail(campoEmail);
-        
-        
-        
-        //Validar campos de endereço
-        validador.validarString(campoEnd);
-        validador.validarString(campoNum);
-        validador.validarTelefone(campoTelefone);
-    
-        //Validar Login e Senha
-        validador.validarString(nomeUsuario);
-        validador.validarSenha(senha, cnfSenha);
-        
-        
-        if(validador.mensagemErro.size() >= 2) {
-                throw new Exception("Preencha todos os campos.");
 
-            } else if (validador.mensagemErro.size() == 1) {
+    private void campoNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campoNumActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        try {
+            Validador validador = new Validador();
+
+            //Validar campos de identificação
+            validador.validarNome(campoNome);
+            validador.validarCpf(campoCpf);
+            validador.validarDataNasc(campoData);
+            validador.validarGroupRadio(buttonGroup1);
+            validador.validarString(campoEstado); //civil
+            validador.validarEmail(campoEmail);
+
+            //Validar campos de endereço
+            validador.validarString(campoEnd);
+            validador.validarString(campoNum);
+            validador.validarTelefone(campoTelefone);
+
+            //Validar Login e Senha
+            validador.validarString(nomeUsuario);
+            validador.validarSenha(senha, cnfSenha);
+
+            if (validador.mensagemErro.size() == 1) {
                 throw new Exception(validador.mensagemErro.get(0));
             }
 
             if (validador.mensagemErro.size() == 0) {
-                JOptionPane.showMessageDialog(this,"Cadastro realizado com sucesso!");
-                
+                JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+
                 Login tela = new Login();
                 tela.setVisible(true);
                 this.dispose();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
-        }  
-    }//GEN-LAST:event_btnSalvarMouseClicked
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
-    
-    private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         Login tela = new Login();
         tela.setVisible(true);
-        
+
         this.dispose();
-    }//GEN-LAST:event_btnCancelarMouseClicked
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void campoNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNumActionPerformed
+    private void campoNomeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNomeMouseEntered
+        campoNome.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoNomeMouseEntered
+
+    private void campoNomeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNomeMouseExited
+        campoNome.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoNomeMouseExited
+
+    private void campoCpfMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCpfMouseEntered
+        campoCpf.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoCpfMouseEntered
+
+    private void campoCpfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCpfMouseExited
+        campoCpf.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoCpfMouseExited
+
+    private void campoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDataActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoNumActionPerformed
+    }//GEN-LAST:event_campoDataActionPerformed
 
-    private void btnSalvarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseEntered
-        btnSalvar.setBackground(Color.GRAY);
-    }//GEN-LAST:event_btnSalvarMouseEntered
+    private void campoDataMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoDataMouseEntered
+        campoData.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoDataMouseEntered
 
-    private void btnSalvarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseExited
-        btnSalvar.setBackground(Color.decode("#3486F2"));
-    }//GEN-LAST:event_btnSalvarMouseExited
+    private void campoDataMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoDataMouseExited
+        campoData.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoDataMouseExited
 
-    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
-        btnCancelar.setBackground(Color.GRAY);
-    }//GEN-LAST:event_btnCancelarMouseEntered
+    private void campoEstadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEstadoMouseEntered
+        campoEstado.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoEstadoMouseEntered
 
-    private void btnCancelarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseExited
-        btnCancelar.setBackground(Color.decode("#3486F2"));
-    }//GEN-LAST:event_btnCancelarMouseExited
+    private void campoEstadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEstadoMouseExited
+        campoEstado.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoEstadoMouseExited
 
-    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+    private void campoEmailMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEmailMouseEntered
+        campoEmail.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoEmailMouseEntered
+
+    private void campoEmailMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEmailMouseExited
+        campoEmail.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoEmailMouseExited
+
+    private void nomeUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeUsuarioMouseEntered
+        nomeUsuario.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_nomeUsuarioMouseEntered
+
+    private void nomeUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomeUsuarioMouseExited
+        nomeUsuario.setBackground(Color.WHITE);
+    }//GEN-LAST:event_nomeUsuarioMouseExited
+
+    private void senhaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senhaMouseEntered
+        senha.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_senhaMouseEntered
+
+    private void senhaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_senhaMouseExited
+        senha.setBackground(Color.WHITE);
+    }//GEN-LAST:event_senhaMouseExited
+
+    private void cnfSenhaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cnfSenhaMouseEntered
+        cnfSenha.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_cnfSenhaMouseEntered
+
+    private void cnfSenhaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cnfSenhaMouseExited
+        cnfSenha.setBackground(Color.WHITE);
+    }//GEN-LAST:event_cnfSenhaMouseExited
+
+    private void campoEndMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEndMouseEntered
+        campoEnd.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoEndMouseEntered
+
+    private void campoEndMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoEndMouseExited
+        campoEnd.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoEndMouseExited
+
+    private void campoNumMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNumMouseEntered
+        campoNum.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoNumMouseEntered
+
+    private void campoNumMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoNumMouseExited
+        campoNum.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoNumMouseExited
+
+    private void campoCompMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCompMouseEntered
+        campoComp.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoCompMouseEntered
+
+    private void campoCompMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoCompMouseExited
+        campoComp.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoCompMouseExited
+
+    private void campoTelefoneMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoTelefoneMouseEntered
+        campoTelefone.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_campoTelefoneMouseEntered
+
+    private void campoTelefoneMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campoTelefoneMouseExited
+        campoTelefone.setBackground(Color.WHITE);
+    }//GEN-LAST:event_campoTelefoneMouseExited
+
+    private void radioMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMascActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+    }//GEN-LAST:event_radioMascActionPerformed
+
+    private void radioMascMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioMascMouseEntered
+       //radioMasc.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_radioMascMouseEntered
+
+    private void radioMascMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioMascMouseExited
+        //radioMasc.setBackground(Color.WHITE);
+    }//GEN-LAST:event_radioMascMouseExited
+
+    private void radioFemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioFemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioFemActionPerformed
+
+    private void radioFemMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioFemMouseEntered
+        //radioFem.setBackground(Color.decode("#ffffb3"));
+    }//GEN-LAST:event_radioFemMouseEntered
+
+    private void radioFemMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioFemMouseExited
+        //radioFem.setBackground(Color.WHITE);
+    }//GEN-LAST:event_radioFemMouseExited
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ToyStoreLogo.png")));
+    }
 
     /**
      * @param args the command line arguments
@@ -569,13 +755,12 @@ public class TelaCadastro extends javax.swing.JFrame {
                 new TelaCadastro().setVisible(true);
             }
         });
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnCancelar;
-    private javax.swing.JPanel btnSalvar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField campoComp;
     private javax.swing.JFormattedTextField campoCpf;
@@ -592,7 +777,6 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

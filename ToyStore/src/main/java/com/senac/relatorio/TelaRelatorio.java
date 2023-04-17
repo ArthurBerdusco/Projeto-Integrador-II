@@ -1,8 +1,10 @@
 package com.senac.relatorio;
 
+import com.senac.utils.Validador;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
+import javax.swing.JOptionPane;
 
 public class TelaRelatorio extends javax.swing.JPanel {
     public TelaRelatorio() {
@@ -14,13 +16,11 @@ public class TelaRelatorio extends javax.swing.JPanel {
 
         PainelFiltro = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        painelBuscar = new javax.swing.JPanel();
-        btnBuscar = new javax.swing.JLabel();
-        Lupa = new javax.swing.JLabel();
         DataInicial = new javax.swing.JLabel();
         DataFinal = new javax.swing.JLabel();
         txtDataInicial = new javax.swing.JFormattedTextField();
         txtDataFinal = new javax.swing.JFormattedTextField();
+        btnBuscar = new javax.swing.JButton();
         PainelRelatorio = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaRelatorio = new javax.swing.JTable();
@@ -32,48 +32,6 @@ public class TelaRelatorio extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("CONSULTA ENTRE DATAS:");
-
-        painelBuscar.setBackground(new java.awt.Color(52, 134, 242));
-        painelBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        painelBuscar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                painelBuscarMouseMoved(evt);
-            }
-        });
-        painelBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                painelBuscarMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                painelBuscarMouseExited(evt);
-            }
-        });
-
-        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnBuscar.setText("BUSCAR");
-        btnBuscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(52, 134, 242)));
-        btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        Lupa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
-
-        javax.swing.GroupLayout painelBuscarLayout = new javax.swing.GroupLayout(painelBuscar);
-        painelBuscar.setLayout(painelBuscarLayout);
-        painelBuscarLayout.setHorizontalGroup(
-            painelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Lupa, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar)
-                .addGap(11, 11, 11))
-        );
-        painelBuscarLayout.setVerticalGroup(
-            painelBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Lupa, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
 
         DataInicial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DataInicial.setText("DATA INICIAL:");
@@ -113,6 +71,17 @@ public class TelaRelatorio extends javax.swing.JPanel {
             }
         });
 
+        btnBuscar.setBackground(new java.awt.Color(52, 134, 242));
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search.png"))); // NOI18N
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PainelFiltroLayout = new javax.swing.GroupLayout(PainelFiltro);
         PainelFiltro.setLayout(PainelFiltroLayout);
         PainelFiltroLayout.setHorizontalGroup(
@@ -128,31 +97,26 @@ public class TelaRelatorio extends javax.swing.JPanel {
                         .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(painelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)
+                        .addComponent(btnBuscar))
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
                         .addGap(541, 541, 541)
                         .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         PainelFiltroLayout.setVerticalGroup(
             PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFiltroLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelFiltroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(painelBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
+                .addGap(28, 28, 28)
+                .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         PainelRelatorio.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -207,7 +171,7 @@ public class TelaRelatorio extends javax.swing.JPanel {
         );
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -249,18 +213,6 @@ public class TelaRelatorio extends javax.swing.JPanel {
         campo.setBorder(BorderFactory.createLineBorder(corPersonalizada));
     }
     
-    private void painelBuscarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_painelBuscarMouseMoved
-
-    private void painelBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseClicked
-
-    }//GEN-LAST:event_painelBuscarMouseClicked
-
-    private void painelBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_painelBuscarMouseExited
-
-    }//GEN-LAST:event_painelBuscarMouseExited
-
     private void txtDataInicialFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataInicialFocusGained
         focarCampoTexto(txtDataInicial);
     }//GEN-LAST:event_txtDataInicialFocusGained
@@ -277,17 +229,26 @@ public class TelaRelatorio extends javax.swing.JPanel {
         desfocarCampoTexto(txtDataFinal);
     }//GEN-LAST:event_txtDataFinalFocusLost
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+           Validador validador = new Validador();
+           validador.validarDataNasc(txtDataInicial);
+           validador.validarDataNasc(txtDataFinal);
+           
+           if(validador.mensagemErro.size()== 0){
+               JOptionPane.showMessageDialog(this, "Relatório indisponivel no momento!");
+           }else {JOptionPane.showMessageDialog(this, "Preencha os campos corretamente!");
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DataFinal;
     private javax.swing.JLabel DataInicial;
-    private javax.swing.JLabel Lupa;
     private javax.swing.JPanel PainelFiltro;
     private javax.swing.JPanel PainelRelatorio;
-    private javax.swing.JLabel btnBuscar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel painelBuscar;
     private javax.swing.JTable tabelaRelatorio;
     private javax.swing.JFormattedTextField txtDataFinal;
     private javax.swing.JFormattedTextField txtDataInicial;
