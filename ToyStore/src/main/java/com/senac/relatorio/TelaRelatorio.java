@@ -28,6 +28,7 @@ public class TelaRelatorio extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(1350, 780));
 
+        PainelFiltro.setBackground(new java.awt.Color(255, 255, 255));
         PainelFiltro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
