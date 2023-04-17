@@ -30,7 +30,7 @@ public class TelaProduto extends javax.swing.JPanel {
     private boolean auxHouveAlteracaoProd = false;
 
     private int auxIndiceEditProd;
-    private String auxLocalFoto = "/produto/t1.png";
+    private String auxLocalFoto = "/produtos/t1.png";
     private Point pointLinhaClicadaTbl;
 
     public TelaProduto() {
@@ -821,20 +821,22 @@ public class TelaProduto extends javax.swing.JPanel {
                 txtDescProd.setText(listaProdutos.get(i).getDescricao());
                 txtCodBarras.setText(listaProdutos.get(i).getCod_barras());
 
-                try {
-                    if (!(listaProdutos.get(i).getLocalFoto().equals("/produtos/t1.png"))) {
+                if (listaProdutos.get(i).getLocalFoto() != "/produtos/t1.png") {
+                    
+                    try {
                         String resourcesPath = new File(".").getCanonicalPath() + "\\src\\main" + File.separator + "resources" + File.separator;
                         File img = new File(resourcesPath + File.separator + listaProdutos.get(i).getLocalFoto());
                         BufferedImage originalImage = ImageIO.read(img);
                         Image resizedImage = originalImage.getScaledInstance(150, 200, Image.SCALE_FAST);
                         ImageIcon icon = new ImageIcon(resizedImage);
                         imgProduto.setIcon(icon);
-                    } else {
-                        imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png")));
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this, "Impossivel reenderizar imagem");
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Impossivel reenderizar imagem");
+                } else {
+                    imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produtos/t1.png"))); 
                 }
+
                 if (!(listaProdutos.get(i).getLocalFoto().equals("/produtos/t1.png"))) {
                     lblRemovImg.setVisible(true);
                 } else if ((listaProdutos.get(i).getLocalFoto().equals("/produtos/t1.png"))) {
@@ -983,7 +985,7 @@ public class TelaProduto extends javax.swing.JPanel {
     public void limparFormulario() {
 
         this.lblRemovImg.setVisible(false);
-        this.auxLocalFoto = "/produto/t1.png";
+        this.auxLocalFoto = "/produtos/t1.png";
         this.auxEditProdut = false;
 
         this.txtDescProd.setText("");
@@ -1238,6 +1240,7 @@ public class TelaProduto extends javax.swing.JPanel {
 
     private void tblProdutosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProdutosMousePressed
         if (evt.getClickCount() == 2) {
+
             if ((auxEditProdut == true) && (auxHouveAlteracaoProd == true)) {
                 if (JOptionPane.showConfirmDialog(this, "Deseja cancelar edição atual?", "Edição em andamento", JOptionPane.YES_NO_OPTION) == 0) {
                     this.btnCancelarActionPerformed();
@@ -1263,6 +1266,7 @@ public class TelaProduto extends javax.swing.JPanel {
                 lerFormProduto(cod_barras);
                 calcMargemLucro();
             }
+            JOptionPane.showConfirmDialog(this, listaProdutos.get(auxIndiceEditProd).getLocalFoto());
         }
 
         if (evt.getButton() == MouseEvent.BUTTON3) {
