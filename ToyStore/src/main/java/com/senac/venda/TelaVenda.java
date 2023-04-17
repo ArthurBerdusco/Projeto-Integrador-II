@@ -9,18 +9,14 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
-
 public class TelaVenda extends javax.swing.JPanel {
-    
-    
+
     public TelaVenda() {
         initComponents();
         setardata();
-        
+
     }
-    
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -485,26 +481,23 @@ public class TelaVenda extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //Preenche o combobox com todos os clientes.
-    
-    
     //Metodos para mostrar a data e a hora na tela de vendas
-    private void setardata(){
-        
+    private void setardata() {
+
         //Data
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
         lblData.setText(formatador.format(data));
-        
+
         //hora
-        Timer timer = new Timer(1000, new hora());
+        Timer timer = new Timer(1000, new Hora());
         timer.start();
-        
+
     }
-    
- 
-    
+
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -530,7 +523,7 @@ public class TelaVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_txtDescontoActionPerformed
 
     private void btdBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdBuscarClienteActionPerformed
-        
+
     }//GEN-LAST:event_btdBuscarClienteActionPerformed
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
@@ -542,14 +535,14 @@ public class TelaVenda extends javax.swing.JPanel {
     }//GEN-LAST:event_jcbNomeClienteActionPerformed
 
     private void btdAdicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdAdicionarProdutoActionPerformed
-        
+
         DefaultTableModel dtmProdutos = (DefaultTableModel) tblProdutos.getModel();
         Object[] dados = {txtProduto.getText(), txtUnidade.getText()};
         dtmProdutos.addRow(dados);
-        
+
         txtProduto.setText("");
         txtUnidade.setText("");
-        
+
         txtProduto.requestFocus();
     }//GEN-LAST:event_btdAdicionarProdutoActionPerformed
 
@@ -621,22 +614,17 @@ public class TelaVenda extends javax.swing.JPanel {
     private javax.swing.JTextField txtValorTotal;
     // End of variables declaration//GEN-END:variables
 
-    
-    
     //Classe para inserir a data na tela de vendas
-     class hora implements ActionListener{
-     
-        public void actionPerfomed(ActionEvent e){
+    class Hora implements ActionListener {
+
+        int i = 0;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
             Calendar now = Calendar.getInstance();
             jblHora.setText(String.format("%1$tH:%1$tM:%1$tS", now));
         }
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        
     }
 
 }//Fim da classe principal

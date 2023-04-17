@@ -70,7 +70,6 @@ com\senac\cliente\TelaCliente$18.class
 com\senac\cliente\TelaCliente$7.class
 com\senac\principal\TelaPrincipal$6.class
 com\senac\venda\TelaPagamento$3.class
-com\senac\venda\TelaVenda$hora.class
 com\senac\venda\TelaVenda$14.class
 com\senac\principal\TelaConfigEstilo$2.class
 com\senac\venda\TelaVenda$1.class
@@ -124,6 +123,7 @@ com\senac\principal\TelaPrincipal$3.class
 com\senac\produto\TelaProduto$7.class
 com\senac\produto\TelaProduto$24.class
 com\senac\venda\TelaVenda$3.class
+com\senac\venda\TelaVenda$Hora.class
 com\senac\cadastro\TelaCadastro$21.class
 com\senac\cadastro\TelaCadastro.class
 com\senac\produto\TelaProduto$19.class
