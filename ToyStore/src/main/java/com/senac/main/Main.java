@@ -11,7 +11,7 @@ public class Main {
             //"javax.swing.plaf.metal.MetalLookAndFeel"  ~~METAL
             //"com.sun.java.swing.plaf.windows.WindowsLookAndFeel" ~~ WINDOWS
             //"javax.swing.plaf.nimbus.NimbusLookAndFeel":  ~~ NIMBUS
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             UIManager.put("Table.focusCellBackground", UIManager.getColor("Table.background"));
             new Login().setVisible(true);
         } catch (Exception e) {

@@ -174,11 +174,9 @@ public class Login extends javax.swing.JFrame {
         );
 
         ToyStore.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 330, 330));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N
         ToyStore.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 130));
 
-        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ícone-e-fundo-do-brinquedo-43860074.jpg"))); // NOI18N
+        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/ícone-e-fundo-do-brinquedo-43860074.jpg"))); // NOI18N
         jImg.setPreferredSize(new java.awt.Dimension(500, 300));
         ToyStore.add(jImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 640, 570));
 
@@ -288,7 +286,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ToyStoreLogo.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/sistema/ToyStoreLogo.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

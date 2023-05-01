@@ -1,21 +1,31 @@
 package com.senac.principal;
 
+import com.senac.cliente.TelaCliente;
+import com.senac.produto.TelaProduto;
+import com.senac.relatorio.TelaRelatorio;
+import com.senac.venda.TelaVenda;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstiloSistema {
 
+    TelaVenda telaVenda = new TelaVenda();
+    TelaProduto telaProduto = new TelaProduto();
+    TelaCliente telaCliente = new TelaCliente();
+    TelaRelatorio telaRelatorio = new TelaRelatorio();
+
     public TelaPrincipal() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         focarVenda();
-        trocarPainel("pnlVenda");
-        btnVenda.doLayout();
         setIcon();
     }
 
@@ -32,11 +42,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         btnRelatorio = new javax.swing.JLabel();
         imgLogoToy = new javax.swing.JLabel();
         btnConfig = new javax.swing.JButton();
-        LayerPaineis = new javax.swing.JLayeredPane();
-        pnlCliente = new com.senac.cliente.TelaCliente();
-        pnlProduto = new com.senac.produto.TelaProduto();
-        pnlRelatorio = new com.senac.relatorio.TelaRelatorio();
-        pnlVenda = new com.senac.venda.TelaVenda();
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -131,7 +137,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         PainelMenu.add(btnRelatorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 190, 60));
 
         imgLogoToy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ToyStoreLogo2.png"))); // NOI18N
+        imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/ToyStoreLogo2.png"))); // NOI18N
         PainelMenu.add(imgLogoToy, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 190, 120));
 
         btnConfig.setBackground(java.awt.Color.darkGray);
@@ -150,39 +156,18 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
 
         PaineisAjustaveis.setLeftComponent(PainelMenu);
 
-        LayerPaineis.setPreferredSize(new java.awt.Dimension(1350, 780));
-
-        LayerPaineis.setLayer(pnlCliente, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        LayerPaineis.setLayer(pnlProduto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        LayerPaineis.setLayer(pnlRelatorio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        LayerPaineis.setLayer(pnlVenda, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout LayerPaineisLayout = new javax.swing.GroupLayout(LayerPaineis);
-        LayerPaineis.setLayout(LayerPaineisLayout);
-        LayerPaineisLayout.setHorizontalGroup(
-            LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LayerPaineisLayout.createSequentialGroup()
-                .addComponent(pnlProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 1332, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 948, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 1332, Short.MAX_VALUE)
-                .addContainerGap())
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1362, Short.MAX_VALUE)
         );
-        LayerPaineisLayout.setVerticalGroup(
-            LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LayerPaineisLayout.createSequentialGroup()
-                .addGroup(LayerPaineisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlRelatorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 799, Short.MAX_VALUE)
         );
 
-        PaineisAjustaveis.setRightComponent(LayerPaineis);
+        PaineisAjustaveis.setRightComponent(desktop);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -196,70 +181,48 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.PREFERRED_SIZE, 1540, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.DEFAULT_SIZE, 1552, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(PaineisAjustaveis, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 799, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void trocarPainel(String selecionarPainel) {
-        if (selecionarPainel == "pnlVenda") {
-
-            pnlVenda.setVisible(true);
-            pnlCliente.setVisible(false);
-            pnlProduto.setVisible(false);
-            pnlRelatorio.setVisible(false);
-        } else if (selecionarPainel == "pnlProdutos") {
-            pnlProduto.setVisible(true);
-            pnlCliente.setVisible(false);
-            pnlVenda.setVisible(false);
-            pnlRelatorio.setVisible(false);
-        } else if (selecionarPainel == "pnlClientes") {
-            pnlCliente.setVisible(true);
-            pnlProduto.setVisible(false);
-            pnlVenda.setVisible(false);
-            pnlRelatorio.setVisible(false);
-        } else if (selecionarPainel == "pnlRelatorio") {
-            pnlVenda.setVisible(false);
-            pnlRelatorio.setVisible(true);
-            pnlCliente.setVisible(false);
-            pnlProduto.setVisible(false);
-        }
-    }
-
     public void focarVenda() {
-        //Color vermelhoRosado = new Color(255, 12, 120);
         Color azulMarinho = new Color(56, 134, 242);
         btnVenda.setBackground(azulMarinho);
         btnVenda.setBorder(BorderFactory.createMatteBorder(0, 6, 0, 0, Color.WHITE)); // Adiciona uma margem à esquerda para a borda  
     }
+
     private void btnVendaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMousePressed
+        desktop.removeAll();
+        desktop.setSelectedFrame(telaVenda);
+        desktop.add(telaVenda).setVisible(true);
         focarBotaoMenu(btnVenda);
-        trocarPainel("pnlVenda");
     }//GEN-LAST:event_btnVendaMousePressed
 
     private void btnProdutoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProdutoMousePressed
+        desktop.removeAll();
+        desktop.setSelectedFrame(telaProduto);
+        desktop.add(telaProduto).setVisible(true);
         focarBotaoMenu(btnProduto);
-        trocarPainel("pnlProdutos");
-//        Venda.setVisible(false);
-
     }//GEN-LAST:event_btnProdutoMousePressed
 
     private void btnClienteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClienteMousePressed
+        desktop.removeAll();
+        desktop.setSelectedFrame(telaCliente);
+        desktop.add(telaCliente).setVisible(true);
         focarBotaoMenu(btnCliente);
-        trocarPainel("pnlClientes");
-//        Venda.setVisible(false);
-
-
     }//GEN-LAST:event_btnClienteMousePressed
 
     private void btnRelatorioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRelatorioMousePressed
+        desktop.removeAll();
+        desktop.setSelectedFrame(telaRelatorio);
+        desktop.add(telaRelatorio).setVisible(true);
         focarBotaoMenu(btnRelatorio);
-        trocarPainel("pnlRelatorio");
     }//GEN-LAST:event_btnRelatorioMousePressed
 
     private void btnVendaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendaMouseEntered
@@ -385,11 +348,10 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
     }
 
     private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/ToyStoreLogo.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/sistema/ToyStoreLogo.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLayeredPane LayerPaineis;
     private javax.swing.JSplitPane PaineisAjustaveis;
     private javax.swing.JPanel PainelMenu;
     private javax.swing.JLabel btnCliente;
@@ -397,14 +359,11 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
     private javax.swing.JLabel btnProduto;
     private javax.swing.JLabel btnRelatorio;
     private javax.swing.JLabel btnVenda;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel imgLogoToy;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private com.senac.cliente.TelaCliente pnlCliente;
-    private com.senac.produto.TelaProduto pnlProduto;
-    private com.senac.relatorio.TelaRelatorio pnlRelatorio;
-    private com.senac.venda.TelaVenda pnlVenda;
     private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
 
