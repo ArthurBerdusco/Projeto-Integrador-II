@@ -1,6 +1,9 @@
 package com.senac.produto;
 
+import com.senac.cliente.Cliente;
+import com.senac.cliente.FormCliente;
 import java.beans.PropertyVetoException;
+import javax.swing.JOptionPane;
 
 public class TelaProduto extends javax.swing.JInternalFrame {
 
@@ -30,7 +33,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProduto = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -60,6 +63,11 @@ public class TelaProduto extends javax.swing.JInternalFrame {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/pen.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlControleLayout = new javax.swing.GroupLayout(pnlControle);
         pnlControle.setLayout(pnlControleLayout);
@@ -158,15 +166,17 @@ public class TelaProduto extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Descrição", "Código de Barras", "Qnt. Estoque", "Valor", "Categoria", "Corredor", "Pratileira"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProduto);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Total a Venda:");
@@ -228,13 +238,24 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        FormProduto formulario = new FormProduto();
-        formulario.setVisible(true);
+        FormProduto telaProduto = new FormProduto();
+        telaProduto.setTitle("Adicionar Produto");
+        telaProduto.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (tblProduto.getSelectedRow() >= 0) {
+            FormProduto telaProduto = new FormProduto(new Produto("Arthur"));
+            telaProduto.setTitle("Editar Produto");
+            telaProduto.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione o produto para editar");
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -251,10 +272,10 @@ public class TelaProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel pnlControle;
+    private javax.swing.JTable tblProduto;
     // End of variables declaration//GEN-END:variables
 }

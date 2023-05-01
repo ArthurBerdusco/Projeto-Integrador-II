@@ -1,5 +1,6 @@
 package com.senac.produto;
 
+import com.senac.utils.CampoTextoPadrao;
 import com.senac.utils.Validador;
 import java.awt.Color;
 import java.io.File;
@@ -16,12 +17,16 @@ public class FormProduto extends javax.swing.JFrame {
     public FormProduto() {
         initComponents();
     }
+    
+    public FormProduto(Produto produto){
+        initComponents();
+        txtDescProd.setText(produto.getDescricao());
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblInfoProduto = new javax.swing.JLabel();
         btnSalvar = new javax.swing.JButton();
         pnlIdentAdd = new javax.swing.JPanel();
         lblCodBarras = new javax.swing.JLabel();
@@ -52,9 +57,6 @@ public class FormProduto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 810));
 
-        lblInfoProduto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblInfoProduto.setText("INFORMAÇÕES DO BRINQUEDO");
-
         btnSalvar.setText("SALVAR");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,22 +65,39 @@ public class FormProduto extends javax.swing.JFrame {
         });
 
         pnlIdentAdd.setBackground(new java.awt.Color(255, 255, 255));
-        pnlIdentAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlIdentAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Identifificação", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         lblCodBarras.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblCodBarras.setText("CÓDIGO DE BARRAS:");
+        lblCodBarras.setText("Código de Barras:");
 
         lblDescr.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblDescr.setText("DESCRIÇÃO:");
+        lblDescr.setText("Descrição:");
 
         txtCodBarras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCodBarras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtCodBarras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodBarrasFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodBarrasFocusLost(evt);
+            }
+        });
 
         txtDescProd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDescProd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        txtDescProd.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescProdFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescProdFocusLost(evt);
+            }
+        });
 
         imgProduto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         imgProduto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/add-img.png"))); // NOI18N
         imgProduto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblAddImg.setBackground(new java.awt.Color(52, 134, 242));
@@ -163,20 +182,20 @@ public class FormProduto extends javax.swing.JFrame {
                 .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRemovImg)
                     .addComponent(lblAddImg))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pnlValores.setBackground(new java.awt.Color(255, 255, 255));
-        pnlValores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlValores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         lblValorCusto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblValorCusto.setText("VALOR DE CUSTO:");
+        lblValorCusto.setText("Valor de Custo:");
 
         lblValorVenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblValorVenda.setText("VALOR DE VENDA:");
+        lblValorVenda.setText("Valor de Venda:");
 
         lblMargemLucro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblMargemLucro.setText("MARGEM LUCRO:");
+        lblMargemLucro.setText("Mangem de Lucro:");
 
         txtMargemLucro.setEditable(false);
         txtMargemLucro.setBackground(java.awt.Color.lightGray);
@@ -186,6 +205,9 @@ public class FormProduto extends javax.swing.JFrame {
         txtProdValorVenda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProdValorVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
         txtProdValorVenda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtProdValorVendaFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtProdValorVendaFocusLost(evt);
             }
@@ -199,6 +221,9 @@ public class FormProduto extends javax.swing.JFrame {
         txtProdValorCusto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtProdValorCusto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
         txtProdValorCusto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtProdValorCustoFocusGained(evt);
+            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtProdValorCustoFocusLost(evt);
             }
@@ -216,15 +241,15 @@ public class FormProduto extends javax.swing.JFrame {
             .addGroup(pnlValoresLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtProdValorVenda)
-                    .addComponent(txtMargemLucro, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(lblMargemLucro)
-                    .addComponent(lblValorVenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
+                    .addComponent(lblValorVenda)
+                    .addComponent(txtProdValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                    .addComponent(txtMargemLucro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblValorCusto)
-                    .addComponent(txtProdValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17))
+                    .addComponent(txtProdValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblValorCusto))
+                .addGap(15, 15, 15))
         );
         pnlValoresLayout.setVerticalGroup(
             pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,11 +259,9 @@ public class FormProduto extends javax.swing.JFrame {
                     .addComponent(lblValorCusto)
                     .addComponent(lblValorVenda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlValoresLayout.createSequentialGroup()
-                        .addComponent(txtProdValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
-                    .addComponent(txtProdValorVenda))
+                .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProdValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                    .addComponent(txtProdValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblMargemLucro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -247,10 +270,10 @@ public class FormProduto extends javax.swing.JFrame {
         );
 
         pnlArmazem.setBackground(new java.awt.Color(255, 255, 255));
-        pnlArmazem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valores", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlArmazem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estoque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         txtCorredor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtCorredor.setText("CORREDOR:");
+        txtCorredor.setText("Corredor:");
 
         cboProdPratileira.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboProdPratileira.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "1", "2" }));
@@ -263,10 +286,10 @@ public class FormProduto extends javax.swing.JFrame {
         cboProdCorredor.setName("Corredor"); // NOI18N
 
         lblPratileira.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblPratileira.setText("PRATILEIRA:");
+        lblPratileira.setText("Pratileira:");
 
         lblCategoria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCategoria.setText("CATEGORIA:");
+        lblCategoria.setText("Categoria:");
 
         cboProdCategoria.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cboProdCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione:", "Bebês", "Tabuleiro e cartas", "Educacionais", "Véiculos", "Ação e aventura", "Esporte e atividade ar livre", "Musicais", "Fantasia", "Eletrônicos" }));
@@ -277,7 +300,7 @@ public class FormProduto extends javax.swing.JFrame {
         spnQntProd.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("QUANTIDADE:");
+        jLabel1.setText("Quantidade:");
 
         javax.swing.GroupLayout pnlArmazemLayout = new javax.swing.GroupLayout(pnlArmazem);
         pnlArmazem.setLayout(pnlArmazemLayout);
@@ -286,19 +309,18 @@ public class FormProduto extends javax.swing.JFrame {
             .addGroup(pnlArmazemLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cboProdCategoria, 0, 0, Short.MAX_VALUE)
-                        .addComponent(txtCorredor, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cboProdCorredor, 0, 200, Short.MAX_VALUE))
-                    .addComponent(lblCategoria))
+                    .addComponent(txtCorredor)
+                    .addComponent(lblCategoria)
+                    .addComponent(cboProdCorredor, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboProdCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cboProdPratileira, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblPratileira))
-                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(spnQntProd, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlArmazemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(spnQntProd, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cboProdPratileira, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPratileira))
                 .addGap(17, 17, 17))
         );
         pnlArmazemLayout.setVerticalGroup(
@@ -347,27 +369,21 @@ public class FormProduto extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblInfoProduto)
-                .addGap(200, 200, 200))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblInfoProduto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlIdentAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlValores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnlArmazem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(86, 86, 86))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -375,37 +391,7 @@ public class FormProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-//        Validador validador = new Validador();
-//        validador.validarDescProd(txtDescProd);
-//        validador.validarID(txtCodBarras);
-//        validador.validarDinheiro(txtProdValorVenda);
-//        validador.validarDinheiro(txtProdValorCusto);
-//        validador.validarComboBox(cboProdCategoria);
-//        validador.validarComboBox(cboProdPratileira);
-//        validador.validarComboBox(cboProdCorredor);
-//
-//        if (validador.mensagemErro.size() == 0) {
-//            if ((this.auxEditProdut == false) && JOptionPane.showConfirmDialog(this, "Deseja confirmar a entrada no estoque?", "Confirmar entrada no estoque", JOptionPane.YES_NO_OPTION) == 0) {
-//                DefaultTableModel tblProdutos = (DefaultTableModel) this.tblProdutos.getModel();
-//                //Adiciona o item na JTable
-//                tblProdutos.addRow(this.getCamposFormProd());
-//                //Adiciona um novo produto no estoque (ArrayList<Produto>)
-//                addNovoProdutoEstoq();
-//                //Reset formulário
-//                limparFormulario();
-//            } else if ((this.auxEditProdut == true) && JOptionPane.showConfirmDialog(this, "Deseja confirmar alteração do produto?", "Alterar informações do produto", JOptionPane.YES_NO_OPTION) == 0) {
-//                editProdutoEstoq();
-//            }
-//            updateTblProduto();
-//            this.auxEditProdut = false;
-//            pnlAdicionarProd.setVisible(false);
-//            pnlDefault.setVisible(true);
-//        } else if (validador.mensagemErro.size() == 1) {
-//            JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0), "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
-//        } else if (validador.mensagemErro.size() > 1) {
-//            JOptionPane.showMessageDialog(this, "Erro ao salvar produto, prencha os campos corretamente", "Erro ao cadastrar", JOptionPane.ERROR_MESSAGE);
-//        }
-
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void lblAddImgMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddImgMouseEntered
@@ -492,27 +478,6 @@ public class FormProduto extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_lblRemovImgMousePressed
 
-    private void txtProdValorVendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorVendaFocusLost
-//        String padrao = "###,###,###.##";
-//        DecimalFormatSymbols dfs = new DecimalFormatSymbols(new Locale("pt", "Brazil"));
-//        dfs.setDecimalSeparator(',');
-//        dfs.setGroupingSeparator('.');
-//
-//        DecimalFormat df = new DecimalFormat(padrao, dfs);
-//
-//        if (txtProdValorVenda.getText().replace("R", "").replace("$", "").replace(",", ".").trim().isEmpty()) {
-//            txtProdValorVenda.setText("");
-//            txtMargemLucro.setText("%--");
-//            txtMargemLucro.setBackground(Color.LIGHT_GRAY);
-//        } else {
-//            calcMargemLucro();
-//            if (!(txtProdValorVenda.getText().contains("."))) {
-//                String valor = df.format(Double.parseDouble(txtProdValorVenda.getText().replace("R", "").replace("$", "").replace(",", ".")));
-//                txtProdValorVenda.setText("R$" + valor);
-//            }
-//        }
-    }//GEN-LAST:event_txtProdValorVendaFocusLost
-
     private void txtProdValorVendaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorVendaKeyTyped
 
         if (!(String.valueOf(evt.getKeyChar()).matches("[0-9-,]+")) || (evt.getKeyChar() == '-')) {
@@ -520,29 +485,6 @@ public class FormProduto extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_txtProdValorVendaKeyTyped
-
-    private void txtProdValorCustoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorCustoFocusLost
-//        String padrao = "###,###.##";
-//        DecimalFormatSymbols dfs = new DecimalFormatSymbols(new Locale("pt", "Brazil"));
-//        dfs.setDecimalSeparator(',');
-//        dfs.setGroupingSeparator('.');
-//
-//        DecimalFormat df = new DecimalFormat(padrao, dfs);
-//
-//        if (txtProdValorCusto.getText().replace("R", "").replace("$", "").replace(",", ".").trim().isEmpty()) {
-//            txtProdValorCusto.setText("");
-//            txtMargemLucro.setText("%--");
-//            txtMargemLucro.setBackground(Color.LIGHT_GRAY);
-//        } else {
-//            calcMargemLucro();
-//            if (!(txtProdValorCusto.getText().contains("."))) {
-//
-//                String valor = df.format(Double.parseDouble(txtProdValorCusto.getText().replace("R", "").replace("$", "").replace(",", ".")));
-//                txtProdValorCusto.setText("R$" + valor);
-//            }
-//
-//        }
-    }//GEN-LAST:event_txtProdValorCustoFocusLost
 
     private void txtProdValorCustoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProdValorCustoKeyTyped
 
@@ -552,9 +494,40 @@ public class FormProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProdValorCustoKeyTyped
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-//        this.trocarPainelForm("pnlDefault");
-//        this.limparFormulario();
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtDescProdFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescProdFocusGained
+        CampoTextoPadrao.focar(txtDescProd);
+    }//GEN-LAST:event_txtDescProdFocusGained
+
+    private void txtDescProdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDescProdFocusLost
+        CampoTextoPadrao.desfocar(txtDescProd);
+    }//GEN-LAST:event_txtDescProdFocusLost
+
+    private void txtCodBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusGained
+        CampoTextoPadrao.focar(txtCodBarras);
+    }//GEN-LAST:event_txtCodBarrasFocusGained
+
+    private void txtCodBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusLost
+        CampoTextoPadrao.desfocar(txtCodBarras);
+    }//GEN-LAST:event_txtCodBarrasFocusLost
+
+    private void txtProdValorVendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorVendaFocusGained
+        CampoTextoPadrao.focar(txtProdValorVenda);
+    }//GEN-LAST:event_txtProdValorVendaFocusGained
+
+    private void txtProdValorVendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorVendaFocusLost
+        CampoTextoPadrao.desfocar(txtProdValorVenda);
+    }//GEN-LAST:event_txtProdValorVendaFocusLost
+
+    private void txtProdValorCustoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorCustoFocusGained
+        CampoTextoPadrao.focar(txtProdValorCusto);
+    }//GEN-LAST:event_txtProdValorCustoFocusGained
+
+    private void txtProdValorCustoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtProdValorCustoFocusLost
+        CampoTextoPadrao.desfocar(txtProdValorCusto);
+    }//GEN-LAST:event_txtProdValorCustoFocusLost
 
     /**
      * @param args the command line arguments
@@ -603,7 +576,6 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblCodBarras;
     private javax.swing.JLabel lblDescr;
-    private javax.swing.JLabel lblInfoProduto;
     private javax.swing.JLabel lblMargemLucro;
     private javax.swing.JLabel lblPratileira;
     private javax.swing.JLabel lblRemovImg;

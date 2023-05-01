@@ -44,8 +44,18 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
         btnConfig = new javax.swing.JButton();
         desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        mnuSistema = new javax.swing.JMenu();
+        mnuItemVenda = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mnuProdutos = new javax.swing.JMenu();
+        mnuAddProduto = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        mnuClientes = new javax.swing.JMenu();
+        mnuAddCliente = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        mnuItemRelatorio = new javax.swing.JMenuItem();
+        mnuEstilo = new javax.swing.JMenu();
+        mnuAjuda = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -169,11 +179,38 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
 
         PaineisAjustaveis.setRightComponent(desktop);
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        mnuSistema.setText("Sistema");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        mnuItemVenda.setText("Venda");
+        mnuSistema.add(mnuItemVenda);
+        mnuSistema.add(jSeparator1);
+
+        mnuProdutos.setText("Produtos");
+
+        mnuAddProduto.setText("Add Produto");
+        mnuProdutos.add(mnuAddProduto);
+
+        mnuSistema.add(mnuProdutos);
+        mnuSistema.add(jSeparator2);
+
+        mnuClientes.setText("Clientes");
+
+        mnuAddCliente.setText("Add Cliente");
+        mnuClientes.add(mnuAddCliente);
+
+        mnuSistema.add(mnuClientes);
+        mnuSistema.add(jSeparator3);
+
+        mnuItemRelatorio.setText("Relatorio");
+        mnuSistema.add(mnuItemRelatorio);
+
+        jMenuBar1.add(mnuSistema);
+
+        mnuEstilo.setText("Estilo");
+        jMenuBar1.add(mnuEstilo);
+
+        mnuAjuda.setText("Ajuda");
+        jMenuBar1.add(mnuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -361,9 +398,19 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
     private javax.swing.JLabel btnVenda;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JLabel imgLogoToy;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JMenuItem mnuAddCliente;
+    private javax.swing.JMenuItem mnuAddProduto;
+    private javax.swing.JMenu mnuAjuda;
+    private javax.swing.JMenu mnuClientes;
+    private javax.swing.JMenu mnuEstilo;
+    private javax.swing.JMenuItem mnuItemRelatorio;
+    private javax.swing.JMenuItem mnuItemVenda;
+    private javax.swing.JMenu mnuProdutos;
+    private javax.swing.JMenu mnuSistema;
     private javax.swing.ButtonGroup teste;
     // End of variables declaration//GEN-END:variables
 

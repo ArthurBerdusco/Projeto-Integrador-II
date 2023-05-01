@@ -1,7 +1,7 @@
 package com.senac.cliente;
 
-import com.senac.produto.*;
 import java.beans.PropertyVetoException;
+import javax.swing.JOptionPane;
 
 public class TelaCliente extends javax.swing.JInternalFrame {
 
@@ -31,7 +31,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCliente = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -61,6 +61,11 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/pen.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlControleLayout = new javax.swing.GroupLayout(pnlControle);
         pnlControle.setLayout(pnlControleLayout);
@@ -159,15 +164,16 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
                 "Descrição", "Código de Barras", "Qnt. Estoque", "Valor", "Categoria", "Corredor", "Pratileira"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCliente);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Clientes Cadastrados:");
@@ -225,8 +231,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel2.getAccessibleContext().setAccessibleName("Pesquisar");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,9 +239,20 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        FormProduto formulario = new FormProduto();
-        formulario.setVisible(true);
+        FormCliente telaCliente = new FormCliente();
+        telaCliente.setTitle("Adicionar Cliente");
+        telaCliente.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        if (tblCliente.getSelectedRow() >= 0) {
+            FormCliente telaCliente = new FormCliente(new Cliente("Arthur"));
+            telaCliente.setTitle("Editar Cliente");
+            telaCliente.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione o cliente para editar");
+        }
+    }//GEN-LAST:event_btnEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -254,10 +269,10 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel pnlControle;
+    private javax.swing.JTable tblCliente;
     // End of variables declaration//GEN-END:variables
 }

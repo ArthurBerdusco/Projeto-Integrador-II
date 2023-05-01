@@ -1,3 +1,4 @@
+com\senac\cliente\FormCliente$3.class
 com\senac\login\Login$5.class
 com\senac\produto\FormProduto$8.class
 com\senac\cadastro\TelaCadastro$20.class
@@ -5,6 +6,7 @@ com\senac\cadastro\TelaCadastro$2.class
 com\senac\cadastro\TelaCadastro$10.class
 com\senac\relatorio\TelaRelatorio$1.class
 com\senac\venda\TelaVenda$10.class
+com\senac\cliente\FormCliente$6.class
 com\senac\login\Login$8.class
 com\senac\venda\Administrador$2.class
 com\senac\principal\TelaPrincipal$2.class
@@ -17,7 +19,9 @@ com\senac\produto\TelaProduto$2.class
 com\senac\venda\TelaVenda$5.class
 com\senac\venda\TelaVenda$2.class
 com\senac\cliente\TelaCliente.class
+com\senac\cliente\FormCliente$9.class
 com\senac\produto\FormProduto$3.class
+com\senac\cliente\FormCliente$11.class
 com\senac\cadastro\TelaCadastro$18.class
 com\senac\cadastro\TelaCadastro$23.class
 com\senac\venda\TelaVenda.class
@@ -30,8 +34,11 @@ com\senac\principal\TelaPrincipal$1.class
 com\senac\venda\TelaPagamento$5.class
 com\senac\venda\TelaVenda$6.class
 com\senac\cadastro\TelaCadastro$7.class
+com\senac\cliente\FormCliente$1.class
 com\senac\cadastro\TelaCadastro$12.class
+com\senac\cliente\FormCliente$8.class
 com\senac\venda\TelaVenda$15.class
+com\senac\produto\TelaProduto$3.class
 com\senac\produto\FormProduto$9.class
 com\senac\cadastro\TelaCadastro$1.class
 com\senac\cadastro\TelaCadastro$24.class
@@ -41,6 +48,8 @@ com\senac\cadastro\TelaCadastro$8.class
 com\senac\produto\FormProduto$2.class
 com\senac\venda\TelaPagamento$4.class
 com\senac\cadastro\TelaCadastro$19.class
+com\senac\cliente\TelaCliente$3.class
+com\senac\cliente\FormCliente$7.class
 com\senac\main\Main.class
 com\senac\venda\Administrador$3.class
 com\senac\cadastro\TelaCadastro$13.class
@@ -70,11 +79,15 @@ com\senac\produto\FormProduto$7.class
 com\senac\cadastro\TelaCadastro$3.class
 com\senac\login\Login$7.class
 com\senac\cadastro\Cadastro.class
+com\senac\cliente\FormCliente$2.class
+com\senac\cliente\FormCliente.class
 com\senac\venda\Administrador$1.class
 com\senac\relatorio\TelaRelatorio$2.class
 com\senac\cadastro\TelaCadastro$15.class
+com\senac\utils\CaixaTextoPadrao.class
 com\senac\produto\FormProduto$6.class
 com\senac\venda\TelaPagamento$1.class
+com\senac\cliente\FormCliente$5.class
 com\senac\principal\TelaPrincipal$4.class
 com\senac\principal\TelaConfigEstilo$1.class
 com\senac\cadastro\TelaCadastro$22.class
@@ -83,15 +96,15 @@ com\senac\relatorio\TelaRelatorio.class
 com\senac\venda\TelaVenda$9.class
 com\senac\login\Login$6.class
 com\senac\venda\TelaVenda$12.class
+com\senac\cliente\FormCliente$4.class
 com\senac\venda\TelaPagamento$2.class
 com\senac\cadastro\TelaCadastro$16.class
-com\senac\relatorio\TelaRelatorio$3.class
+com\senac\cliente\FormCliente$10.class
 com\senac\principal\TelaConfigEstilo.class
 com\senac\login\Usuario.class
 com\senac\principal\TelaPrincipal.class
 com\senac\principal\TelaPrincipal$3.class
 com\senac\venda\TelaVenda$3.class
-com\senac\venda\TelaVenda$Hora.class
 com\senac\cadastro\TelaCadastro$21.class
 com\senac\cadastro\TelaCadastro.class
 com\senac\utils\Validador.class
