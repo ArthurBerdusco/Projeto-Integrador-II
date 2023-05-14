@@ -94,13 +94,13 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         PainelFiltro.setPreferredSize(new java.awt.Dimension(1336, 217));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("CONSULTA ENTRE DATAS:");
+        jLabel1.setText("Consulta Entre Datas:");
 
         DataInicial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DataInicial.setText("DATA INICIAL:");
+        DataInicial.setText("Data Inicial:");
 
         DataFinal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DataFinal.setText("DATA FINAL:");
+        DataFinal.setText("Data Final:");
 
         txtDataInicial.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
         try {
@@ -146,25 +146,25 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
                         .addGap(380, 380, 380)
                         .addComponent(DataInicial)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(DataFinal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)
+                        .addGap(22, 22, 22)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addGap(541, 541, 541)
+                        .addGap(535, 535, 535)
                         .addComponent(jLabel1)))
-                .addContainerGap(369, Short.MAX_VALUE))
+                .addContainerGap(387, Short.MAX_VALUE))
         );
         PainelFiltroLayout.setVerticalGroup(
             PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelFiltroLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
