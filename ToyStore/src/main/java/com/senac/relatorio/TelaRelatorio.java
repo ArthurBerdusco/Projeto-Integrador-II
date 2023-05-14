@@ -91,6 +91,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
         PainelFiltro.setBackground(new java.awt.Color(255, 255, 255));
         PainelFiltro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelFiltro.setPreferredSize(new java.awt.Dimension(1336, 217));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("CONSULTA ENTRE DATAS:");
@@ -181,7 +182,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PainelRelatorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PainelFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PainelFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, 1326, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

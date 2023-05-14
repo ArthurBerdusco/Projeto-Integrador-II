@@ -35,11 +35,13 @@ com\senac\venda\TelaPagamento$5.class
 com\senac\venda\TelaVenda$6.class
 com\senac\cadastro\TelaCadastro$7.class
 com\senac\cliente\FormCliente$1.class
+com\senac\utils\CampoTextoPadrao.class
 com\senac\cadastro\TelaCadastro$12.class
 com\senac\cliente\FormCliente$8.class
 com\senac\venda\TelaVenda$15.class
 com\senac\produto\TelaProduto$3.class
 com\senac\produto\FormProduto$9.class
+.netbeans_automatic_build
 com\senac\cadastro\TelaCadastro$1.class
 com\senac\cadastro\TelaCadastro$24.class
 com\senac\venda\TelaVenda$7.class
@@ -62,6 +64,7 @@ com\senac\venda\TelaVenda$14.class
 com\senac\principal\TelaConfigEstilo$2.class
 com\senac\venda\TelaVenda$1.class
 com\senac\produto\TelaProduto$1.class
+com\senac\produto\FormProduto$11.class
 com\senac\produto\FormProduto$4.class
 com\senac\venda\Administrador.class
 com\senac\login\Login$1.class
@@ -84,7 +87,6 @@ com\senac\cliente\FormCliente.class
 com\senac\venda\Administrador$1.class
 com\senac\relatorio\TelaRelatorio$2.class
 com\senac\cadastro\TelaCadastro$15.class
-com\senac\utils\CaixaTextoPadrao.class
 com\senac\produto\FormProduto$6.class
 com\senac\venda\TelaPagamento$1.class
 com\senac\cliente\FormCliente$5.class
@@ -106,6 +108,7 @@ com\senac\principal\TelaPrincipal.class
 com\senac\principal\TelaPrincipal$3.class
 com\senac\venda\TelaVenda$3.class
 com\senac\cadastro\TelaCadastro$21.class
+com\senac\produto\FormProduto$10.class
 com\senac\cadastro\TelaCadastro.class
 com\senac\utils\Validador.class
 com\senac\produto\FormProduto$5.class
