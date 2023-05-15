@@ -41,7 +41,10 @@ create table produto(
     valor_custo float not null,
     margem_lucro decimal(5,3) not null,
     categoria varchar(20) not null,
-    foto blob
+	foto blob,
+	corredor char(1) not null,
+    pratileira int not null,
+    quantidade int not null,
 );
 
 create table item_pedido(
@@ -55,17 +58,6 @@ create table item_pedido(
 );
 
 
-
-create table estoque(
-	id_estoque int auto_increment primary key,
-	corredor char(1) not null,
-    pratileira int not null,
-    quantidade int not null,
-    id_produto int,
-    foreign key(id_produto) references produto(id_produto)    
-);
-
-select * from cliente;
 
 
 
