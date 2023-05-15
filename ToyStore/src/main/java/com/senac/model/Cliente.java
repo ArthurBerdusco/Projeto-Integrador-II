@@ -1,22 +1,32 @@
-package com.senac.cliente;
+package com.senac.model;
+
+import java.util.Date;
 
 public class Cliente {
-    
+
     //Identificacao
+    private int id;
     private String nome;
     private String cpf;
-    private String dataNasc;
+    private Date dataNasc;
     private String sexo;
     private String estadoCivil;
+    private String email;
+
+    //Endereço
+    private String endereco;
+    private int numero;
+    private String complemento;
+    private String telefone;
 
     public Cliente() {
     }
-    
-    public Cliente(String nome){
+
+    public Cliente(String nome) {
         this.nome = nome;
     }
 
-    public Cliente(String nome, String cpf, String dataNasc, String sexo, String estadoCivil, String email, String endereco, String numero, String completo, String telefone) {
+    public Cliente(String nome, String cpf, Date dataNasc, String sexo, String estadoCivil, String email, String endereco, int numero, String complemento, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.dataNasc = dataNasc;
@@ -25,16 +35,17 @@ public class Cliente {
         this.email = email;
         this.endereco = endereco;
         this.numero = numero;
-        this.completo = completo;
+        this.complemento = complemento;
         this.telefone = telefone;
     }
-    private String email;
-    
-    //Endereço
-    private String endereco;
-    private String numero;
-    private String completo;
-    private String telefone;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;
@@ -49,14 +60,15 @@ public class Cliente {
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        String formatCpf = cpf.trim().replace("-", "").replace(".", "");
+        this.cpf = formatCpf;
     }
 
-    public String getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(String dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
 
@@ -92,20 +104,20 @@ public class Cliente {
         this.endereco = rua;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
-    public String getCompleto() {
-        return completo;
+    public String getcomplemento() {
+        return complemento;
     }
 
-    public void setCompleto(String completo) {
-        this.completo = completo;
+    public void setcomplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public String getTelefone() {
@@ -115,5 +127,5 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
+
 }

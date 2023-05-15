@@ -1,23 +1,50 @@
 package com.senac.cliente;
 
+import com.senac.cadastro.DAO.ClienteDAO;
+import com.senac.model.Cliente;
 import com.senac.utils.CampoTextoPadrao;
+import com.senac.utils.Validador;
 import javax.swing.JOptionPane;
 
 public class FormCliente extends javax.swing.JFrame {
+
+    private Cliente cliente;
+
+    private AtualizarTabelaListener listener;
+
+    public void setFormularioEdicaoListener(AtualizarTabelaListener listener) {
+        this.listener = listener;
+    }
 
     public FormCliente() {
         initComponents();
     }
 
     public FormCliente(Cliente cliente) {
+        this.cliente = cliente;
         initComponents();
-        
+        txtNome.setText(cliente.getNome());
+        txtCpf.setText(cliente.getCpf());
+        txtDataNasc.setDate(cliente.getDataNasc());
+        if (cliente.getSexo().equals("M")) {
+            rbtMasc.setSelected(true);
+        } else if (cliente.getSexo().equals("F")) {
+            rbtFem.setSelected(true);
+        }
+        txtCivil.setText(cliente.getEstadoCivil());
+        txtEmail.setText(cliente.getEmail());
+        txtRua.setText(cliente.getEndereco());
+        txtNumero.setText(String.valueOf(cliente.getNumero()));
+        txtComplemento.setText(cliente.getcomplemento());
+        txtTelefone.setText(cliente.getTelefone());
+
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btgSexo = new javax.swing.ButtonGroup();
         Cadastro = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -34,7 +61,7 @@ public class FormCliente extends javax.swing.JFrame {
         txtCivil = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtDataNasc = new com.toedter.calendar.JDateChooser();
         PainelEndereco = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         txtRua = new javax.swing.JTextField();
@@ -104,12 +131,16 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel13.setText("Sexo:");
 
         rbtMasc.setBackground(new java.awt.Color(255, 255, 255));
+        btgSexo.add(rbtMasc);
         rbtMasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        rbtMasc.setText("MASCULINO");
+        rbtMasc.setText("Masculino");
+        rbtMasc.setName("Masculino"); // NOI18N
 
         rbtFem.setBackground(new java.awt.Color(255, 255, 255));
+        btgSexo.add(rbtFem);
         rbtFem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        rbtFem.setText("FEMININO");
+        rbtFem.setText("Feminino");
+        rbtFem.setName("Feminino"); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("CPF:");
@@ -155,12 +186,8 @@ public class FormCliente extends javax.swing.JFrame {
                                 .addComponent(rbtMasc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtFem)))
-                        .addGap(166, 166, 166)
-                        .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCivil)
-                            .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelIdentificacaoLayout.createSequentialGroup()
                         .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,12 +197,14 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel4)
                             .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
                             .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(28, 28, 28))
         );
         PainelIdentificacaoLayout.setVerticalGroup(
@@ -204,7 +233,7 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(txtCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12))
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(381, 381, 381))
@@ -406,7 +435,7 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRuaFocusGained
 
     private void txtRuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRuaFocusLost
-       CampoTextoPadrao.desfocar(txtRua);
+        CampoTextoPadrao.desfocar(txtRua);
     }//GEN-LAST:event_txtRuaFocusLost
 
     private void txtNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumeroFocusGained
@@ -438,7 +467,61 @@ public class FormCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        JOptionPane.showMessageDialog(this, "Função em produção");
+        Validador validador = new Validador();
+
+        validador.validarNome(txtNome);
+        validador.validarCpf(txtCpf);
+        //validador.validarDataNasc();
+        validador.validarGroupRadio(btgSexo);
+        validador.validarString(txtCivil);
+        validador.validarEmail(txtEmail);
+        validador.validarString(txtRua);
+        //validador.validarNumero; implementar
+        validador.validarTelefone(txtTelefone);
+
+        if (validador.mensagemErro.size() == 0) {
+
+            cliente.setNome(txtNome.getText());
+            cliente.setCpf(txtCpf.getText());
+            cliente.setDataNasc(txtDataNasc.getDate());
+            if (rbtMasc.isSelected()) {
+                cliente.setSexo("M");
+            } else if (rbtFem.isSelected()) {
+                cliente.setSexo("F");
+            }
+            cliente.setEstadoCivil(txtCivil.getText());
+            cliente.setEmail(txtEmail.getText());
+            cliente.setRua(txtRua.getText());
+            cliente.setNumero(Integer.parseInt(txtNumero.getText()));
+            cliente.setcomplemento(txtComplemento.getText());
+            cliente.setTelefone(txtTelefone.getText());
+
+            if (cliente.getId() > 0) {
+                boolean sucessoAlterar = ClienteDAO.alterar(cliente);
+
+                if (sucessoAlterar == true) {
+                    
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao cadastrar");
+                }
+            } else {
+                boolean sucessoCadastro = ClienteDAO.salvar(cliente);
+
+                if (sucessoCadastro == true) {
+                    listener.atualizar();
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Falha ao cadastrar");
+                }
+
+            }
+
+        } else if (validador.mensagemErro.size() == 1) {
+            JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0));
+        } else if (validador.mensagemErro.size() > 1) {
+            JOptionPane.showMessageDialog(this, "Revise o formulário e preencha todos os campos obrigatórios");
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     public static void main(String args[]) {
@@ -454,9 +537,9 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JPanel Cadastro;
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelIdentificacao;
+    private javax.swing.ButtonGroup btgSexo;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -472,6 +555,7 @@ public class FormCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtCivil;
     private javax.swing.JTextField txtComplemento;
     private javax.swing.JFormattedTextField txtCpf;
+    private com.toedter.calendar.JDateChooser txtDataNasc;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;

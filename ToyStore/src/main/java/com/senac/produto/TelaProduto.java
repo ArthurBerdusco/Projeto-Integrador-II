@@ -1,6 +1,7 @@
 package com.senac.produto;
 
-import com.senac.cliente.Cliente;
+import com.senac.model.Produto;
+import com.senac.model.Cliente;
 import com.senac.cliente.FormCliente;
 import java.beans.PropertyVetoException;
 import javax.swing.JOptionPane;
@@ -263,7 +264,7 @@ public class TelaProduto extends javax.swing.JInternalFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (tblProduto.getSelectedRow() >= 0) {
-            FormProduto telaProduto = new FormProduto(new Produto("Arthur"));
+            FormProduto telaProduto = new FormProduto();
             telaProduto.setTitle("Editar Produto");
             telaProduto.setVisible(true);
         } else {
