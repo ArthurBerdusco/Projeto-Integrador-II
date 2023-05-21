@@ -204,6 +204,56 @@ public class ProdutoDAO {
         }
         return produto;
     }
+    
+        public static ArrayList<Produto> listar(String descricao, String codBrras, String categoria) {
+        ArrayList<Produto> lista = new ArrayList<>();
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            //Abrir Conexao
+            conexao = GerenciadorConexao.abrirConexao();
+
+            //Preparar comando sql
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM produto WHERE descricao LIKE ? AND cod_barras LIKE ? AND categoria LIKE ?");
+            instrucaoSQL.setString(1, "%" + descricao + "%");
+            instrucaoSQL.setString(2, "%" + codBrras + "%");
+            instrucaoSQL.setString(3, "%" + categoria + "%");
+
+            //Executar comando SQL
+            ResultSet rs = instrucaoSQL.executeQuery();
+
+            if (rs != null) {
+                while (rs.next()) {
+                    Produto produto = new Produto();
+                    produto.setId(rs.getInt("id_produto"));
+                    produto.setDescricao(rs.getString("descricao"));
+                    produto.setCod_barras(rs.getString("cod_barras"));
+                    produto.setQuantidade(rs.getInt("quantidade"));
+                    produto.setValorVenda(rs.getFloat("valor_venda"));
+                    produto.setCategoria(rs.getString("categoria"));
+                    produto.setCorredor(rs.getString("corredor"));
+                    produto.setPratileira(rs.getInt("pratileira"));
+                    lista.add(produto);
+                }
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            //Libero os recursos da memória
+            try {
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+                GerenciadorConexao.fecharConexao();
+
+            } catch (SQLException ex) {
+                System.out.println("Não foi possivel fechar a conexão com banco ou fechar o comando sql");
+            }
+        }
+        return lista;
+    }
 
     public static boolean excluir(int id) {
         boolean retorno = false;

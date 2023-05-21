@@ -54,7 +54,7 @@
                   <Component id="btnCancelar" pref="35" max="32767" attributes="0"/>
                   <Component id="btnSalvar" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,12 +70,12 @@
     </Component>
     <Container class="javax.swing.JPanel" name="pnlIdentAdd">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="Identififica&#xe7;&#xe3;o">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
               <Font PropertyName="font" name="Tahoma" size="14" style="0"/>
             </TitledBorder>
           </Border>
@@ -93,7 +93,7 @@
                       <Component id="txtDescricao" alignment="0" pref="425" max="32767" attributes="0"/>
                       <Component id="txtCodBarras" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <EmptySpace pref="78" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -274,12 +274,12 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pnlValores">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="Valores">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
               <Font PropertyName="font" name="Tahoma" size="14" style="0"/>
             </TitledBorder>
           </Border>
@@ -297,7 +297,7 @@
                       <Component id="txtValorVenda" alignment="0" pref="280" max="32767" attributes="0"/>
                       <Component id="txtMargemLucro" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="86" max="32767" attributes="0"/>
+                  <EmptySpace pref="84" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtValorCusto" min="-2" pref="280" max="-2" attributes="0"/>
                       <Component id="lblValorCusto" min="-2" max="-2" attributes="0"/>
@@ -413,12 +413,12 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pnlArmazem">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="Estoque">
+              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
               <Font PropertyName="font" name="Tahoma" size="14" style="0"/>
             </TitledBorder>
           </Border>

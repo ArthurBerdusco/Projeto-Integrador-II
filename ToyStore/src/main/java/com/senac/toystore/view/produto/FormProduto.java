@@ -108,8 +108,7 @@ public class FormProduto extends javax.swing.JFrame {
             }
         });
 
-        pnlIdentAdd.setBackground(new java.awt.Color(255, 255, 255));
-        pnlIdentAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Identifificação", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlIdentAdd.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Identifificação", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         lblCodBarras.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblCodBarras.setText("Código de Barras:");
@@ -196,7 +195,7 @@ public class FormProduto extends javax.swing.JFrame {
                     .addComponent(lblCodBarras)
                     .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                     .addComponent(txtCodBarras))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlIdentAddLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -229,8 +228,7 @@ public class FormProduto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlValores.setBackground(new java.awt.Color(255, 255, 255));
-        pnlValores.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Valores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlValores.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Valores", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         lblValorCusto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblValorCusto.setText("Valor de Custo:");
@@ -289,7 +287,7 @@ public class FormProduto extends javax.swing.JFrame {
                     .addComponent(lblValorVenda)
                     .addComponent(txtValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                     .addComponent(txtMargemLucro))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblValorCusto))
@@ -313,8 +311,7 @@ public class FormProduto extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        pnlArmazem.setBackground(new java.awt.Color(255, 255, 255));
-        pnlArmazem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estoque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        pnlArmazem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Estoque", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         txtCorredor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtCorredor.setText("Corredor:");
@@ -427,7 +424,7 @@ public class FormProduto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
