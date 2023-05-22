@@ -229,7 +229,8 @@ public class Login extends javax.swing.JFrame {
             }
 
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Insira Login e Senha Válidos!");
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, ex.getMessage());
 
         }
     }

@@ -87,7 +87,6 @@ public class ProdutoDAO {
 
             if (linhaAfetada > 0) {
                 retorno = true;
-                System.out.println("Atualizado com sucesso");
             } else {
                 retorno = false;
             }

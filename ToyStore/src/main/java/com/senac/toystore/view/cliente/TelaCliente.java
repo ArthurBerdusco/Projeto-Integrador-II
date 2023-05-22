@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class TelaCliente extends javax.swing.JInternalFrame {
+public class TelaCliente extends javax.swing.JInternalFrame implements Atualizavel{
 
     public TelaCliente() {
         try {
@@ -46,7 +46,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         pnlIcon = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         pnlFiltrarCliente = new javax.swing.JPanel();
         lblCpf = new javax.swing.JLabel();
         lblNome = new javax.swing.JLabel();
@@ -62,7 +61,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         pnlControle.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnlControle.setPreferredSize(new java.awt.Dimension(267, 472));
 
-        btnAdicionar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btnAdicionar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/sign.png"))); // NOI18N
         btnAdicionar.setText("Adicionar");
         btnAdicionar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -72,7 +71,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnExcluir.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btnExcluir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/venda/excluir (1).png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -82,7 +81,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        btnEditar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/pen.png"))); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -116,7 +115,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addGap(51, 51, 51))
         );
 
-        jButton4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/search.png"))); // NOI18N
         jButton4.setText("Buscar");
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -157,9 +156,9 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         txtQntClientes.setText("0");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/rating.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/crm.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Clientes");
 
@@ -184,19 +183,12 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        jButton1.setText("Atualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         pnlFiltrarCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Filtrar Cliente", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
-        lblCpf.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblCpf.setText("CPF:");
 
-        lblNome.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        lblNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblNome.setText("Nome:");
 
         txtFiltrarCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -256,8 +248,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                                 .addComponent(txtQntClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(356, 356, 356)
-                                .addComponent(jButton1)))))
+                                .addGap(433, 433, 433)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlControle, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
@@ -275,9 +266,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(pnlFiltrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlControle, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
@@ -313,6 +302,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txtFiltrarCpfActionPerformed
 
+    @Override
     public void atualizar() {
         DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
         modelo.setRowCount(0);
@@ -335,6 +325,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         FormCliente telaCliente = new FormCliente();
+        telaCliente.setCallBack(this);
         telaCliente.setTitle("Adicionar Cliente");
         telaCliente.setVisible(true);
     }//GEN-LAST:event_btnAdicionarActionPerformed
@@ -345,16 +336,13 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             int id = Integer.parseInt(modelo.getValueAt(tblCliente.getSelectedRow(), 0).toString());
             Cliente cliente = ClienteDAO.listar(id);
             FormCliente telaCliente = new FormCliente(cliente);
+            telaCliente.setCallBack(this);
             telaCliente.setTitle("Editar Cliente");
             telaCliente.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Selecione o cliente para editar");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        atualizar();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         if (tblCliente.getSelectedRow() >= 0) {
@@ -374,7 +362,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         String nome = txtFiltrarNome.getText();
         String cpf = txtFiltrarCpf.getText();
 
-        ArrayList<Cliente> clientes = ClienteDAO.listar(nome, cpf);
+        ArrayList<Cliente> clientes = ClienteDAO.filtrar(nome, cpf);
 
         DefaultTableModel modelo = (DefaultTableModel) tblCliente.getModel();
         modelo.setRowCount(0);
@@ -399,7 +387,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

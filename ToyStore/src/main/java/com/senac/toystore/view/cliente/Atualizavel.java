@@ -1,5 +1,5 @@
 package com.senac.toystore.view.cliente;
 
-public interface AtualizarTabelaListener {
+public interface Atualizavel {
     void atualizar();
 }

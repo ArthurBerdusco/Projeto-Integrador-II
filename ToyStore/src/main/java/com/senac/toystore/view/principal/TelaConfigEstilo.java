@@ -2,8 +2,9 @@ package com.senac.toystore.view.principal;
 
 public class TelaConfigEstilo extends javax.swing.JFrame {
 
+    private IntegradorEstiloSistema callback;
+
     public TelaConfigEstilo() {
-        
         initComponents();
     }
 
@@ -79,11 +80,11 @@ public class TelaConfigEstilo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String escolhaEstilo;
-        if(cboEstilo.getSelectedIndex() == 1){
+        if (cboEstilo.getSelectedIndex() == 1) {
             escolhaEstilo = "javax.swing.plaf.nimbus.NimbusLookAndFeel";
-        }else if(cboEstilo.getSelectedIndex() == 2){
+        } else if (cboEstilo.getSelectedIndex() == 2) {
             escolhaEstilo = "javax.swing.plaf.metal.MetalLookAndFeel";
-        }else{
+        } else {
             escolhaEstilo = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
         }
         callback.botaoPrecionado(escolhaEstilo);
@@ -94,24 +95,21 @@ public class TelaConfigEstilo extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private IntegradorEstiloSistema callback;
-    
-    public void setCallBack(IntegradorEstiloSistema callBack){
+    public void setCallBack(IntegradorEstiloSistema callBack) {
         this.callback = callBack;
     }
-    
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaConfigEstilo().setVisible(true);
-                
+
             }
         });
     }
 
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboEstilo;
     private javax.swing.JButton jButton1;

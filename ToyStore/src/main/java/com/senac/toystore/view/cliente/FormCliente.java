@@ -10,6 +10,12 @@ public class FormCliente extends javax.swing.JFrame {
 
     private Cliente cliente = new Cliente();
 
+    Atualizavel callback;
+
+    public void setCallBack(Atualizavel callBack) {
+        this.callback = callBack;
+    }
+
     public FormCliente() {
         initComponents();
     }
@@ -99,6 +105,7 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtCpf.setName("CPF"); // NOI18N
         txtCpf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCpfFocusGained(evt);
@@ -110,6 +117,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        txtEmail.setName("Email"); // NOI18N
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEmailFocusGained(evt);
@@ -122,13 +130,11 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("Sexo:");
 
-        rbtMasc.setBackground(new java.awt.Color(255, 255, 255));
         btgSexo.add(rbtMasc);
         rbtMasc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbtMasc.setText("Masculino");
         rbtMasc.setName("Masculino"); // NOI18N
 
-        rbtFem.setBackground(new java.awt.Color(255, 255, 255));
         btgSexo.add(rbtFem);
         rbtFem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rbtFem.setText("Feminino");
@@ -138,10 +144,11 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel9.setText("CPF:");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel14.setText("ESTADO CÍVIL");
+        jLabel14.setText("Estado cívil:");
 
         txtCivil.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtCivil.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        txtCivil.setName("Estado Civil"); // NOI18N
         txtCivil.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtCivilFocusGained(evt);
@@ -155,6 +162,7 @@ public class FormCliente extends javax.swing.JFrame {
         jLabel15.setText("Data de Nascimento:");
 
         txtNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtNome.setName("Nome Completo"); // NOI18N
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNomeFocusGained(evt);
@@ -163,6 +171,8 @@ public class FormCliente extends javax.swing.JFrame {
                 txtNomeFocusLost(evt);
             }
         });
+
+        txtDataNasc.setName("Data de Nascimento"); // NOI18N
 
         javax.swing.GroupLayout PainelIdentificacaoLayout = new javax.swing.GroupLayout(PainelIdentificacao);
         PainelIdentificacao.setLayout(PainelIdentificacaoLayout);
@@ -178,7 +188,7 @@ public class FormCliente extends javax.swing.JFrame {
                                 .addComponent(rbtMasc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rbtFem)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                         .addComponent(txtCivil, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelIdentificacaoLayout.createSequentialGroup()
@@ -189,14 +199,11 @@ public class FormCliente extends javax.swing.JFrame {
                             .addComponent(jLabel9)
                             .addComponent(jLabel4)
                             .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                         .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15)
-                            .addGroup(PainelIdentificacaoLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(PainelIdentificacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addComponent(jLabel14)
+                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(28, 28, 28))
         );
         PainelIdentificacaoLayout.setVerticalGroup(
@@ -238,6 +245,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         txtRua.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtRua.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        txtRua.setName("Endereco"); // NOI18N
         txtRua.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtRuaFocusGained(evt);
@@ -252,6 +260,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         txtNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtNumero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        txtNumero.setName("Numero"); // NOI18N
         txtNumero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNumeroFocusGained(evt);
@@ -266,6 +275,7 @@ public class FormCliente extends javax.swing.JFrame {
 
         txtComplemento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtComplemento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(189, 202, 219)));
+        txtComplemento.setName("Complemento"); // NOI18N
         txtComplemento.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtComplementoFocusGained(evt);
@@ -285,6 +295,7 @@ public class FormCliente extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         txtTelefone.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtTelefone.setName("Telefone"); // NOI18N
         txtTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtTelefoneFocusGained(evt);
@@ -461,13 +472,13 @@ public class FormCliente extends javax.swing.JFrame {
         Validador validador = new Validador();
 
         validador.validarNome(txtNome);
-        validador.validarCpf(txtCpf);
-        //validador.validarDataNasc();
+        validador.validarCpf(txtCpf, cliente);
+        validador.validarDataNasc(txtDataNasc);
         validador.validarGroupRadio(btgSexo);
         validador.validarString(txtCivil);
         validador.validarEmail(txtEmail);
         validador.validarString(txtRua);
-        //validador.validarNumero; implementar
+        validador.validarNumero(txtNumero);
         validador.validarTelefone(txtTelefone);
 
         if (validador.mensagemErro.size() == 0) {
@@ -491,7 +502,7 @@ public class FormCliente extends javax.swing.JFrame {
                 boolean sucessoAlterar = ClienteDAO.alterar(cliente);
 
                 if (sucessoAlterar == true) {
-                    
+                    callback.atualizar();
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Falha ao cadastrar");
@@ -500,13 +511,12 @@ public class FormCliente extends javax.swing.JFrame {
                 boolean sucessoCadastro = ClienteDAO.salvar(cliente);
 
                 if (sucessoCadastro == true) {
+                    callback.atualizar();
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Falha ao cadastrar");
                 }
-
             }
-
         } else if (validador.mensagemErro.size() == 1) {
             JOptionPane.showMessageDialog(this, validador.mensagemErro.get(0));
         } else if (validador.mensagemErro.size() > 1) {

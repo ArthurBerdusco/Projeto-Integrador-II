@@ -207,8 +207,8 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Validador validador = new Validador();
-        validador.validarData(txtDataInicial);
-        validador.validarData(txtDataFinal);
+//        validador.validarData(txtDataInicial);
+//        validador.validarData(txtDataFinal);
         if(validador.mensagemErro.size() == 0){
             JOptionPane.showMessageDialog(this, "Relatório indisponivel no momento");
         }else{

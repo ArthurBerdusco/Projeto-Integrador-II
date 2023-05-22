@@ -24,7 +24,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class FormProduto extends javax.swing.JFrame {
 
     private Produto produto = new Produto();
-
+    private Atualizavel callback;
+    
+    public void setCallback(Atualizavel callback){
+        this.callback = callback;
+    }
+    
     public FormProduto() {
         initComponents();
     }
@@ -458,6 +463,7 @@ public class FormProduto extends javax.swing.JFrame {
                 boolean sucessoAlterar = ProdutoDAO.alterar(produto);
 
                 if (sucessoAlterar == true) {
+                    callback.atualizar();
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Falha ao alterar");
@@ -466,7 +472,7 @@ public class FormProduto extends javax.swing.JFrame {
                 boolean sucessoCadastro = ProdutoDAO.salvar(produto);
 
                 if (sucessoCadastro == true) {
-
+                    callback.atualizar();
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, "Falha ao cadastrar");

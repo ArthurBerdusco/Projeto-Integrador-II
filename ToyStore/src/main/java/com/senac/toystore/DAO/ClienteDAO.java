@@ -88,7 +88,6 @@ public class ClienteDAO {
 
             if (linhaAfetada > 0) {
                 retorno = true;
-                System.out.println("Atualizado com sucesso");
             } else {
                 retorno = false;
             }
@@ -209,8 +208,8 @@ public class ClienteDAO {
         }
         return cliente;
     }
-    
-        public static ArrayList<Cliente> listar(String nome, String cpf) {
+
+    public static ArrayList<Cliente> filtrar(String nome, String cpf) {
         ArrayList<Cliente> clientes = new ArrayList();
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -223,7 +222,7 @@ public class ClienteDAO {
             instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE nome LIKE ? AND cpf LIKE ?");
 
             instrucaoSQL.setString(1, "%" + nome + "%");
-            instrucaoSQL.setString(2, "%" + cpf  + "%");
+            instrucaoSQL.setString(2, "%" + cpf + "%");
 
             //Executar comando SQL
             ResultSet rs = instrucaoSQL.executeQuery();
@@ -262,6 +261,46 @@ public class ClienteDAO {
         }
         return clientes;
     }
+
+    public static boolean consultarCpfCadastrado(String cpf) {
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            //Abrir Conexao
+            conexao = GerenciadorConexao.abrirConexao();
+
+            //Preparar comando sql
+            instrucaoSQL = conexao.prepareStatement("SELECT * FROM cliente WHERE cpf = ?");
+            instrucaoSQL.setString(1, cpf);
+
+            //Executar comando SQL
+            ResultSet rs = instrucaoSQL.executeQuery();
+            
+            if (rs.next()) {
+                retorno = true;
+            }else{
+                retorno = false;
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            //Libero os recursos da memória
+            try {
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+                GerenciadorConexao.fecharConexao();
+
+            } catch (SQLException ex) {
+                System.out.println("Não foi possivel fechar a conexão com banco ou fechar o comando sql");
+            }
+        }
+        return retorno;
+    }
+    
 
     public static boolean excluir(int id) {
         boolean retorno = false;

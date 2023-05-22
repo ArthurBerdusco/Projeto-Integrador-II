@@ -1,7 +1,11 @@
 package com.senac.toystore.utils;
 
+import com.senac.toystore.DAO.ClienteDAO;
+import com.senac.toystore.model.Cliente;
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
@@ -18,7 +22,16 @@ public class Validador {
         campo.setBorder(BorderFactory.createLineBorder(Color.red));
     }
 
+    public void pintarBordaVermelho(JDateChooser campo) {
+        campo.setBorder(BorderFactory.createLineBorder(Color.red));
+    }
+
     public void pintarBordaCinza(JTextField campo) {
+        Color corpersonalizada = new Color(190, 204, 200);
+        campo.setBorder(BorderFactory.createLineBorder(corpersonalizada));
+    }
+
+    public void pintarBordaCinza(JDateChooser campo) {
         Color corpersonalizada = new Color(190, 204, 200);
         campo.setBorder(BorderFactory.createLineBorder(corpersonalizada));
     }
@@ -52,23 +65,50 @@ public class Validador {
     public void validarString(JTextField txt) {
         try {
             if (txt.getText().trim().isEmpty()) {
-                pintarBordaVermelho(txt);
-                throw new IllegalArgumentException();
+                throw new Exception("O campo " + txt.getName() + " é obrigatório.");
             }
             pintarBordaCinza(txt);
-        } catch (NumberFormatException ex) {
-            this.mensagemErro.add("Falha ao converter o valor do campo " + txt.getName() + " em inteiro");
-        } catch (IllegalArgumentException ex) {
-            this.mensagemErro.add("Digite um valor para o campo " + txt.getName());
         } catch (Exception ex) {
-            this.mensagemErro.add("Erro no preenchimento do campo");
+            pintarBordaVermelho(txt);
+            this.mensagemErro.add(ex.getMessage());
         }
     }
 
-    public void validarCpf(JFormattedTextField cpf) {
+    public void validarNumero(JTextField txt) {
         try {
-            if (cpf.getText().replace(".", "").replace("-", "").trim().isEmpty()) {
-                throw new Exception("Preencha o campo CPF!");
+            Integer.parseInt(txt.getText().trim());
+            if(txt.getText().trim().isEmpty()){
+             throw new Exception("Campo número é obrigatório");   
+            }
+            pintarBordaCinza(txt);
+        } catch (NumberFormatException ex) {
+            pintarBordaVermelho(txt);
+            this.mensagemErro.add("Campo número do endereço aceita apenas números");
+        } catch (Exception ex) {
+            pintarBordaVermelho(txt);
+            this.mensagemErro.add(ex.getMessage());
+        }
+    }
+
+    public void validarCpf(JFormattedTextField cpf, Cliente cliente) {
+        try {
+
+            if (cpf.getText().trim().replace("-", "").replace(".", "").isEmpty()) {
+                throw new Exception("Preencha o campo cpf");
+            }
+
+            String cpfSemFormatacao = cpf.getText().trim().replace("-", "").replace(".", "");
+            if (ClienteDAO.consultarCpfCadastrado(cpfSemFormatacao)) {
+
+                //Caso seja cliente novo já gera a excessão
+                if (cliente.getCpf() == null) {
+                    throw new Exception("Cliente novo: Já existe um cliente cadastrado com este CPF");
+                }
+
+                //Caso o cliente já tenha cadastro e esteja tentando inserir um cpf que já esta cadastrado
+                if (!(cliente.getCpf().equals(cpfSemFormatacao))) {
+                    throw new Exception("Já existe um cliente cadastrado com este CPF");
+                }
             }
             pintarBordaCinza(cpf);
         } catch (Exception e) {
@@ -85,57 +125,36 @@ public class Validador {
         } catch (NullPointerException e) {
             this.mensagemErro.add(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             this.mensagemErro.add(e.getMessage());
         }
     }
 
-    public void validarData(JFormattedTextField dataFld) {
+    public void validarData(JDateChooser dc) {
         try {
-            String data = dataFld.getText().replace("/", "");
-            int dia = Integer.parseInt(data.substring(0, 2));
-            int mes = Integer.parseInt(data.substring(2, 4));
-            int ano = Integer.parseInt(data.substring(4, 8));
+            Date dataSelecionada = dc.getDate();
+            Date dataAtual = new Date();
 
-            if ((dia > 31) || (dia < 1)) {
-                throw new Exception("Confira o dia de nascimento!");
+            if (dataSelecionada.after(dataAtual) || dataSelecionada == null) {
+                throw new Exception("Data de nascimento incorreta");
             }
-
-            if ((mes > 12) || (mes < 1)) {
-                throw new Exception("Confira o mes de nascimento!");
-            }
-
-            if ((ano > 2023) || (ano < 1900)) {
-                throw new Exception("Confira o ano de nascimento!");
-            }
-            pintarBordaCinza(dataFld);
+            pintarBordaCinza(dc);
         } catch (Exception e) {
-            pintarBordaVermelho(dataFld);
+            pintarBordaVermelho(dc);
             this.mensagemErro.add(e.getMessage());
         }
     }
 
-    public void validarDataNasc(JFormattedTextField dataFld) {
+    public void validarDataNasc(JDateChooser dc) {
         try {
-            String data = dataFld.getText().replace("/", "");
-            int dia = Integer.parseInt(data.substring(0, 2));
-            int mes = Integer.parseInt(data.substring(2, 4));
-            int ano = Integer.parseInt(data.substring(4, 8));
+            Date dataSelecionada = dc.getDate();
+            Date dataAtual = new Date();
 
-            if ((dia > 31) || (dia < 1)) {
-                throw new Exception("Confira o dia de nascimento!");
+            if (dataSelecionada.after(dataAtual) || dataSelecionada == null) {
+                throw new Exception("Data de nascimento incorreta");
             }
-
-            if ((mes > 12) || (mes < 1)) {
-                throw new Exception("Confira o mes de nascimento!");
-            }
-
-            if ((ano > 2023) || (ano < 1900)) {
-                throw new Exception("Confira o ano de nascimento!");
-            }
-            pintarBordaCinza(dataFld);
+            pintarBordaCinza(dc);
         } catch (Exception e) {
-            pintarBordaVermelho(dataFld);
+            pintarBordaVermelho(dc);
             this.mensagemErro.add(e.getMessage());
         }
     }
