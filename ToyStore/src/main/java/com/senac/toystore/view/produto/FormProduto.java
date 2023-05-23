@@ -453,7 +453,7 @@ public class FormProduto extends javax.swing.JFrame {
             produto.setCod_barras(txtCodBarras.getText());
             produto.setValorVenda(Float.parseFloat(txtValorVenda.getText()));
             produto.setValorCusto(Float.parseFloat(txtValorCusto.getText()));
-            produto.setMargemLucro(txtMargemLucro.getText());
+            produto.setMargemLucro(Float.parseFloat(txtMargemLucro.getText().replace("%", "")));
             produto.setCorredor(cboProdCorredor.getSelectedItem().toString());
             produto.setPratileira(Integer.parseInt(cboProdPratileira.getSelectedItem().toString()));
             produto.setCategoria(cboProdCategoria.getSelectedItem().toString());
@@ -677,11 +677,14 @@ public class FormProduto extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void calcMargemLucro() {
-        if (!(txtValorVenda.getText().isEmpty()) && !(txtValorVenda.getText().isBlank())) {
+        if (!(txtValorVenda.getText().isEmpty()) && !(txtValorCusto.getText().isEmpty())) {
             float valorVenda = Float.parseFloat(txtValorVenda.getText());
             float valorCusto = Float.parseFloat(txtValorCusto.getText());
             float margemLucro = (float) ((valorVenda - valorCusto) / valorVenda) * 100;
-            txtMargemLucro.setText(String.valueOf(margemLucro));
+            
+            
+            txtMargemLucro.setText(String.format("%.1f",margemLucro) + "%");
+            
 
             if (margemLucro > 0) {
                 Color verdeDegrade = new Color((int) (255 - 255 * margemLucro / 100), 255, (int) (255 - 255 * margemLucro / 100));

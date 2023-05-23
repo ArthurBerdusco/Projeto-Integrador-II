@@ -27,7 +27,7 @@ public class ProdutoDAO {
             instrucaoSQL.setString(2, produto.getCod_barras());
             instrucaoSQL.setFloat(3, produto.getValorVenda());
             instrucaoSQL.setFloat(4, produto.getValorCusto());
-            instrucaoSQL.setString(5, produto.getMargemLucro());
+            instrucaoSQL.setFloat(5, produto.getMargemLucro());
             instrucaoSQL.setString(6, produto.getCategoria());
             instrucaoSQL.setBlob(7, produto.getFoto());
             instrucaoSQL.setString(8, produto.getCorredor());
@@ -76,7 +76,7 @@ public class ProdutoDAO {
             instrucaoSQL.setString(2, produto.getCod_barras());
             instrucaoSQL.setFloat(3, produto.getValorVenda());
             instrucaoSQL.setFloat(4, produto.getValorCusto());
-            instrucaoSQL.setString(5, produto.getMargemLucro());
+            instrucaoSQL.setFloat(5, produto.getMargemLucro());
             instrucaoSQL.setString(6, produto.getCategoria());
             instrucaoSQL.setBlob(7, produto.getFoto());
             instrucaoSQL.setString(8, produto.getCorredor());

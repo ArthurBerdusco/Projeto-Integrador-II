@@ -9,7 +9,7 @@ public class Produto {
     private String cod_barras;
     private float valorVenda;
     private float valorCusto;
-    private String margemLucro;
+    private float margemLucro;
     private String categoria;
     private String corredor;
     private int pratileira;
@@ -72,11 +72,11 @@ public class Produto {
         this.valorVenda = valorVenda;
     }
 
-    public String getMargemLucro() {
+    public float getMargemLucro() {
         return margemLucro;
     }
 
-    public void setMargemLucro(String margemLucro) {
+    public void setMargemLucro(float margemLucro) {
         this.margemLucro = margemLucro;
     }
 
