@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.commons.io.FilenameUtils;
 
 public class FormProduto extends javax.swing.JFrame {
 
@@ -522,9 +523,11 @@ public class FormProduto extends javax.swing.JFrame {
                 //SERIALIZA IMAGEM NO FORMATO BLOB PARA O OBJETO PRODUTO ATRIBUTO FOTO QUE SERA ENVIADO PARA O DB
                 SerialBlob imagemBlob = null;
                 try {
+                    String extensao = FilenameUtils.getExtension(imagemSelecionada.getName());
+                    
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     String format = "jpg";
-                    ImageIO.write(originalImage, format, baos);
+                    ImageIO.write(originalImage, extensao, baos);
                     byte[] imageBytes = baos.toByteArray();
                     imagemBlob = new SerialBlob(imageBytes);
                     produto.setFoto(imagemBlob);

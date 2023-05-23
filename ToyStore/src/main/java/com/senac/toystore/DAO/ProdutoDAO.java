@@ -134,6 +134,7 @@ public class ProdutoDAO {
                     produto.setCategoria(rs.getString("categoria"));
                     produto.setCorredor(rs.getString("corredor"));
                     produto.setPratileira(rs.getInt("pratileira"));
+                    produto.setFoto(rs.getBlob("foto"));
                     lista.add(produto);
                 }
             }
@@ -203,8 +204,8 @@ public class ProdutoDAO {
         }
         return produto;
     }
-    
-        public static ArrayList<Produto> listar(String descricao, String codBrras, String categoria) {
+
+    public static ArrayList<Produto> listar(String descricao, String codBrras, String categoria) {
         ArrayList<Produto> lista = new ArrayList<>();
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
