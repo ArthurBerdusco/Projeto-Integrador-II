@@ -44,7 +44,7 @@ create table produto(
 	foto blob,
 	corredor char(1) not null,
     pratileira int not null,
-    quantidade int not null,
+    quantidade int not null
 );
 
 create table item_pedido(
