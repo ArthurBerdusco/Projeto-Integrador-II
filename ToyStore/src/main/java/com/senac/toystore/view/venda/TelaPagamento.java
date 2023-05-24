@@ -23,7 +23,6 @@ public class TelaPagamento extends javax.swing.JFrame {
         rdBtnPix = new javax.swing.JRadioButton();
         rdBtnDinheiro = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnPagamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,8 +74,6 @@ public class TelaPagamento extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Forma de Pagamento");
 
-        jLabel5.setText("jLabel5");
-
         btnPagamento.setBackground(new java.awt.Color(46, 139, 87));
         btnPagamento.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPagamento.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,9 +108,7 @@ public class TelaPagamento extends javax.swing.JFrame {
                     .addComponent(txtValorTotal))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(180, 180, 180)
                 .addComponent(btnPagamento)
                 .addGap(0, 12, Short.MAX_VALUE))
         );
@@ -142,9 +137,7 @@ public class TelaPagamento extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTroco, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(btnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btnPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -213,7 +206,6 @@ public class TelaPagamento extends javax.swing.JFrame {
     private javax.swing.JButton btnPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

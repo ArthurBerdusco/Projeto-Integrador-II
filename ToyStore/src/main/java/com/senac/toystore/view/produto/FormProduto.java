@@ -20,7 +20,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.apache.commons.io.FilenameUtils;
 
 public class FormProduto extends javax.swing.JFrame {
 
@@ -502,7 +501,7 @@ public class FormProduto extends javax.swing.JFrame {
         //INSTANCIANDO FILE EXPLORER SWING
         JFileChooser procurarArquivoImagem = new JFileChooser();
         //DEFINIR FILTRO SOMENTE PARA ARQUIVOS COM EXTENSAO IMAGEM
-        FileNameExtensionFilter fExtImg = new FileNameExtensionFilter("IMAGES", "png", "jpg", "jpeg");
+        FileNameExtensionFilter fExtImg = new FileNameExtensionFilter("IMAGES", "jpg");
         procurarArquivoImagem.addChoosableFileFilter(fExtImg);
 
         //ABRIR FILE EXPLORER
@@ -523,11 +522,10 @@ public class FormProduto extends javax.swing.JFrame {
                 //SERIALIZA IMAGEM NO FORMATO BLOB PARA O OBJETO PRODUTO ATRIBUTO FOTO QUE SERA ENVIADO PARA O DB
                 SerialBlob imagemBlob = null;
                 try {
-                    String extensao = FilenameUtils.getExtension(imagemSelecionada.getName());
                     
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     String format = "jpg";
-                    ImageIO.write(originalImage, extensao, baos);
+                    ImageIO.write(originalImage, format, baos);
                     byte[] imageBytes = baos.toByteArray();
                     imagemBlob = new SerialBlob(imageBytes);
                     produto.setFoto(imagemBlob);
@@ -537,7 +535,7 @@ public class FormProduto extends javax.swing.JFrame {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Imagem inválida", "Erro ao adicionar imagem", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Imagem inválida", "Selecione apenas imagem no formato JPG", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_lblAddImgMousePressed

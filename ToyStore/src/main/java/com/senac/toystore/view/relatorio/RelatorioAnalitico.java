@@ -27,52 +27,24 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
     private void initComponents() {
 
         pnRelatorioAnalitico = new javax.swing.JPanel();
-        pnIcon = new javax.swing.JPanel();
-        lbIcon = new javax.swing.JLabel();
-        lbRelatorio = new javax.swing.JLabel();
         pnTabela = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbRelatorioAnalitico = new javax.swing.JTable();
         btnVoltar = new javax.swing.JButton();
         lbValorTotal = new javax.swing.JLabel();
         txtValorTotalVender = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        lbIcon = new javax.swing.JLabel();
+        lbRelatorio = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1350, 780));
         setResizable(false);
 
         pnRelatorioAnalitico.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        pnIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/report.png"))); // NOI18N
-
-        lbRelatorio.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        lbRelatorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbRelatorio.setText("Relatório");
-
-        javax.swing.GroupLayout pnIconLayout = new javax.swing.GroupLayout(pnIcon);
-        pnIcon.setLayout(pnIconLayout);
-        pnIconLayout.setHorizontalGroup(
-            pnIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnIconLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(lbRelatorio)
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnIconLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-        );
-        pnIconLayout.setVerticalGroup(
-            pnIconLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnIconLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbRelatorio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(384, Short.MAX_VALUE))
-        );
 
         pnTabela.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -82,11 +54,11 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Item", "Produto", "Quantidade", "Valor"
+                "Código", "Descrição", "Quantidade", "Valor Unitário", "Valor  Total"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Object.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -99,15 +71,15 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         pnTabela.setLayout(pnTabelaLayout);
         pnTabelaLayout.setHorizontalGroup(
             pnTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1150, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(pnTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1182, Short.MAX_VALUE))
         );
         pnTabelaLayout.setVerticalGroup(
             pnTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 506, Short.MAX_VALUE)
+            .addGap(0, 615, Short.MAX_VALUE)
             .addGroup(pnTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE))
         );
 
         btnVoltar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -123,36 +95,74 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         txtValorTotalVender.setForeground(new java.awt.Color(255, 255, 255));
         txtValorTotalVender.setText("R$--");
 
+        lbIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/report.png"))); // NOI18N
+
+        lbRelatorio.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        lbRelatorio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbRelatorio.setText("Relatório");
+
+        jLabel1.setText("Nome:");
+
+        jLabel2.setText("NF:");
+
         javax.swing.GroupLayout pnRelatorioAnaliticoLayout = new javax.swing.GroupLayout(pnRelatorioAnalitico);
         pnRelatorioAnalitico.setLayout(pnRelatorioAnaliticoLayout);
         pnRelatorioAnaliticoLayout.setHorizontalGroup(
             pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
-                .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(706, 706, 706)
-                        .addComponent(lbValorTotal)
+                        .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
+                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 685, Short.MAX_VALUE)
+                                .addComponent(lbValorTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtValorTotalVender, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(65, 65, 65))
+                            .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
+                                .addComponent(pnTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbIcon)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnRelatorioAnaliticoLayout.createSequentialGroup()
+                                .addComponent(lbRelatorio)
+                                .addGap(11, 11, 11)))
+                        .addGap(20, 20, 20))
+                    .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtValorTotalVender, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnRelatorioAnaliticoLayout.setVerticalGroup(
             pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pnTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnIcon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lbRelatorio)
+                        .addGap(2, 2, 2)
+                        .addComponent(lbIcon))
+                    .addGroup(pnRelatorioAnaliticoLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(pnTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnRelatorioAnaliticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorTotalVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtValorTotalVender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -164,10 +174,13 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnRelatorioAnalitico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnRelatorioAnalitico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -207,11 +220,14 @@ public class RelatorioAnalitico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVoltar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbIcon;
     private javax.swing.JLabel lbRelatorio;
     private javax.swing.JLabel lbValorTotal;
-    private javax.swing.JPanel pnIcon;
     private javax.swing.JPanel pnRelatorioAnalitico;
     private javax.swing.JPanel pnTabela;
     private javax.swing.JTable tbRelatorioAnalitico;

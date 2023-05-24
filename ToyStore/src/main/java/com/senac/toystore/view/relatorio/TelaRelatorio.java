@@ -36,6 +36,8 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         btnLimpar = new javax.swing.JButton();
         lbCpf = new javax.swing.JLabel();
         txtCpf = new javax.swing.JFormattedTextField();
+        lbDataFinal = new javax.swing.JLabel();
+        txtDataFinal = new com.toedter.calendar.JDateChooser();
         pnIcon = new javax.swing.JPanel();
         lblProdutos = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -96,7 +98,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         PainelRelatorioLayout.setVerticalGroup(
             PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelRelatorioLayout.createSequentialGroup()
-                .addComponent(tabela, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
+                .addComponent(tabela, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PainelRelatorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,13 +109,13 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         PainelFiltro.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         PainelFiltro.setPreferredSize(new java.awt.Dimension(1336, 217));
 
-        DataInicial.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DataInicial.setText("Data:");
+        DataInicial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        DataInicial.setText("Data início:");
 
-        lbValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbValor.setText("Valor:");
 
-        lbNome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lbNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbNome.setText("Nome:");
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -131,7 +133,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
             }
         });
 
-        lbCpf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lbCpf.setText("Cpf:");
 
         try {
@@ -139,6 +141,9 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        lbDataFinal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbDataFinal.setText("Data Final:");
 
         javax.swing.GroupLayout PainelFiltroLayout = new javax.swing.GroupLayout(PainelFiltro);
         PainelFiltro.setLayout(PainelFiltroLayout);
@@ -148,25 +153,31 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
-                        .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(6, 6, 6)
+                        .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(PainelFiltroLayout.createSequentialGroup()
+                                .addComponent(DataInicial)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PainelFiltroLayout.createSequentialGroup()
                                 .addComponent(lbNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PainelFiltroLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(DataInicial)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDataNasc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(117, 117, 117)
+                                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
                         .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbValor)
-                            .addComponent(lbCpf))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 292, Short.MAX_VALUE))
+                            .addGroup(PainelFiltroLayout.createSequentialGroup()
+                                .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbValor)
+                                    .addComponent(lbCpf))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PainelFiltroLayout.createSequentialGroup()
+                                .addComponent(lbDataFinal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 315, Short.MAX_VALUE))
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
                         .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,17 +192,20 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
                     .addComponent(DataInicial)
                     .addGroup(PainelFiltroLayout.createSequentialGroup()
                         .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbCpf)
-                                .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbDataFinal))
                         .addGap(23, 23, 23)
                         .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbValor)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbNome)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbCpf)
+                            .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbValor)
+                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(PainelFiltroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -276,6 +290,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCpf;
+    private javax.swing.JLabel lbDataFinal;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbValor;
     private javax.swing.JLabel lbValorTotal;
@@ -284,6 +299,7 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane tabela;
     private javax.swing.JTable tabelaRelatorio;
     private javax.swing.JFormattedTextField txtCpf;
+    private com.toedter.calendar.JDateChooser txtDataFinal;
     private com.toedter.calendar.JDateChooser txtDataNasc;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtValor;
