@@ -18,7 +18,6 @@ create table cliente(
 
 create table vendedor(
 	id_vendedor int auto_increment primary key,
-    nome varchar (40) not null,
     usuario varchar(15) not null,
     senha varchar(15) not null
 );
@@ -37,11 +36,14 @@ create table produto(
 	id_produto int auto_increment primary key,
     descricao varchar(30) not null,
     cod_barras varchar(18) not null,
-    valor_venda float not null,
-    valor_custo float not null,
+    valor_venda decimal not null,
+    valor_custo decimal not null,
     margem_lucro decimal(5,3) not null,
-    categoria varchar(20) not null,
-    foto blob
+    categoria varchar(30) not null,
+	foto blob,
+	corredor char(1) not null,
+    pratileira int not null,
+    quantidade int not null
 );
 
 create table item_pedido(
@@ -55,17 +57,6 @@ create table item_pedido(
 );
 
 
-
-create table estoque(
-	id_estoque int auto_increment primary key,
-	corredor char(1) not null,
-    pratileira int not null,
-    quantidade int not null,
-    id_produto int,
-    foreign key(id_produto) references produto(id_produto)    
-);
-
-select * from cliente;
 
 
 

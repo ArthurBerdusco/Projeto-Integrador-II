@@ -1,6 +1,8 @@
 package com.senac.toystore.view.login;
 
+import com.senac.toystore.DAO.VendedorDAO;
 import com.senac.toystore.model.Usuario;
+import com.senac.toystore.model.Vendedor;
 import com.senac.toystore.view.principal.TelaPrincipal;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -36,7 +38,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jlogo = new javax.swing.JLabel();
         jImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -174,7 +176,9 @@ public class Login extends javax.swing.JFrame {
         );
 
         ToyStore.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 330, 330));
-        ToyStore.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 130));
+
+        jlogo.setText("jLabel6");
+        ToyStore.add(jlogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 40, 20));
 
         jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/ícone-e-fundo-do-brinquedo-43860074.jpg"))); // NOI18N
         jImg.setPreferredSize(new java.awt.Dimension(500, 300));
@@ -204,13 +208,15 @@ public class Login extends javax.swing.JFrame {
 
     // Método para validar o login
     private void validarLogin() {
-        // Neste exemplo, vamos criar um usuário para verificar as informações.
+        // Neste exemplo, vamos criar um usuário para verificar as informações        
         try {
             String login = campoLogin.getText();
             String senha = campoSenha.getText();
+            
+            Vendedor vendedor = VendedorDAO.listar(login);
 
             // Verifica se o login e senha são válidos
-            if (login.equals("admin") && senha.equals("admin")) {
+            if ((vendedor.getUsuario().equals(login)) && (vendedor.getSenha().equals(senha))) {
                 // Login e senha corretos: permite acesso ao sistema
                 campoLogin.setBorder(BorderFactory.createLineBorder(Color.GRAY));
                 campoSenha.setBorder(BorderFactory.createLineBorder(Color.GRAY));
@@ -300,9 +306,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jlogo;
     // End of variables declaration//GEN-END:variables
 
 }

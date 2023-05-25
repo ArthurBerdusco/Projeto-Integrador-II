@@ -2,87 +2,31 @@ package com.senac.toystore.model;
 
 public class Vendedor {
        
-   private String nome;
-   private String cpf;
-   private String telefone;
-   private String sexo;
-   private String data;
-   private String estadocv;
-   private String complemento;
-   private String numero;
-   private String endereco;
+   private String usuario;
+   private String senha;
+   private int id;
 
-    public String getNome() {
-        return nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getEstadocv() {
-        return estadocv;
-    }
-
-    public void setEstadocv(String estadocv) {
-        this.estadocv = estadocv;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-   
-   
 }
