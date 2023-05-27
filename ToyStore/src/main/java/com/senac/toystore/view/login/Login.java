@@ -3,6 +3,7 @@ package com.senac.toystore.view.login;
 import com.senac.toystore.DAO.VendedorDAO;
 import com.senac.toystore.model.Usuario;
 import com.senac.toystore.model.Vendedor;
+import com.senac.toystore.view.principal.TelaConfigEstilo;
 import com.senac.toystore.view.principal.TelaPrincipal;
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -38,7 +39,8 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
-        jlogo = new javax.swing.JLabel();
+        PainelMenu = new javax.swing.JPanel();
+        imgLogoToy = new javax.swing.JLabel();
         jImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,9 +138,9 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(14, 14, 14)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -175,14 +177,23 @@ public class Login extends javax.swing.JFrame {
                 .addGap(188, 188, 188))
         );
 
-        ToyStore.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 330, 330));
+        ToyStore.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 330, 330));
 
-        jlogo.setText("jLabel6");
-        ToyStore.add(jlogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 40, 20));
+        PainelMenu.setBackground(java.awt.Color.darkGray);
+        PainelMenu.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelMenu.setPreferredSize(new java.awt.Dimension(70, 803));
+        PainelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/ícone-e-fundo-do-brinquedo-43860074.jpg"))); // NOI18N
+        imgLogoToy.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imgLogoToy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistema/ToyStoreLogo2.png"))); // NOI18N
+        PainelMenu.add(imgLogoToy, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 40, 180, 120));
+
+        ToyStore.add(PainelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 560));
+
+        jImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/login/Background.jpeg"))); // NOI18N
+        jImg.setAlignmentY(1.0F);
         jImg.setPreferredSize(new java.awt.Dimension(500, 300));
-        ToyStore.add(jImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 640, 570));
+        ToyStore.add(jImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -90, 640, 650));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,7 +209,7 @@ public class Login extends javax.swing.JFrame {
         ToyStore.getAccessibleContext().setAccessibleName("");
         ToyStore.getAccessibleContext().setAccessibleDescription("");
 
-        setSize(new java.awt.Dimension(646, 576));
+        setSize(new java.awt.Dimension(646, 568));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -236,14 +247,12 @@ public class Login extends javax.swing.JFrame {
 
         } catch (Exception ex) {
             ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Usuário inválido!");
 
         }
     }
     
-    public void dicaSenha(){
-        JOptionPane.showMessageDialog(this, "Usuario: admin   Senha: admin", "Dica senha", JOptionPane.INFORMATION_MESSAGE);
-    }
+    
 
     private void campoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoLoginActionPerformed
 
@@ -286,7 +295,7 @@ public class Login extends javax.swing.JFrame {
             public void run() {
                 Login tela = new Login();
                 tela.setVisible(true);
-                tela.dicaSenha();
+                
             }
         });
         
@@ -297,18 +306,19 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PainelMenu;
     private javax.swing.JPanel ToyStore;
     private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JTextField campoLogin;
     private javax.swing.JPasswordField campoSenha;
+    private javax.swing.JLabel imgLogoToy;
     private javax.swing.JLabel jImg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel jlogo;
     // End of variables declaration//GEN-END:variables
 
 }
