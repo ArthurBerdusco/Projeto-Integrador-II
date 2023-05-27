@@ -21,9 +21,10 @@ public class TelaVenda extends javax.swing.JInternalFrame {
     ArrayList<Produto> listaProduto = new ArrayList<>();
     ArrayList<Cliente> listaCliente = new ArrayList<>();
 
-    public TelaVenda() {
+    public TelaVenda(String nomeVendedor) {
         try {
             initComponents();
+            txtNomeVendedor.setText(nomeVendedor);
             setMaximum(true);
             listaProduto = ProdutoDAO.listar();
             listaCliente = ClienteDAO.listar();
@@ -69,7 +70,6 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         txtDesconto = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cmbVendedor = new javax.swing.JComboBox<>();
         lblData = new javax.swing.JLabel();
         jblHora = new javax.swing.JLabel();
         txtDesconto1 = new javax.swing.JTextField();
@@ -83,6 +83,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         pnIcon = new javax.swing.JPanel();
         imgVenda = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        txtNomeVendedor = new javax.swing.JTextField();
 
         setTitle("Vendas");
         setPreferredSize(new java.awt.Dimension(1350, 780));
@@ -209,7 +210,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtQuantidade))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btdAdicionarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                     .addComponent(btdBuscarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -245,6 +246,8 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                 .addGap(123, 123, 123))
         );
 
+        txtNumeroVenda.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        txtNumeroVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNumeroVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNumeroVendaActionPerformed(evt);
@@ -282,8 +285,6 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Vendedor:");
-
-        cmbVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cleiton", "Marcia", "Juliana", "Mateus" }));
 
         lblData.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
@@ -323,6 +324,11 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         btnConcluirVenda.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnConcluirVenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/venda/forma-de-pagamento (1).png"))); // NOI18N
         btnConcluirVenda.setText("Pagamento");
+        btnConcluirVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConcluirVendaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -399,6 +405,10 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                 .addGap(28, 28, 28))
         );
 
+        txtNomeVendedor.setEditable(false);
+        txtNomeVendedor.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        txtNomeVendedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -421,8 +431,8 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(cmbVendedor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
+                                .addComponent(txtNomeVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtNumeroVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(78, 78, 78)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -469,9 +479,9 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                                         .addComponent(txtDesconto1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(12, 12, 12)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cmbVendedor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNumeroVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtNumeroVenda)
+                                            .addComponent(txtNomeVendedor))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(lblData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -488,7 +498,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(pnIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(328, 328, 328))))
         );
@@ -498,7 +508,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -566,7 +576,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExcluirProdutoActionPerformed
 
     private void txtCancelarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCancelarVendaActionPerformed
-        JOptionPane.showMessageDialog(cmbVendedor, "Função em desenvolvimento !");
+        JOptionPane.showMessageDialog(this, "Função em desenvolvimento !");
         Administrador cancelar = new Administrador();
         cancelar.setVisible(true);
     }//GEN-LAST:event_txtCancelarVendaActionPerformed
@@ -620,6 +630,10 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtProdutoKeyReleased
 
+    private void btnConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirVendaActionPerformed
+        new TelaPagamento().setVisible(true);
+    }//GEN-LAST:event_btnConcluirVendaActionPerformed
+
     public ImageIcon getImagemProduto(Produto produto) {
         ImageIcon imageIcon = null;
         Blob blob = produto.getFoto();
@@ -645,7 +659,6 @@ public class TelaVenda extends javax.swing.JInternalFrame {
     private javax.swing.JButton btdBuscarCliente;
     private javax.swing.JButton btnConcluirVenda;
     private javax.swing.JButton btnExcluirProduto;
-    private javax.swing.JComboBox<String> cmbVendedor;
     private javax.swing.JLabel imgVenda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -674,6 +687,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JTextField txtDesconto;
     private javax.swing.JTextField txtDesconto1;
+    private javax.swing.JTextField txtNomeVendedor;
     private javax.swing.JTextField txtNumeroVenda;
     private javax.swing.JTextField txtProduto;
     private javax.swing.JTextField txtQuantidade;

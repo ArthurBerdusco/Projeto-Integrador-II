@@ -14,13 +14,17 @@ import javax.swing.UIManager;
 
 public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstiloSistema {
 
-    TelaVenda telaVenda = new TelaVenda();
+    public static String vendedorLogado = "";
+
+    TelaVenda telaVenda;
     TelaProduto telaProduto = new TelaProduto();
     TelaCliente telaCliente = new TelaCliente();
     TelaRelatorio telaRelatorio = new TelaRelatorio();
 
-    public TelaPrincipal() {
+    public TelaPrincipal(String nomeVendedor) {
         initComponents();
+        this.vendedorLogado = nomeVendedor;
+        telaVenda = new TelaVenda(vendedorLogado.toUpperCase());
         this.setExtendedState(MAXIMIZED_BOTH);
         desktop.setSelectedFrame(telaVenda);
         desktop.add(telaVenda).setVisible(true);
@@ -374,7 +378,7 @@ public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstil
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new TelaPrincipal(vendedorLogado).setVisible(true);
             }
         });
     }

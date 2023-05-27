@@ -233,7 +233,7 @@ public class Login extends javax.swing.JFrame {
                 campoSenha.setBorder(BorderFactory.createLineBorder(Color.GRAY));
                 JOptionPane.showMessageDialog(null, "Login efetuado com sucesso");
 
-                TelaPrincipal tela = new TelaPrincipal();
+                TelaPrincipal tela = new TelaPrincipal(login);
 
                 tela.setVisible(true);
 
