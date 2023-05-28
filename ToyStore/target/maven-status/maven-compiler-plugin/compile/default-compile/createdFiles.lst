@@ -20,10 +20,12 @@ com\senac\toystore\DAO\NotaFiscalDAO.class
 com\senac\toystore\view\login\TelaCadastro$1.class
 com\senac\toystore\view\venda\TelaVenda$2.class
 com\senac\toystore\view\produto\FormProduto$7.class
+com\senac\toystore\view\venda\TelaPagamento$9.class
 com\senac\toystore\view\venda\TelaVenda$13.class
 com\senac\toystore\utils\Validador.class
 com\senac\toystore\view\produto\FormProduto$10.class
 com\senac\toystore\view\produto\FormProduto$4.class
+com\senac\toystore\view\venda\TelaPagamento$6.class
 com\senac\toystore\view\produto\TelaProduto$6.class
 com\senac\toystore\view\principal\TelaPrincipal$2.class
 com\senac\toystore\view\relatorio\TelaRelatorio.class
@@ -62,6 +64,7 @@ com\senac\toystore\view\login\Login.class
 com\senac\toystore\model\Produto.class
 com\senac\toystore\view\venda\Administrador.class
 com\senac\toystore\view\relatorio\RelatorioAnalitico$1.class
+com\senac\toystore\view\venda\TelaPagamento$8.class
 com\senac\toystore\view\cliente\TelaCliente$6.class
 com\senac\toystore\view\login\TelaCadastro$5.class
 com\senac\toystore\view\produto\TelaProduto$5.class
@@ -73,6 +76,7 @@ com\senac\toystore\view\venda\TelaVenda$14.class
 com\senac\toystore\view\produto\FormProduto$8.class
 com\senac\toystore\view\produto\TelaProduto$2.class
 com\senac\toystore\view\principal\TelaPrincipal$6.class
+com\senac\toystore\view\venda\TelaPagamento$7.class
 com\senac\toystore\view\venda\TelaVenda$1.class
 com\senac\toystore\view\cliente\FormCliente$3.class
 com\senac\toystore\view\venda\Administrador$2.class

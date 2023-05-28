@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import com.senac.toystore.DAO.*;
+import com.senac.toystore.model.ItemNota;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -18,15 +19,23 @@ import javax.swing.ImageIcon;
 
 public class TelaVenda extends javax.swing.JInternalFrame {
 
-    ArrayList<Produto> listaProduto = new ArrayList<>();
+    ArrayList<Produto> listaProdutos = new ArrayList<>();
     ArrayList<Cliente> listaCliente = new ArrayList<>();
+    
+    ArrayList<ItemNota> listaItens = new ArrayList<>();
+    
+    
+    
+    String cpfCliente;
+    String nomeVendedor;
 
     public TelaVenda(String nomeVendedor) {
         try {
             initComponents();
+            this.nomeVendedor = nomeVendedor;
             txtNomeVendedor.setText(nomeVendedor);
             setMaximum(true);
-            listaProduto = ProdutoDAO.listar();
+            listaProdutos = ProdutoDAO.listar();
             listaCliente = ClienteDAO.listar();
             jcbNomeCliente.addItem("<Selecione o Cliente>");
             jcbNomeProduto.addItem("<Selecione o produto>");
@@ -34,8 +43,8 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                 jcbNomeCliente.addItem(listaCliente.get(i).getNome());
             }
 
-            for (int i = 0; i < listaProduto.size(); i++) {
-                jcbNomeProduto.addItem(listaProduto.get(i).getDescricao());
+            for (int i = 0; i < listaProdutos.size(); i++) {
+                jcbNomeProduto.addItem(listaProdutos.get(i).getDescricao());
             }
 
         } catch (PropertyVetoException ex) {
@@ -246,6 +255,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
                 .addGap(123, 123, 123))
         );
 
+        txtNumeroVenda.setEditable(false);
         txtNumeroVenda.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         txtNumeroVenda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNumeroVenda.addActionListener(new java.awt.event.ActionListener() {
@@ -257,6 +267,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("NF:");
 
+        txtValorTotal.setEditable(false);
         txtValorTotal.setBackground(new java.awt.Color(0, 0, 0));
         txtValorTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtValorTotal.setForeground(new java.awt.Color(255, 255, 255));
@@ -270,6 +281,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel8.setText("Valor Total");
 
+        txtDesconto.setEditable(false);
         txtDesconto.setBackground(new java.awt.Color(0, 0, 0));
         txtDesconto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtDesconto.setForeground(new java.awt.Color(255, 255, 255));
@@ -290,6 +302,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         jblHora.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
+        txtDesconto1.setEditable(false);
         txtDesconto1.setBackground(new java.awt.Color(0, 0, 0));
         txtDesconto1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtDesconto1.setForeground(new java.awt.Color(255, 255, 255));
@@ -600,7 +613,7 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
         if (codBarras.length() == 10) {
 
-            for (Produto produto : listaProduto) {
+            for (Produto produto : listaProdutos) {
                 if (codBarras.equals(produto.getCod_barras())) {
 
                     jcbNomeProduto.setSelectedItem(produto.getDescricao());
@@ -624,14 +637,32 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
                     float valorTotal = produto.getValorVenda() * Integer.parseInt(txtQuantidade.getText());
                     txtValorTotal.setText("R$" + String.valueOf(Float.parseFloat(txtValorTotal.getText().trim().replace("R$", "")) + valorTotal));
-                    return;
+                    
+                    
+                    
+                    ItemNota item = new ItemNota();
+                    item.setIdProduto(produto.getId());
+                    //item.getQtdProduto(LOGICA)
+                    item.setVlrProduto(produto.getValorVenda());
+                    
+                    listaItens.add(item);
                 }
             }
         }
     }//GEN-LAST:event_txtProdutoKeyReleased
 
     private void btnConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirVendaActionPerformed
-        new TelaPagamento().setVisible(true);
+          
+        if(!(txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()) && (tblProdutos.getRowCount() > 0)){
+            
+            TelaPagamento telaPagamento = new TelaPagamento(Float.parseFloat(txtValorTotal.getText().replace("R$", "")));
+            telaPagamento.idCliente = 1; // Implementar
+            telaPagamento.nomeVendedor = nomeVendedor;
+            telaPagamento.listaItens = listaItens;
+              
+            telaPagamento.setVisible(true);
+        }
+        
     }//GEN-LAST:event_btnConcluirVendaActionPerformed
 
     public ImageIcon getImagemProduto(Produto produto) {

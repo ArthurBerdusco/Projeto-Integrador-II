@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class NotaFiscalDAO {
     
-    public static boolean salvar(NotaFiscal obj) {
+    public static boolean salvar(NotaFiscal nota) {
         boolean retorno = false;
         Connection conexao = null;
         PreparedStatement instrucaoSQL = null;
@@ -25,28 +25,29 @@ public class NotaFiscalDAO {
             conexao = GerenciadorConexao.abrirConexao();
 
             //Preparar comando sql
-            instrucaoSQL = conexao.prepareStatement("INSERT INTO notafiscal (numeroNota, vlrTotal) values(?,?)");
-            instrucaoSQL.setInt(1, obj.getNumeroNota());
-            instrucaoSQL.setDouble(2, obj.getValorTotal());
+            instrucaoSQL = conexao.prepareStatement("INSERT INTO notafiscal (data_pedido, id_cliente, nome_vendedor, valor_total) values(now(), ?, ?, ?)");
+            instrucaoSQL.setInt(1, nota.getIdCliente());
+            instrucaoSQL.setString(2, nota.getNomeVendedor());
+            instrucaoSQL.setDouble(3, nota.getValorTotal());
             
-            //Checkpointtt1
+            
+            //Checkpoint
             System.out.println("Numero da nota e valor total enviado ao banco");
-            
+
             //Executar comando SQL
             int linhasAfetadas = instrucaoSQL.executeUpdate();
             if (linhasAfetadas > 0) {
                 ResultSet rs = instrucaoSQL.getGeneratedKeys();
                 if (rs.next()) {
-                    int idNota = rs.getInt(1);
-                    for (ItemNota item : obj.getListaItens()) {
-                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO notafiscal (idNota,cod_barras,descricao,quantidade,vlrUnitario) VALUES (?,?,?,?,?)");
-                        instrucaoSQLItem.setInt(1, idNota);
-                        instrucaoSQLItem.setString(2, item.getDscProduto());
-                        instrucaoSQLItem.setInt(3, item.getQtdProduto());
-                        instrucaoSQLItem.setDouble(4, item.getVlrProduto());
+                    int idNota = rs.getInt("numeroNota");
+                    for (ItemNota item : nota.getListaItens()) {
                         
-                        //Checkpointtt2
-                        instrucaoSQLItem.setDouble(5, item.getVlrTotal());
+                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO item_nota (quantidade, valorProduto, numeroNota, id_produto) VALUES (?,?,?,?)");
+                        instrucaoSQLItem.setInt(1, item.getQtdProduto());
+                        instrucaoSQLItem.setDouble(2, item.getVlrProduto());
+                        instrucaoSQLItem.setInt(3, idNota);
+                        instrucaoSQLItem.setDouble(4, item.getIdProduto());
+
                         System.out.println("Itens inseridos no banco");
                         int linhasAfetadasItem = instrucaoSQLItem.executeUpdate();
                     

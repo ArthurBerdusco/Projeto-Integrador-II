@@ -12,11 +12,26 @@ import java.util.ArrayList;
  */
 public class NotaFiscal {
     
-    private int idNota;
     private int numeroNota;
+    private int idCliente;
+    private String nomeVendedor;
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public String getNomeVendedor() {
+        return nomeVendedor;
+    }
+
+    public void setNomeVendedor(String nomeVendedor) {
+        this.nomeVendedor = nomeVendedor;
+    }
     private double valorTotal;
-    private String codBarra;
-    private int quatidade;
     
     private ArrayList<ItemNota> listaItens = null;
     
@@ -32,24 +47,6 @@ public class NotaFiscal {
         this.listaItens = listaItens;
     }
     
-    
-    public NotaFiscal(int idNota, int numeroNota, double valorTotal, String codBarra, int quatidade, double valorUnitario) {
-        this.idNota = idNota;
-        this.numeroNota = numeroNota;
-        this.valorTotal = valorTotal;
-        this.codBarra = codBarra;
-        this.quatidade = quatidade;
-        this.valorUnitario = valorUnitario;
-    }
-    
-    public int getIdNota() {
-        return idNota;
-    }
-
-    public void setIdNota(int idNota) {
-        this.idNota = idNota;
-    }
-
     public int getNumeroNota() {
         return numeroNota;
     }
@@ -64,22 +61,6 @@ public class NotaFiscal {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public String getCodBarra() {
-        return codBarra;
-    }
-
-    public void setCodBarra(String codBarra) {
-        this.codBarra = codBarra;
-    }
-
-    public int getQuatidade() {
-        return quatidade;
-    }
-
-    public void setQuatidade(int quatidade) {
-        this.quatidade = quatidade;
     }
 
     public double getValorUnitario() {
