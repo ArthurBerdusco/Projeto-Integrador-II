@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -21,11 +22,9 @@ public class TelaVenda extends javax.swing.JInternalFrame {
 
     ArrayList<Produto> listaProdutos = new ArrayList<>();
     ArrayList<Cliente> listaCliente = new ArrayList<>();
-    
+
     ArrayList<ItemNota> listaItens = new ArrayList<>();
-    
-    
-    
+
     String cpfCliente;
     String nomeVendedor;
 
@@ -614,55 +613,88 @@ public class TelaVenda extends javax.swing.JInternalFrame {
         if (codBarras.length() == 10) {
 
             for (Produto produto : listaProdutos) {
-                if (codBarras.equals(produto.getCod_barras())) {
+                if (produto.getCod_barras().equals(codBarras)) {
 
                     jcbNomeProduto.setSelectedItem(produto.getDescricao());
 
-                    DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
-
-                    modelo.addRow(new String[]{
-                        produto.getCod_barras(),
-                        produto.getDescricao(),
-                        txtQuantidade.getText(),
-                        String.valueOf(produto.getValorVenda()),
-                        String.valueOf(produto.getValorVenda() * Integer.parseInt(txtQuantidade.getText())),});
-                    txtProduto.setText("");
-                    jcbNomeProduto.setSelectedItem("");
-
                     if (produto.getFoto() != null) {
                         lblImg.setIcon(getImagemProduto(produto));
-                    }else{
+                    } else {
                         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/add-img.png")));
                     }
 
-                    float valorTotal = produto.getValorVenda() * Integer.parseInt(txtQuantidade.getText());
-                    txtValorTotal.setText("R$" + String.valueOf(Float.parseFloat(txtValorTotal.getText().trim().replace("R$", "")) + valorTotal));
-                    
-                    
-                    
-                    ItemNota item = new ItemNota();
-                    item.setIdProduto(produto.getId());
-                    //item.getQtdProduto(LOGICA)
-                    item.setVlrProduto(produto.getValorVenda());
-                    
-                    listaItens.add(item);
+                    ItemNota novoItem = new ItemNota();
+                    novoItem.setIdProduto(produto.getId());
+                    novoItem.setQtdProduto(Integer.parseInt(txtQuantidade.getText()));
+                    novoItem.setVlrProduto(produto.getValorVenda());
+
+                    txtValorTotal.setText("R$" + String.valueOf(Float.parseFloat(txtValorTotal.getText().trim().replace("R$", "")) + novoItem.valorTotal()));
+
+                    if (listaItens.size() <= 0) {
+                        DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+
+                        modelo.addRow(new String[]{
+                            produto.getCod_barras(),
+                            produto.getDescricao(),
+                            String.valueOf(novoItem.getQtdProduto()),
+                            String.valueOf(produto.getValorVenda()),
+                            String.valueOf(produto.getValorVenda() * Integer.parseInt(txtQuantidade.getText())),});
+                        listaItens.add(novoItem);
+                    } else {
+
+                        Iterator<ItemNota> iterator = listaItens.iterator();
+                        boolean itemEncontrado = false;
+
+                        while (iterator.hasNext()) {
+                            ItemNota item = iterator.next();
+
+                            if ((item.getIdProduto() == novoItem.getIdProduto()) && (item.getQtdProduto() + novoItem.getQtdProduto() <= produto.getQuantidade())) {
+                                int linha = listaItens.indexOf(item);
+
+                                item.setQtdProduto(item.getQtdProduto() + novoItem.getQtdProduto());
+
+                                DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+                                modelo.setValueAt(item.getQtdProduto(), linha, 2);
+                                modelo.setValueAt(item.valorTotal(), linha, 4);
+
+                                txtProduto.setText("");
+                                jcbNomeProduto.setSelectedItem("");
+
+                                itemEncontrado = true;
+                                break;
+                            }else if((item.getQtdProduto() + novoItem.getQtdProduto() <= produto.getQuantidade())){
+                                JOptionPane.showMessageDialog(this, "Você não tem quantidade suficiente no estoque desse produto para inserir nesta nota");
+                            }
+                        }
+                        if (!itemEncontrado) {
+                            DefaultTableModel modelo = (DefaultTableModel) tblProdutos.getModel();
+                            modelo.addRow(new String[]{
+                                produto.getCod_barras(),
+                                produto.getDescricao(),
+                                String.valueOf(novoItem.getQtdProduto()),
+                                String.valueOf(produto.getValorVenda()),
+                                String.valueOf(produto.getValorVenda() * Integer.parseInt(txtQuantidade.getText())),});
+                            listaItens.add(novoItem);
+                        }
+
+                    }
                 }
             }
         }
     }//GEN-LAST:event_txtProdutoKeyReleased
 
     private void btnConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirVendaActionPerformed
-          
-        if(!(txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()) && (tblProdutos.getRowCount() > 0)){
-            
+
+        if (!(txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()) && (tblProdutos.getRowCount() > 0)) {
+
             TelaPagamento telaPagamento = new TelaPagamento(Float.parseFloat(txtValorTotal.getText().replace("R$", "")));
             telaPagamento.idCliente = 1; // Implementar
             telaPagamento.nomeVendedor = nomeVendedor;
             telaPagamento.listaItens = listaItens;
-              
+
             telaPagamento.setVisible(true);
         }
-        
+
     }//GEN-LAST:event_btnConcluirVendaActionPerformed
 
     public ImageIcon getImagemProduto(Produto produto) {

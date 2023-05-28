@@ -12,31 +12,12 @@ public class ItemNota {
     
 
     private int idItemNota;
-    private int idNota;
+    private int numeroNota;
     private int idProduto;
-    private String dscProduto;
     private double vlrProduto;
     private int qtdProduto;
-    private double vlrTotal;
     
     public ItemNota() {
-    }
-
-    public double getVlrTotal() {
-        return vlrTotal;
-    }
-
-    public void setVlrTotal(double vlrTotal) {
-        this.vlrTotal = vlrTotal;
-    }
-
-
-    public ItemNota(int idNota, int idProduto, int qtdProduto, double vlrProduto, double vlrTotal) {
-        this.idNota = idNota;
-        this.idProduto = idProduto;
-        this.qtdProduto = qtdProduto;
-        this.vlrProduto = vlrProduto;
-        this.vlrTotal = vlrTotal;
     }
 
     public int getIdItemNota() {
@@ -48,11 +29,11 @@ public class ItemNota {
     }
 
     public int getIdNota() {
-        return idNota;
+        return numeroNota;
     }
 
     public void setIdNota(int idNota) {
-        this.idNota = idNota;
+        this.numeroNota = idNota;
     }
 
     public int getIdProduto() {
@@ -71,19 +52,16 @@ public class ItemNota {
         this.qtdProduto = qtdProduto;
     }
 
-    public String getDscProduto() {
-        return dscProduto;
-    }
-
-    public void setDscProduto(String dscProduto) {
-        this.dscProduto = dscProduto;
-    }
-
     public double getVlrProduto() {
         return vlrProduto;
     }
 
     public void setVlrProduto(double vlrProduto) {
         this.vlrProduto = vlrProduto;
+    }
+    
+    public float valorTotal(){
+        float valorTotal = (float)this.vlrProduto * this.qtdProduto;
+        return valorTotal;
     }
 }

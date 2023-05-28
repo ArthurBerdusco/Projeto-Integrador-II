@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 /**
@@ -25,7 +26,7 @@ public class NotaFiscalDAO {
             conexao = GerenciadorConexao.abrirConexao();
 
             //Preparar comando sql
-            instrucaoSQL = conexao.prepareStatement("INSERT INTO notafiscal (data_pedido, id_cliente, nome_vendedor, valor_total) values(now(), ?, ?, ?)");
+            instrucaoSQL = conexao.prepareStatement("INSERT INTO notafiscal (data_nota, id_cliente, nome_vendedor, valor_total) values(now(), ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             instrucaoSQL.setInt(1, nota.getIdCliente());
             instrucaoSQL.setString(2, nota.getNomeVendedor());
             instrucaoSQL.setDouble(3, nota.getValorTotal());
@@ -39,16 +40,16 @@ public class NotaFiscalDAO {
             if (linhasAfetadas > 0) {
                 ResultSet rs = instrucaoSQL.getGeneratedKeys();
                 if (rs.next()) {
-                    int idNota = rs.getInt("numeroNota");
+                    int idNota = rs.getInt(1);
                     for (ItemNota item : nota.getListaItens()) {
-                        
-                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO item_nota (quantidade, valorProduto, numeroNota, id_produto) VALUES (?,?,?,?)");
+
+                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO item_nota (quantidade, valor_produto, numeroNota, id_produto) VALUES (?,?,?,?)");
                         instrucaoSQLItem.setInt(1, item.getQtdProduto());
                         instrucaoSQLItem.setDouble(2, item.getVlrProduto());
                         instrucaoSQLItem.setInt(3, idNota);
                         instrucaoSQLItem.setDouble(4, item.getIdProduto());
 
-                        System.out.println("Itens inseridos no banco");
+
                         int linhasAfetadasItem = instrucaoSQLItem.executeUpdate();
                     
                         if (linhasAfetadasItem > 0) {

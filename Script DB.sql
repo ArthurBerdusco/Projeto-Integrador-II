@@ -22,14 +22,13 @@ create table vendedor(
     senha varchar(15) not null
 );
 
-create table pedido(
-	id_pedido int auto_increment primary key,
-    data_pedido date not null,
+create table notafiscal(
+	numeronnota int auto_increment primary key,
+    data_nota date not null,
     valor_total float not null,
     id_cliente int,
-    id_vendedor int,
-    foreign key (id_cliente) references cliente(id_cliente),
-    foreign key (id_vendedor) references cliente(id_cliente)
+    nome_vendedor int,
+    foreign key (id_cliente) references cliente(id_cliente)
 );
 
 create table produto(
@@ -46,13 +45,13 @@ create table produto(
     quantidade int not null
 );
 
-create table item_pedido(
+create table item_nota(
 	id_item bigint auto_increment primary key,
     quantidade int not null,
     valor float not null,
-    id_pedido int,
+    numero_nota int,
     id_produto int,
-    foreign key (id_pedido) references pedido(id_pedido),
+    foreign key (numeronota) references notafiscal(numeronota),
     foreign key (id_produto) references produto(id_produto)
 );
 
