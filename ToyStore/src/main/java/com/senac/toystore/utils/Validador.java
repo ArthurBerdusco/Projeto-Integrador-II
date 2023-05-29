@@ -59,7 +59,6 @@ public class Validador {
             pintarBordaVermelho(nome);
             mensagemErro.add(e.getMessage());
         }
-
     }
 
     public void validarString(JTextField txt) {
@@ -135,7 +134,7 @@ public class Validador {
             Date dataAtual = new Date();
 
             if (dataSelecionada.after(dataAtual) || dataSelecionada == null) {
-                throw new Exception("Data de nascimento incorreta");
+                throw new Exception("Data invalida, verifique e tente novamente");
             }
             pintarBordaCinza(dc);
         } catch (Exception e) {

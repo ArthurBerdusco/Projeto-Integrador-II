@@ -16,6 +16,15 @@ public class ItemNota {
     private int idProduto;
     private double vlrProduto;
     private int qtdProduto;
+    private String descricaoProduto;
+
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+    }
     
     public ItemNota() {
     }

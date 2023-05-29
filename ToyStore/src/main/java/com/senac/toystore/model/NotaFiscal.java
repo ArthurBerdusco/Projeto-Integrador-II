@@ -5,16 +5,36 @@
 package com.senac.toystore.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
  * @author Alex
  */
 public class NotaFiscal {
-    
+
     private int numeroNota;
+    private String nomeCliente;
+
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
     private int idCliente;
     private String nomeVendedor;
+    private Date dataNota;
+    private ArrayList<ItemNota> listaItens = new ArrayList<>();
+    
+    public Date getDataNota() {
+        return dataNota;
+    }
+
+    public void setDataNota(Date dataNota) {
+        this.dataNota = dataNota;
+    }
 
     public int getIdCliente() {
         return idCliente;
@@ -32,11 +52,9 @@ public class NotaFiscal {
         this.nomeVendedor = nomeVendedor;
     }
     private double valorTotal;
-    
-    private ArrayList<ItemNota> listaItens = null;
-    
-    public NotaFiscal(){
-        
+
+    public NotaFiscal() {
+
     }
 
     public ArrayList<ItemNota> getListaItens() {
@@ -46,7 +64,7 @@ public class NotaFiscal {
     public void setListaItens(ArrayList<ItemNota> listaItens) {
         this.listaItens = listaItens;
     }
-    
+
     public int getNumeroNota() {
         return numeroNota;
     }
@@ -72,5 +90,4 @@ public class NotaFiscal {
     }
     private double valorUnitario;
 
-    
 }

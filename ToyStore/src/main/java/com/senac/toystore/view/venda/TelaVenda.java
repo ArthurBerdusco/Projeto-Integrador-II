@@ -74,6 +74,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
         txtValorTotal.setText("R$0");
         jcbNomeCliente.setSelectedItem("<Selecione o Cliente>");
         jcbNomeProduto.setSelectedItem("<Selecione o Produto>");
+        lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/add-img.png")));
 
     }
 
