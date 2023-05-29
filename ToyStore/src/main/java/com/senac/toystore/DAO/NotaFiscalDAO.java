@@ -31,10 +31,6 @@ public class NotaFiscalDAO {
             instrucaoSQL.setString(2, nota.getNomeVendedor());
             instrucaoSQL.setDouble(3, nota.getValorTotal());
             
-            
-            //Checkpoint
-            System.out.println("Numero da nota e valor total enviado ao banco");
-
             //Executar comando SQL
             int linhasAfetadas = instrucaoSQL.executeUpdate();
             if (linhasAfetadas > 0) {

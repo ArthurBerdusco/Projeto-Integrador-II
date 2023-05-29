@@ -49,7 +49,7 @@ public class Validador {
             }
 
             for (String parte : partesNome) {
-                if (!parte.matches("[a-zA-Z]+")) {
+                if (!parte.matches("\\p{L}+")) {
                     throw new Exception("Por favor digite apenas letras no nome");
                 }
             }

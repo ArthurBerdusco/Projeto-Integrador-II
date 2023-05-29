@@ -25,11 +25,12 @@ public class FormProduto extends javax.swing.JFrame {
 
     private Produto produto = new Produto();
     private Atualizavel callback;
-    
-    public void setCallback(Atualizavel callback){
+
+    public void setCallback(Atualizavel callback) {
         this.callback = callback;
     }
-    
+   
+
     public FormProduto() {
         initComponents();
     }
@@ -53,21 +54,21 @@ public class FormProduto extends javax.swing.JFrame {
 
     }
 
-    public ImageIcon getImagemProduto() { 
+    public ImageIcon getImagemProduto() {
         ImageIcon imageIcon = null;
         Blob blob = produto.getFoto();
-        
-        try{
+
+        try {
             byte[] imageBytes = blob.getBytes(1, (int) blob.length());
             InputStream inputStream = new ByteArrayInputStream(imageBytes);
-            try{
+            try {
                 Image image = ImageIO.read(inputStream);
                 Image resizedImage = image.getScaledInstance(150, 200, Image.SCALE_SMOOTH);
                 imageIcon = new ImageIcon(resizedImage);
-            }catch(IOException ex){
+            } catch (IOException ex) {
                 System.out.println("Erro ao ler imagem");
             }
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Erro no blob");
         }
         return imageIcon;
@@ -81,11 +82,12 @@ public class FormProduto extends javax.swing.JFrame {
         pnlIdentAdd = new javax.swing.JPanel();
         lblCodBarras = new javax.swing.JLabel();
         lblDescr = new javax.swing.JLabel();
-        txtCodBarras = new javax.swing.JTextField();
         txtDescricao = new javax.swing.JTextField();
         imgProduto = new javax.swing.JLabel();
         lblAddImg = new javax.swing.JLabel();
         lblRemovImg = new javax.swing.JLabel();
+        txtCodBarras = new javax.swing.JFormattedTextField();
+        jLabel2 = new javax.swing.JLabel();
         pnlValores = new javax.swing.JPanel();
         lblValorCusto = new javax.swing.JLabel();
         lblValorVenda = new javax.swing.JLabel();
@@ -120,17 +122,6 @@ public class FormProduto extends javax.swing.JFrame {
 
         lblDescr.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblDescr.setText("Descrição:");
-
-        txtCodBarras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtCodBarras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
-        txtCodBarras.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCodBarrasFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCodBarrasFocusLost(evt);
-            }
-        });
 
         txtDescricao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         txtDescricao.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
@@ -189,6 +180,16 @@ public class FormProduto extends javax.swing.JFrame {
             }
         });
 
+        txtCodBarras.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(140, 140, 140)));
+        try {
+            txtCodBarras.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCodBarras.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel2.setText("10 digitos, númérico");
+
         javax.swing.GroupLayout pnlIdentAddLayout = new javax.swing.GroupLayout(pnlIdentAdd);
         pnlIdentAdd.setLayout(pnlIdentAddLayout);
         pnlIdentAddLayout.setHorizontalGroup(
@@ -197,10 +198,13 @@ public class FormProduto extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblDescr)
-                    .addComponent(lblCodBarras)
+                    .addGroup(pnlIdentAddLayout.createSequentialGroup()
+                        .addComponent(lblCodBarras)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2))
                     .addComponent(txtDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
                     .addComponent(txtCodBarras))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlIdentAddLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -218,11 +222,13 @@ public class FormProduto extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addComponent(lblDescr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblCodBarras)
+                        .addGroup(pnlIdentAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCodBarras)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodBarras, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlIdentAddLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(imgProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -306,9 +312,9 @@ public class FormProduto extends javax.swing.JFrame {
                     .addComponent(lblValorCusto)
                     .addComponent(lblValorVenda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtValorVenda, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                    .addComponent(txtValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlValoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtValorCusto, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(txtValorVenda))
                 .addGap(18, 18, 18)
                 .addComponent(lblMargemLucro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -522,7 +528,7 @@ public class FormProduto extends javax.swing.JFrame {
                 //SERIALIZA IMAGEM NO FORMATO BLOB PARA O OBJETO PRODUTO ATRIBUTO FOTO QUE SERA ENVIADO PARA O DB
                 SerialBlob imagemBlob = null;
                 try {
-                    
+
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     String format = "jpg";
                     ImageIO.write(originalImage, format, baos);
@@ -586,14 +592,6 @@ public class FormProduto extends javax.swing.JFrame {
         CampoTextoPadrao.desfocar(txtDescricao);
     }//GEN-LAST:event_txtDescricaoFocusLost
 
-    private void txtCodBarrasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusGained
-        CampoTextoPadrao.focar(txtCodBarras);
-    }//GEN-LAST:event_txtCodBarrasFocusGained
-
-    private void txtCodBarrasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodBarrasFocusLost
-        CampoTextoPadrao.desfocar(txtCodBarras);
-    }//GEN-LAST:event_txtCodBarrasFocusLost
-
     private void txtValorVendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtValorVendaFocusGained
         CampoTextoPadrao.focar(txtValorVenda);
         calcMargemLucro();
@@ -656,6 +654,7 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboProdPratileira;
     private javax.swing.JLabel imgProduto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAddImg;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblCodBarras;
@@ -669,7 +668,7 @@ public class FormProduto extends javax.swing.JFrame {
     private javax.swing.JPanel pnlIdentAdd;
     private javax.swing.JPanel pnlValores;
     private javax.swing.JSpinner spnQntProd;
-    private javax.swing.JTextField txtCodBarras;
+    private javax.swing.JFormattedTextField txtCodBarras;
     private javax.swing.JLabel txtCorredor;
     private javax.swing.JTextField txtDescricao;
     private javax.swing.JTextField txtMargemLucro;
@@ -682,10 +681,8 @@ public class FormProduto extends javax.swing.JFrame {
             float valorVenda = Float.parseFloat(txtValorVenda.getText());
             float valorCusto = Float.parseFloat(txtValorCusto.getText());
             float margemLucro = (float) ((valorVenda - valorCusto) / valorVenda) * 100;
-            
-            
-            txtMargemLucro.setText(String.format("%.1f",margemLucro) + "%");
-            
+
+            txtMargemLucro.setText(String.format("%.1f", margemLucro) + "%");
 
             if (margemLucro > 0) {
                 Color verdeDegrade = new Color((int) (255 - 255 * margemLucro / 100), 255, (int) (255 - 255 * margemLucro / 100));

@@ -11,15 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.event.EventListenerList;
 
 public class TelaPrincipal extends javax.swing.JFrame implements IntegradorEstiloSistema {
 
     public static String vendedorLogado = "";
 
+    EventListenerList listenerList = new EventListenerList();
+
+
     TelaVenda telaVenda;
     TelaProduto telaProduto = new TelaProduto();
     TelaCliente telaCliente = new TelaCliente();
     TelaRelatorio telaRelatorio = new TelaRelatorio();
+    
+    
 
     public TelaPrincipal(String nomeVendedor) {
         initComponents();

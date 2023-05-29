@@ -1,5 +1,6 @@
 package com.senac.toystore.DAO;
 
+import com.senac.toystore.model.ItemNota;
 import com.senac.toystore.model.Produto;
 import com.senac.toystore.utils.GerenciadorConexao;
 import java.sql.Connection;
@@ -253,6 +254,58 @@ public class ProdutoDAO {
             }
         }
         return lista;
+    }
+
+    public static boolean baixaEstoque(ArrayList<ItemNota> itensNota) {
+        boolean retorno = false;
+        Connection conexao = null;
+        PreparedStatement instrucaoSQL = null;
+
+        try {
+            //Abrir Conexao
+            conexao = GerenciadorConexao.abrirConexao();
+
+            //Preparar comando sql
+            for (ItemNota itemNota : itensNota) {
+                instrucaoSQL = conexao.prepareStatement("SELECT quantidade FROM produto WHERE id_produto = ?");
+                instrucaoSQL.setInt(1, itemNota.getIdProduto());
+                ResultSet resultado = instrucaoSQL.executeQuery();
+                if (resultado.next()) {
+                    int saldoAtual = resultado.getInt("quantidade");
+                    int novoSaldo = saldoAtual - itemNota.getQtdProduto();
+
+                    instrucaoSQL = conexao.prepareStatement("UPDATE produto set quantidade = ? where id_produto = ?");
+                    instrucaoSQL.setInt(1, novoSaldo);
+                    instrucaoSQL.setInt(2, itemNota.getIdProduto());
+                    instrucaoSQL.executeUpdate();
+
+                }
+            }
+
+            //Executar comando SQL
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            //Libero os recursos da memória
+            try {
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+                }
+                GerenciadorConexao.fecharConexao();
+
+            } catch (SQLException ex) {
+                System.out.println("Não foi possivel fechar a conexão com banco ou fechar o comando sql");
+            }
+        }
+        return retorno;
     }
 
     public static boolean excluir(int id) {

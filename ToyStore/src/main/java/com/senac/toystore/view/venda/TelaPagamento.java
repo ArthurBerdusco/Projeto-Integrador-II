@@ -1,6 +1,7 @@
 package com.senac.toystore.view.venda;
 
 import com.senac.toystore.DAO.NotaFiscalDAO;
+import com.senac.toystore.DAO.ProdutoDAO;
 import com.senac.toystore.model.ItemNota;
 import com.senac.toystore.model.NotaFiscal;
 import java.util.ArrayList;
@@ -11,6 +12,12 @@ public class TelaPagamento extends javax.swing.JFrame {
     int idCliente;
     String nomeVendedor;
     static float valor_total;
+    
+    SincronizarDados callback;
+    
+    public void setCallback(SincronizarDados callback){
+        this.callback = callback;
+    }
 
     public TelaPagamento(float valorTotal) {
         this.valor_total = valorTotal;
@@ -268,7 +275,8 @@ public class TelaPagamento extends javax.swing.JFrame {
         nota.setListaItens(listaItens);
         
         NotaFiscalDAO.salvar(nota);
-        
+        ProdutoDAO.baixaEstoque(listaItens);  
+        callback.sincronizar();
         this.dispose();
     }//GEN-LAST:event_btnPagamentoActionPerformed
 
