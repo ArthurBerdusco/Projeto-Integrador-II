@@ -1,13 +1,11 @@
 package com.senac.toystore.DAO;
 
-import com.senac.toystore.model.Cliente;
 import com.senac.toystore.model.Vendedor;
 import com.senac.toystore.utils.GerenciadorConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *

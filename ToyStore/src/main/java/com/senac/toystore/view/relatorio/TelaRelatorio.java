@@ -1,9 +1,6 @@
 package com.senac.toystore.view.relatorio;
 
-import com.senac.toystore.utils.CampoTextoPadrao;
-import com.senac.toystore.utils.Validador;
 import java.beans.PropertyVetoException;
-import javax.swing.JOptionPane;
 
 public class TelaRelatorio extends javax.swing.JInternalFrame {
 

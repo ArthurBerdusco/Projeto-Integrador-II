@@ -162,7 +162,7 @@
                   <Table columnCount="5" rowCount="0">
                     <Column editable="false" title="C&#xf3;digo de barras" type="java.lang.Object"/>
                     <Column editable="false" title="Descri&#xe7;&#xe3;o" type="java.lang.Object"/>
-                    <Column editable="true" title="Qtd" type="java.lang.Object"/>
+                    <Column editable="false" title="Qtd" type="java.lang.Object"/>
                     <Column editable="false" title="Valor unitario" type="java.lang.Object"/>
                     <Column editable="false" title="Valor Total" type="java.lang.Object"/>
                   </Table>

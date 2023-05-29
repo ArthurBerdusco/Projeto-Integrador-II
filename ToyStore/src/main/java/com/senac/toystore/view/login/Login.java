@@ -3,13 +3,11 @@ package com.senac.toystore.view.login;
 import com.senac.toystore.DAO.VendedorDAO;
 import com.senac.toystore.model.Usuario;
 import com.senac.toystore.model.Vendedor;
-import com.senac.toystore.view.principal.TelaConfigEstilo;
 import com.senac.toystore.view.principal.TelaPrincipal;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
 
 /**
  *
@@ -231,12 +229,8 @@ public class Login extends javax.swing.JFrame {
                 // Login e senha corretos: permite acesso ao sistema
                 campoLogin.setBorder(BorderFactory.createLineBorder(Color.GRAY));
                 campoSenha.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-                JOptionPane.showMessageDialog(null, "Login efetuado com sucesso");
-
                 TelaPrincipal tela = new TelaPrincipal(login);
-
                 tela.setVisible(true);
-
                 this.dispose();
             } else {
                 // Login ou senha incorretos: pinta as bordas dos campos de texto de vermelho

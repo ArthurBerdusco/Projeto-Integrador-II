@@ -187,7 +187,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -645,7 +645,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
 
     private void btnConcluirVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConcluirVendaActionPerformed
 
-        if (!(txtCpf.getText().trim().replace(".", "").replace("-", "").isEmpty()) && (tblProdutos.getRowCount() > 0)) {
+        if (idCliente != -1) {
 
             TelaPagamento telaPagamento = new TelaPagamento(Float.parseFloat(txtValorTotal.getText().replace("R$", "")));
             telaPagamento.setCallback(this);
@@ -654,7 +654,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
             telaPagamento.listaItens = listaItens;
 
             telaPagamento.setVisible(true);
-        } else if (jcbNomeCliente.getSelectedItem().equals("<Selecione o Cliente>")) {
+        } else if ((jcbNomeCliente.getSelectedItem().equals("<Selecione o Cliente>"))|| (this.idCliente == -1)) {
             JOptionPane.showMessageDialog(this, "Selecione o cliente");
         } else if ((tblProdutos.getRowCount() <= 0)) {
             JOptionPane.showMessageDialog(this, "Insira pelo menos um item no pedido para prosseguir com pagamento");
@@ -666,6 +666,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
         if (nomeCliente == "<Selecione o Cliente>") {
             txtCpf.setText(null);
             txtCpf.setValue(null);
+            this.idCliente = -1;
         } else {
             for (Cliente cliente : listaCliente) {
                 if (cliente.getNome() == nomeCliente) {
@@ -860,6 +861,9 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
                     }
                 } else if ((produto.getCod_barras().equals(codBarras)) && (produto.getQuantidade() <= 0)) {
                     JOptionPane.showMessageDialog(this, "Não há saldo do produto no estoque");
+                } else if(Integer.parseInt(txtQuantidade.getText()) > produto.getQuantidade()){
+                    i = listaProdutos.size();
+                    JOptionPane.showMessageDialog(this, "Não há estoque suficiente deste produto no estoque para a quantidade selecionada");
                 }
 
             }
@@ -867,7 +871,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
             JOptionPane.showMessageDialog(this, "Quantidade do produto inválida");
         } else if (jcbNomeProduto.getSelectedItem().equals("<Selecione o Produto>")) {
             JOptionPane.showMessageDialog(this, "Selecione o produto ou leia o código de barras para adicionar");
-        }
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

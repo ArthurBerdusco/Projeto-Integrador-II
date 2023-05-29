@@ -2,8 +2,6 @@ package com.senac.toystore.view.login;
 
 import com.senac.toystore.DAO.VendedorDAO;
 import com.senac.toystore.model.Vendedor;
-import com.senac.toystore.utils.Validador;
-import com.senac.toystore.view.principal.TelaPrincipal;
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.BorderFactory;

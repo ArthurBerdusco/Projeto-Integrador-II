@@ -181,7 +181,7 @@ public class TelaCliente extends javax.swing.JInternalFrame implements Atualizav
         lblNome.setText("Nome:");
 
         txtFiltrarCpf.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtFiltrarCpf.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFiltrarCpf.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtFiltrarCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFiltrarCpfActionPerformed(evt);
@@ -189,7 +189,7 @@ public class TelaCliente extends javax.swing.JInternalFrame implements Atualizav
         });
 
         txtFiltrarNome.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtFiltrarNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFiltrarNome.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/produto/search.png"))); // NOI18N
