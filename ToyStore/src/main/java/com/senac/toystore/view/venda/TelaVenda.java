@@ -9,11 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import com.senac.toystore.DAO.*;
 import com.senac.toystore.model.ItemNota;
 import java.awt.Image;
-import java.awt.List;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,13 +19,14 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 public class TelaVenda extends javax.swing.JInternalFrame implements SincronizarDados {
 
+    int idCliente;
+    
     public void atualizarNavegacao() {
         listaProdutos = ProdutoDAO.listar();
         listaCliente = ClienteDAO.listar();
@@ -58,6 +56,8 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
             jcbNomeProduto.addItem(listaProdutos.get(i).getDescricao());
         }
     }
+    
+    
 
     @Override
     public void sincronizar() {
@@ -649,7 +649,7 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
 
             TelaPagamento telaPagamento = new TelaPagamento(Float.parseFloat(txtValorTotal.getText().replace("R$", "")));
             telaPagamento.setCallback(this);
-            telaPagamento.idCliente = 1; // Implementar
+            telaPagamento.idCliente = this.idCliente; // Implementar
             telaPagamento.nomeVendedor = nomeVendedor;
             telaPagamento.listaItens = listaItens;
 
@@ -659,17 +659,18 @@ public class TelaVenda extends javax.swing.JInternalFrame implements Sincronizar
         } else if ((tblProdutos.getRowCount() <= 0)) {
             JOptionPane.showMessageDialog(this, "Insira pelo menos um item no pedido para prosseguir com pagamento");
         }
-
     }//GEN-LAST:event_btnConcluirVendaActionPerformed
 
     private void jcbNomeClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbNomeClienteItemStateChanged
         String nomeCliente = String.valueOf(evt.getItem());
         if (nomeCliente == "<Selecione o Cliente>") {
-            txtCpf.setText("");
+            txtCpf.setText(null);
+            txtCpf.setValue(null);
         } else {
             for (Cliente cliente : listaCliente) {
                 if (cliente.getNome() == nomeCliente) {
                     txtCpf.setText(cliente.getCpf());
+                    this.idCliente = cliente.getId();
                 }
             }
         }

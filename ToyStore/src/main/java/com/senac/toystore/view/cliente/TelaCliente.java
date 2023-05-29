@@ -2,7 +2,6 @@ package com.senac.toystore.view.cliente;
 
 import com.senac.toystore.DAO.ClienteDAO;
 import com.senac.toystore.model.Cliente;
-import java.awt.Point;
 import java.beans.PropertyVetoException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
