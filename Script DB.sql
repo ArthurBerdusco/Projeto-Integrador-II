@@ -27,7 +27,7 @@ create table notafiscal(
     data_nota date not null,
     valor_total float not null,
     id_cliente int,
-    nome_vendedor int,
+    nome_vendedor varchar(40),
     foreign key (id_cliente) references cliente(id_cliente)
 );
 
@@ -49,7 +49,7 @@ create table item_nota(
 	id_item bigint auto_increment primary key,
     quantidade int not null,
     valor float not null,
-    numero_nota int,
+    numeronota int,
     id_produto int,
     foreign key (numeronota) references notafiscal(numeronota),
     foreign key (id_produto) references produto(id_produto)

@@ -240,7 +240,6 @@ public class TelaRelatorio extends javax.swing.JInternalFrame {
 
             for (NotaFiscal nota : notasFiscais) {
                 if (nota.getNumeroNota() == notaSelecionada) {
-                    System.out.println(nota.getIdCliente());
                     RelatorioAnalitico analitico = new RelatorioAnalitico(nota);
 
                     analitico.setVisible(true);
