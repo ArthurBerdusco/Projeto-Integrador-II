@@ -85,6 +85,7 @@ com\senac\toystore\view\relatorio\TelaRelatorio$2.class
 com\senac\toystore\view\produto\Atualizavel.class
 com\senac\toystore\model\Vendedor.class
 com\senac\toystore\model\NotaFiscal.class
+com\senac\toystore\view\relatorio\RelatorioAnalitico$3.class
 com\senac\toystore\view\cliente\FormCliente$9.class
 com\senac\toystore\view\login\Login$3.class
 com\senac\toystore\model\Usuario.class
@@ -114,9 +115,11 @@ com\senac\toystore\view\cliente\FormCliente$1.class
 com\senac\toystore\view\cliente\FormCliente$11.class
 com\senac\toystore\view\login\TelaCadastro$3.class
 com\senac\toystore\view\principal\TelaPrincipal.class
+com\senac\toystore\view\relatorio\RelatorioAnalitico$4.class
 com\senac\toystore\view\login\Login$8.class
 com\senac\toystore\model\Cliente.class
 com\senac\toystore\view\produto\TelaProduto$4.class
 com\senac\toystore\view\produto\TelaProduto.class
 com\senac\toystore\view\cliente\FormCliente$7.class
 com\senac\toystore\view\cliente\Atualizavel.class
+com\senac\toystore\view\relatorio\TelaRelatorio$4.class

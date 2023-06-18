@@ -23,7 +23,7 @@ create table vendedor(
 );
 
 create table notafiscal(
-	numeronnota int auto_increment primary key,
+	numeronota int auto_increment primary key,
     data_nota date not null,
     valor_total float not null,
     id_cliente int,
@@ -54,6 +54,7 @@ create table item_nota(
     foreign key (numeronota) references notafiscal(numeronota),
     foreign key (id_produto) references produto(id_produto)
 );
+
 
 
 

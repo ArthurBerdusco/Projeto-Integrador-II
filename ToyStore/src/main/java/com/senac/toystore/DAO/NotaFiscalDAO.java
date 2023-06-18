@@ -40,7 +40,7 @@ public class NotaFiscalDAO {
                     int idNota = rs.getInt(1);
                     for (ItemNota item : nota.getListaItens()) {
 
-                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO item_nota (quantidade, valor_produto, numeroNota, id_produto) VALUES (?,?,?,?)");
+                        PreparedStatement instrucaoSQLItem = conexao.prepareStatement("INSERT INTO item_nota (quantidade, valor, numeronota, id_produto) VALUES (?,?,?,?)");
                         instrucaoSQLItem.setInt(1, item.getQtdProduto());
                         instrucaoSQLItem.setDouble(2, item.getVlrProduto());
                         instrucaoSQLItem.setInt(3, idNota);
@@ -110,9 +110,7 @@ public class NotaFiscalDAO {
                                                                                                         + "INNER JOIN notafiscal on notafiscal.numeronota = item_nota.numeronota "
                                                                                                         + "INNER JOIN cliente on cliente.id_cliente = notafiscal.id_cliente "
                                                                                                         + "WHERE item_nota.numeroNota = ?");
-                
                     instrucaoSQLItem.setInt(1, nota.getNumeroNota());
-                    
                     
                     ResultSet rsItem = instrucaoSQLItem.executeQuery();
                     ArrayList<ItemNota> itensNota = new ArrayList<>();
@@ -123,7 +121,7 @@ public class NotaFiscalDAO {
                             ItemNota item = new ItemNota();
                             item.setIdItemNota(rsItem.getInt("id_item"));
                             item.setQtdProduto(rsItem.getInt("quantidade"));
-                            item.setVlrProduto(rsItem.getDouble("valor_produto"));
+                            item.setVlrProduto(rsItem.getDouble("valor"));
                             item.setIdNota(rsItem.getInt("numeroNota"));
                             item.setIdProduto(rsItem.getInt("id_produto"));
                             item.setDescricaoProduto(rsItem.getString("descricao"));
